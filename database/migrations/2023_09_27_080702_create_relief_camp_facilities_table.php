@@ -1,0 +1,45 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('relief_camp_facilities', function (Blueprint $table) {
+            $table->id('relief_camp_facility_id');
+            $table->string('building_type',100);
+            $table->integer('number_of_persons');
+            $table->integer('number_of_rooms');
+            $table->integer('number_of_halls');
+            $table->integer('number_of_toilets');
+            $table->integer('number_of_persons_utilising_toilets');
+            $table->integer('number_of_persons_staying_at_night');
+            $table->integer('number_of_mattresses');
+            $table->integer('number_of_badsheets');
+            $table->integer('number_of_blankets');
+            $table->integer('number_of_mosquito');
+            $table->integer('number_of_fans');
+            $table->integer('availability_of_food_grains_in_days');
+            $table->integer('availability_of_veg_in_days');
+            $table->boolean('safe_drinking_water');
+            $table->boolean('provisioning_of_supplement');
+            $table->bigInteger('relief_camp_id');
+            //$table->foreign('relief_camp_id')->references('relief_camp_id')->on('relief_camps')->onDelete('cascade');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('relief_camp_facilities');
+    }
+};
