@@ -13,18 +13,18 @@ return new class extends Migration
     {
         Schema::create('relief_camp_demographies', function (Blueprint $table) {
             $table->id('relief_camp_demography_id');
-            $table->string('name',50);
+            $table->string('person_first_name',50);
+            $table->string('person_last_name',50);
             $table->string('family_head_name',50);
             $table->string('relation_with_head',50);
             $table->enum('gender',['male','female','third_gender']);
-            $table->integer('age');
-            $table->boolean('physically_disabled');
-            $table->boolean('orphan');
-            $table->boolean('lactating');
-            $table->text('displaced_from');
-            $table->bigInteger('relief_camp_id');
-            $table->boolean('active_status');
-            //$table->foriegn('relief_camp_id')->references('relief_camp_id')->on('relief_camps')->onDelete('cascade');
+            $table->tinyInteger('age');
+            $table->boolean('physically_disabled')->default(false);
+            $table->boolean('orphan')->default(false);
+            $table->boolean('lactating')->default(false);
+            $table->unsignedBigInteger('displaced_from');
+            $table->unsignedBigInteger('relief_camp_id');
+            $table->boolean('active_status')->default(true);
             $table->timestamps();
         });
     }

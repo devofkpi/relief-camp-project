@@ -29,8 +29,7 @@ return new class extends Migration
             $table->integer('availability_of_veg_in_days');
             $table->boolean('safe_drinking_water');
             $table->boolean('provisioning_of_supplement');
-            $table->bigInteger('relief_camp_id');
-            //$table->foreign('relief_camp_id')->references('relief_camp_id')->on('relief_camps')->onDelete('cascade');
+            $table->unsignedBigInteger('relief_camp_id');
             $table->timestamps();
         });
     }

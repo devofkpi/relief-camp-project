@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id('police_station_id');
             $table->string('police_station_name',100);
             $table->string('officer_name');
-            $table->integer('officer_contact');
-            $table->text('location');
-            $table->bigInteger('relief_camp_id');
-            //$table->foreign('relief_camp_id')->references('relief_camp_id')->on('relief_camps')->onDelete('cascade');
+            $table->unsignedInteger('officer_contact')->unique();
+            $table->unsignedBigInteger('address_id');
+            $table->unsignedBigInteger('relief_camp_id');
             $table->timestamps();
         });
     }

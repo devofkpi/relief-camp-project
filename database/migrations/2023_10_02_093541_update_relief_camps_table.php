@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('district_helplines', function (Blueprint $table) {
-            $table->id('district_helpline_id');
-            $table->unsignedInteger('contact_number')->unique();
-            $table->string('email',100);
-            $table->timestamps();
-        });
+        //
+        Schema::table('relief_camps', function (Blueprint $table) {
+            $table->foreign('address_id')->references('address_id')->on('addresses');
+            $table->foreign('sub_division_id')->references('sub_division_id')->on('sub_divisions');
+    });
     }
 
     /**
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('district_helplines');
+        //
     }
 };

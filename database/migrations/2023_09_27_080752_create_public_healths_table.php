@@ -16,9 +16,8 @@ return new class extends Migration
             $table->string('name',100);
             $table->string('officer_name',50);
             $table->integer('officer_contact')->unique();
-            $table->text('location');
-            $table->bigInteger('relief_camp_id');
-            //$table->foreign('relief_camp_id')->references('relief_camp_id')->on('relief_camps')->onDelete('cascade'); 
+            $table->unsignedBigInteger('address_id');
+            $table->unsignedBigInteger('relief_camp_id');
             $table->timestamps();
         });
     }

@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('announcements', function (Blueprint $table) {
             $table->id('announcement_id');
             $table->text('document_link');
-            $table->bigInteger('announcement_category_id');
-            //$table->foriegn('announcement_category_id')->references('announcements_category_id')->on('announcement_categories')->onDelete('cascade');
+            $table->unsignedBigInteger('announcement_category_id');
             $table->timestamps();
         });
     }

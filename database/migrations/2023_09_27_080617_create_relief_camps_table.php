@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('relief_camps', function (Blueprint $table) {
             $table->id('relief_camp_id');
-            $table->string('name',100);
-            $table->string('camp_code',50)->unique;
-            $table->text('location');
-            $table->bigInteger('sub_division_id');
-            $table->boolean('active_status');
-            //$table->foreign('sub_division_id')->references('sub_division_id')->on('sub_divisions')->onDelete('cascade');
+            $table->string('relief_camp_name',100);
+            $table->string('camp_code',50)->unique();
+            $table->unsignedBigInteger('address_id');
+            $table->unsignedBigInteger('sub_division_id');
+            $table->boolean('active_status')->default(true);
             $table->timestamps();
         });
     }

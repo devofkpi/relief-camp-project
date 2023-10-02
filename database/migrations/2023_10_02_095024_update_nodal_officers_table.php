@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('district_helplines', function (Blueprint $table) {
-            $table->id('district_helpline_id');
-            $table->unsignedInteger('contact_number')->unique();
-            $table->string('email',100);
-            $table->timestamps();
+        //
+        Schema::table('nodal_officers', function (Blueprint $table) {
+            $table->foreign('relief_camp_id')->references('relief_camp_id')->on('relief_camps');
         });
     }
 
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('district_helplines');
+        //
     }
 };

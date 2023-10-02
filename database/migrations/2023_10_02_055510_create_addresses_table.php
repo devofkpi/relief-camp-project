@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('addresses', function (Blueprint $table) {
-            $table->id();
+            $table->id('address_id');
+            $table->text('address');
+            $table->string('city',100)->default('kangpokpi');
+            $table->string('state',100)->default('manipur');
+            $table->unsignedInteger('pincode')->default(795129);
             $table->timestamps();
         });
     }
