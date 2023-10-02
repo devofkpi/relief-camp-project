@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('district_helplines', function (Blueprint $table) {
             $table->id('district_helpline_id');
-            $table->unsignedInteger('contact_number')->unique();
+            $table->unsignedBigInteger('contact_number')->unique();
             $table->string('email',100);
             $table->timestamps();
         });

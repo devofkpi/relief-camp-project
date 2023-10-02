@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name',100);
             $table->string('officer_name',50);
-            $table->integer('officer_contact')->unique();
+            $table->unsignedBigInteger('officer_contact')->unique();
             $table->unsignedBigInteger('address_id');
             $table->unsignedBigInteger('relief_camp_id');
             $table->timestamps();

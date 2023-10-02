@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('police_stations', function (Blueprint $table) {
             $table->id('police_station_id');
             $table->string('police_station_name',100);
-            $table->string('officer_name');
-            $table->unsignedInteger('officer_contact')->unique();
+            $table->string('officer_name',50);
+            $table->unsignedBigInteger('officer_contact')->unique();
             $table->unsignedBigInteger('address_id');
             $table->unsignedBigInteger('relief_camp_id');
             $table->timestamps();
