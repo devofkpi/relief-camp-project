@@ -22,6 +22,7 @@
 	<meta name="twitter:card" content="" />
 
 	<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800" rel="stylesheet">
+
 	
 	<!-- Animate.css -->
 	<link rel="stylesheet" href={{ asset("css/animate.css") }}>
@@ -42,6 +43,18 @@
 	<!-- Theme style  -->
 	<link rel="stylesheet" href={{ asset("css/style.css")}}>
 
+
+	
+    <link rel="stylesheet" href={{ asset("navigation/fonts/icomoon/style.css") }}>
+
+    <link rel="stylesheet" href={{ asset("navigation/css/owl.carousel.min.css") }}>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href={{ asset("navigation/css/bootstrap.min.css") }}>
+    
+    <!-- Style -->
+    <link rel="stylesheet" href={{ asset("navigation/css/style.css") }}>
+
 	<!-- Modernizr JS -->
 	<script src={{ asset("js/modernizr-2.6.2.min.js")}}></script>
 	<!-- FOR IE9 below -->
@@ -50,12 +63,77 @@
 	<![endif]-->
 
 	</head>
-	<body>
+	<body  style="  font-family: 'Work Sans', Arial, sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.7;
+	color: #828282;
+	background: #fff;">
 		
-	<div class="fh5co-loader"></div>
 	
 	<div id="page">
-	<nav class="fh5co-nav" role="navigation">
+	
+		<div class="site-mobile-menu site-navbar-target">
+			<div class="site-mobile-menu-header">
+			  <div class="site-mobile-menu-close mt-3">
+				<span class="icon-close2 js-menu-toggle"></span>
+			  </div>
+			</div>
+			<div class="site-mobile-menu-body"></div>
+		  </div>
+		  
+		<header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+
+			<div class="container">
+			  <div class="row align-items-center position-relative">
+	
+	
+				{{-- <div class="site-logo">
+				  <a href="index.html" class="text-black"><span class="text-primary">Brand</a>
+				</div> --}}
+	
+				<div class="col-12">
+				  <nav class="site-navigation text-right ml-auto " role="navigation">
+	
+					<ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+					  <li><a href="#home-section" class="nav-link">Home</a></li>
+					  <li><a href="#services-section" class="nav-link">Services</a></li>
+	
+	
+					  <li class="has-children">
+						<a href="#about-section" class="nav-link">About Us</a>
+						<ul class="dropdown arrow-top">
+						  <li><a href="#team-section" class="nav-link">Team</a></li>
+						  <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
+						  <li><a href="#faq-section" class="nav-link">FAQ</a></li>
+						  <li class="has-children">
+							<a href="#">More Links</a>
+							<ul class="dropdown">
+							  <li><a href="#">Menu One</a></li>
+							  <li><a href="#">Menu Two</a></li>
+							  <li><a href="#">Menu Three</a></li>
+							</ul>
+						  </li>
+						</ul>
+					  </li>
+	
+					  <li><a href="#why-us-section" class="nav-link">Why Us</a></li>
+	
+					  <li><a href="#testimonials-section" class="nav-link">Testimonials</a></li>
+					  <li><a href="#blog-section" class="nav-link">Blog</a></li>
+					  <li><a href="#contact-section" class="nav-link">Contact</a></li>
+					</ul>
+				  </nav>
+	
+				</div>
+	
+				<div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+	
+			  </div>
+			</div>
+	
+		  </header>
+	{{-- <nav class="fh5co-nav" role="navigation">
 		<div class="top-menu">
 			<div class="container">
 				<div class="row">
@@ -96,7 +174,7 @@
 				
 			</div>
 		</div>
-	</nav>
+	</nav> --}}
 
 	<aside id="fh5co-hero" class="js-fullheight">
 		<div class="flexslider js-fullheight">
@@ -644,6 +722,12 @@
 	<script src={{ asset("js/magnific-popup-options.js")}}></script>
 	<!-- Main -->
 	<script src={{ asset("js/main.js")}}></script>
+
+	{{-- <script src={{ asset("navigation/js/jquery-3.3.1.min.js")}}></script>
+    <script src={{ asset("navigation/js/popper.min.js")}}></script>
+    <script src={{ asset("navigation/js/bootstrap.min.js")}}></script> --}}
+    <script src={{ asset("navigation/js/jquery.sticky.js")}}></script>
+    <script src={{ asset("navigation/js/main.js")}}></script>
 
 	</body>
 </html>
