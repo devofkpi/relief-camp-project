@@ -1,1 +1,0 @@
-<footer><h3>This website maintained by NIC Kangpokpi</h3></footer>

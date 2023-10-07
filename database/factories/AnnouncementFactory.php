@@ -18,6 +18,7 @@ class AnnouncementFactory extends Factory
     {
         return [
             //
+            'document_link'=>fake()->url
         ];
     }
 }

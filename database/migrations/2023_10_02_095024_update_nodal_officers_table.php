@@ -13,7 +13,8 @@ return new class extends Migration
     {
         //
         Schema::table('nodal_officers', function (Blueprint $table) {
-            $table->foreign('relief_camp_id')->references('relief_camp_id')->on('relief_camps');
+            $table->foreign('sub_division_id')->references('id')->on('sub_divisions');
+
         });
     }
 

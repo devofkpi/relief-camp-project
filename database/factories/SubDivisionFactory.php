@@ -18,6 +18,7 @@ class SubDivisionFactory extends Factory
     {
         return [
             //
+            'sub_division_name'=>fake()->company
         ];
     }
 }

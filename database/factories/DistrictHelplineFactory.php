@@ -18,6 +18,8 @@ class DistrictHelplineFactory extends Factory
     {
         return [
             //
+            'contact_number'=>fake()->unique()->numerify('##########'),
+            'email'=>fake()->email
         ];
     }
 }

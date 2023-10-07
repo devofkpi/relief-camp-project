@@ -18,6 +18,9 @@ class PoliceStationFactory extends Factory
     {
         return [
             //
+            'police_station_name'=>fake()->company,
+            'officer_name'=>fake()->name,
+            'officer_contact'=>fake()->unique()->numerify('##########')
         ];
     }
 }

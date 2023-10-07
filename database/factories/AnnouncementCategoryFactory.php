@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class AnnouncementCategroyFactory extends Factory
+class AnnouncementCategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,6 +18,7 @@ class AnnouncementCategroyFactory extends Factory
     {
         return [
             //
+            'category_name'=>fake()->randomElement(['Notice','Order','Notification'])
         ];
     }
 }

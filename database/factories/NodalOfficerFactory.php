@@ -18,6 +18,9 @@ class NodalOfficerFactory extends Factory
     {
         return [
             //
+            'officer_name'=>fake()->name,
+            'officer_designation'=>fake()->randomElement(['Sub Divisional Officer','District Manager','District Supply Officer']),
+            'officer_contact'=>fake()->unique()->numerify('##########')
         ];
     }
 }

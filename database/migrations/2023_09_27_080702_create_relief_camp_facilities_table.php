@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('relief_camp_facilities', function (Blueprint $table) {
-            $table->id('relief_camp_facility_id');
+            $table->id();
             $table->string('building_type',100);
             $table->integer('number_of_persons');
             $table->integer('number_of_rooms');
@@ -27,8 +27,8 @@ return new class extends Migration
             $table->integer('number_of_fans');
             $table->integer('availability_of_food_grains_in_days');
             $table->integer('availability_of_veg_in_days');
-            $table->boolean('safe_drinking_water');
-            $table->boolean('provisioning_of_supplement');
+            $table->boolean('safe_drinking_water')->default(true);
+            $table->boolean('provisioning_of_supplement')->default(true);
             $table->unsignedBigInteger('relief_camp_id');
             $table->timestamps();
         });

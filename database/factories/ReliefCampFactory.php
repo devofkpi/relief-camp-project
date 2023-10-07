@@ -18,6 +18,8 @@ class ReliefCampFactory extends Factory
     {
         return [
             //
+            'relief_camp_name'=>fake()->company,
+            'camp_code'=>fake()->locale
         ];
     }
 }

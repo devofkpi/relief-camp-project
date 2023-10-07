@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('relief_camps', function (Blueprint $table) {
-            $table->id('relief_camp_id');
+            $table->id();
             $table->string('relief_camp_name',100);
             $table->string('camp_code',50)->unique();
             $table->unsignedBigInteger('address_id');
             $table->unsignedBigInteger('sub_division_id');
+            $table->unsignedBigInteger('nodal_officer_id');
             $table->boolean('active_status')->default(true);
             $table->timestamps();
         });

@@ -16,8 +16,13 @@ class ReliefCampDemographyFactory extends Factory
      */
     public function definition(): array
     {
+        $gender=fake()->randomElement(['male','female','third_gender']);
         return [
             //
+            'person_name'=>fake()->name($gender),
+            'gender'=>$gender,
+            'age'=>fake()->numberBetween(1,100)
+
         ];
     }
 }

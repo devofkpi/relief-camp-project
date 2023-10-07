@@ -13,8 +13,8 @@ return new class extends Migration
     {
         //
         Schema::table('relief_camp_demographies', function (Blueprint $table) {
-            $table->foreign('displaced_from')->references('address_id')->on('addresses');
-            $table->foreign('relief_camp_id')->references('relief_camp_id')->on('relief_camps');
+            $table->foreign('address_id')->references('id')->on('addresses');
+            $table->foreign('relief_camp_id')->references('id')->on('relief_camps');
         });
     }
 

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('family_head_relations', function (Blueprint $table) {
-            $table->id('family_head_relation_id');
+            $table->id();
             $table->string('family_head_relation',100)->default('father');
             $table->timestamps();
         });

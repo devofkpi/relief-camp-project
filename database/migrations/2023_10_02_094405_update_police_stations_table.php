@@ -13,8 +13,8 @@ return new class extends Migration
     {
         //
         Schema::table('police_stations', function (Blueprint $table) {
-            $table->foreign('address_id')->references('address_id')->on('addresses');
-            $table->foreign('relief_camp_id')->references('relief_camp_id')->on('relief_camps');
+            $table->foreign('address_id')->references('id')->on('addresses');
+            $table->foreign('relief_camp_id')->references('id')->on('relief_camps');
         });
     }
 

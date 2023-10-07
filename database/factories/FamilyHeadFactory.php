@@ -18,6 +18,7 @@ class FamilyHeadFactory extends Factory
     {
         return [
             //
+            'family_head_name'=>fake()->name
         ];
     }
 }

@@ -21,11 +21,11 @@
 	<meta name="twitter:url" content="" />
 	<meta name="twitter:card" content="" />
 
-	<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800" rel="stylesheet">
+	{{-- <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800" rel="stylesheet"> --}}
 
 	
 	<!-- Animate.css -->
-	<link rel="stylesheet" href={{ asset("css/animate.css") }}>
+	{{-- <link rel="stylesheet" href={{ asset("css/animate.css") }}>
 	<!-- Icomoon Icon Fonts-->
 	<link rel="stylesheet" href={{ asset("css/icomoon.css") }}>
 	<!-- Bootstrap  -->
@@ -41,7 +41,7 @@
 	<link rel="stylesheet" href={{ asset("css/flexslider.css")}}>
 
 	<!-- Theme style  -->
-	<link rel="stylesheet" href={{ asset("css/style.css")}}>
+	<link rel="stylesheet" href={{ asset("css/style.css")}}> --}}
 
 
 	
@@ -71,8 +71,7 @@
 	background: #fff;">
 		
 	
-	<div id="page">
-	
+
 		<div class="site-mobile-menu site-navbar-target">
 			<div class="site-mobile-menu-header">
 			  <div class="site-mobile-menu-close mt-3">
@@ -96,32 +95,53 @@
 				  <nav class="site-navigation text-right ml-auto " role="navigation">
 	
 					<ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-					  <li><a href="#home-section" class="nav-link">Home</a></li>
-					  <li><a href="#services-section" class="nav-link">Services</a></li>
-	
+					  <li><a href="{{route('homepage')}}" class="nav-link">Home</a></li>
 	
 					  <li class="has-children">
-						<a href="#about-section" class="nav-link">About Us</a>
-						<ul class="dropdown arrow-top">
-						  <li><a href="#team-section" class="nav-link">Team</a></li>
-						  <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
-						  <li><a href="#faq-section" class="nav-link">FAQ</a></li>
+						<a href="{{route('relief_camps')}}" class="nav-link">Relief Camps</a>
+						<ul class="dropdown arrow-top" id="mydropdown">
 						  <li class="has-children">
-							<a href="#">More Links</a>
+							<a href="#" >Sub Division</a>
 							<ul class="dropdown">
-							  <li><a href="#">Menu One</a></li>
-							  <li><a href="#">Menu Two</a></li>
-							  <li><a href="#">Menu Three</a></li>
+								@foreach ($nav_sub_data as $data )
+
+								<li><a href="{{route('relief_camp_by_sub')}}/ {{$data->id}}">{{$data->sub_division_name}}</a></li>
+
+								@endforeach
+							</ul>
+						</li>
+
+						<li class="has-children">
+							<a href="#">Nodal Officer</a>
+							<ul class="dropdown">
+								@foreach ($nav_nodal_data as $data )
+
+								<li><a href="{{route('relief_camp_by_nodal')}}/ {{$data->id}}">{{$data->officer_name}}</a></li>
+									
+								@endforeach
+							</ul>
+						</li>
+						  <li class="has-children">
+							<a href="#">Demography</a>
+							<ul class="dropdown">
+							  <li><a href="{{route('relief_camp_demography')}}/male">Male</a></li>
+							  <li><a href="{{route('relief_camp_demography')}}/female">Female</a></li>
+							  <li><a href="{{route('relief_camp_demography')}}/old_age">Old Age Women</a></li>
+							  <li><a href="{{route('relief_camp_demography')}}/orphan">Orphan</a></li>
+							  <li><a href="{{route('relief_camp_demography')}}/lactating">Lactating</a></li>
+							  <li><a href="{{route('relief_camp_demography')}}/child">Child</a></li>
 							</ul>
 						  </li>
 						</ul>
 					  </li>
 	
-					  <li><a href="#why-us-section" class="nav-link">Why Us</a></li>
+					  <li><a href="{{route('police_stations')}}" class="nav-link">Police Station</a></li>
+					  
+					  <li><a href="{{route('public_health_centres')}}" class="nav-link">Public Health Centre</a></li>
 	
-					  <li><a href="#testimonials-section" class="nav-link">Testimonials</a></li>
-					  <li><a href="#blog-section" class="nav-link">Blog</a></li>
-					  <li><a href="#contact-section" class="nav-link">Contact</a></li>
+					  <li><a href="{{route('aanganwadi_centres')}}" class="nav-link">Aanganwadi</a></li>
+					  <li><a href="{{route('district_helplines')}}" class="nav-link">Helpline</a></li>
+					  <li><a href="{{route('announcements')}}" class="nav-link">Announcement</a></li>
 					</ul>
 				  </nav>
 	
@@ -133,50 +153,8 @@
 			</div>
 	
 		  </header>
-	{{-- <nav class="fh5co-nav" role="navigation">
-		<div class="top-menu">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-1">
-						<div id="fh5co-logo"><a href="index.html"><span><img src="https://cdn.s3waas.gov.in/s3c0e190d8267e36708f955d7ab048990d/uploads/2021/08/2021082321.jpg"/ height="70"></span></a></div>
-					</div>
-					<div class="col-xs-11 text-right menu-1">
-						<ul>
-							<li class="active"><a href="index.html">Home</a></li>
-							<li  class="has-dropdown"><a href="practice.html">Relief Camps</a>
-								<ul class="dropdown">
-									<li><a href="#">Demography</a></li>
-									<li><a href="#">Nodal Officer</a></li>
-									<li><a href="#">Sub Division/Block</a></li>
-								</ul>
-							</li>
-							<li><a href="won.html">Police Station</a></li>
-							<li><a href="won.html">Public Health Centres</a></li>
-							<li><a href="won.html">Aanganwadi Centres</a></li>
-							<li><a href="won.html">District Helpline</a></li>
-							<li><a href="won.html">Announcement</a></li>
-							<!--<li class="has-dropdown">
-								<a href="blog.html">Blog</a>
-								<ul class="dropdown">
-									<li><a href="#">Web Design</a></li>
-									<li><a href="#">eCommerce</a></li>
-									<li><a href="#">Branding</a></li>
-									<li><a href="#">API</a></li>
-								</ul>
-							</li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="contact.html">Contact</a></li>
-							<li class="btn-cta"><a href="#"><span>Login</span></a></li>
-							<li class="btn-cta"><a href="#"><span>Sign Up</span></a></li>-->
-						</ul>
-					</div>
-				</div>
-				
-			</div>
-		</div>
-	</nav> --}}
 
-	<aside id="fh5co-hero" class="js-fullheight">
+	{{-- <aside id="fh5co-hero" class="js-fullheight">
 		<div class="flexslider js-fullheight">
 			<ul class="slides">
 		   	<li style="background-image: url(images/img_bg_1.jpg);">
@@ -223,36 +201,13 @@
 		   	</li>		   	
 		  	</ul>
 	  	</div>
-	</aside>
+	</aside> --}}
 
-	<div id="fh5co-counter" class="fh5co-counters fh5co-bg-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 text-center animate-box">
-					<span class="icon"><i class="icon-user"></i></span>
-					<span class="fh5co-counter js-counter" data-from="0" data-to="27539" data-speed="5000" data-refresh-interval="50"></span>
-					<span class="fh5co-counter-label">Satisfied Clients</span>
-				</div>
-				<div class="col-md-3 text-center animate-box">
-					<span class="icon"><i class="icon-speech-bubble"></i></span>
-					<span class="fh5co-counter js-counter" data-from="0" data-to="23563" data-speed="5000" data-refresh-interval="50"></span>
-					<span class="fh5co-counter-label">Cases Won</span>
-				</div>
-				<div class="col-md-3 text-center animate-box">
-					<span class="icon"><i class="icon-trophy"></i></span>
-					<span class="fh5co-counter js-counter" data-from="0" data-to="5067" data-speed="5000" data-refresh-interval="50"></span>
-					<span class="fh5co-counter-label">Awards Won</span>
-				</div>
-				<div class="col-md-3 text-center animate-box">
-					<span class="icon"><i class="icon-users"></i></span>
-					<span class="fh5co-counter js-counter" data-from="0" data-to="2587" data-speed="5000" data-refresh-interval="50"></span>
-					<span class="fh5co-counter-label">Lawyers</span>
-				</div>
-			</div>
-		</div>
-	</div>
+	{{-- @yield('content1')
 
-	<div id="fh5co-content">
+	@yield('content2') --}}
+
+<!--	<div id="fh5co-content">
 		<div class="video fh5co-video" style="background-image: url(images/video.jpg);">
 			<a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><i class="icon-video2"></i></a>
 			<div class="overlay"></div>
@@ -283,91 +238,11 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
 
-	<div id="fh5co-practice" class="fh5co-bg-section">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Our Legal Practice Area</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4 text-center animate-box">
-					<div class="services">
-						<span class="icon">
-							<i class="icon-home"></i>
-						</span>
-						<div class="desc">
-							<h3><a href="#">Real Estate Law</a></h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 text-center animate-box">
-					<div class="services">
-						<span class="icon">
-							<i class="icon-eye"></i>
-						</span>
-						<div class="desc">
-							<h3><a href="#">Insurance Law</a></h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 text-center animate-box">
-					<div class="services">
-						<span class="icon">
-							<i class="icon-shopping-cart"></i>
-						</span>
-						<div class="desc">
-							<h3><a href="#">Business Law</a></h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 text-center animate-box">
-					<div class="services">
-						<span class="icon">
-							<i class="icon-umbrella"></i>
-						</span>
-						<div class="desc">
-							<h3><a href="#">Personal Injury</a></h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 text-center animate-box">
-					<div class="services">
-						<span class="icon">
-							<i class="icon-heart"></i>
-						</span>
-						<div class="desc">
-							<h3><a href="#">Medical Neglegence</a></h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 text-center animate-box">
-					<div class="services">
-						<span class="icon">
-							<i class="icon-help"></i>
-						</span>
-						<div class="desc">
-							<h3><a href="#">Criminal Defense</a></h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12 text-center animate-box">
-					<p><a class="btn btn-primary btn-lg btn-learn" href="#">View More</a></p>
-				</div>
-			</div>
-		</div>
-	</div>
 	
-	<div id="fh5co-project">
+	
+	{{-- <div id="fh5co-project">
 		<div class="container">
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
@@ -635,9 +510,9 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 
-	<footer id="fh5co-footer" role="contentinfo">
+	{{-- <footer id="fh5co-footer" role="contentinfo">
 		<div class="container">
 			<div class="row row-pb-md">
 				<div class="col-md-3 fh5co-widget">
@@ -694,14 +569,13 @@
 			</div>
 
 		</div>
-	</footer>
-	</div>
-
+	</footer> --}}
+{{-- 
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-	</div>
+	</div> --}}
 	
-	<!-- jQuery -->
+	{{-- <!-- jQuery -->
 	<script src={{ asset("js/jquery.min.js")}}></script>
 	<!-- jQuery Easing -->
 	<script src={{ asset("js/jquery.easing.1.3.js")}}></script>
@@ -721,11 +595,11 @@
 	<script src={{ asset("js/jquery.magnific-popup.min.js")}}></script>
 	<script src={{ asset("js/magnific-popup-options.js")}}></script>
 	<!-- Main -->
-	<script src={{ asset("js/main.js")}}></script>
+	<script src={{ asset("js/main.js")}}></script> --}}
 
-	{{-- <script src={{ asset("navigation/js/jquery-3.3.1.min.js")}}></script>
+	<script src={{ asset("navigation/js/jquery-3.3.1.min.js")}}></script>
     <script src={{ asset("navigation/js/popper.min.js")}}></script>
-    <script src={{ asset("navigation/js/bootstrap.min.js")}}></script> --}}
+    <script src={{ asset("navigation/js/bootstrap.min.js")}}></script>
     <script src={{ asset("navigation/js/jquery.sticky.js")}}></script>
     <script src={{ asset("navigation/js/main.js")}}></script>
 

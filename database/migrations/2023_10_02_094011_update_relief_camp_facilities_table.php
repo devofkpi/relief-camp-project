@@ -13,7 +13,7 @@ return new class extends Migration
     {
         //
         Schema::table('relief_camp_facilities', function (Blueprint $table) {
-            $table->foreign('relief_camp_id')->references('relief_camp_id')->on('relief_camps');
+            $table->foreign('relief_camp_id')->references('id')->on('relief_camps');
         });
     }
 

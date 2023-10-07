@@ -18,6 +18,7 @@ class FamilyHeadRelationFactory extends Factory
     {
         return [
             //
+            'family_head_relation'=>fake()->randomElement(['father','sister','mother','brother'])
         ];
     }
 }

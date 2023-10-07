@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('relief_camp_demographies', function (Blueprint $table) {
-            $table->id('relief_camp_demography_id');
+            $table->id();
             $table->string('person_name',100);
             $table->unsignedBigInteger('family_head_id');
             $table->unsignedBigInteger('family_head_relation_id');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('physically_disabled')->default(false);
             $table->boolean('orphan')->default(false);
             $table->boolean('lactating')->default(false);
-            $table->unsignedBigInteger('displaced_from');
+            $table->unsignedBigInteger('address_id');
             $table->unsignedBigInteger('relief_camp_id');
             $table->boolean('active_status')->default(true);
             $table->timestamps();

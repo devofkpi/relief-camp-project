@@ -13,8 +13,9 @@ return new class extends Migration
     {
         //
         Schema::table('relief_camps', function (Blueprint $table) {
-            $table->foreign('address_id')->references('address_id')->on('addresses');
-            $table->foreign('sub_division_id')->references('sub_division_id')->on('sub_divisions');
+            $table->foreign('address_id')->references('id')->on('addresses');
+            $table->foreign('sub_division_id')->references('id')->on('sub_divisions');
+            $table->foreign('nodal_officer_id')->references('id')->on('nodal_officers');
     });
     }
 

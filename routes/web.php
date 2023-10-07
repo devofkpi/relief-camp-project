@@ -8,6 +8,7 @@ use App\Http\Controllers\PublicHealthController;
 use App\Http\Controllers\DistrictHelplineController;
 use App\Http\Controllers\AanganwadiCentreController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\ReliefCampDemographyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,8 +28,16 @@ Route::controller(HomePageController::class)->group(function () {
     Route::get('/home', 'show')->name('homepage');
 });
 Route::controller(ReliefCampController::class)->group(function () {
-    Route::get('/relief_camps', 'show')->name('relief_camps');
+    Route::get('/relief_camps', 'showAllCamps')->name('relief_camps');
+    Route::get('/relief_camp/sub_division/{sub_division_id?}', 'showBySubDivision')->name('relief_camp_by_sub');
+    Route::get('/relief_camp/nodal_officer/{nodal_officer_id?}', 'showByNodalOfficer')->name('relief_camp_by_nodal');
+
 });
+
+Route::controller(ReliefCampDemographyController::class)->group(function () {
+    Route::get('/relief_camp/demography/{name?}', 'show')->name('relief_camp_demography');
+});
+
 Route::controller(PoliceStationController::class)->group(function () {
     Route::get('/police_stations', 'show')->name('police_stations');
 });

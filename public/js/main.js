@@ -189,7 +189,7 @@
 			return false;
 		});
 
-		$(window).scroll(function(){
+		jQuery(window).scroll(function(){
 
 			var $win = $(window);
 			if ($win.scrollTop() > 200) {

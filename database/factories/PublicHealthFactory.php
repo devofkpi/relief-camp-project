@@ -18,6 +18,9 @@ class PublicHealthFactory extends Factory
     {
         return [
             //
+            'public_health_name'=>fake()->company,
+            'officer_name'=>fake()->name,
+            'officer_contact'=>fake()->unique()->numerify('##########')
         ];
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         //
         Schema::table('announcements', function (Blueprint $table) {
-            $table->foreign('announcement_category_id')->references('announcement_category_id')->on('announcement_categories');
+            $table->foreign('announcement_category_id')->references('id')->on('announcement_categories');
         });
     }
 

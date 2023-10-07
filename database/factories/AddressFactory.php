@@ -18,6 +18,10 @@ class AddressFactory extends Factory
     {
         return [
             //
+            'address'=>fake()->address,
+            'city'=>fake()->city,
+            'state'=>fake()->state,
+            'pincode'=>fake()->numerify('######')
         ];
     }
 }
