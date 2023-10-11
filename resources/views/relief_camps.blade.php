@@ -23,7 +23,7 @@
             <td>{{ $relief_camp->camp_code}}</td>
             <td>{{ ucfirst($relief_camp->address->address)}}<br>{{ ucfirst($relief_camp->address->city) }}, {{ ucfirst($relief_camp->address->state)}}</td>
             <td>{{ $relief_camp->nodalOfficer->officer_name}}</td>
-            <td><a href="">View</a></td>
+            <td><a href="{{route('relief_camp_demography')}}/{{$relief_camp->id}}">View</a></td>
         </tr>
         @endforeach
     </tbody>

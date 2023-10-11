@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('relief_camp_demographies', function (Blueprint $table) {
             $table->id();
             $table->string('person_name',100);
-            $table->unsignedBigInteger('family_head_id');
-            $table->unsignedBigInteger('family_head_relation_id');
+            $table->unsignedBigInteger('family_head_id')->nullable();
+            $table->unsignedBigInteger('family_head_relation_id')->nullable();
             $table->enum('gender',['male','female','third_gender']);
             $table->tinyInteger('age');
             $table->boolean('physically_disabled')->default(false);
