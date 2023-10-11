@@ -9,6 +9,7 @@ use App\Models\SubDivision;
 use App\Models\ReliefCampFacility;
 use App\Models\ReliefCampDemography;
 use App\Models\NodalOfficer;
+use App\Models\Address;
 
 class ReliefCamp extends Model
 {
@@ -53,4 +54,15 @@ class ReliefCamp extends Model
     {
         return $this->belongsTo(NodalOfficer::class);
     }
+
+        /**
+     * Get the nodalOfficer that owns the ReliefCamp
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
+    }
+    
 }

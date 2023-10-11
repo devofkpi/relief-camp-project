@@ -63,15 +63,8 @@
 	<![endif]-->
 
 	</head>
-	<body  style="  font-family: 'Work Sans', Arial, sans-serif;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 1.7;
-	color: #828282;
-	background: #fff;">
-		
+	<body>
 	
-
 		<div class="site-mobile-menu site-navbar-target">
 			<div class="site-mobile-menu-header">
 			  <div class="site-mobile-menu-close mt-3">
@@ -87,9 +80,9 @@
 			  <div class="row align-items-center position-relative">
 	
 	
-				{{-- <div class="site-logo">
-				  <a href="index.html" class="text-black"><span class="text-primary">Brand</a>
-				</div> --}}
+				<div class="site-logo">
+				  <a href="index.html" class="text-black"><img src="{{ asset("images/logo.jpg")}}" height="80px"/></a>
+				</div>
 	
 				<div class="col-12">
 				  <nav class="site-navigation text-right ml-auto " role="navigation">
@@ -153,9 +146,17 @@
 			</div>
 	
 		  </header>
-
-	{{-- <aside id="fh5co-hero" class="js-fullheight">
-		<div class="flexslider js-fullheight">
+		  <div class="container-fluid">
+			@yield('content1')
+		  </div>
+		   <div class="container ">
+			<div class="row align-items-center position-relative">
+				@yield('content2')
+			</div>
+		   </div>
+	
+		  {{-- <aside id="fh5co-hero" class="js-fullheight">
+			<div class="flexslider js-fullheight">
 			<ul class="slides">
 		   	<li style="background-image: url(images/img_bg_1.jpg);">
 		   		<div class="overlay-gradient"></div>
@@ -171,7 +172,11 @@
 			   		</div>
 		   		</div>
 		   	</li>
-		   	<li style="background-image: url(images/img_bg_2.jpg);">
+		   	<li style="background-image: url(images/imgnav_sub_data=SubDivision::get();
+        $nav_nodal_data=NodalOfficer::get();
+        $total_nodal_officer=$nav_nodal_data->count();
+        $total_camps=ReliefCamp::get()->count();
+        $total_inmates=ReliefCampDemography::get()->count();_bg_2.jpg);">
 		   		<div class="overlay-gradient"></div>
 		   		<div class="container">
 		   			<div class="row">
