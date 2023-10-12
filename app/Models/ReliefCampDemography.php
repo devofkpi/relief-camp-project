@@ -21,7 +21,7 @@ class ReliefCampDemography extends Model
      */
     public function reliefCamp()
     {
-        return $this->hasOne(ReliefCamp::class);
+        return $this->belongsTo(ReliefCamp::class);
     }
 
     /**

@@ -19,7 +19,7 @@
         @foreach ($relief_camp_data as $count=>$relief_camp )
         <tr>
             <th scope="row">{{++$count}}</th>
-            <td><a href=""> {{$relief_camp->relief_camp_name}}</a></td>
+            <td><a href="{{ route('relief_camp_demography')}}/{{$relief_camp->id}}"> {{$relief_camp->relief_camp_name}}</a></td>
             <td>{{ $relief_camp->camp_code}}</td>
             <td>{{ ucfirst($relief_camp->address->address)}}<br>{{ ucfirst($relief_camp->address->city) }}, {{ ucfirst($relief_camp->address->state)}}</td>
             <td>{{ $relief_camp->nodalOfficer->officer_name}}</td>

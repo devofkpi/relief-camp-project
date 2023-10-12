@@ -27,15 +27,15 @@ use App\Http\Controllers\ReliefCampDemographyController;
 Route::controller(HomePageController::class)->group(function () {
     Route::get('/home', 'show')->name('homepage');
 });
-Route::controller(ReliefCampController::class)->group(function () {
-    Route::get('/relief_camps', 'showAllCamps')->name('relief_camps');
-    Route::get('/relief_camp/sub_division/{sub_division_id?}', 'showBySubDivision')->name('relief_camp_by_sub');
-    Route::get('/relief_camp/nodal_officer/{nodal_officer_id?}', 'showByNodalOfficer')->name('relief_camp_by_nodal');
+Route::prefix('/relief_camps')->controller(ReliefCampController::class)->group(function () {
+    Route::get('showAllCamps')->name('relief_camps');
+    Route::get('/sub_division/{sub_division_id?}', 'showBySubDivision')->name('relief_camp_by_sub');
+    Route::get('/nodal_officer/{nodal_officer_id?}', 'showByNodalOfficer')->name('relief_camp_by_nodal');
 
 });
 
 Route::controller(ReliefCampDemographyController::class)->group(function () {
-    Route::get('/relief_camp/demography/{name?}', 'show')->name('relief_camp_demography');
+    Route::get('/relief_camp_demography/{relief_camp_id?}', 'show')->name('relief_camp_demography');
 });
 
 Route::controller(PoliceStationController::class)->group(function () {
