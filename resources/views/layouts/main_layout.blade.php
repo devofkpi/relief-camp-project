@@ -117,12 +117,12 @@
 						  <li class="has-children">
 							<a href="#">Demography</a>
 							<ul class="dropdown">
-							  <li><a href="{{route('relief_camp_demography')}}/male">Male</a></li>
-							  <li><a href="{{route('relief_camp_demography')}}/female">Female</a></li>
-							  <li><a href="{{route('relief_camp_demography')}}/old_age">Old Age Women</a></li>
-							  <li><a href="{{route('relief_camp_demography')}}/orphan">Orphan</a></li>
-							  <li><a href="{{route('relief_camp_demography')}}/lactating">Lactating</a></li>
-							  <li><a href="{{route('relief_camp_demography')}}/child">Child</a></li>
+							  <li><a href="{{route('demo_by_cat')}}/male">Male</a></li>
+							  <li><a href="{{route('demo_by_cat')}}/female">Female</a></li>
+							  <li><a href="{{route('demo_by_cat')}}/old_age">Old Age Women</a></li>
+							  <li><a href="{{route('demo_by_cat')}}/orphan">Orphan</a></li>
+							  <li><a href="{{route('demo_by_cat')}}/lactating">Lactating</a></li>
+							  <li><a href="{{route('demo_by_cat')}}/child">Child</a></li>
 							</ul>
 						  </li>
 						</ul>
@@ -601,6 +601,62 @@
 	<script src={{ asset("js/magnific-popup-options.js")}}></script>
 	<!-- Main -->
 	<script src={{ asset("js/main.js")}}></script> --}}
+
+	<!-- Remove the container if you want to extend the Footer to full width. -->
+
+
+  <footer class="bg-dark text-center text-white">
+  {{-- <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Form -->
+    <section class="">
+      <form action="">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+          <!--Grid column-->
+          <div class="col-auto">
+            <p class="pt-2">
+              <strong>Sign up for our newsletter</strong>
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-5 col-12">
+            <!-- Email input -->
+            <div class="form-outline form-white mb-4">
+              <input type="email" id="form5Example2" class="form-control" />
+              <label class="form-label" for="form5Example2">Email address</label>
+            </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-auto">
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-outline-light mb-4">
+              Subscribe
+            </button>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Form -->
+  </div>
+  <!-- Grid container --> --}}
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    <span>© District Administration Kangpokpi Manipur,</span></br>
+    <span> Developed and hosted by <a href="" >National Informatics Centre</a>,
+		<a href="" >Ministry of Electronics & Information Technology,</a></span><br>
+		<span> Government of India</span>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- End of .container -->
 
 	<script src={{ asset("navigation/js/jquery-3.3.1.min.js")}}></script>
     <script src={{ asset("navigation/js/popper.min.js")}}></script>

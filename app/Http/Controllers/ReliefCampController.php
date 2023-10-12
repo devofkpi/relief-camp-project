@@ -11,7 +11,9 @@ class ReliefCampController extends Controller
 {
     //
     public function showAllCamps(){
-        return view('relief_camps');
+
+        $relief_camp_data=ReliefCamp::get();
+        return view('relief_camps',['relief_camp_data'=>$relief_camp_data]);
     }
 
     public function showBySubDivision($sub_division_id=null)

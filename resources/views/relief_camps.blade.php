@@ -1,10 +1,11 @@
 @extends("layouts.main_layout")
 @section('title')
-    Relief Camps
+    Details
 @endsection
 
 @section('content2')
-<table class="table">
+<div class="table-responsive">
+<table class="table" style="margin-top:30px;margin-bottom:30px">
     <thead class="thead-dark">
         <tr>
             <th scope="col">Sr. No.</th>
@@ -19,15 +20,15 @@
         @foreach ($relief_camp_data as $count=>$relief_camp )
         <tr>
             <th scope="row">{{++$count}}</th>
-            <td><a href="{{ route('relief_camp_demography')}}/{{$relief_camp->id}}"> {{$relief_camp->relief_camp_name}}</a></td>
+            <td><a href="{{ route('camp_facilities')}}/{{$relief_camp->id}}"> {{$relief_camp->relief_camp_name}}</a></td>
             <td>{{ $relief_camp->camp_code}}</td>
             <td>{{ ucfirst($relief_camp->address->address)}}<br>{{ ucfirst($relief_camp->address->city) }}, {{ ucfirst($relief_camp->address->state)}}</td>
             <td>{{ $relief_camp->nodalOfficer->officer_name}}</td>
-            <td><a href="{{route('relief_camp_demography')}}/{{$relief_camp->id}}">View</a></td>
+            <td><a href="{{route('demo_by_camp')}}/{{$relief_camp->id}}">View</a></td>
         </tr>
         @endforeach
     </tbody>
     <td></td>
 </table>
-
+</div>
 @endsection

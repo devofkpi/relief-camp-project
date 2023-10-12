@@ -1,7 +1,7 @@
 @extends('layouts.main_layout');
 
 @section('content2')
-<h3 style="margin-top:50px;margin-bottom:20px">Demography Data of {{$relief_camp_name}}</h3>
+<h3 style="margin-top:50px;margin-bottom:20px">Demography Data of {{$category_name}}</h3>
 <table class="table" style="margin-top:30px;margin-bottom:30px">
     <thead class="thead-dark">
         <tr>
