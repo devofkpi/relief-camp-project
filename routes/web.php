@@ -27,8 +27,8 @@ use App\Http\Controllers\ReliefCampDemographyController;
 Route::controller(HomePageController::class)->group(function () {
     Route::get('/home', 'show')->name('homepage');
 });
-Route::prefix('/relief_camps')->controller(ReliefCampController::class)->group(function () {
-    Route::get('showAllCamps')->name('relief_camps');
+Route::prefix('/relief_camp')->controller(ReliefCampController::class)->group(function () {
+    Route::get('/','showAllCamps')->name('relief_camps');
     Route::get('/sub_division/{sub_division_id?}', 'showBySubDivision')->name('relief_camp_by_sub');
     Route::get('/nodal_officer/{nodal_officer_id?}', 'showByNodalOfficer')->name('relief_camp_by_nodal');
 
