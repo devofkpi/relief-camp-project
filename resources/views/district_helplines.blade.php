@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<head>
-    <title>DistrictHelplines</title>
-</head>
-<body>
-    <h1>DistrictHelplines</h1>
-</body>
-</html>
+@extends('layouts.main_layout')
+@section('title')
+District Helpline
+@endsection
+
+@section('content1')
+@endsection

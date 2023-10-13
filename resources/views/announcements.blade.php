@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<head>
-    <title>Announcements</title>
-</head>
-<body>
-    <h1>Announcements</h1>
-</body>
-</html>
+@extends('layouts.main_layout')
+@section('title')
+Announcements
+@endsection
+
+@section('content1')
+@endsection

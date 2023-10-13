@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<head>
-    <title>AanganwadiCentres</title>
-</head>
-<body>
-    <h1>AanganwadiCentres</h1>
-</body>
-</html>
+@extends('layouts.main_layout')
+@section('title')
+Aanganwadi
+@endsection
+
+@section('content1')
+@endsection

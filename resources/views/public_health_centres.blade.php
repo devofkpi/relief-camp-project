@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<head>
-    <title>PublicHealthCentres</title>
-</head>
-<body>
-    <h1>PublicHealthCentres</h1>
-</body>
-</html>
+@extends('layouts.main_layout')
+@section('title')
+Public Health Centre
+@endsection
+
+@section('content1')
+@endsection

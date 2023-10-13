@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<head>
-    <title>PoliceStations</title>
-</head>
-<body>
-    <h1>PoliceStations</h1>
-</body>
-</html>
+@extends('layouts.main_layout')
+@section('title')
+Police Station
+@endsection
+
+@section('content1')
+@endsection
