@@ -62,3 +62,8 @@ Route::controller(AnnouncementController::class)->group(function () {
     Route::get('announcements', 'show')->name('announcements');
     Route::post('/orders', 'store');
 });
+
+Route::controller(DataUploadController::class)->group(function(){
+    Route::get('/file-import','importView')->name('import-view'); 
+    Route::post('/import','import')->name('import'); 
+});
