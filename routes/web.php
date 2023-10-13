@@ -1,15 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomePageController;
-use App\Http\Controllers\ReliefCampController;
-use App\Http\Controllers\PoliceStationController;
-use App\Http\Controllers\PublicHealthController;
-use App\Http\Controllers\DistrictHelplineController;
-use App\Http\Controllers\AanganwadiCentreController;
-use App\Http\Controllers\AnnouncementController;
-use App\Http\Controllers\ReliefCampDemographyController;
-use App\Http\Controllers\ReliefCampFacilityController;
+
+use App\Http\Controllers\{  ReliefCampFacilityController,
+                            AuthController,
+                            AnnouncementController,
+                            AanganwadiCentreController,
+                            DistrictHelplineController,
+                            PublicHealthController,
+                            PoliceStationController,
+                            ReliefCampController,
+                            HomePageController,
+                            ReliefCampDemographyController
+                        };
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,4 +70,9 @@ Route::controller(AnnouncementController::class)->group(function () {
 Route::controller(DataUploadController::class)->group(function(){
     Route::get('/file-import','importView')->name('import-view'); 
     Route::post('/import','import')->name('import'); 
+});
+
+Route::controller(AuthController::class)->group(function(){
+   Route::get('/login','showLogin')->name('login');
+   Route::post('/submit','authenticate')->name('authenticate'); 
 });
