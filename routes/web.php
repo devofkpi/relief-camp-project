@@ -62,3 +62,7 @@ Route::controller(AnnouncementController::class)->group(function () {
     Route::get('announcements', 'show')->name('announcements');
     Route::post('/orders', 'store');
 });
+
+Route::get('/example',function(){
+    return view('example');
+});
