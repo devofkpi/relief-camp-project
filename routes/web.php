@@ -74,5 +74,5 @@ Route::controller(DataUploadController::class)->group(function(){
 
 Route::controller(AuthController::class)->group(function(){
    Route::get('/login','showLogin')->name('login');
-   Route::post('/submit','authenticate')->name('authenticate'); 
+   Route::post('/login','authuser')->name('authUser'); 
 });
