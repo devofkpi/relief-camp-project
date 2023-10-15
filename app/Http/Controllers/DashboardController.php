@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 
-class HomePageController extends Controller
+class DashboardController extends Controller
 {
     //
+    
     public function show(){
-        return view('home');
+        return view('dashboard');
     }
 }
