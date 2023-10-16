@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('officer_name',50);
             $table->string('officer_designation',100);
             $table->unsignedBigInteger('officer_contact')->unique();
-            $table->unsignedBigInteger('sub_division_id');
             $table->boolean('active_status')->default(true);
             $table->timestamps();
         });
