@@ -29,4 +29,16 @@ class ReliefCampController extends Controller
         $relief_camp_data=$nodal_officer->reliefCamps()->get();
         return view('relief_camps',['relief_camp_data'=>$relief_camp_data]);
     }
+
+    public function showReliefCampForm(){
+        $sub_divisions=SubDivision::get();
+        return view('create_relief_camp',['sub_divisions_data'=>$sub_divisions]);
+    }
+    public function createReliefCamp(){
+
+    }
+
+    public function reliefCampImport(){
+
+    }
 }

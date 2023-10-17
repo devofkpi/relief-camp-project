@@ -45,6 +45,9 @@ Route::group(['middleware'=>['authorization']],function(){
 
     Route::prefix('/relief_camp')->controller(ReliefCampController::class)->group(function () {
         Route::get('/','showAllCamps')->name('relief_camps');
+        Route::get('/create','showReliefCampForm')->name('create_relief_camp');
+        Route::post('/create','createReliefCamp')->name('create_relief_camp.post');
+        Route::post('/upload','reliefCampImport')->name('upload_relief_camp.post');
         Route::get('/sub_division/{sub_division_id?}', 'showBySubDivision')->name('relief_camp_by_sub');
         Route::get('/nodal_officer/{nodal_officer_id?}', 'showByNodalOfficer')->name('relief_camp_by_nodal');
     
@@ -60,9 +63,11 @@ Route::group(['middleware'=>['authorization']],function(){
         Route::get('/facilities/{relief_camp_id?}','show')->name('camp_facilities');
     });
     
-    Route::controller(NodalOfficerController::class)->group(function(){
-        Route::get('/create/nodal_officer','show')->name('create_nodal_officer');
-        Route::post('/create/nodal_officer','createNodalOfficer')->name('create_nodal_officer.post');
+    Route::prefix('/nodal_officers')->controller(NodalOfficerController::class)->group(function(){
+        Route::get('/show','showAll')->name('show_all_nodal_officer');
+        Route::get('/create','showNodalOfficerForm')->name('create_nodal_officer');
+        Route::post('/create','createNodalOfficer')->name('create_nodal_officer.post');
+        Route::post('upload','nodalOfficerImport')->name('upload_nodal_officer.post');
     });
 
     Route::controller(PoliceStationController::class)->group(function () {

@@ -12,6 +12,8 @@ class NodalOfficer extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['officer_name','officer_designation','officer_contact'];
+
     /**
      * Get all of the comments for the nodal_officer
      *

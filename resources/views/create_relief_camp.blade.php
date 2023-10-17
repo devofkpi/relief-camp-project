@@ -1,4 +1,8 @@
 @extends('layouts.main_layout')
+@section('title')
+Create Relief Camp
+@endsection
+
 @section('content1')
 <div class="row justify-content-center">
     <div class="col-12 col-sm-6">
@@ -16,19 +20,19 @@
         <div class="card-body">
           <div class="tab-content" id="custom-tabs-one-tabContent">
             <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
-              <form action="{{route('create_nodal_officer.post')}}" method="post">
+              <form action="{{route('create_relief_camp.post')}}" method="post">
                 @csrf
                 <div class="card-body">
                   <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Officer Name" name="officer_name">
+                  <input type="text" class="form-control" placeholder="Name of Camp" name="relief_camp_name">
                   <div class="input-group-append">
                     <div class="input-group-text">
-                      <span class="fas fa-user"></span>
+                      <span class="fas fa-home"></span>
                     </div>
                   </div>
                 </div>
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Officer Designation" name="officer_designation">
+                  <input type="text" class="form-control" placeholder="Camp Code" name="camp_code">
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <span class="fas fa-envelope"></span>
@@ -36,32 +40,40 @@
                   </div>
                 </div>
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text" placeholder="(___) ___-____" name="officer_contact">
+                  <input type="text" class="form-control"  placeholder="Location" name="location">
                   <div class="input-group-append">
                     <div class="input-group-text">
-                      <span class="fas fa-phone"></span>
+                      <span class="fas fa-address"></span>
                     </div>
                   </div>
                 </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary" name="create_user">Create</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
                 </div>
               </form>
             </div>
             <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-              <form action="{{route('upload_nodal_officer.post')}}" method="post" enctype="multipart/form-data">
+              <form action="{{route('upload_relief_camp.post')}}" method="post" enctype="multipart/form-data">
                 @csrf
+                <div class="form-group">
+                  <label>Select Subdivision</label>
+                  <select class="custom-select form-control-border" id="exampleSelectBorder">
+                    @foreach ($sub_divisions_data as $sub_divisions )
+                      <option>{{$sub_divisions->sub_division_name}}</option>
+                     @endforeach
+                  </select>
+                </div>
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputFile">File input</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="nodalOfficerImportFile" name="nodal_officer_excel">
-                        <label class="custom-file-label" for="nodalOfficerImportFile">Choose file</label>
+                        <input type="file" class="custom-file-input" id="reliefCampImportFile" name="relief_camp_excel">
+                        <label class="custom-file-label" for="reliefCampImportFile">Choose file</label>
                       </div>
                       <div class="input-group-append">
-                        <button type="submit" class="btn btn-info btn-flat" name="create_user">Upload</button>
+                        <button type="submit" class="btn btn-info btn-flat">Upload</button>
                       </div>
                     </div>
                   </div>
@@ -73,4 +85,4 @@
         <!-- /.card -->
       </div>
     </div>
-      @endsection
+@endsection

@@ -47,13 +47,26 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('relief_camps')}}" class="nav-link {{$current_route=='relief_camps'?'active':''}}">
+                <a href="{{route('relief_camps')}}" class="nav-link {{$current_route=='relief_camps'?'menu-open':''}}">
                   <i class="nav-icon fas fa-campground"></i>
                   <p>
                     Relief Camps
                     <!-- <span class="right badge badge-danger">New</span> -->
+                    <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{route('relief_camps')}}" class="nav-link">
+                      <p>Show All Relief Camps</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{route('create_relief_camp')}}" class="nav-link">
+                      <p>Create Relief Camp</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li class="nav-item {{$current_route=='relief_camp_by_sub'?'menu-open':''}}">
                 <a href="#" class="nav-link ">
@@ -82,13 +95,11 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  @foreach ($nav_nodal_data as $data )
                   <li class="nav-item">
-                    <a href="{{route('relief_camp_by_nodal')}}/{{$data->id}}" class="nav-link">
-                      <p>{{$data->officer_name}}</p>
+                    <a href="{{route('show_all_nodal_officer')}}" class="nav-link">
+                      <p>Show All Nodal Officers</p>
                     </a>
                   </li>
-                  @endforeach
                   <li class="nav-item">
                     <a href="{{route('create_nodal_officer')}}" class="nav-link">
                       <p>Create Nodal Officer</p>
