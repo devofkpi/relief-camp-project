@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('sub_divisions', function (Blueprint $table) {
             $table->id();
             $table->string('sub_division_name',100)->unique();
+            $table->string('sub_division_code',100)->unique();
             $table->timestamps();
         });
     }

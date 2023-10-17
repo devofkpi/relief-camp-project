@@ -14,7 +14,7 @@ use App\Models\Address;
 class ReliefCamp extends Model
 {
     use HasFactory;
-    protected $fillable = ['relief_camp_name','camp_code','sub_division_id','nodal_officer_id '];
+    protected $fillable = ['relief_camp_name','camp_code','address_id','sub_division_id','nodal_officer_id'];
     /**
      * Get the sub_division that owns the relief_camp
      *

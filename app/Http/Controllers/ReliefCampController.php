@@ -7,6 +7,9 @@ use App\Models\SubDivision;
 use App\Models\ReliefCamp;
 use App\Models\NodalOfficer;
 
+use App\Imports\ReliefCampImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class ReliefCampController extends Controller
 {
     //
@@ -38,7 +41,9 @@ class ReliefCampController extends Controller
 
     }
 
-    public function reliefCampImport(){
-
+    public function reliefCampImport(Request $request){
+        Excel::import(new ReliefCampImport, $request->file('relief_camp_excel'));
+        $relief_camp_data=ReliefCamp::get();
+        return view('relief_camps',['relief_camp_data'=>$relief_camp_data]);
     }
 }

@@ -60,7 +60,7 @@ Create Relief Camp
                   <div class="form-group">
                     <label for="exampleSelectBorder">Select Subdivision</label>
                     <div class="input-group">
-                      <select class="custom-select form-control-border" id="exampleSelectBorder" required>
+                      <select class="custom-select form-control-border" id="exampleSelectBorder" name="subdivision_id" required>
                         @foreach ($sub_divisions_data as $sub_divisions )
                           <option value="{{$sub_divisions->id}}">{{$sub_divisions->sub_division_name}}</option>
                          @endforeach
