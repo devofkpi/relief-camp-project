@@ -2,20 +2,39 @@
 
 namespace App\Imports;
 
-use App\Models\ReliefCamp;
-use Maatwebsite\Excel\Concerns\ToModel;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class ReliefCampImport implements ToModel
+class ReliefCampImport implements ToCollection, WithHeadingRow
 {
+
+    private $subdivision_id;
+    private $nodal_officers;
+
+    public function __construct($id){
+        $this->subdivision_id=$id;
+        $this->nodal_officers=NodalOfficer::get();
+    }
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
+    * @param Collection $collection
     */
-    public function model(array $row)
+    public function collection(Collection $relief_camps)
     {
-        return new ReliefCamp([
-            //
-        ]);
+        //
+
+        foreach($relief_camps as $relief_camp){
+            $address=Address::create([
+                'address'=>$relief_camp['location'],
+            ]);
+
+            ReliefCamp::create([
+                'relief_camp_name'=>$relief_camp['name'],
+                'camp_code'=>$relief_camp['camp_code'],
+                'address_id'=>$address->id,
+                'sub_division_id'=>$this->subdivision_id, 
+                'nodal_officer_id'=>
+            ])
+        }
     }
 }

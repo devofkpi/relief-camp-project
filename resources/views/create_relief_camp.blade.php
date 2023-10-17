@@ -24,7 +24,7 @@ Create Relief Camp
                 @csrf
                 <div class="card-body">
                   <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Name of Camp" name="relief_camp_name">
+                  <input type="text" class="form-control" placeholder="Name of Camp" name="relief_camp_name" required>
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <span class="fas fa-home"></span>
@@ -32,7 +32,7 @@ Create Relief Camp
                   </div>
                 </div>
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Camp Code" name="camp_code">
+                  <input type="text" class="form-control" placeholder="Camp Code" name="camp_code" required>
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <span class="fas fa-envelope"></span>
@@ -40,7 +40,7 @@ Create Relief Camp
                   </div>
                 </div>
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control"  placeholder="Location" name="location">
+                  <input type="text" class="form-control"  placeholder="Location" name="location" required>
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <span class="fas fa-address"></span>
@@ -56,20 +56,20 @@ Create Relief Camp
             <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
               <form action="{{route('upload_relief_camp.post')}}" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
-                  <label>Select Subdivision</label>
-                  <select class="custom-select form-control-border" id="exampleSelectBorder">
-                    @foreach ($sub_divisions_data as $sub_divisions )
-                      <option>{{$sub_divisions->sub_division_name}}</option>
-                     @endforeach
-                  </select>
-                </div>
                 <div class="card-body">
                   <div class="form-group">
+                    <label for="exampleSelectBorder">Select Subdivision</label>
+                    <div class="input-group">
+                      <select class="custom-select form-control-border" id="exampleSelectBorder" required>
+                        @foreach ($sub_divisions_data as $sub_divisions )
+                          <option value="{{$sub_divisions->id}}">{{$sub_divisions->sub_division_name}}</option>
+                         @endforeach
+                      </select>
+                    </div>
                     <label for="exampleInputFile">File input</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="reliefCampImportFile" name="relief_camp_excel">
+                        <input type="file" class="custom-file-input" id="reliefCampImportFile" name="relief_camp_excel" required>
                         <label class="custom-file-label" for="reliefCampImportFile">Choose file</label>
                       </div>
                       <div class="input-group-append">
