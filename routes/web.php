@@ -13,7 +13,8 @@ use App\Http\Controllers\{  ReliefCampFacilityController,
                             ReliefCampController,
                             DashboardController,
                             ReliefCampDemographyController,
-                            CreateUserController
+                            CreateUserController,
+                            NodalOfficerController
                         };
 
 /*
@@ -59,6 +60,11 @@ Route::group(['middleware'=>['authorization']],function(){
         Route::get('/facilities/{relief_camp_id?}','show')->name('camp_facilities');
     });
     
+    Route::controller(NodalOfficerController::class)->group(function(){
+        Route::get('/create/nodal_officer','show')->name('create_nodal_officer');
+        Route::post('/create/nodal_officer','createNodalOfficer')->name('create_nodal_officer.post');
+    });
+
     Route::controller(PoliceStationController::class)->group(function () {
         Route::get('/police_stations', 'show')->name('police_stations');
     });

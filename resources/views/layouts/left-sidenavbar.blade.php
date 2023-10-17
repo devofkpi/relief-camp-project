@@ -89,6 +89,11 @@
                     </a>
                   </li>
                   @endforeach
+                  <li class="nav-item">
+                    <a href="{{route('create_nodal_officer')}}" class="nav-link">
+                      <p>Create Nodal Officer</p>
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li class="nav-item">

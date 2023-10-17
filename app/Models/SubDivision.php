@@ -18,8 +18,5 @@ class SubDivision extends Model
     {
         return $this->hasMany(ReliefCamp::class);
     }
-    public function nodalOfficers()
-    {
-        return $this->hasMany(NodalOfficer::class);
-    } 
+    
 }

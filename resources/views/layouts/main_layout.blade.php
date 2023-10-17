@@ -63,6 +63,7 @@
       </div>
     </section>
   </div>
+  @includeIf('layouts.footer')
 </div>
 <!-- jQuery -->
 <script src="{{ asset('plugins/jquery/jquery.min.js')}}"></script>
