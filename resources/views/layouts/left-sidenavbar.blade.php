@@ -106,7 +106,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{route('demo_by_cat')}}/male" class="nav-link">
+                    <a href="{{route('create_inmates')}}" class="nav-link">
                       <i class="nav-icon fas fa-upload"></i>
                       <p>Upload Inmates Data</p>
                     </a>

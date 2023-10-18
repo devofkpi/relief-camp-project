@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         //
-        // Schema::table('relief_camp_demographies', function (Blueprint $table) {
-        //      $table->foreign('family_head_id')->references('id')->on('family_heads');
-        //      $table->foreign('family_head_relation_id')->references('id')->on('family_head_relations');
-        //     });
+        Schema::table('relief_camp_demographies', function (Blueprint $table) {
+             $table->foreign('family_head_id')->references('id')->on('family_heads');
+             $table->foreign('family_head_relation_id')->references('id')->on('family_head_relations');
+            });
     }
 
     /**

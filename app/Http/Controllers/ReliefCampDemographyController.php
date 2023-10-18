@@ -35,4 +35,17 @@ class ReliefCampDemographyController extends Controller
         }
         return view('relief_camp_demography',['demography_data'=>$this->demography_data,'category_name'=>$this->category_name]);
     }
+
+    public function showInmatesForm(){
+
+        return view('create_inmates');
+    }
+
+    public function createInmates(){
+
+    }
+
+    public function inmatesImport(){
+
+    }
 }
