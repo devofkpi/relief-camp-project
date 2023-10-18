@@ -59,8 +59,11 @@ Route::group(['middleware'=>['authorization']],function(){
     
     });
     
-    Route::controller(ReliefCampFacilityController::class)->group(function(){
-        Route::get('/facilities/{relief_camp_id?}','show')->name('camp_facilities');
+    Route::prefix('/facilities')->controller(ReliefCampFacilityController::class)->group(function(){
+        Route::get('/show/{relief_camp_id?}','showById')->name('camp_facilities');
+        Route::get('/create','showFacilitiesForm')->name('create_facitlites');
+        Route::post('/create','createFacilities')->name('create_facitlites.post');
+        Route::post('/upload','campFacilitiesImport')->name('upload_facilities.post');
     });
     
     Route::prefix('/nodal_officers')->controller(NodalOfficerController::class)->group(function(){
@@ -88,11 +91,6 @@ Route::group(['middleware'=>['authorization']],function(){
         Route::post('/orders', 'store');
     });
     
-    Route::controller(DataUploadController::class)->group(function(){
-        Route::get('/file-import','importView')->name('import-view'); 
-        Route::post('/import','import')->name('import'); 
-    });
-        
 
     Route::controller(CreateUserController::class)->group(function(){
         Route::get('/register','showRegister')->name('register');

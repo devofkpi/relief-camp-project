@@ -9,27 +9,6 @@
     
         <!-- Sidebar -->
         <div class="sidebar">
-          <!-- Sidebar user panel (optional) -->
-          {{-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-              <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-              <a href="#" class="d-block">Alexander Pierce</a>
-            </div>
-          </div> --}}
-    
-          <!-- SidebarSearch Form -->
-          {{-- <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-              <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-sidebar">
-                  <i class="fas fa-search fa-fw"></i>
-                </button>
-              </div>
-            </div>
-          </div> --}}
     @php
       $current_route=request()->route()->getName();
     @endphp
@@ -58,12 +37,20 @@
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="{{route('relief_camps')}}" class="nav-link">
+                      <i class="nav-icon fas fa-eye"></i>
                       <p>Show All Relief Camps</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="{{route('create_relief_camp')}}" class="nav-link">
+                      <i class="nav-icon fas fa-plus"></i>
                       <p>Create Relief Camp</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{route('create_facitlites')}}" class="nav-link">
+                      <i class="nav-icon fas fa-upload"></i>
+                      <p>Upload Camp Facilities</p>
                     </a>
                   </li>
                 </ul>
@@ -97,11 +84,13 @@
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="{{route('show_all_nodal_officer')}}" class="nav-link">
+                      <i class="nav-icon fas fa-eye"></i>
                       <p>Show All Nodal Officers</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="{{route('create_nodal_officer')}}" class="nav-link">
+                      <i class="nav-icon fas fa-plus"></i>
                       <p>Create Nodal Officer</p>
                     </a>
                   </li>
@@ -116,6 +105,18 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{route('demo_by_cat')}}/male" class="nav-link">
+                      <i class="nav-icon fas fa-upload"></i>
+                      <p>Upload Inmates Data</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{route('demo_by_cat')}}/male" class="nav-link">
+                      <i class="nav-icon fas fa-eye"></i>
+                      <p>Show All Inmates</p>
+                    </a>
+                  </li>
                   <li class="nav-item">
                     <a href="{{route('demo_by_cat')}}/male" class="nav-link">
                       <i class="nav-icon fas fa-male"></i>
@@ -154,7 +155,7 @@
                   </li>
                 </ul>
               </li>
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="{{route('police_stations')}}" class="nav-link">
                   <i class="nav-icon fas fa-taxi"></i>
                   <p>
@@ -198,7 +199,7 @@
                     <!-- <span class="right badge badge-danger">New</span> -->
                   </p>
                 </a>
-              </li>
+              </li> --}}
               <li class="nav-item">
                 <a href="{{route('register')}}" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
