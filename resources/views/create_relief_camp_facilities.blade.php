@@ -99,7 +99,15 @@ Upload Facilities Data
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
+                    <label for="relief_camp_id">Select Relief Camp</label>
+                    <div class="input-group">
+                      <select  class="form-control" name="relief_camp_id" id="relief_camp_id">
+                        @foreach ($relief_camps as $relief_camp)
+                        <option value="{{$relief_camp->id}}">{{$relief_camp->relief_camp_name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <label for="reliefCampImportFile">File input</label>
                     <div class="input-group">
                       <div class="custom-file">
                         <input type="file" class="custom-file-input" id="reliefCampImportFile" name="relief_camp_facilities_excel" required>

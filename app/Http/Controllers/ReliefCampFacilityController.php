@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ReliefCampFacility;
 use App\Models\ReliefCamp;
+
+use Maatwebsite\Excel\Facades\Excel;
+
 class ReliefCampFacilityController extends Controller
 {
     //
@@ -17,13 +20,19 @@ class ReliefCampFacilityController extends Controller
 
     public function showFacilitiesForm(){
 
-        return view('create_relief_camp_facilities');
+        $relief_camps=ReliefCamp::select('id','name');
+
+        return view('create_relief_camp_facilities',['relief_camps'=>$relief_camps]);
     }
 
     public function createFacilities(){
     }
 
-    public function campFacilitiesImport(){
-        
+    public function campFacilitiesImport(Request $request){
+
+        Excel::import(new ReliefCampFacilityImport($request->input['relief_camp_id']), $request->file('relief_camp_facilities_excel'));
+
+        return ReliefCampFacility::with('reliefCamp')->get();
+
     }
 }
