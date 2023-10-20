@@ -49,7 +49,7 @@ Create User
                 </div>
                 <div class="input-group mb-3">
                   <select class="custom-select form-control-border" name="user_role" required>
-                    <option value="">--Please select user role--</option>
+                    <option value="" selected>--Please select user role--</option>
                     <option value="super_user">Deputy Commissioner</option>
                     <option value="admin_user">Additional Deputy Commissioner</option>
                     <option value="normal_user">Sub Divisional Officer</option>

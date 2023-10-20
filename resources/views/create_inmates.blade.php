@@ -2,6 +2,15 @@
 @section('title')
 Upload Inmates Data
 @endsection
+
+@section('page_related_css')
+ <!-- Select2 -->
+ <link rel="stylesheet" href='{{ asset("/plugins/select2/css/select2.min.css")}}'>
+ <link rel="stylesheet" href='{{ asset("/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css")}}'>
+
+@endsection
+
+
 @section('content1')
 <div class="row justify-content-center">
     <div class="col-12 col-sm-6">
@@ -22,7 +31,7 @@ Upload Inmates Data
               <form action="{{route('create_relief_camp.post')}}" method="post">
                 @csrf
                 <div class="card-body">
-                  <div class="row m1">
+                  <div class="row mb-3">
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Person Name" name="person_name" required>
                     </div>
@@ -30,7 +39,7 @@ Upload Inmates Data
                       <input type="text" class="form-control" placeholder="Family Head Name" name="family_head_name" required>
                     </div>
                   </div>
-                  <div class="row m1">
+                  <div class="row mb-3">
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Family Head Relation" name="relation" required>
                     </div>
@@ -42,14 +51,14 @@ Upload Inmates Data
                         </select>
                     </div>
                   </div>
-                  <div class="row m1">
+                  <div class="row mb-3">
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Age" name="age" required>
                     </div>
                     <div class="col-6">
                         <input type="text" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text" placeholder="(___) ___-____ Contact Number" name="contact_number">                    </div>
                   </div>
-                  <div class="row m1">
+                  <div class="row mb-3">
                     <div class="col-6">
                         <span>Physically Disabled Person</span>
                         <div class="form-group">
@@ -77,7 +86,7 @@ Upload Inmates Data
                         </div>
                     </div>
                   </div>
-                  <div class="row m1">
+                  <div class="row mb-3">
                     <div class="col-6">
                         <span>Lactating</span>
                         <div class="form-group">
@@ -91,8 +100,18 @@ Upload Inmates Data
                             </div>
                         </div>
                     </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="relief_camp">Select Relief Camp</label>
+                      <select class="form-control select2" id="relief_camp" name="relief_camp_id">
+                        @foreach ($relief_camps as $relief_camp)
+                            <option value="{{$relief_camp->id}}">{{$relief_camp->camp_code}}--{{$relief_camp->relief_camp_name}}</option>
+                        @endforeach
+                      </select>
+                      </div>
+                      </div> 
                   </div>
-                  <div class="row m1">
+                  <div class="row mb-3">
                     <div class="col-6">
                         <input type="text" class="form-control" placeholder="Profession" name="profession" required>
                       </div>
@@ -140,4 +159,23 @@ Upload Inmates Data
         <!-- /.card -->
       </div>
     </div>
+@endsection
+@section('custom_script')
+<!-- Select2 -->
+<script src="{{ asset("/plugins/select2/js/select2.full.min.js")}}"></script>
+<!-- bs-custom-file-input -->
+<script src="{{ asset('/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2();
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+
+    bsCustomFileInput.init();
+  })
+</script>
 @endsection

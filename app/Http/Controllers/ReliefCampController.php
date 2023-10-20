@@ -41,13 +41,19 @@ class ReliefCampController extends Controller
     public function createReliefCamp(Request $request){
 
         $address=Address::create([
-            'address'=>$relief_camp['location'],
+            'address'=>$request['location'],
         ]);
 
-        $relief_camp=ReliefCamp::create(
+        $relief_camp=ReliefCamp::create([
 
+            'relief_camp_name'=>$request['relief_camp_name'],
+            'camp_code'=>$request['camp_code'],
+            'address_id'=>$address->id,
+            'sub_division_id'=>$request['sub_division_id'],
+            'nodal_officer_id'=>$request['nodal_officer_id']
+        ]);
 
-        );
+        return redirect()->back()->withSuccess('Relief Camp created successfully');
     }
 
     public function reliefCampImport(Request $request){

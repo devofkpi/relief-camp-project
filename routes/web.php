@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\{  ReliefCampFacilityController,
-                            AuthController,
+                            UserController,
                             AnnouncementController,
                             AanganwadiCentreController,
                             DistrictHelplineController,
@@ -13,7 +13,6 @@ use App\Http\Controllers\{  ReliefCampFacilityController,
                             ReliefCampController,
                             DashboardController,
                             ReliefCampDemographyController,
-                            CreateUserController,
                             NodalOfficerController
                         };
 
@@ -32,10 +31,15 @@ use App\Http\Controllers\{  ReliefCampFacilityController,
 //     return view('welcome');
 // });
 
-Route::controller(AuthController::class)->group(function(){
+Route::controller(UserController::class)->group(function(){
     Route::get('/login','showLogin')->name('login');
     Route::post('/login','authUser')->name('login.post');
-    Route::get('logout','logout')->name('logout'); 
+    Route::get('logout','logout')->name('logout');
+    
+    Route::get('/register','showRegister')->name('register');
+    Route::post('/register','createUser')->name('register.post');
+
+    Route::get('/user/showall','showAllUser')->name('show_all_user');
  });
  
 Route::group(['middleware'=>['authorization']],function(){
@@ -92,12 +96,6 @@ Route::group(['middleware'=>['authorization']],function(){
     Route::controller(AnnouncementController::class)->group(function () {
         Route::get('announcements', 'show')->name('announcements');
         Route::post('/orders', 'store');
-    });
-    
-
-    Route::controller(CreateUserController::class)->group(function(){
-        Route::get('/register','showRegister')->name('register');
-        Route::post('/register','createUser')->name('register.post');
     });
 });
 

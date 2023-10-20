@@ -3,6 +3,14 @@
 Upload Facilities Data
 @endsection
 
+@section('page_related_css')
+ <!-- Select2 -->
+ <link rel="stylesheet" href='{{ asset("/plugins/select2/css/select2.min.css")}}'>
+ <link rel="stylesheet" href='{{ asset("/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css")}}'>
+
+@endsection
+
+
 @section('content1')
 <div class="row justify-content-center">
     <div class="col-12 col-sm-6">
@@ -23,70 +31,86 @@ Upload Facilities Data
               <form action="{{route('create_relief_camp.post')}}" method="post">
                 @csrf
                 <div class="card-body">
-                  <div class="row m1">
+                  <div class="row mb-3">
+                    <div class="col-6">
+                      <input type="text" class="form-control" placeholder="Building Type" name="building_type" required>
+                    </div>
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Number of Persons" name="number_of_persons" required>
                     </div>
+                  </div>
+                  <div class="row mb-3">
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Number of Rooms" name="number_of_rooms" required>
                     </div>
-                  </div>
-                  <div class="row m1">
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Number of Toilets" name="number_of_toilets" required>
                     </div>
+                  </div>
+                  <div class="row mb-3">
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Number of Halls" name="number_of_halls" required>
                     </div>
-                  </div>
-                  <div class="row m1">
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Number of Persons Utilising Toilets" name="number_of_persons_utilising_toilets" required>
                     </div>
+                  </div>
+                  <div class="row mb-3">
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Number of Persons Staying at Night" name="number_of_persons_staying_at_night" required>
                     </div>
-                  </div>
-                  <div class="row m1">
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Number of Mattresses" name="number_of_mattresses" required>
                     </div>
+                  </div>
+                  <div class="row mb-3">
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Number of Badsheets" name="number_of_badsheets" required>
                     </div>
-                  </div>
-                  <div class="row m1">
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Number of Blankets" name="number_of_blankets" required>
                     </div>
+                  </div>
+                  <div class="row mb-3">
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Number of Mosquito" name="number_of_mosquito" required>
                     </div>
-                  </div>
-                  <div class="row m1">
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Number of Fans" name="number_of_fans" required>
                     </div>
+                  </div>
+                  <div class="row mb-3">
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Availability of Food Grains in Days" name="availability_of_food_grains_in_days" required>
                     </div>
-                  </div>
-                  <div class="row m1">
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Availability of Veg in Days" name="availability_of_veg_in_days" required>
                     </div>
                   </div>
-                  <div class="row m1">
+                  <div class="row mb-3">
                     <div class="col-6">
-                      <input type="checkbox" class="form-check-input" valu="true" name="safe_drinking_water" checked>
+                      <div class="form-group">
+                        <label for="relief_camp">Select Relief Camp</label>
+                    <select class="form-control select2" id="relief_camp" name="relief_camp_id">
+                      @foreach ($relief_camps as $relief_camp)
+                          <option value="{{$relief_camp->id}}">{{$relief_camp->camp_code}}--{{$relief_camp->relief_camp_name}}</option>
+                      @endforeach
+                    </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-6 form-group">
+                      <input type="checkbox" class="form-check-input" valu="yes" name="safe_drinking_water" checked>
                       <label class="form-check-label">Safe Drinking Water Available</label>
                     </div>
-                    <div class="col-6">
-                      <input type="checkbox" class="form-check-input" value="true" name="provisioning_of_supplement" checked>
+                    <div class="col-6 form-group">
+                      <input type="checkbox" class="form-check-input" value="yes" name="provisioning_of_supplement" checked>
                       <label class="form-check-label">Provisioning of Supplement Available</label>
                     </div>
                   </div>
-                  <div class="row m1">
+                  
+                  <div class="row mb-3">
                     <div class="col-6">
                       <button type="submit" class="btn btn-primary">Create</button>
                     </div>
@@ -103,7 +127,7 @@ Upload Facilities Data
                     <div class="input-group">
                       <select  class="form-control" name="relief_camp_id" id="relief_camp_id">
                         @foreach ($relief_camps as $relief_camp)
-                        <option value="{{$relief_camp->id}}">{{$relief_camp->relief_camp_name}}</option>
+                        <option value="{{$relief_camp->id}}">{{ $relief_camp->camp_code}}--{{$relief_camp->relief_camp_name}}</option>
                         @endforeach
                       </select>
                     </div>
@@ -126,4 +150,23 @@ Upload Facilities Data
         <!-- /.card -->
       </div>
     </div>
+@endsection
+@section('custom_script')
+<!-- Select2 -->
+<script src="{{ asset("/plugins/select2/js/select2.full.min.js")}}"></script>
+<!-- bs-custom-file-input -->
+<script src="{{ asset('/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2();
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+
+    bsCustomFileInput.init();
+  })
+</script>
 @endsection

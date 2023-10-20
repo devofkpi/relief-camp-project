@@ -63,7 +63,7 @@ Create Relief Camp
                     </div>
                     <div class="form-group mb-3">
                       <label for="nodal_officer">Select Nodal Officer</label>
-                      <select  class="form-control select2" name="nodal_officer_id" id="nodal_officer">
+                      <select  class="form-control" name="nodal_officer_id" id="nodal_officer">
                         @foreach ($nodal_officers as $nodal_officer)
                         <option value="{{$nodal_officer->id}}">{{$nodal_officer->officer_name}}</option>
                         @endforeach
@@ -106,6 +106,11 @@ Create Relief Camp
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2();
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
 
     bsCustomFileInput.init();
   })

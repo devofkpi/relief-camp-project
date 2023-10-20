@@ -209,6 +209,15 @@
                   </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('show_all_user')}}" class="nav-link">
+                  <i class="nav-icon fas fa-eye"></i>
+                  <p>
+                    Show All User
+                    <!-- <span class="right badge badge-danger">New</span> -->
+                  </p>
+                </a>
+              </li>
             </ul>
         </nav>
         </div>
