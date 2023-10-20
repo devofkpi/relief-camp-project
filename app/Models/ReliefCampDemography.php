@@ -14,6 +14,25 @@ class ReliefCampDemography extends Model
 {
     use HasFactory;
 
+    protected $fillable=[
+
+        'person_name',
+        'family_head_id',
+        'family_head_relation_id',
+        'gender',
+        'age',
+        'contact_number',
+        'physically_disabled',
+        'orphan',
+        'lactating',
+        'profession',
+        'willing_to_goback',
+        'remark',
+        'address_id',
+        'relief_camp_id',
+        'active_status'
+    ];
+
     /**
      * The reliefCamp that belong to the relief_camp_demography
      *

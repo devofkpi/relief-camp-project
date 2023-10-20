@@ -35,10 +35,19 @@ class ReliefCampController extends Controller
 
     public function showReliefCampForm(){
         $sub_divisions=SubDivision::get();
-        return view('create_relief_camp',['sub_divisions_data'=>$sub_divisions]);
+        $nodal_officers=NodalOfficer::select('id','officer_name')->get();
+        return view('create_relief_camp',['sub_divisions'=>$sub_divisions,'nodal_officers'=>$nodal_officers]);
     }
-    public function createReliefCamp(){
+    public function createReliefCamp(Request $request){
 
+        $address=Address::create([
+            'address'=>$relief_camp['location'],
+        ]);
+
+        $relief_camp=ReliefCamp::create(
+
+
+        );
     }
 
     public function reliefCampImport(Request $request){

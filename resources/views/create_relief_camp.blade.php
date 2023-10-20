@@ -3,6 +3,13 @@
 Create Relief Camp
 @endsection
 
+@section('page_related_css')
+ <!-- Select2 -->
+ <link rel="stylesheet" href='{{ asset("/plugins/select2/css/select2.min.css")}}'>
+ <link rel="stylesheet" href='{{ asset("/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css")}}'>
+
+@endsection
+
 @section('content1')
 <div class="row justify-content-center">
     <div class="col-12 col-sm-6">
@@ -46,6 +53,22 @@ Create Relief Camp
                     </div>
                   </div>
                 </div>
+                    <div class="form-group mb-3">
+                      <label for="sub_division">Select Subdivision</label>
+                      <select  class="form-control" name="sub_division_id" id="sub_division">
+                        @foreach ($sub_divisions as $sub_division)
+                        <option value="{{$sub_division->id}}">{{$sub_division->sub_division_name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="nodal_officer">Select Nodal Officer</label>
+                      <select  class="form-control select2" name="nodal_officer_id" id="nodal_officer">
+                        @foreach ($nodal_officers as $nodal_officer)
+                        <option value="{{$nodal_officer->id}}">{{$nodal_officer->officer_name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
                     <button type="submit" class="btn btn-primary">Create</button>
               </form>
             </div>
@@ -73,4 +96,18 @@ Create Relief Camp
         <!-- /.card -->
       </div>
     </div>
+@endsection
+@section('custom_script')
+<!-- Select2 -->
+<script src="{{ asset("/plugins/select2/js/select2.full.min.js")}}"></script>
+<!-- bs-custom-file-input -->
+<script src="{{ asset('/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2();
+
+    bsCustomFileInput.init();
+  })
+</script>
 @endsection

@@ -44,9 +44,7 @@
                   </div>
                 </div>
                 </div>
-                <div class="card-footer">
                     <button type="submit" class="btn btn-primary" name="create_user">Create</button>
-                </div>
               </form>
             </div>
             <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">

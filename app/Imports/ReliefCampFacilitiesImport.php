@@ -36,8 +36,8 @@ class ReliefCampFacilitiesImport implements ToCollection, WithHeadingRow
                 'number_of_fans'=>$relief_camp_facility['number_of_fans'],
                 'availability_of_food_grains_in_days'=>$relief_camp_facility['availability_of_food_grains_in_days'],
                 'availability_of_veg_in_days'=>$relief_camp_facility['availability_of_veg_in_days'],
-                'safe_drinking_water'=>$relief_camp_facility['safe_drinking_water']=='yes'?true:false,
-                'provisioning_of_supplement'=>$relief_camp_facility['provisioning_of_supplement']=='yes'?true:false,
+                'safe_drinking_water'=>strcasecmp($relief_camp_facility['safe_drinking_water'],'yes')==0?true:false,
+                'provisioning_of_supplement'=>strcasecmp($relief_camp_facility['provisioning_of_supplement'],'yes')==0?true:false,
                 'relief_camp_id'=>$this->relief_camp_id
             ]);
         }

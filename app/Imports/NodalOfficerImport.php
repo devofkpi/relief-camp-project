@@ -13,12 +13,12 @@ class NodalOfficerImport implements ToModel, WithHeadingRow
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
-    public function model(array $row)
+    public function model(array $nodal_officer)
     {
         return new NodalOfficer([
-            'officer_name'=>$row['name'],
-            'officer_designation'=>$row['designation'],
-            'officer_contact'=>$row['contact']
+            'officer_name'=>$nodal_officer['name'],
+            'officer_designation'=>$nodal_officer['designation'],
+            'officer_contact'=>$nodal_officer['contact']
         ]);
     }
 }

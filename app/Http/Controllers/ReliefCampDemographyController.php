@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ReliefCampDemography;
-use App\Models\ReliefCamp;
+use App\Models\{ReliefCampDemography,ReliefCamp};
+
+use Maatwebsite\Excel\Facades\Excel;
 
 class ReliefCampDemographyController extends Controller
 {
@@ -38,14 +39,16 @@ class ReliefCampDemographyController extends Controller
 
     public function showInmatesForm(){
 
-        return view('create_inmates');
+        $relief_camps=ReliefCamp::select('id','name')->get();
+        return view('create_inmates',['relief_camps'=>$relief_camps]);
     }
 
     public function createInmates(){
 
     }
 
-    public function inmatesImport(){
+    public function inmatesImport(Request $request){
 
+        Excel::import(new ReliefCampFacilityImport($request->input['relief_camp_id']), $request->file('inmates_excel'));
     }
 }

@@ -20,8 +20,15 @@ class NodalOfficerController extends Controller
         return view('create_nodal_officers');
     }
 
-    public function createNodalOfficer(){
+    public function createNodalOfficer(Request $request){
         
+        $nodal_officer=NodalOfficer::create([
+            'officer_name'=>$request['officer_name'],
+            'officer_designation'=>$request['officer_designation'],
+            'officer_contact'=>$request['officer_contact']
+        ]);
+
+        return redirect()->back()->withSuccess('Nodal Officer Created Successfully');
     }
 
     public function nodalOfficerImport(Request $request){

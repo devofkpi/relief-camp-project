@@ -26,6 +26,8 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css')}}">
   <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+
+  @yield('page_related_css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -100,5 +102,6 @@
 <script src="{{ asset('dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard.js')}}"></script>
+@yield('custom_script')
 </body>
 </html>

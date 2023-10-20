@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ReliefCampFacility;
-use App\Models\ReliefCamp;
+use App\Models\{ReliefCampFacility,ReliefCamp};
 
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -20,7 +19,7 @@ class ReliefCampFacilityController extends Controller
 
     public function showFacilitiesForm(){
 
-        $relief_camps=ReliefCamp::select('id','name');
+        $relief_camps=ReliefCamp::select('id','name')->get();
 
         return view('create_relief_camp_facilities',['relief_camps'=>$relief_camps]);
     }
