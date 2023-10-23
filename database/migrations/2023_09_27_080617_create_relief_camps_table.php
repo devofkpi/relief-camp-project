@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('relief_camps', function (Blueprint $table) {
             $table->id();
             $table->string('relief_camp_name',100);
-            $table->string('camp_code',50)->unique();
+            $table->string('camp_code',50);
             $table->unsignedBigInteger('address_id');
             $table->unsignedBigInteger('sub_division_id');
             $table->unsignedBigInteger('nodal_officer_id');

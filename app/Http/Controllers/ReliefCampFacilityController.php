@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{ReliefCampFacility,ReliefCamp};
+use App\Imports\ReliefCampFacilitiesImport;
 
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -51,9 +52,11 @@ class ReliefCampFacilityController extends Controller
 
     public function campFacilitiesImport(Request $request){
 
-        Excel::import(new ReliefCampFacilityImport($request->input['relief_camp_id']), $request->file('relief_camp_facilities_excel'));
+        Excel::import(new ReliefCampFacilitiesImport, $request->file('relief_camp_facilities_excel'));
 
-        return ReliefCampFacility::with('reliefCamp')->get();
+        $relief_camps_facilities= ReliefCampFacility::with('reliefCamp')->get();
+
+        return redirect()->back();
 
     }
 }

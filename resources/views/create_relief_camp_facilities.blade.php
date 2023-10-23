@@ -119,10 +119,10 @@ Upload Facilities Data
               </div>
             </div>
             <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-              <form action="{{route('upload_relief_camp.post')}}" method="post" enctype="multipart/form-data">
+              <form action="{{route('upload_facilities.post')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
-                  <div class="form-group">
+                  {{-- <div class="form-group">
                     <label for="relief_camp_id">Select Relief Camp</label>
                     <div class="input-group">
                       <select  class="form-control" name="relief_camp_id" id="relief_camp_id">
@@ -130,7 +130,7 @@ Upload Facilities Data
                         <option value="{{$relief_camp->id}}">{{ $relief_camp->camp_code}}--{{$relief_camp->relief_camp_name}}</option>
                         @endforeach
                       </select>
-                    </div>
+                    </div> --}}
                     <label for="reliefCampImportFile">File input</label>
                     <div class="input-group">
                       <div class="custom-file">

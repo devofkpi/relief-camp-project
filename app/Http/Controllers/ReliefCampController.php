@@ -59,6 +59,6 @@ class ReliefCampController extends Controller
     public function reliefCampImport(Request $request){
         Excel::import(new ReliefCampImport, $request->file('relief_camp_excel'));
         $relief_camp_data=ReliefCamp::get();
-        return view('relief_camps',['relief_camp_data'=>$relief_camp_data]);
+        return redirect()->route('relief_camps',['relief_camp_data'=>$relief_camp_data]);
     }
 }
