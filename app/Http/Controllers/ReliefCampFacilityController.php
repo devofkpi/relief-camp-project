@@ -57,9 +57,9 @@ class ReliefCampFacilityController extends Controller
 
         Excel::import(new ReliefCampFacilitiesImport, $request->file('relief_camp_facilities_excel'));
 
-        $relief_camps_facilities= ReliefCampFacility::with('reliefCamp')->get();
+        $relief_camps_facilities= ReliefCamp::with('reliefCampFacility')->get();
 
-        // return redirect()->back();
+        return redirect()->back();
 
     }
 }

@@ -23,15 +23,21 @@
         @foreach ($demography_data as $count=>$demography )
         <tr>
             <th scope="row">{{++$count}}</th>
-            <td>{{$demography->person_name}}</td>
+            <td>{{ucfirst($demography->person_name)}}</td>
             <td>{{$demography->age}}</td>
-            <td>{{$demography->gender}}</td>
+            <td>{{ucfirst($demography->gender)}}</td>
             @if ($demography->orphan)
                 <td></td>
                 <td></td>
             @else
-                <td>{{$demography->familyHead->family_head_name}}</td>
-                <td>{{$demography->familyHeadRelation->family_head_relation}}</td>
+                @if($demography->familyHead)
+                    <td>{{$demography->familyHead->family_head_name}}</td>
+                    <td>{{$demography->familyHeadRelation->family_head_relation}}</td>
+                @else
+                    <td></td>
+                    <td></td>
+                @endif
+            
             @endif
             @if ($demography->orphan && $demography->physically_disabled)
                 <td><span> Orphan and Physically Disabled</span></td>
@@ -51,6 +57,9 @@
     </table>
 </div>
 <!-- /.card-body -->
+<div class="card-footer">
+    {{$demography_data->links()}}
+</div>
 </div>
 <!-- /.card -->
 </div>

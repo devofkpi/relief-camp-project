@@ -18,22 +18,34 @@ Nodal Officers
                     <th>Officer Designation</th>
                     <th>Contact Number</th>
                     <th>Assigned Relief Camp</th>
+                    <th>CRUD</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach ($nodal_officers_data as $count=>$nodal_officers )
+                @foreach ($nodal_officers_data as $count=>$nodal_officer )
                 <tr>
                     <th scope="row">{{++$count}}</th>
-                    <td><a href=""> {{$nodal_officers->officer_name}}</a></td>
-                    <td>{{ $nodal_officers->officer_designation}}</td>
-                    <td>{{ $nodal_officers->officer_contact}}</td>
-                    <td></td>
+                    <td><a href=""> {{$nodal_officer->officer_name}}</a></td>
+                    <td>{{ $nodal_officer->officer_designation}}</td>
+                    <td>{{ $nodal_officer->officer_contact}}</td>
+                    <td>
+                    @foreach ($nodal_officer->reliefCamps as $nodal_relief_camp )
+                    {{$nodal_relief_camp->relief_camp_name}}
+                    @endforeach
+                    </td>
+                    <td><a href="" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
+                      <a href="" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
+                      <a href="" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
+                  </td>
                 </tr>
                 @endforeach
               </tbody>
             </table>
           </div>
           <!-- /.card-body -->
+          <div class="card-footer">
+            {{$nodal_officers_data->links()}}
+          </div>
         </div>
         <!-- /.card -->
       </div>

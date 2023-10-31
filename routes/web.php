@@ -58,6 +58,7 @@ Route::group(['middleware'=>['authorization']],function(){
     });
     
     Route::prefix('/demography')->controller(ReliefCampDemographyController::class)->group(function () {
+        Route::get('/show/all','showAllInmates')->name('inmates');
         Route::get('/show/{relief_camp_id?}', 'showByCamp')->name('demo_by_camp');
         Route::get('/category/{category?}','showByCategory')->name('demo_by_cat');
         Route::get('/create','showInmatesForm')->name('create_inmates');

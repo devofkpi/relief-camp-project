@@ -13,7 +13,7 @@ class NodalOfficerController extends Controller
     private $nodal_officers;
 
     public function showAll(){
-        $this->nodal_officers=NodalOfficer::get();
+        $this->nodal_officers=NodalOfficer::with('reliefCamps')->paginate(25);
         return view('nodal_officers',['nodal_officers_data'=>$this->nodal_officers]);    
     }
     public function showNodalOfficerForm(){

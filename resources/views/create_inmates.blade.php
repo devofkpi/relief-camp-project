@@ -128,7 +128,7 @@ Upload Inmates Data
               </div>
             </div>
             <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-              <form action="{{route('upload_relief_camp.post')}}" method="post" enctype="multipart/form-data">
+              <form action="{{route('upload_inmates.post')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">

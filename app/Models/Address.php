@@ -14,7 +14,7 @@ class Address extends Model
 {
     use HasFactory;
     protected $table = 'addresses';
-    protected $fillable=['address'];
+    protected $fillable=['address','city'];
     /**
      * Get the reliefCampDemography that owns the address
      *

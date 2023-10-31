@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('family_head_id')->nullable();
             $table->unsignedBigInteger('family_head_relation_id')->nullable();
             $table->enum('gender',['male','female','third_gender']);
-            $table->tinyInteger('age');
+            $table->float('age');
             $table->unsignedBigInteger('contact_number')->nullable();
             $table->boolean('physically_disabled')->default(false);
             $table->boolean('orphan')->default(false);

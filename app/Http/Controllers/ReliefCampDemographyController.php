@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{ReliefCampDemography,ReliefCamp};
-
+use App\Imports\ReliefCampDemographyImport;
+use Illuminate\Pagination\Paginator;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ReliefCampDemographyController extends Controller
@@ -12,6 +13,10 @@ class ReliefCampDemographyController extends Controller
     public $demography_data;
     public $category_name;
     //
+    public function showAllInmates(){
+        $this->demography_data=ReliefCampDemography::paginate(25);
+        return view('relief_camp_demography',['demography_data'=>$this->demography_data]);
+    }
     public function showByCamp(String $relief_camp_id=null){
         $relief_camp=ReliefCamp::findOrFail($relief_camp_id);
         $this->category_name=$relief_camp->relief_camp_name;
@@ -74,6 +79,7 @@ class ReliefCampDemographyController extends Controller
 
     public function inmatesImport(Request $request){
 
-        Excel::import(new ReliefCampFacilityImport($request->input['relief_camp_id']), $request->file('inmates_excel'));
+        Excel::import(new ReliefCampDemographyImport($request->get('relief_camp_id')), $request->file('inmates_excel'));
+        return redirect()->back();
     }
 }

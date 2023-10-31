@@ -3,9 +3,10 @@
 namespace App\Imports;
 
 use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\{ToCollection,WithHeadingRow, WithCalculatedFormulas};
+use App\Models\{Address,FamilyHead,FamilyHeadRelation,ReliefCampDemography};
 
-class ReliefCampDemographyImport implements ToCollection
+class ReliefCampDemographyImport implements ToCollection,WithHeadingRow, WithCalculatedFormulas
 {
 
     private $family_head;
@@ -31,21 +32,26 @@ class ReliefCampDemographyImport implements ToCollection
             
             $this->address=Address::create([
 
-                'address'=>$inmate['address']
+                'address'=>$inmate['displaced_from_village'],
+                'city'=>$inmate['displaced_from_district']
             ]);
 
-            $this->family_head=FamilyHead::create([
+            if($inmate->contains('family_head_name')){
+                $this->family_head=FamilyHead::create([
 
-                'family_head_name'=>$inmate['family_head_name']
-            ]);
+                    'family_head_name'=>$inmate['family_head_name']
+                ]);
+    
+                $this->relation=FamilyHeadRelation::where('family_head_relation','=',$inmate['relation'])->first();
+    
+            }
 
-            $this->relation=FamilyHeadRelation::where('family_head_relation','=',$inmate['relation'])->first();
+            
+            ReliefCampDemography::create([
 
-            ReliefCampDemograpy::create([
-
-                'person_name'=>$inmate['person_name'],
-                'family_head_id'=>$this->family_head->id,
-                'family_head_relation_id'=>$this->relation->id,
+                'person_name'=>$inmate['name_of_person'  ],
+                'family_head_id'=>$this->family_head?$this->family_head->id:null,
+                'family_head_relation_id'=>$this->relation?$this->relation->id:null,
                 'gender'=>$inmate['gender'],
                 'age'=>$inmate['age'],
                 'contact_number'=>$inmate['contact_number'],
@@ -53,8 +59,8 @@ class ReliefCampDemographyImport implements ToCollection
                 'orphan'=>strcasecmp($inmate['any_special_condition'],'orphan')==0?true:false,
                 'lactating'=>strcasecmp($inmate['any_special_condition'],'lactating')==0?true:false,
                 'profession'=>$inmate['profession'],
-                'willing_to_goback'=>strcasecmp($inmate['willing_to_goback'],'yes')==0?true:false,
-                'remark'=>$inmate['remark'],
+                'willing_to_goback'=>strcasecmp($inmate['willing_to_go_back_to_village'],'yes')==0?true:false,
+                'remark'=>$inmate['remarks'],
                 'address_id'=>$this->address->id,
                 'relief_camp_id'=>$this->relief_camp_id,
                 'active_status'=>true
