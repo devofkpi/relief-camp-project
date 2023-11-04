@@ -17,7 +17,7 @@ class NodalOfficerController extends Controller
         return view('nodal_officers',['nodal_officers_data'=>$this->nodal_officers]);    
     }
     public function showNodalOfficerForm(){
-        return view('create_nodal_officers');
+        return view('CRUD.create_nodal_officers');
     }
 
     public function createNodalOfficer(Request $request){

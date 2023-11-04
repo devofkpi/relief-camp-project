@@ -34,43 +34,43 @@ Basis Necessities
                 <td>{{$facilities_data[0]->number_of_halls}}</td>
             </tr>
             <tr>
-                <td>Number of Toilets</td>
-                <td>{{$facilities_data[0]->separate_kitchen}}</td>
+                <td>Seprated Kitchen Available</td>
+                <td>{{$facilities_data[0]->separate_kitchen?'Yes':'No'}}</td>
             </tr>
             <tr>
-                <td>Number of Persons Utilising Toilets</td>
-                <td>{{$facilities_data[0]->open_space}}</td>
+                <td>Open Space Available</td>
+                <td>{{$facilities_data[0]->open_space?'Yes':'No'}}</td>
             </tr>
             <tr>
-                <td>Number of Persons Staying at Night</td>
-                <td>{{$facilities_data[0]->water_tanks_capacity}}</td>
+                <td>Water Tanks Capacity</td>
+                <td>{{$facilities_data[0]->water_tanks_capacity}} in Liters</td>
             </tr>
             <tr>
-                <td>Number of Mattresses</td>
+                <td>Water Availability Ratio</td>
                 <td>{{$facilities_data[0]->water_avail_ratio}}</td>
             </tr>
             <tr>
-                <td>Number of Badsheets</td>
+                <td>Number of Toilets</td>
                 <td>{{$facilities_data[0]->number_of_toilets}}</td>
             </tr>
             <tr>
-                <td>Number of Blankets</td>
+                <td>Toilet Ratio per Person</td>
                 <td>{{$facilities_data[0]->toilet_ratio_per_person}}</td>
             </tr>
             <tr>
-                <td>Number of Mosquito</td>
+                <td>Number of Buckets</td>
                 <td>{{$facilities_data[0]->number_of_buckets}}</td>
             </tr>
             <tr>
-                <td>Number of Fans</td>
+                <td>Bucket Ratio per Person</td>
                 <td>{{$facilities_data[0]->bucket_ratio_per_person}}</td>
             </tr>
             <tr>
-                <td>Availability of Food Grains in Days</td>
+                <td>Number of Mugs</td>
                 <td>{{$facilities_data[0]->number_of_mugs}}</td>
             </tr>
             <tr>
-                <td>Availability of Veg in Days</td>
+                <td>Mug Ratio per Person</td>
                 <td>{{$facilities_data[0]->mug_ratio_per_person}}</td>
             </tr>
             <tr>
@@ -78,8 +78,8 @@ Basis Necessities
                 <td>{{$facilities_data[0]->sufficient_cooking_utensils?'Yes':'No'}}</td>
             </tr>
             <tr>
-                <td>Provisioning of Supplement</td>
-                <td>{{$facilities_data[0]->number_of_mattresses?'Yes':'No'}}</td>
+                <td>Number of Mattresses</td>
+                <td>{{$facilities_data[0]->number_of_mattresses}}</td>
             </tr>
             <tr>
               <td>Mattress Ratio per Person</td>
@@ -167,18 +167,22 @@ Basis Necessities
             </tr>
             <tr>
               <td>Provisioning of Supplement</td>
-              <td>{{$facilities_data[0]->provisioning_of_supplement}}</td>
+              <td>{{$facilities_data[0]->provisioning_of_supplement?'Yes':'No'}}</td>
             </tr>
             <tr>
               <td>Availability of Soap and Other Consumable items in Days</td>
-              <td>{{$facilities_data[0]->availability_of_soap_consumable_in_days}}</td>
+              <td>{{$facilities_data[0]->availability_of_soap_consumable_in_days?'Yes':'No'}}</td>
             </tr>
             <tr>
-              <td>Number of School going Students</td>
+              <td>Number of School going Students Identified</td>
               <td>{{$facilities_data[0]->number_of_school_going_students}}</td>
             </tr>
             <tr>
-              <td>Percantage fo Students linked to School</td>
+              <td>Number of Students linked to School</td>
+              <td>{{$facilities_data[0]->number_of_students_linked_to_school}}</td>
+            </tr>
+            <tr>
+              <td>Percantage of Students linked to School</td>
               <td>{{$facilities_data[0]->per_of_students_linked_to_school}}</td>
             </tr>
             <tr>

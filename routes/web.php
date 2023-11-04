@@ -51,6 +51,8 @@ Route::group(['middleware'=>['authorization']],function(){
         Route::get('/','showAllCamps')->name('relief_camps');
         Route::get('/create','showReliefCampForm')->name('create_relief_camp');
         Route::post('/create','createReliefCamp')->name('create_relief_camp.post');
+        Route::get('/update/{id}','showReliefCampForm')->name('update_relief_camp');
+        Route::post('/update','updateReliefCamp')->name('update_relief_camp.post');
         Route::post('/upload','reliefCampImport')->name('upload_relief_camp.post');
         Route::get('/sub_division/{sub_division_id?}', 'showBySubDivision')->name('relief_camp_by_sub');
         Route::get('/nodal_officer/{nodal_officer_id?}', 'showByNodalOfficer')->name('relief_camp_by_nodal');

@@ -22,7 +22,7 @@ class ReliefCampController extends Controller
     public function showBySubDivision($sub_division_id=null)
     {
         $sub_division=SubDivision::findOrFail($sub_division_id);
-        $relief_camp_data=$sub_division->reliefCamps()->with('address')->with('nodalOfficer')->get();
+        $relief_camp_data=$sub_division->reliefCamps()->with('address')->with('nodalOfficer')->paginate(25);
         return view('relief_camps',['relief_camp_data'=>$relief_camp_data]);
     }
 
@@ -33,10 +33,18 @@ class ReliefCampController extends Controller
         return view('relief_camps',['relief_camp_data'=>$relief_camp_data]);
     }
 
-    public function showReliefCampForm(){
+    public function showReliefCampForm($id=null){
+        
         $sub_divisions=SubDivision::get();
-        $nodal_officers=NodalOfficer::select('id','officer_name')->get();
-        return view('create_relief_camp',['sub_divisions'=>$sub_divisions,'nodal_officers'=>$nodal_officers]);
+        $nodal_officers=NodalOfficer::select('id','officer_name')->get();        
+        
+        if($id==null){
+            return view('CRUD.create_relief_camp',['sub_divisions'=>$sub_divisions,'nodal_officers'=>$nodal_officers]);
+        }else{
+            $relief_camp=ReliefCamp::with('address','subDivision','nodalOfficer')->find($id);
+
+            return view('CRUD.update_relief_camp',['sub_divisions'=>$sub_divisions,'nodal_officers'=>$nodal_officers,'relief_camp'=>$relief_camp]);
+        }
     }
     public function createReliefCamp(Request $request){
 
@@ -54,6 +62,18 @@ class ReliefCampController extends Controller
         ]);
 
         return redirect()->back()->withSuccess('Relief Camp created successfully');
+    }
+
+    public function updateReliefCamp(Request $request){
+
+        $relief_camp=ReliefCamp::with('address')->find($id);
+
+        $relief_camp->relief_camp_name=$request['relief_camp_name'];
+        $relief_camp->camp_code=$request['camp_code'];
+        $relief_camp->address->address=$request['address'];
+        $relief_camp->sub_division_id=$request['sub_division_id'];
+        $relief_camp->nodal_officer_id=$request['nodal_officer_id'];
+        $relief_camp->save();
     }
 
     public function reliefCampImport(Request $request){

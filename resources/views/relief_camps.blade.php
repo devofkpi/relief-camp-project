@@ -35,8 +35,8 @@ Available Relief Camps
                 <td>{{ ucfirst($relief_camp->address->address)}}<br>{{ ucfirst($relief_camp->address->city) }}, {{ ucfirst($relief_camp->address->state)}}</td>
                 <td>{{ $relief_camp->nodalOfficer->officer_name}}</td>
                 <td><a href="{{route('demo_by_camp')}}/{{$relief_camp->id}}">View</a></td>
-                <td><a href="" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
-                  <a href="" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
+                <td>
+                  <a href="{{ route('update_relief_camp',$relief_camp->id  )}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
                   <a href="" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
               </td>
             </tr>
