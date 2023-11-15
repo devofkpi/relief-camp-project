@@ -64,6 +64,11 @@ class ReliefCampController extends Controller
         return redirect()->back()->withSuccess('Relief Camp created successfully');
     }
 
+    public function showCampById($id=null){
+        $relief_camp=ReliefCamp::with('address','subDivision','nodalOfficer')->find($id);
+        return view('CRUD.view_relief_camp',['relief_camp'=>$relief_camp]);
+    }
+
     public function updateReliefCamp(Request $request){
 
         $relief_camp=ReliefCamp::with('address')->find($id);

@@ -10,13 +10,14 @@
           <thead>
         <tr>
             <th scope="col">Sr. No.</th>
-            <th scope="col">Name</th>
-            <th scope="col">Age</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Family Head</th>
-            <th scope="col">Relation</th>
-            <th scope="col">Any Special Condition</th>
-            <th scope="col">Address</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Family Head</th>
+            <th>Relation</th>
+            <th>Any Special Condition</th>
+            <th>Address</th>
+            <th>CRUD</th>
         </tr>
     </thead>
     <tbody>
@@ -51,6 +52,11 @@
             <td></td>
             @endif
             <td>{{ucfirst($demography->address->address)}}</br>{{ucfirst($demography->address->city)}}, {{ucfirst($demography->address->state)}}</td>
+            <td>
+                <a href="{{ route('inmate_by_id',$demography->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
+                <a href="{{route('update_inmates',$demography->id)}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
+                <a href="" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
+            </td>
         </tr> 
         @endforeach  
         </tbody>

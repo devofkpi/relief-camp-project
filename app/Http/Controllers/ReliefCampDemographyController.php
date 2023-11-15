@@ -17,6 +17,12 @@ class ReliefCampDemographyController extends Controller
         $this->demography_data=ReliefCampDemography::paginate(25);
         return view('relief_camp_demography',['demography_data'=>$this->demography_data]);
     }
+
+    public function showInmateById($inamte_id=null){
+        $inmate=ReliefCampDemography::with('address')->with('familyHead')->with('familyHeadRelation')->find($inamte_id);
+        return view('CRUD.view_inmate',['inmate'=>$inmate]);
+    }
+
     public function showByCamp(String $relief_camp_id=null){
         $relief_camp=ReliefCamp::findOrFail($relief_camp_id);
         $this->category_name=$relief_camp->relief_camp_name;
@@ -42,10 +48,14 @@ class ReliefCampDemographyController extends Controller
         return view('relief_camp_demography',['demography_data'=>$this->demography_data,'category_name'=>$this->category_name]);
     }
 
-    public function showInmatesForm(){
-
-        $relief_camps=ReliefCamp::select('id','relief_camp_name')->get();
-        return view('CRUD.create_inmates',['relief_camps'=>$relief_camps]);
+    public function showInmatesForm($inamte_id=null){
+        if($inamte_id==null){
+            $relief_camps=ReliefCamp::select('id','relief_camp_name')->get();
+            return view('CRUD.create_inmates',['relief_camps'=>$relief_camps]);
+        }else{
+            $inmate=ReliefCampDemography::with('familyHead')->with('familyHeadRelation')->with('address')->find($inamte_id);
+            return view('CRUD.update_inmate',['inmate'=>$inmate]);
+        }
     }
 
     public function createInmates(Request $request){

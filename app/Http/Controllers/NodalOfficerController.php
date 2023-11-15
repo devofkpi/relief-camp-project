@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\{Request,RedirectResponse};
 use App\Imports\NodalOfficerImport;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Models\NodalOfficer;
+use App\Models\{NodalOfficer,ReliefCamp};
 
 class NodalOfficerController extends Controller
 {
@@ -16,6 +16,12 @@ class NodalOfficerController extends Controller
         $this->nodal_officers=NodalOfficer::with('reliefCamps')->paginate(25);
         return view('nodal_officers',['nodal_officers_data'=>$this->nodal_officers]);    
     }
+
+    public function showById($id=null){
+        $this->nodal_officer=NodalOfficer::with('reliefCamps')->find($id);
+        return view('CRUD.view_nodal_officer',['nodal_officer'=>$this->nodal_officer]);
+    }
+    
     public function showNodalOfficerForm(){
         return view('CRUD.create_nodal_officers');
     }
