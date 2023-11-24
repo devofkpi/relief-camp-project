@@ -15,7 +15,7 @@ class ReliefCampController extends Controller
     //
     public function showAllCamps(){
 
-        $relief_camp_data=ReliefCamp::get();
+        $relief_camp_data=ReliefCamp::paginate(25);
         return view('relief_camps',['relief_camp_data'=>$relief_camp_data]);
     }
 

@@ -12,6 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class ReliefCampFacilityController extends Controller
 {
     //
+    public $import_failures;
     public function showById(String $relief_camp_id=null){
         $relief_camp=ReliefCamp::findOrFail($relief_camp_id);
         $relief_camp_name=$relief_camp->relief_camp_name;
@@ -55,11 +56,25 @@ class ReliefCampFacilityController extends Controller
 
         // $headings = (new HeadingRowImport)->toArray($request->file('relief_camp_facilities_excel'));
 
-        Excel::import(new ReliefCampFacilitiesImport, $request->file('relief_camp_facilities_excel'));
+        try{
+            
+            Excel::import(new ReliefCampFacilitiesImport, $request->file('relief_camp_facilities_excel'));
+        
+        }catch(\Maatwebsite\Excel\Validators\ValidationException $e){
 
-        $relief_camps_facilities= ReliefCampFacility::with('reliefCamp')->get();
+            $this->import_failures=$e->failures();
 
-        // return redirect()->back();
+            // foreach($failures as $failure){
+            //     $failure->row();
+            //     $failure->attribute();
+            //     $failure->errors();
+            //     $failure->values();
+            // }
+        }
+
+       // $relief_camps_facilities= ReliefCamp::with('reliefCamp')->get();
+
+         return redirect()->back()->withErrors($this->import_failures);
 
     }
 }

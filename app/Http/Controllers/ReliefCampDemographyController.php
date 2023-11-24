@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\{ReliefCampDemography,ReliefCamp};
 
 use Maatwebsite\Excel\Facades\Excel;
-
+use App\Imports\ReliefCampDemographyImport;
 class ReliefCampDemographyController extends Controller
 {
     public $demography_data;
     public $category_name;
+    public $import_failures;
     //
     public function showByCamp(String $relief_camp_id=null){
         $relief_camp=ReliefCamp::findOrFail($relief_camp_id);
@@ -74,6 +75,16 @@ class ReliefCampDemographyController extends Controller
 
     public function inmatesImport(Request $request){
 
-        Excel::import(new ReliefCampFacilityImport($request->input['relief_camp_id']), $request->file('inmates_excel'));
+        Excel::import(new ReliefCampDemographyImport($request->get('relief_camp_id')), $request->file('inmates_excel'));
+
+        // try{
+
+        // }catch(\Maatwebsite\Excel\Validators\ValidationException $e){
+
+        //     $this->import_failures=$e->failures();
+        // }
+
+
+        return redirect()->back()->withErrors($this->import_failures);
     }
 }

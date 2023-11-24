@@ -56,7 +56,8 @@ Upload Inmates Data
                       <input type="text" class="form-control" placeholder="Age" name="age" required>
                     </div>
                     <div class="col-6">
-                        <input type="text" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text" placeholder="(___) ___-____ Contact Number" name="contact_number">                    </div>
+                        <input type="text" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text" placeholder="(___) ___-____ Contact Number" name="contact_number">                    
+                    </div>
                   </div>
                   <div class="row mb-3">
                     <div class="col-6">
@@ -128,7 +129,7 @@ Upload Inmates Data
               </div>
             </div>
             <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-              <form action="{{route('upload_relief_camp.post')}}" method="post" enctype="multipart/form-data">
+              <form action="{{route('upload_inmates.post')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
@@ -139,6 +140,9 @@ Upload Inmates Data
                         <option value="{{$relief_camp->id}}">{{$relief_camp->relief_camp_name}}</option>
                         @endforeach
                       </select>
+                      @if($errors->any())
+                        {{ implode('', $errors->all('<div>:message</div>')) }}
+                      @endif
                     </div>
                     <label for="inmatesImportFile">File input</label>
                     <div class="input-group">
