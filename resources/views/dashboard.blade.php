@@ -13,7 +13,7 @@ Dashboard
           <p>Total Inmates</p>
         </div>
         <div class="icon">
-          <i class="ion ion-bag"></i>
+          <i class="ion ion-person-add"></i>
         </div>
         <a href="{{route('inmates')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
@@ -28,7 +28,7 @@ Dashboard
           <p>Total Male Inmates</p>
         </div>
         <div class="icon">
-          <i class="ion ion-stats-bars"></i>
+          <i class="ion ion-man"></i>
         </div>
         <a href="{{route('demo_by_cat','male')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
@@ -43,7 +43,7 @@ Dashboard
           <p>Total Female Inmates</p>
         </div>
         <div class="icon">
-          <i class="ion ion-person-add"></i>
+          <i class="ion ion-woman"></i>
         </div>
         <a href="{{route('demo_by_cat','female')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
@@ -53,14 +53,14 @@ Dashboard
       <!-- small box -->
       <div class="small-box bg-danger">
         <div class="inner">
-          <h3>65</h3>
+          <h3>{{$relief_camp_count}}</h3>
 
-          <p>Unique Visitors</p>
+          <p>Total No. of Relief Camps</p>
         </div>
         <div class="icon">
-          <i class="ion ion-pie-graph"></i>
+          <i class="ion ion-home"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="{{ route('relief_camps')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -163,17 +163,19 @@ Dashboard
     $(function () {
       var donutData        = {
       labels: [
-          'Chrome',
-          'IE',
-          'FireFox',
-          'Safari',
-          'Opera',
-          'Navigator',
+          'Kangpokpi',
+          'Champai',
+          'Waichong',
+          'Saitu',
+          'Kangchup',
+          'Bungte',
+          'Saikul',
+          'Lahungtin'
       ],
       datasets: [
         {
-          data: [700,500,400,600,300,100],
-          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+          data: [700,500,400,600,300,100,20,30],
+          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de','#5e1de2', '#16e945'],
         }
       ]
     }
