@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth,Hash};
 use Session;
+use App\Models\SubDivision;
 
 use App\Models\User;
 
@@ -14,7 +15,8 @@ class UserController extends Controller
     private $user_role=[
         'super_user'=>0,
         'admin_user'=>1,
-        'normal_user'=>2
+        'moderate_user'=>2,
+        'normal_user'=>3
     ];
     //
     public function showLogin(){
@@ -48,7 +50,15 @@ class UserController extends Controller
 
 
     public function showRegister(){
-        return view('auth.create_user');
+        $sub_divisions=SubDivision::get();
+        return view('auth.create_user',['sub_divisions'=>$sub_divisions]);
+    }
+
+    public function userJurisdiction(Request $request){
+        if($request->user_role=="moderate_user"){
+            $sub_divisions=SubDivision::get();
+            return response()->json(['name'=>'ashish']);
+        }
     }
 
     public function createUser(Request $request){

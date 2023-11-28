@@ -40,6 +40,8 @@ Route::controller(UserController::class)->group(function(){
     Route::post('/register','createUser')->name('register.post');
 
     Route::get('/user/showall','showAllUser')->name('show_all_user');
+
+    Route::post('/user/userJurisdiction','userJurisdiction')->name('user_jurisdiction');
  });
  
 Route::group(['middleware'=>['authorization']],function(){

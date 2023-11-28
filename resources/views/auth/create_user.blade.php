@@ -3,6 +3,10 @@
 Create User
 @endsection
 
+@section('custom_head_data')
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+@endsection
+
 @section('content1')
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -48,11 +52,19 @@ Create User
                   </div>
                 </div>
                 <div class="input-group mb-3">
-                  <select class="custom-select form-control-border" name="user_role" required>
+                  <select class="custom-select form-control-border" name="user_role" id="user_role" required>
                     <option value="" selected>--Please select user role--</option>
-                    <option value="super_user">Deputy Commissioner</option>
-                    <option value="admin_user">Additional Deputy Commissioner</option>
-                    <option value="normal_user">Sub Divisional Officer</option>
+                    <option value="moderate_user">Sub Divisional Officer</option>
+                    <option value="normal_user">Nodal Officer</option>
+                  </select>
+                  <input id="ajax_url" type="hidden" value="{{route('user_jurisdiction')}}" >
+                </div>
+                <div class="input-group mb-3">
+                  <select class="custom-select form-control-border" name="user_role" required>
+                    <option value="" selected>--Please Select Jurisdiction--</option>
+                    @foreach ($sub_divisions as $sub_division)
+                      <option value="{{$sub_division->id}}">{{ucfirst($sub_division->sub_division_name)}}</option>
+                    @endforeach
                   </select>
                 </div>
                 </div>
@@ -63,4 +75,30 @@ Create User
             </div>
           </div>
     </div>
+@endsection
+@section('custom_script')
+<script>
+  $('#user_role').on('change',function(e){
+    $.ajaxSetup({
+      headers:{
+        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    e.preventDefault();
+    var user_role=$(this).val();
+    var ajax_url=$('#ajax_url').val();
+    $.ajax({
+      type:"POST",
+      url:ajax_url,
+      data:user_role,
+      dataType:'json',
+      success:function(data){
+        console.log('hello');
+      },
+      error:function(data){
+        console.log(data);
+      }
+    });
+  });
+</script>
 @endsection
