@@ -3,10 +3,10 @@
 namespace App\Imports;
 
 use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\{ToCollection,WithCalculatedFormulas,WithHeadingRow};;
-use App\Models\{ReliefCampDemography,Address,FamilyHead,FamilyHeadRelation};
+use Maatwebsite\Excel\Concerns\{ToCollection,WithHeadingRow, WithCalculatedFormulas};
+use App\Models\{Address,FamilyHead,FamilyHeadRelation,ReliefCampDemography};
 
-class ReliefCampDemographyImport implements ToCollection, WithHeadingRow, WithCalculatedFormulas
+class ReliefCampDemographyImport implements ToCollection,WithHeadingRow, WithCalculatedFormulas
 {
 
     private $family_head=null;
@@ -34,26 +34,26 @@ class ReliefCampDemographyImport implements ToCollection, WithHeadingRow, WithCa
 
                 $this->address=Address::create([
 
-                    'address'=>$inmate['displaced_from_village'],
-                    'city'=>$inmate['displaced_from_village']
-                ]);
-            }
-            
-            if(!empty($inmate['family_head_name'])){
+                'address'=>$inmate['displaced_from_village'],
+                'city'=>$inmate['displaced_from_district']
+            ]);}
+
+            if($inmate->contains('family_head_name')){
                 $this->family_head=FamilyHead::create([
 
                     'family_head_name'=>$inmate['family_head_name']
                 ]);
-
+    
                 $this->relation=FamilyHeadRelation::where('family_head_relation','=',$inmate['relation'])->first();
+    
             }
 
-
+            
             ReliefCampDemography::create([
 
                 'person_name'=>$inmate['name_of_person'],
-                'family_head_id'=>$this->family_head==null?null:$this->family_head->id,
-                'family_head_relation_id'=>$this->relation==null?null:$this->relation->id,
+                'family_head_id'=>$this->family_head?$this->family_head->id:null,
+                'family_head_relation_id'=>$this->relation?$this->relation->id:null,
                 'gender'=>$inmate['gender'],
                 'age'=>$inmate['age'],
                 'contact_number'=>$inmate['contact_number'],
@@ -69,4 +69,5 @@ class ReliefCampDemographyImport implements ToCollection, WithHeadingRow, WithCa
             ]);
         }
     }
+    
 }

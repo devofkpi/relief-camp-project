@@ -13,7 +13,7 @@ Upload Inmates Data
 
 @section('content1')
 <div class="row justify-content-center">
-    <div class="col-12 col-sm-6">
+    <div class="col-12">
       <div class="card card-primary card-tabs">
         <div class="card-header p-0 pt-1">
           <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
@@ -56,8 +56,7 @@ Upload Inmates Data
                       <input type="text" class="form-control" placeholder="Age" name="age" required>
                     </div>
                     <div class="col-6">
-                        <input type="text" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text" placeholder="(___) ___-____ Contact Number" name="contact_number">                    
-                    </div>
+                        <input type="text" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text" placeholder="(___) ___-____ Contact Number" name="contact_number">                    </div>
                   </div>
                   <div class="row mb-3">
                     <div class="col-6">
@@ -132,26 +131,33 @@ Upload Inmates Data
               <form action="{{route('upload_inmates.post')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
-                  <div class="form-group">
-                    <label for="relief_camp_id">Select Relief Camp</label>
-                    <div class="input-group">
-                      <select  class="form-control" name="relief_camp_id" id="relief_camp_id">
-                        @foreach ($relief_camps as $relief_camp)
-                        <option value="{{$relief_camp->id}}">{{$relief_camp->relief_camp_name}}</option>
-                        @endforeach
-                      </select>
-                      @if($errors->any())
-                        {{ implode('', $errors->all('<div>:message</div>')) }}
-                      @endif
+                  <div class="row justify-content-center">
+                    <div class="col-8">
+                      <h5 class="text-danger">Please upload the data in the format given here, also sanitize the data before uploading it.</h5>
+                      <h6 class="text-info"><a href="#">( Click here )</a> to Download the format.</h6>
                     </div>
-                    <label for="inmatesImportFile">File input</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inmatesImportFile" name="inmates_excel" required>
-                        <label class="custom-file-label" for="inmatesImportFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <button type="submit" class="btn btn-info btn-flat">Upload</button>
+                  </div>
+                  <div class="row justify-content-center">
+                    <div class="col-8">
+                      <div class="form-group">
+                        <label for="relief_camp_id">Select Relief Camp</label>
+                        <div class="input-group">
+                          <select  class="form-control" name="relief_camp_id" id="relief_camp_id">
+                            @foreach ($relief_camps as $relief_camp)
+                            <option value="{{$relief_camp->id}}">{{$relief_camp->relief_camp_name}}</option>
+                            @endforeach
+                          </select>
+                        </div>
+                        <label for="inmatesImportFile">File input</label>
+                        <div class="input-group">
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inmatesImportFile" name="inmates_excel" required>
+                            <label class="custom-file-label" for="inmatesImportFile">Choose file</label>
+                          </div>
+                          <div class="input-group-append">
+                            <button type="submit" class="btn btn-info btn-flat">Upload</button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

@@ -51,6 +51,9 @@ Route::group(['middleware'=>['authorization']],function(){
         Route::get('/','showAllCamps')->name('relief_camps');
         Route::get('/create','showReliefCampForm')->name('create_relief_camp');
         Route::post('/create','createReliefCamp')->name('create_relief_camp.post');
+        Route::get('/update/{id}','showReliefCampForm')->name('update_relief_camp');
+        Route::get('/show/{id}','showCampById')->name('show_camp_by_id');
+        Route::post('/update','updateReliefCamp')->name('update_relief_camp.post');
         Route::post('/upload','reliefCampImport')->name('upload_relief_camp.post');
         Route::get('/sub_division/{sub_division_id?}', 'showBySubDivision')->name('relief_camp_by_sub');
         Route::get('/nodal_officer/{nodal_officer_id?}', 'showByNodalOfficer')->name('relief_camp_by_nodal');
@@ -58,9 +61,12 @@ Route::group(['middleware'=>['authorization']],function(){
     });
     
     Route::prefix('/demography')->controller(ReliefCampDemographyController::class)->group(function () {
+        Route::get('/show/all','showAllInmates')->name('inmates');
+        Route::get('/showById/{inmate_id?}','showInmateById')->name('inmate_by_id');
         Route::get('/show/{relief_camp_id?}', 'showByCamp')->name('demo_by_camp');
         Route::get('/category/{category?}','showByCategory')->name('demo_by_cat');
         Route::get('/create','showInmatesForm')->name('create_inmates');
+        Route::get('/update/{id?}','showInmatesForm')->name('update_inmates');
         Route::post('/create','createInmates')->name('create_inmates.post');
         Route::post('/upload','inmatesImport')->name('upload_inmates.post');
     
@@ -74,7 +80,8 @@ Route::group(['middleware'=>['authorization']],function(){
     });
     
     Route::prefix('/nodal_officers')->controller(NodalOfficerController::class)->group(function(){
-        Route::get('/show','showAll')->name('show_all_nodal_officer');
+        Route::get('/','showAll')->name('show_all_nodal_officer');
+        Route::get('/show/{id}','showById')->name('show_nodal_officer_by_id');
         Route::get('/create','showNodalOfficerForm')->name('create_nodal_officer');
         Route::post('/create','createNodalOfficer')->name('create_nodal_officer.post');
         Route::post('upload','nodalOfficerImport')->name('upload_nodal_officer.post');

@@ -10,13 +10,13 @@
           <thead>
         <tr>
             <th scope="col">Sr. No.</th>
-            <th scope="col">Name</th>
-            <th scope="col">Age</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Family Head</th>
-            <th scope="col">Relation</th>
-            <th scope="col">Any Special Condition</th>
-            <th scope="col">Address</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Family Head</th>
+            <th>Relation</th>
+            <th>Any Special Condition</th>
+            <th>Address</th>
             <th>CRUD</th>
         </tr>
     </thead>
@@ -31,17 +31,14 @@
                 <td></td>
                 <td></td>
             @else
-
-                @if (!empty($demography->familyHead))
+                @if($demography->familyHead)
                     <td>{{$demography->familyHead->family_head_name}}</td>
+                    <td>{{$demography->familyHeadRelation->family_head_relation}}</td>
                 @else
-                    <td></td>                    
+                    <td></td>
+                    <td></td>
                 @endif
-                @if (!empty($demography->familyHeadRelation))
-                    <td>{{$demography->familyHeadRelation->family_head_relation}}</td> 
-                @else
-                    <td></td>                     
-                @endif
+            
             @endif
             @if ($demography->orphan && $demography->physically_disabled)
                 <td><span> Orphan and Physically Disabled</span></td>
@@ -55,8 +52,9 @@
             <td></td>
             @endif
             <td>{{ucfirst($demography->address->address)}}</br>{{ucfirst($demography->address->city)}}, {{ucfirst($demography->address->state)}}</td>
-            <td><a href="" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
-                <a href="" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
+            <td>
+                <a href="{{ route('inmate_by_id',$demography->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
+                <a href="{{route('update_inmates',$demography->id)}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
                 <a href="" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
             </td>
         </tr> 
@@ -65,15 +63,9 @@
     </table>
 </div>
 <!-- /.card-body -->
-<div class="card-footer clearfix">
-    <ul class="pagination pagination-sm m-0 float-right">
-      <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-    </ul>
-  </div>
+<div class="card-footer">
+    {{$demography_data->links()}}
+</div>
 </div>
 <!-- /.card -->
 </div>

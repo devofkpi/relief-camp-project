@@ -10,21 +10,6 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
 <div class="row">
 <div class="col-12">
     <div class="card">
-      {{-- <div class="card-header">
-        <h3 class="card-title">Responsive Hover Table</h3>
-
-        <div class="card-tools">
-          <div class="input-group input-group-sm" style="width: 150px;">
-            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-default">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div> --}}
       <!-- /.card-header -->
       <div class="card-body table-responsive p-0">
         <table class="table table-hover text-nowrap">
@@ -52,104 +37,104 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
                 <td>{{$facilities_data[0]->number_of_halls}}</td>
             </tr>
             <tr>
-              <td>Separate Kitchen Available</td>
-              <td>{{$facilities_data[0]->separate_kitchen==1?'Yes':'No'}}</td>
+                <td>Seprated Kitchen Available</td>
+                <td>{{$facilities_data[0]->separate_kitchen?'Yes':'No'}}</td>
             </tr>
             <tr>
-              <td>Open Space Available</td>
-              <td>{{$facilities_data[0]->open_space==1?'Yes':'No'}}</td>
+                <td>Open Space Available</td>
+                <td>{{$facilities_data[0]->open_space?'Yes':'No'}}</td>
             </tr>
             <tr>
-              <td>Water Tanks Capacity</td>
-              <td>{{$facilities_data[0]->water_tanks_capacity}} Liters</td>
+                <td>Water Tanks Capacity</td>
+                <td>{{$facilities_data[0]->water_tanks_capacity}} in Liters</td>
             </tr>
             <tr>
-              <td>Water Availability Ratio Per Person</td>
-              <td>{{$facilities_data[0]->water_avail_ratio}}</td>
+                <td>Water Availability Ratio</td>
+                <td>{{$facilities_data[0]->water_avail_ratio}}</td>
             </tr>
             <tr>
                 <td>Number of Toilets</td>
                 <td>{{$facilities_data[0]->number_of_toilets}}</td>
             </tr>
             <tr>
-                <td>Toilet Ratio Per Person</td>
+                <td>Toilet Ratio per Person</td>
                 <td>{{$facilities_data[0]->toilet_ratio_per_person}}</td>
             </tr>
             <tr>
-              <td>Number of Buckets</td>
-              <td>{{$facilities_data[0]->number_of_buckets}}</td>
+                <td>Number of Buckets</td>
+                <td>{{$facilities_data[0]->number_of_buckets}}</td>
             </tr>
             <tr>
-              <td>Bucket Ration Per Person</td>
-              <td>{{$facilities_data[0]->bucket_ratio_per_person}}</td>
+                <td>Bucket Ratio per Person</td>
+                <td>{{$facilities_data[0]->bucket_ratio_per_person}}</td>
             </tr>
             <tr>
-              <td>Number of Mugs</td>
-              <td>{{$facilities_data[0]->number_of_mugs}}</td>
+                <td>Number of Mugs</td>
+                <td>{{$facilities_data[0]->number_of_mugs}}</td>
             </tr>
             <tr>
-              <td>Mug Ration Per Person</td>
-              <td>{{$facilities_data[0]->mug_ratio_per_person}}</td>
+                <td>Mug Ratio per Person</td>
+                <td>{{$facilities_data[0]->mug_ratio_per_person}}</td>
             </tr>
             <tr>
-              <td>Sufficient Cooking Utensils Available</td>
-              <td>{{$facilities_data[0]->sufficient_cooking_utensils==1?'Yes':'No'}}</td>
+                <td>Sufficient Cooking Utensils Available</td>
+                <td>{{$facilities_data[0]->sufficient_cooking_utensils?'Yes':'No'}}</td>
             </tr>
             <tr>
                 <td>Number of Mattresses</td>
                 <td>{{$facilities_data[0]->number_of_mattresses}}</td>
             </tr>
             <tr>
-              <td>Mattress Ratio Per Person </td>
+              <td>Mattress Ratio per Person</td>
               <td>{{$facilities_data[0]->mattress_ratio_per_person}}</td>
             </tr>
             <tr>
-                <td>Number of Badsheets</td>
-                <td>{{$facilities_data[0]->number_of_badsheets}}</td>
+              <td>Number of Bedsheets</td>
+              <td>{{$facilities_data[0]->number_of_bedsheets}}</td>
             </tr>
             <tr>
-              <td>Badsheet Ration Per Person</td>
-              <td>{{$facilities_data[0]->badsheet_ratio_per_person}}</td>
+              <td>Bedsheet Ratio per Person</td>
+              <td>{{$facilities_data[0]->bedsheet_ratio_per_person}}</td>
             </tr>
             <tr>
               <td>Number of Pillows</td>
               <td>{{$facilities_data[0]->number_of_pillows}}</td>
             </tr>
             <tr>
-              <td>Pillow Ratio Per Person</td>
+              <td>Pillow Ration per Person</td>
               <td>{{$facilities_data[0]->pillow_ratio_per_person}}</td>
             </tr>
             <tr>
-                <td>Number of Blankets</td>
-                <td>{{$facilities_data[0]->number_of_blankets}}</td>
+              <td>Number of Blankets</td>
+              <td>{{$facilities_data[0]->number_of_blankets}}</td>
             </tr>
             <tr>
-              <td>Blanket Ration Per Person</td>
+              <td>Blanket Ratio per Person</td>
               <td>{{$facilities_data[0]->blanket_ratio_per_person}}</td>
             </tr>
             <tr>
-                <td>Number of Mosquito</td>
-                <td>{{$facilities_data[0]->number_of_mosquito}}</td>
+              <td>Number of Mosquito Nets</td>
+              <td>{{$facilities_data[0]->number_of_mosquitos}}</td>
             </tr>
             <tr>
-              <td>Mosquito Ratio Per Person</td>
+              <td>Mosquito Net Ratio per Person</td>
               <td>{{$facilities_data[0]->mosquito_ratio_per_person}}</td>
             </tr>
             <tr>
               <td>Sufficient Lighting Facility Available</td>
-              <td>{{$facilities_data[0]->sufficient_lighting_facility==1?'Yes':'No'}}</td>
+              <td>{{$facilities_data[0]->sufficient_lighting_facility?'Yes':'No'}}</td>
             </tr>
             <tr>
-                <td>Number of Fans</td>
-                <td>{{$facilities_data[0]->number_of_fans}}</td>
+              <td>Number of Fans</td>
+              <td>{{$facilities_data[0]->number_of_fans}}</td>
             </tr>
             <tr>
-              <td>Fan Ratio Per Person</td>
+              <td>Fans Ratio per Person</td>
               <td>{{$facilities_data[0]->fans_ratio_per_person}}</td>
             </tr>
             <tr>
               <td>Sufficient Plates and Glasses Available</td>
-              <td>{{$facilities_data[0]->sufficient_plates_glasses==1?'Yes':'No'}}</td>
+              <td>{{$facilities_data[0]->sufficient_plates_glasses?'Yes':'No'}}</td>
             </tr>
             <tr>
               <td>Fuel Sources</td>
@@ -163,7 +148,6 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
               <td>Availability of Rice in Days</td>
               <td>{{$facilities_data[0]->availability_of_rice_in_days}}</td>
             </tr>
-           
             <tr>
               <td>Availability of Dal in Days</td>
               <td>{{$facilities_data[0]->availability_of_dal_in_days}}</td>
@@ -173,35 +157,35 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
               <td>{{$facilities_data[0]->availability_of_veg_in_days}}</td>
             </tr>
             <tr>
-                <td>Safe Drinking Water Available</td>
-                <td>{{$facilities_data[0]->safe_drinking_water==1?'Yes':'No'}}</td>
+              <td>Number of Person Staying at Night</td>
+              <td>{{$facilities_data[0]->number_of_persons_staying_at_night}}</td>
             </tr>
             <tr>
-                <td>Provisioning of Supplement</td>
-                <td>{{$facilities_data[0]->provisioning_of_supplement==1?'Yes':'No'}}</td>
+              <td>Availability of Food Grains in Days</td>
+              <td>{{$facilities_data[0]->availability_of_food_grains_in_days}}</td>
             </tr>
             <tr>
-              <td>Availability of Soap and Other Consumable Items in Days</td>
-              <td>{{$facilities_data[0]->availability_of_soap_consumable_in_days}}</td>
+              <td>Availability of Safe Drinking Water</td>
+              <td>{{$facilities_data[0]->safe_drinking_water?'Yes':'No'}}</td>
             </tr>
             <tr>
-              <td>Number of School Going Student Identified</td>
+              <td>Provisioning of Supplement</td>
+              <td>{{$facilities_data[0]->provisioning_of_supplement?'Yes':'No'}}</td>
+            </tr>
+            <tr>
+              <td>Availability of Soap and Other Consumable items in Days</td>
+              <td>{{$facilities_data[0]->availability_of_soap_consumable_in_days?'Yes':'No'}}</td>
+            </tr>
+            <tr>
+              <td>Number of School going Students Identified</td>
               <td>{{$facilities_data[0]->number_of_school_going_students}}</td>
             </tr>
             <tr>
-              <td>Number of Students Linked to School</td>
+              <td>Number of Students linked to School</td>
               <td>{{$facilities_data[0]->number_of_students_linked_to_school}}</td>
             </tr>
-            {{-- <tr>
-                <td>Number of Persons Staying at Night</td>
-                <td>{{$facilities_data[0]->number_of_persons_staying_at_night}}</td>
-            </tr> --}}
-            {{-- <tr>
-                <td>Availability of Food Grains in Days</td>
-                <td>{{$facilities_data[0]->availability_of_food_grains_in_days}}</td>
-            </tr> --}}
             <tr>
-              <td>Percentage of Students Linked to School</td>
+              <td>Percantage of Students linked to School</td>
               <td>{{$facilities_data[0]->per_of_students_linked_to_school}}</td>
             </tr>
             <tr>
@@ -209,11 +193,11 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
               <td>{{$facilities_data[0]->number_of_child_identified_anganwadi}}</td>
             </tr>
             <tr>
-              <td>Number of Children Linked to Anganwadi</td>
+              <td>Number of Children linked to Anganwadi</td>
               <td>{{$facilities_data[0]->number_of_child_linked_anganwadi}}</td>
             </tr>
             <tr>
-              <td>Percentage of Children Linked to Anganwadi</td>
+              <td>Percantage of Children linked to Anganwadi</td>
               <td>{{$facilities_data[0]->per_child_linked_anganwadi}}</td>
             </tr>
             <tr>
@@ -221,63 +205,63 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
               <td>{{$facilities_data[0]->number_of_pregnant_women}}</td>
             </tr>
             <tr>
-              <td>Number of Pregnant Women Linked to Health Care Facility</td>
+              <td>Number of Pregnant Women linked to Health facility</td>
               <td>{{$facilities_data[0]->number_of_pregnant_women_linked_health}}</td>
             </tr>
             <tr>
-              <td>Percentage of Pregnant Women Linked to Health Care Facility</td>
+              <td>Percantage of Pregnant Women linked to Health facility</td>
               <td>{{$facilities_data[0]->per_of_pregnant_women_linked_health}}</td>
             </tr>
             <tr>
-              <td>Number of Specially Abled Persons</td>
+              <td>Number of Specially Abled Person</td>
               <td>{{$facilities_data[0]->number_of_disabled_person}}</td>
             </tr>
             <tr>
-              <td>Number of Specially Abled Persons Linked to Some Facility</td>
-              <td>{{$facilities_data[0]->number_of_disabled_person_liked_facility}}</td>
+              <td>Number of Specially Abled Person Linked to Some Facility</td>
+              <td>{{$facilities_data[0]->number_of_disabled_person_linked_facility}}</td>
             </tr>
             <tr>
-              <td>Percentage of Specially Abled Persons Linked to Some Facility</td>
-              <td>{{$facilities_data[0]->per_of_disabled_person_liked_facility}}</td>
+              <td>Percantage of Specially Abled Person Linked to Some Facility</td>
+              <td>{{$facilities_data[0]->per_of_disabled_person_linked_facility}}</td>
             </tr>
             <tr>
-              <td>Number of Children Seprated from Parentes</td>
+              <td>Number of Children separated from parents</td>
               <td>{{$facilities_data[0]->number_of_child_separated_parents}}</td>
             </tr>
             <tr>
-              <td>Number of Children Seprated from Parentes Linked to Social Welfare</td>
+              <td>Number of Children separated from parents linked to Social welfare</td>
               <td>{{$facilities_data[0]->number_of_child_separated_parents_linked_sw}}</td>
             </tr>
             <tr>
-              <td>Percentage of Children Seprated from Parentes Linked to Social Welfare</td>
+              <td>Percantage of Children Separated from parents linked to Social welfare</td>
               <td>{{$facilities_data[0]->per_of_child_separated_parents_linked_sw}}</td>
             </tr>
             <tr>
-              <td>Date of Visit of Health Department</td>
+              <td>Date of Visit of Health</td>
               <td>{{$facilities_data[0]->date_visit_of_health}}</td>
             </tr>
             <tr>
-              <td>Date of Visit of PHED Department</td>
+              <td>Date of Visit of PHED</td>
               <td>{{$facilities_data[0]->date_visit_of_phed}}</td>
             </tr>
             <tr>
-              <td>Date of Visit of Social Welfare Department</td>
+              <td>Date of Visit of Social Welfare</td>
               <td>{{$facilities_data[0]->date_visit_of_social_welfare}}</td>
             </tr>
             <tr>
-              <td>Date of Visit of CAF&PD Department</td>
+              <td>Date of Visit of Caf&PD</td>
               <td>{{$facilities_data[0]->date_visit_of_cafpd}}</td>
             </tr>
             <tr>
-              <td>Date of Visit of Education Department</td>
+              <td>Date of Visit of Education</td>
               <td>{{$facilities_data[0]->date_visit_of_edu}}</td>
             </tr>
             <tr>
-              <td>Date of Visit of Power Department</td>
+              <td>Date of Visit of Power</td>
               <td>{{$facilities_data[0]->date_visit_of_pow}}</td>
             </tr>
             <tr>
-              <td>Date of Visit of MAHUD/CEO ADC Department</td>
+              <td>Date of Visit of MAHUD or CEO ADC</td>
               <td>{{$facilities_data[0]->date_visit_of_mahud_ceo_adc}}</td>
             </tr>
           </tbody>

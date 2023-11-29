@@ -85,9 +85,8 @@ class ReliefCampFacilitiesImport implements ToCollection, WithHeadingRow, WithCa
     public function collection(Collection $relief_camp_facilities)
     {
         foreach($relief_camp_facilities as $key=>$relief_camp_facility){
-                
+
             $relief_camp=$this->relief_camps->where('camp_code','=',$relief_camp_facility['camp_code'])->first();
-            
             ReliefCampFacility::create([
                 'number_of_persons'=>$relief_camp_facility['number_of_persons'],
                 'number_of_rooms'=>$relief_camp_facility['number_of_rooms'],
@@ -105,8 +104,8 @@ class ReliefCampFacilitiesImport implements ToCollection, WithHeadingRow, WithCa
                 'sufficient_cooking_utensils'=>strcasecmp($relief_camp_facility['sufficient_cooking_utensils_available'],'yes')==0 ||strcasecmp($relief_camp_facility['sufficient_cooking_utensils_available'],'y')==0 ?true:false,
                 'number_of_mattresses'=>$relief_camp_facility['number_of_mattresses'],
                 'mattress_ratio_per_person'=>$relief_camp_facility['mattress_ratio_per_persons']=='#DIV/0!'?0.0:$relief_camp_facility['mattress_ratio_per_persons'],
-                'number_of_badsheets'=>$relief_camp_facility['number_of_bedsheets'],
-                'badsheet_ratio_per_person'=>$relief_camp_facility['bedsheet_ratio_per_persons']=='#DIV/0!'?0.0:$relief_camp_facility['bedsheet_ratio_per_persons'],
+                'number_of_bedsheets'=>$relief_camp_facility['number_of_bedsheets'],
+                'bedsheet_ratio_per_person'=>$relief_camp_facility['bedsheet_ratio_per_persons']=='#DIV/0!'?0.0:$relief_camp_facility['bedsheet_ratio_per_persons'],
                 'number_of_pillows'=>$relief_camp_facility['number_of_pillows'],
                 'pillow_ratio_per_person'=>$relief_camp_facility['pillow_ratio_per_persons']=='#DIV/0!'?0.0:$relief_camp_facility['pillow_ratio_per_persons'],
                 'number_of_blankets'=>$relief_camp_facility['number_of_blankets'],
@@ -135,8 +134,8 @@ class ReliefCampFacilitiesImport implements ToCollection, WithHeadingRow, WithCa
                 'number_of_pregnant_women_linked_health'=>$relief_camp_facility['number_of_pregnant_women_linked_to_health_facilities'],
                 'per_of_pregnant_women_linked_health'=>$relief_camp_facility['per_of_pregnant_women_linked_to_health_facilities']=='#DIV/0!'?0.0:$relief_camp_facility['per_of_pregnant_women_linked_to_health_facilities'],
                 'number_of_disabled_person'=>$relief_camp_facility['number_of_specially_abled_person'],
-                'number_of_disabled_person_liked_facility'=>$relief_camp_facility['number_of_specially_abled_persons_linked_to_some_facility'],
-                'per_of_disabled_person_liked_facility'=>$relief_camp_facility['per_of_specially_abled_persons_linked']=='#DIV/0!'?0.0:$relief_camp_facility['per_of_specially_abled_persons_linked'],
+                'number_of_disabled_person_linked_facility'=>$relief_camp_facility['number_of_specially_abled_persons_linked_to_some_facility'],
+                'per_of_disabled_person_linked_facility'=>$relief_camp_facility['per_of_specially_abled_persons_linked']=='#DIV/0!'?0.0:$relief_camp_facility['per_of_specially_abled_persons_linked'],
                 'number_of_child_separated_parents'=>$relief_camp_facility['number_of_children_separated_from_parents'],
                 'number_of_child_separated_parents_linked_sw'=>$relief_camp_facility['number_of_children_separated_from_parents_linked_to_social_welfare'],
                 'per_of_child_separated_parents_linked_sw'=>$relief_camp_facility['per_of_separated_children_linked']=='#DIV/0!'?0.0:$relief_camp_facility['per_of_separated_children_linked'],
@@ -149,6 +148,6 @@ class ReliefCampFacilitiesImport implements ToCollection, WithHeadingRow, WithCa
                 'date_visit_of_mahud_ceo_adc'=>$relief_camp_facility['date_of_visit_of_mahud_or_ceo_adc'],
                 'relief_camp_id'=>$relief_camp->id
             ]);
-         }
+        }
     }
 }

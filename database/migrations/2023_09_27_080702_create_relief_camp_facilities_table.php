@@ -30,8 +30,8 @@ return new class extends Migration
             $table->boolean('sufficient_cooking_utensils')->default(true);
             $table->integer('number_of_mattresses')->nullable();
             $table->double('mattress_ratio_per_person')->nullable();
-            $table->integer('number_of_badsheets')->nullable();
-            $table->double('badsheet_ratio_per_person')->nullable();
+            $table->integer('number_of_bedsheets')->nullable();
+            $table->double('bedsheet_ratio_per_person')->nullable();
             $table->integer('number_of_pillows')->nullable();
             $table->double('pillow_ratio_per_person')->nullable();
             $table->integer('number_of_blankets')->nullable();
@@ -63,8 +63,8 @@ return new class extends Migration
             $table->integer('number_of_pregnant_women_linked_health')->nullable();
             $table->double('per_of_pregnant_women_linked_health')->nullable();
             $table->integer('number_of_disabled_person')->nullable();
-            $table->integer('number_of_disabled_person_liked_facility')->nullable();
-            $table->double('per_of_disabled_person_liked_facility')->nullable();
+            $table->integer('number_of_disabled_person_linked_facility')->nullable();
+            $table->double('per_of_disabled_person_linked_facility')->nullable();
             $table->integer('number_of_child_separated_parents')->nullable();
             $table->integer('number_of_child_separated_parents_linked_sw')->nullable();
             $table->double('per_of_child_separated_parents_linked_sw')->nullable();
