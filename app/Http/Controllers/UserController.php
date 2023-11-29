@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth,Hash};
 use Session;
+use App\Models\{SubDivision,ReliefCamp};
 
 use App\Models\User;
 
@@ -14,7 +15,8 @@ class UserController extends Controller
     private $user_role=[
         'super_user'=>0,
         'admin_user'=>1,
-        'normal_user'=>2
+        'moderate_user'=>2,
+        'normal_user'=>3
     ];
     //
     public function showLogin(){
@@ -48,14 +50,27 @@ class UserController extends Controller
 
 
     public function showRegister(){
-        return view('auth.create_user');
+        $sub_divisions=SubDivision::get();
+        return view('auth.create_user',['sub_divisions'=>$sub_divisions]);
+    }
+
+    public function userJurisdiction(Request $request){
+        if($request->get('user_role')=="moderate_user"){
+            $sub_divisions=SubDivision::select('id','sub_division_name')->get();
+            return response()->json(json_encode($sub_divisions));
+        }else if($request->get('user_role')=="normal_user"){
+            $relief_camps=ReliefCamp::select('id','relief_camp_name')->get();
+            return response()->json(json_encode($relief_camps));
+        }
     }
 
     public function createUser(Request $request){
        $request->validate(
                     ['full_name'=>'required',
                     'email'=>'required | email',
-                    'password'=>'required | min:6 | max:12', 
+                    'password'=>'required | min:6 | max:12',
+                    'user_role'=>'required',
+                    'user_jurisdiction'=>'required' 
         ]);
 
         $user_data=$request->all();
