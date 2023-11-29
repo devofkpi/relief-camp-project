@@ -60,11 +60,8 @@ Create User
                   <input id="ajax_url" type="hidden" value="{{route('user_jurisdiction')}}" >
                 </div>
                 <div class="input-group mb-3">
-                  <select class="custom-select form-control-border" name="user_role" required>
+                  <select class="custom-select form-control-border" name="user_jurisdiction" id="user_jurisdiction" required>
                     <option value="" selected>--Please Select Jurisdiction--</option>
-                    @foreach ($sub_divisions as $sub_division)
-                      <option value="{{$sub_division->id}}">{{ucfirst($sub_division->sub_division_name)}}</option>
-                    @endforeach
                   </select>
                 </div>
                 </div>
@@ -87,13 +84,21 @@ Create User
     e.preventDefault();
     var user_role=$(this).val();
     var ajax_url=$('#ajax_url').val();
+    var selectOption='<option value="" selected>--Please Select Jurisdiction--</option>';
     $.ajax({
       type:"POST",
       url:ajax_url,
-      data:user_role,
+      data:{'user_role':user_role},
       dataType:'json',
       success:function(data){
-        console.log('hello');
+        $.each(JSON.parse(data),function(index,value){
+          if(user_role=='moderate_user'){
+            selectOption+='<option value="'+value.id+'">'+value.sub_division_name.charAt(0).toUpperCase() + value.sub_division_name.slice(1)+'</option>';
+          }else{
+            selectOption+='<option value="'+value.id+'">'+value.relief_camp_name.charAt(0).toUpperCase() + value.relief_camp_name.slice(1)+'</option>';
+          }
+          $('#user_jurisdiction').html(selectOption);
+        });
       },
       error:function(data){
         console.log(data);
