@@ -23,7 +23,7 @@ Show All User
               </thead>
               <tbody>
                 @php
-                    $role=['0'=>'Deputy Commissioner','1'=>'Additional Deputy Commissioner','2'=>'Sub Divisional Officer'];
+                    $role=['0'=>'Super User','1'=>'Deputy Commissioner','2'=>'Sub Divisional Officer','3'=>'Normal User'];
                 @endphp
                 @foreach ($users as $count=>$user )
                 <tr>

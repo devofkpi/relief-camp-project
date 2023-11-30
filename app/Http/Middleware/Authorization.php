@@ -18,6 +18,7 @@ class Authorization
     {
         
         if(auth()->check()){
+            if(auth()->user()->role==0)
             return $next($request);
         }else{
             return redirect()->route('login');

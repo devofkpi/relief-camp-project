@@ -83,6 +83,14 @@ class UserController extends Controller
             'active'=>true
         ]);
 
+        if($user_data['user_role']=='moderate_user'){
+            $user->sub_division_id=$user_data['user_jurisdiction'];
+            $user->save();
+        }else if($user_data['user_role']=='normal_user'){
+            $user->relief_camp_id=$user_data['user_jurisdiction'];
+            $user->save();
+        }
+
         return redirect()->back()->withSuccess('User Created Successfully');
 
     }
