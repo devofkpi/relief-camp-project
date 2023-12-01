@@ -65,15 +65,16 @@ Dashboard
     </div>
     <!-- ./col -->
   </div>
+  @if(auth()->user()->role==0 || auth()->user()->role==1)
   <!-- /.row -->
   <div class="row">
     <div class="col-lg-6">
     <!-- PIE CHART -->
     <div class="card card-danger">
       <div class="card-header">
-        <h3 class="card-title">Pie Chart</h3>
-
-        
+        <h3 class="card-title">Sub Division wise Camp Chart</h3>
+        <input id="piechart_labels" type="hidden" value="{{implode(',',array_keys($pie_chart_data))}}"/>
+        <input id="piechart_data" type="hidden" value="{{ implode(',',array_values($pie_chart_data))}}" />        
       </div>
       <div class="card-body">
         <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
@@ -153,6 +154,7 @@ Dashboard
             </table>
           </div>
           <!-- /.card-body -->
+          @endif
         </div>
         <!-- /.card -->
     </div>
@@ -162,19 +164,10 @@ Dashboard
 <script>
     $(function () {
       var donutData        = {
-      labels: [
-          'Kangpokpi',
-          'Champai',
-          'Waichong',
-          'Saitu',
-          'Kangchup',
-          'Bungte',
-          'Saikul',
-          'Lahungtin'
-      ],
+      labels: $('#piechart_labels').val().split(','),
       datasets: [
         {
-          data: [700,500,400,600,300,100,20,30],
+          data: $('#piechart_data').val().split(','),
           backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de','#5e1de2', '#16e945'],
         }
       ]
