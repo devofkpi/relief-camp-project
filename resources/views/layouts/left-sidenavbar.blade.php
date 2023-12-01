@@ -41,6 +41,7 @@
                       <p>Show All Relief Camps</p>
                     </a>
                   </li>
+                  @if(auth()->user()->role!=3)
                   <li class="nav-item">
                     <a href="{{route('create_relief_camp')}}" class="nav-link">
                       <i class="nav-icon fas fa-plus"></i>
@@ -53,8 +54,10 @@
                       <p>Upload Camp Facilities</p>
                     </a>
                   </li>
+                  @endif
                 </ul>
               </li>
+              @if(auth()->user()->role!=3)
               <li class="nav-item {{$current_route=='relief_camp_by_sub'?'menu-open':''}}">
                 <a href="#" class="nav-link ">
                   <i class="nav-icon fas fa-city"></i>
@@ -64,13 +67,23 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  @foreach ($nav_sub_data as $data )
-                  <li class="nav-item">
-                    <a href="{{route('relief_camp_by_sub',['sub_division_id'=>$data->id])}}" class="nav-link">
-                      <p>{{$data->sub_division_name}}</p>
-                    </a>
-                  </li>
-                  @endforeach
+                    @foreach ($nav_sub_data as $data )
+                    @if(auth()->user()->role==0 || auth()->user()->role==1)
+                    <li class="nav-item">
+                      <a href="{{route('relief_camp_by_sub',['sub_division_id'=>$data->id])}}" class="nav-link">
+                        <p>{{$data->sub_division_name}}</p>
+                      </a>
+                    </li>
+                    @elseif(auth()->user()->role==2 && (auth()->user()->sub_division_id==$data->id))
+                    <li class="nav-item">
+                      <a href="{{route('relief_camp_by_sub',['sub_division_id'=>$data->id])}}" class="nav-link">
+                        <p>{{$data->sub_division_name}}</p>
+                      </a>
+                    </li>
+                    @endif
+                    @endforeach                    
+
+
                 </ul>
               </li>
               <li class="nav-item">
@@ -96,6 +109,7 @@
                   </li>
                 </ul>
               </li>
+              @endif
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-users"></i>
@@ -200,6 +214,7 @@
                   </p>
                 </a>
               </li> --}}
+              @if(auth()->user()->role!=3)
               <li class="nav-item">
                 <a href="{{route('register')}}" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
@@ -227,6 +242,7 @@
                   </p>
                 </a>
               </li>
+              @endif
             </ul>
         </nav>
         </div>

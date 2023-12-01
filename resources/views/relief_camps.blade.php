@@ -27,27 +27,44 @@ Available Relief Camps
             </tr>
           </thead>
           <tbody>
+            @if(auth()->user()->role!=3 )
             @foreach ($relief_camp_data as $count=>$relief_camp )
-            <tr>
-                <th scope="row">{{++$count}}</th>
-                <td><a href="{{ route('camp_facilities')}}/{{$relief_camp->id}}"> {{$relief_camp->relief_camp_name}}</a></td>
-                <td>{{ $relief_camp->camp_code}}</td>
-                <td>{{ ucfirst($relief_camp->address->address)}}<br>{{ ucfirst($relief_camp->address->city) }}, {{ ucfirst($relief_camp->address->state)}}</td>
-                <td>{{ $relief_camp->nodalOfficer->officer_name}}</td>
-                <td><a href="{{route('demo_by_camp',$relief_camp->id)}}">View</a></td>
-                <td>
-                  <a href="{{ route('show_camp_by_id',$relief_camp->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
-                  <a href="{{ route('update_relief_camp',$relief_camp->id  )}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
-                  <a href="" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
-              </td>
-            </tr>
-            @endforeach
+                <tr>
+                    <th scope="row">{{++$count}}</th>
+                    <td><a href="{{ route('camp_facilities')}}/{{$relief_camp->id}}"> {{$relief_camp->relief_camp_name}}</a></td>
+                    <td>{{ $relief_camp->camp_code}}</td>
+                    <td>{{ ucfirst($relief_camp->address->address)}}<br>{{ ucfirst($relief_camp->address->city) }}, {{ ucfirst($relief_camp->address->state)}}</td>
+                    <td>{{ $relief_camp->nodalOfficer->officer_name}}</td>
+                    <td><a href="{{route('demo_by_camp',$relief_camp->id)}}">View</a></td>
+                    <td>
+                      <a href="{{ route('show_camp_by_id',$relief_camp->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
+                      <a href="{{ route('update_relief_camp',$relief_camp->id  )}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
+                      <a href="" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
+                  </td>
+                </tr>
+                @endforeach
+              @else
+                <tr>
+                  <td><a href="{{ route('camp_facilities')}}/{{$relief_camp_data->id}}"> {{$relief_camp_data->relief_camp_name}}</a></td>
+                  <td>{{ $relief_camp_data->camp_code}}</td>
+                  <td>{{ ucfirst($relief_camp_data->address->address)}}<br>{{ ucfirst($relief_camp_data->address->city) }}, {{ ucfirst($relief_camp_data->address->state)}}</td>
+                  <td>{{ $relief_camp_data->nodalOfficer->officer_name}}</td>
+                  <td><a href="{{route('demo_by_camp',$relief_camp_data->id)}}">View</a></td>
+                  <td>
+                    <a href="{{ route('show_camp_by_id',$relief_camp_data->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
+                    <a href="{{ route('update_relief_camp',$relief_camp_data->id  )}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
+                    <a href="" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
+                </td>
+              </tr>
+              @endif
           </tbody>
         </table>
       </div>
       <!-- /.card-body -->
       <div class="card-footer">
+        @if(auth()->user()->role!=3 )
         {{$relief_camp_data->links()}}
+        @endif
       </div>
     </div>
     <!-- /.card -->

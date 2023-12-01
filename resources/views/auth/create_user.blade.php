@@ -51,6 +51,7 @@ Create User
                     </div>
                   </div>
                 </div>
+                @if(auth()->user()->role==0 || auth()->user()->role==1)
                 <div class="input-group mb-3">
                   <select class="custom-select form-control-border" name="user_role" id="user_role" required>
                     <option value="" selected>--Please select user role--</option>
@@ -64,6 +65,13 @@ Create User
                     <option value="" selected>--Please Select Jurisdiction--</option>
                   </select>
                 </div>
+                @elseif(auth()->user()->role==2)
+                <div class="input-group mb-3">
+                  <select class="custom-select form-control-border" name="user_jurisdiction" id="user_jurisdiction" required>
+                    <option value="" selected>--Please Select Jurisdiction--</option>
+                  </select>
+                </div>
+                @endif
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary" name="create_user">Register</button>

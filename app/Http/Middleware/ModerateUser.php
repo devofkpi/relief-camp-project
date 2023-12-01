@@ -6,8 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-
-class Authorization
+class ModerateUser
 {
     /**
      * Handle an incoming request.
@@ -16,12 +15,13 @@ class Authorization
      */
     public function handle(Request $request, Closure $next): Response
     {
-        
         if(auth()->check()){
-            return $next($request);
+            if(auth()->user()->role==2)
+                return $next($request);
+            else
+              return  abort(403, 'Unauthorized action.');
         }else{
             return redirect()->route('login');
         }
-        
     }
 }

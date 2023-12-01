@@ -13,8 +13,18 @@ class NodalOfficerController extends Controller
     private $nodal_officers;
 
     public function showAll(){
-        $this->nodal_officers=NodalOfficer::with('reliefCamps')->paginate(25);
-        return view('nodal_officers',['nodal_officers_data'=>$this->nodal_officers]);    
+        $user=auth()->user();
+        if($user->role==0 || $user->role==1){
+            $this->nodal_officers=NodalOfficer::with('reliefCamps')->paginate(25);
+            return view('nodal_officers',['nodal_officers_data'=>$this->nodal_officers]);    
+        }else if($user->role==2){
+            $sub_division_id=$user->sub_division_id;
+            $this->nodal_officers=NodalOfficer::with('reliefCamps')->whereHas('reliefCamps',
+            function($q) use($sub_division_id){
+                $q->where('sub_division_id','=',$sub_division_id);
+            })->paginate(25);
+            return view('nodal_officers',['nodal_officers_data'=>$this->nodal_officers]);
+        }
     }
 
     public function showById($id=null){

@@ -15,8 +15,18 @@ class ReliefCampController extends Controller
     //
     public function showAllCamps(){
 
-        $relief_camp_data=ReliefCamp::paginate(25);
-        return view('relief_camps',['relief_camp_data'=>$relief_camp_data]);
+        $user=auth()->user();
+
+        if($user->role==0){
+            $relief_camp_data=ReliefCamp::paginate(25);
+            return view('relief_camps',['relief_camp_data'=>$relief_camp_data]);
+        }else if($user->role==2){
+            $relief_camp_data=ReliefCamp::where('sub_division_id','=',$user->sub_division_id)->paginate(25);
+            return view('relief_camps',['relief_camp_data'=>$relief_camp_data]);
+        }else if($user->role==3){
+            $relief_camp_data=ReliefCamp::findOrFail($user->relief_camp_id);
+            return view('relief_camps',['relief_camp_data'=>$relief_camp_data]);
+        }
     }
 
     public function showBySubDivision($sub_division_id=null)

@@ -15,8 +15,18 @@ class ReliefCampDemographyController extends Controller
     public $import_failures;
     //
     public function showAllInmates(){
-        $this->demography_data=ReliefCampDemography::paginate(25);
-        return view('relief_camp_demography',['demography_data'=>$this->demography_data]);
+        $user=auth()->user();
+        if($user->role==0 || $user->role==1){
+            $this->demography_data=ReliefCampDemography::paginate(25);
+            return view('relief_camp_demography',['demography_data'=>$this->demography_data]);
+        }else if($user->role==2){
+            $sub_division_id=$user->sub_division_id;
+            $this->demography_data=ReliefCampDemography::with('reliefCamp')->whereHas('reliefCamp',
+                function($q) use($sub_division_id){
+                    $q->where('sub_division_id','=',$sub_division_id);
+                })->paginate(25);
+            return view('relief_camp_demography',['demography_data'=>$this->demography_data]);
+        }
     }
 
     public function showInmateById($inamte_id=null){
