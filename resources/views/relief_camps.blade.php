@@ -45,6 +45,7 @@ Available Relief Camps
                 @endforeach
               @else
                 <tr>
+                  <th scope="row">1.</th>
                   <td><a href="{{ route('camp_facilities')}}/{{$relief_camp_data->id}}"> {{$relief_camp_data->relief_camp_name}}</a></td>
                   <td>{{ $relief_camp_data->camp_code}}</td>
                   <td>{{ ucfirst($relief_camp_data->address->address)}}<br>{{ ucfirst($relief_camp_data->address->city) }}, {{ ucfirst($relief_camp_data->address->state)}}</td>

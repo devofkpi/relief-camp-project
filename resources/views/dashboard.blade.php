@@ -48,6 +48,7 @@ Dashboard
         <a href="{{route('demo_by_cat','female')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
     </div>
+    @if(auth()->user()->role!=3)
     <!-- ./col -->
     <div class="col-lg-3">
       <!-- small box -->
@@ -63,6 +64,7 @@ Dashboard
         <a href="{{ route('relief_camps')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
     </div>
+    @endif
     <!-- ./col -->
   </div>
   @if(auth()->user()->role==0 || auth()->user()->role==1)

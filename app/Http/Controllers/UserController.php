@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth,Hash};
 use Session;
-use App\Models\{SubDivision,ReliefCamp};
+use App\Models\{SubDivision,NodalOfficer};
 
 use App\Models\User;
 
@@ -41,7 +41,15 @@ class UserController extends Controller
         ])->onlyInput('email');
 
     }
+    public function viewProfile(){
+        
+    }
+    public function editProfile(){
 
+    }
+    public function changePassword(){
+
+    }
     public function logout(Request $request){
         $request->session()->flush();
         Auth::logout();
@@ -59,8 +67,8 @@ class UserController extends Controller
             $sub_divisions=SubDivision::select('id','sub_division_name')->get();
             return response()->json(json_encode($sub_divisions));
         }else if($request->get('user_role')=="normal_user"){
-            $relief_camps=ReliefCamp::select('id','relief_camp_name')->get();
-            return response()->json(json_encode($relief_camps));
+            $nodal_officers=NodalOfficer::select('id','officer_name')->get();
+            return response()->json(json_encode($nodal_officers));
         }
     }
 
@@ -74,7 +82,7 @@ class UserController extends Controller
         ]);
 
         $user_data=$request->all();
-
+        
         $user=User::create(
             ['name'=>$user_data['full_name'],
             'email'=>$user_data['email'],
@@ -87,7 +95,7 @@ class UserController extends Controller
             $user->sub_division_id=$user_data['user_jurisdiction'];
             $user->save();
         }else if($user_data['user_role']=='normal_user'){
-            $user->relief_camp_id=$user_data['user_jurisdiction'];
+            $user->nodal_officer_id=$user_data['user_jurisdiction'];
             $user->save();
         }
 

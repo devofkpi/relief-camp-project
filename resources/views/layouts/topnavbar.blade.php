@@ -14,11 +14,21 @@
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <div class="dropdown-divider"></div>
-        <a href="{{route('logout')}}" class="dropdown-item">
-          Logout<i class="float-right fas fa-sign-out-alt"></i>
-         
+        <a href="#" class="dropdown-item">
+          View Profile<i class="float-right fas fa-eye"></i>        
         </a>
-        
+        <div class="dropdown-divider"></div>
+        <a href="#" class="dropdown-item">
+          Edit Profile<i class="float-right fas fa-user-edit"></i>        
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="#" class="dropdown-item">
+          Change Password<i class="float-right fas fa-key"></i>        
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="{{route('logout')}}" class="dropdown-item">
+          Logout<i class="float-right fas fa-sign-out-alt"></i>        
+        </a>        
     </li>
     
   </ul>

@@ -24,7 +24,7 @@ class ReliefCampController extends Controller
             $relief_camp_data=ReliefCamp::where('sub_division_id','=',$user->sub_division_id)->paginate(25);
             return view('relief_camps',['relief_camp_data'=>$relief_camp_data]);
         }else if($user->role==3){
-            $relief_camp_data=ReliefCamp::findOrFail($user->relief_camp_id);
+            $relief_camp_data=ReliefCamp::where('nodal_officer_id','=',$user->nodal_officer_id)->first();
             return view('relief_camps',['relief_camp_data'=>$relief_camp_data]);
         }
     }

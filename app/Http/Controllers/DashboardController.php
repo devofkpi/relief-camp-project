@@ -40,6 +40,13 @@ class DashboardController extends Controller
             $male_count=$inmates->where('gender','=','male')->count();
             $female_count=$inmates->where('gender','=','female')->count();
             return view('dashboard',['inmates_count'=>$inmates_count, 'male_count'=>$male_count,'female_count'=>$female_count,'relief_camp_count'=>$relief_camp_count]);
+        }else if($user->role==3){
+            $relief_camp_data=ReliefCamp::where('nodal_officer_id','=',$user->nodal_officer_id)->first();
+            $inmates=ReliefCampDemography::where('relief_camp_id','=',$relief_camp_data->id)->where('active_status','=',1)->get();
+            $inmates_count=$inmates->count();
+            $male_count=$inmates->where('gender','=','male')->count();
+            $female_count=$inmates->where('gender','=','female')->count();
+            return view('dashboard',['inmates_count'=>$inmates_count, 'male_count'=>$male_count,'female_count'=>$female_count]);
         }
 
     }
