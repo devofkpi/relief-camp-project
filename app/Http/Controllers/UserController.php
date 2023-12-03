@@ -42,12 +42,30 @@ class UserController extends Controller
 
     }
     public function viewProfile(){
-        
+        $user=auth()->user();
+        if($user->role==0 || $user->role==1 || $user->role==2){
+            return view('auth.view_profile',['user'=>$user]);
+        }else if($user->role==3){
+            $nodal_officer=NodalOfficer::findOrFail($user->nodal_officer_id);
+            return view('auth.view_profile',['user'=>$user,'nodal_officer'=>$nodal_officer]);
+        }
     }
-    public function editProfile(){
+    public function editProfileGet(){
+        $user=auth()->user();
+        if($user->role==0 || $user->role==1 || $user->role==2){
+            return view('auth.edit_profile',['user'=>$user]);
+        }else if($user->role==3){
+            $nodal_officer=NodalOfficer::findOrFail($user->nodal_officer_id);
+            return view('auth.edit_profile',['user'=>$user,'nodal_officer'=>$nodal_officer]);
+        }
+    }
+    public function editProfilePost(){
 
     }
-    public function changePassword(){
+    public function pwdChangeGet(){
+
+    }
+    public function pwdChangePost(){
 
     }
     public function logout(Request $request){

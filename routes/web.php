@@ -34,7 +34,13 @@ use App\Http\Controllers\{  ReliefCampFacilityController,
 Route::controller(UserController::class)->group(function(){
     Route::get('/login','showLogin')->name('login');
     Route::post('/login','authUser')->name('login.post');
-    Route::get('logout','logout')->name('logout');
+    Route::get('/logout','logout')->name('logout');
+
+    Route::get('/view/profile','viewProfile')->name('view_profile');
+    Route::get('/edit/profile','editProfileGet')->name('edit_profile');
+    Route::post('/edit/profile','editProfilePost')->name('edit_profile.post');
+    Route::get('/change/pwd','pwdChangeGet')->name('change_pwd');
+    Route::post('/change/pwd','pwdChangePost')->name('change_pwd.post');
     
     Route::get('/register','showRegister')->name('register');
     Route::post('/register','createUser')->name('register.post');
