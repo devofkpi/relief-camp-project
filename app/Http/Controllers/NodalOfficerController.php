@@ -47,6 +47,13 @@ class NodalOfficerController extends Controller
         return redirect()->back()->withSuccess('Nodal Officer Created Successfully');
     }
 
+    public function updateNodalOfficer($nodal_officer_id=null){
+        if($nodal_officer_id!=null){
+            $this->nodal_officer=NodalOfficer::findOrFail($nodal_officer_id);
+            return view('auth.update_nodal_officer',['nodal_officer'=>$this->nodal_officer]);
+        }
+    }
+
     public function nodalOfficerImport(Request $request){
         Excel::import(new NodalOfficerImport, $request->file('nodal_officer_excel'));
         $this->nodal_officers=NodalOfficer::get();

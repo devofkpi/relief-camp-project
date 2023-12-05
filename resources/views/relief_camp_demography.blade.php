@@ -21,9 +21,10 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($demography_data as $count=>$demography )
+        @php $count= ($demography_data->perPage()*($demography_data->currentPage()-1))+1; @endphp
+        @foreach ($demography_data as $demography )
         <tr>
-            <th scope="row">{{++$count}}</th>
+            <th scope="row">{{$count++}}</th>
             <td>{{ucfirst($demography->person_name)}}</td>
             <td>{{$demography->age}}</td>
             <td>{{ucfirst($demography->gender)}}</td>
