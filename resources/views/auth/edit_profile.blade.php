@@ -14,10 +14,19 @@ View Profile
             @csrf
             <div class="card-body">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Full name" name="full_name" id="full_name">
+                <input type="text" class="form-control" value="{{$user->name}}" name="full_name" id="full_name">
             </div>
+            @if($user->role==3)
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" value="{{$nodal_officer->officer_contact}}" name="officer_cotact">
+            </div>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" value="{{$nodal_officer->officer_designation}}" name="officer_designation">
+            </div>
+
+          @endif
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary" name="create_user">Register</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
           </form>
         </div>

@@ -22,9 +22,10 @@ Nodal Officers
                 </tr>
               </thead>
               <tbody>
-                @foreach ($nodal_officers_data as $count=>$nodal_officer )
+                @php $count= ($nodal_officers_data->perPage()*($nodal_officers_data->currentPage()-1))+1; @endphp
+                @foreach ($nodal_officers_data as $nodal_officer )
                 <tr>
-                    <th scope="row">{{++$count}}</th>
+                    <th scope="row">{{$count++}}</th>
                     <td><a href=""> {{$nodal_officer->officer_name}}</a></td>
                     <td>{{ $nodal_officer->officer_designation}}</td>
                     <td>{{ $nodal_officer->officer_contact}}</td>
@@ -35,7 +36,7 @@ Nodal Officers
                     </td>
                     <td>
                       <a href="{{ route('show_nodal_officer_by_id',$nodal_officer->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
-                      <a href="" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
+                      <a href="{{ route('update_nodal_officer',$nodal_officer->id)}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
                       <a href="" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
                   </td>
                 </tr>

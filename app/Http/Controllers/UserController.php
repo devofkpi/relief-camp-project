@@ -59,11 +59,24 @@ class UserController extends Controller
             return view('auth.edit_profile',['user'=>$user,'nodal_officer'=>$nodal_officer]);
         }
     }
-    public function editProfilePost(){
-
+    public function editProfilePost(Request $request){
+        $user=auth()->user();
+        if($user->role==0 || $user->role==1 || $user->role==2){
+            $user->name=$request->input('full_name');
+            $user->save();
+            return redirect()->back()->with('success','Profile Updated Successfully');
+        }else if($user->role==3){
+            $nodal_officer=NodalOfficer::findOrFail($user->nodal_officer_id);
+            $user->name=$request->input('full_name');
+            $user->save();
+            $nodal_officer->officer_contact=$request->input('officer_cotact');
+            $nodal_officer->officer_designation=$request->input('officer_designation');
+            $nodal_officer->save();
+            return redirect()->back()->with('success','Profile Updated Successfully');
+        }
     }
     public function pwdChangeGet(){
-
+        return view('auth.change_pwd');
     }
     public function pwdChangePost(){
 

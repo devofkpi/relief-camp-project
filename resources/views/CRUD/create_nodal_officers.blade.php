@@ -55,6 +55,16 @@
                       </div>
                     </div>
                   </div>
+                  <div class="row justify-content-center">
+                    <div class="col-8">
+                      <select multiple class="custom-select form-control-border mt-4" name="nodal_officer_id" id="nodal_officer">
+                        <option selected>--Please select Relief Camp--</option>
+                        @foreach ($relief_camps as $relief_camp)
+                          <option value="{{$relief_camp->id}}">{{$relief_camp->relief_camp_name}}</option>                            
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>  
                 </div>
                 <div class="row justify-content-center">
                   <div class="col-8">

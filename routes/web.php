@@ -66,13 +66,15 @@ Route::group(['middleware'=>['authorization']],function(){
     Route::prefix('/relief_camp')->controller(ReliefCampController::class)->group(function () {
         Route::get('/','showAllCamps')->name('relief_camps');
         Route::get('/create','showReliefCampForm')->name('create_relief_camp');
-        Route::post('/create','createReliefCamp')->name('create_relief_camp.post');
+        Route::post('/create','createOrUpdateReliefCamp')->name('create_relief_camp.post');
         Route::get('/update/{id}','showReliefCampForm')->name('update_relief_camp');
         Route::get('/show/{id}','showCampById')->name('show_camp_by_id');
-        Route::post('/update','updateReliefCamp')->name('update_relief_camp.post');
+        Route::post('/update','createOrUpdateReliefCamp')->name('update_relief_camp.post');
         Route::post('/upload','reliefCampImport')->name('upload_relief_camp.post');
         Route::get('/sub_division/{sub_division_id?}', 'showBySubDivision')->name('relief_camp_by_sub');
         Route::get('/nodal_officer/{nodal_officer_id?}', 'showByNodalOfficer')->name('relief_camp_by_nodal');
+
+        Route::get('/delete/{relief_camp_id}','deleteReliefCamp')->name('delete_relief_camp');
     
     });
     
@@ -99,8 +101,10 @@ Route::group(['middleware'=>['authorization']],function(){
         Route::get('/','showAll')->name('show_all_nodal_officer');
         Route::get('/show/{id}','showById')->name('show_nodal_officer_by_id');
         Route::get('/create','showNodalOfficerForm')->name('create_nodal_officer');
-        Route::post('/create','createNodalOfficer')->name('create_nodal_officer.post');
+        Route::post('/create','createOrUpdateNodalOfficer')->name('create_nodal_officer.post');
         Route::post('upload','nodalOfficerImport')->name('upload_nodal_officer.post');
+        Route::get('/update/{nodal_officer_id}','showNodalOfficerForm')->name('update_nodal_officer');
+        Route::post('/update','createOrUpdateNodalOfficer')->name('update_nodal_officer.post');
     });
 
     Route::controller(PoliceStationController::class)->group(function () {

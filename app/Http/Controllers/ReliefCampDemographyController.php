@@ -154,6 +154,13 @@ class ReliefCampDemographyController extends Controller
         }
     }
 
+    public function updateInamte(Request $request){
+        if($inamte_id!=null){
+            $inmate=ReliefCampDemography::findOrFail($inamte_id);
+            
+        }
+    }
+
     public function createInmates(Request $request){
 
         $family_head=FamilyHead::create(['family_head_name'=>$request['family_head_name']]);
