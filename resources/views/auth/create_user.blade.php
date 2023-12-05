@@ -117,8 +117,14 @@ Create User
   });
   $('#user_jurisdiction').on('change',function(e){
     e.preventDefault();
-    $('#full_name').val($('#user_jurisdiction option:selected').text());
-    $('#full_name').attr('readonly','readonly');
+    if($('#user_role').val()=='normal_user'){
+      $('#full_name').val($('#user_jurisdiction option:selected').text());
+      $('#full_name').attr('readonly','readonly');
+    }else{
+      $('#full_name').val('');
+      $('#full_name').removeAttr('readonly','readonly');
+    }
+    
   });
 </script>
 @endsection

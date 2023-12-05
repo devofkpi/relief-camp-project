@@ -34,6 +34,12 @@ use App\Http\Controllers\{  ReliefCampFacilityController,
 Route::controller(UserController::class)->group(function(){
     Route::get('/login','showLogin')->name('login');
     Route::post('/login','authUser')->name('login.post');
+ });
+ 
+Route::group(['middleware'=>['authorization']],function(){
+
+    Route::controller(UserController::class)->group(function(){
+    
     Route::get('/logout','logout')->name('logout');
 
     Route::get('/view/profile','viewProfile')->name('view_profile');
@@ -45,12 +51,14 @@ Route::controller(UserController::class)->group(function(){
     Route::get('/register','showRegister')->name('register');
     Route::post('/register','createUser')->name('register.post');
 
+    Route::get('/delete/user','deleteUser')->name('delete_user');
+
     Route::get('/user/showall','showAllUser')->name('show_all_user');
 
     Route::post('/user/userJurisdiction','userJurisdiction')->name('user_jurisdiction');
- });
- 
-Route::group(['middleware'=>['authorization']],function(){
+    
+    });
+
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/dashboard', 'show')->name('dashboard');
     });

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth,Hash};
 use Session;
-use App\Models\{SubDivision,NodalOfficer};
+use App\Models\{SubDivision,NodalOfficer,ReliefCamp};
 
 use App\Models\User;
 
@@ -121,9 +121,27 @@ class UserController extends Controller
 
     }
 
-    public function showAllUser(){
+    public function deleteUser($userId=null){
+        $user=User::findOrFail($userId);
+        $user->active_status=false;
+        $user->save();
+        return redirect()->back()->with('success','User account deactivated successfully');
+    }
 
-        $users=User::get();
-        return view('auth.show_all_user',['users'=>$users]);
+    public function showAllUser(){
+        $user=auth()->user();
+        $user_data=array();
+        if($user->role==1){
+            $users=User::get();
+            return view('auth.show_all_user',['users'=>$users]);
+        }else if($user->role==2){
+            $nodal_officers=ReliefCamp::select('nodal_officer_id')->where('sub_division_id',$user->sub_division_id)->get();
+            foreach($nodal_officers as $nodal_officer){
+               $user1= User::where('nodal_officer_id','=',$nodal_officer->nodal_officer_id)->first();
+                if($user1!=null)
+                    $user_data[]=$user1;
+            }
+            return view('auth.show_all_user',['users'=>$user_data]);
+        }
     }
 }
