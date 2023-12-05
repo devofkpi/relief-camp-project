@@ -36,7 +36,7 @@ Nodal Officers
                     </td>
                     <td>
                       <a href="{{ route('show_nodal_officer_by_id',$nodal_officer->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
-                      <a href="" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
+                      <a href="{{ route('update_nodal_officer',$nodal_officer->id)}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
                       <a href="" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
                   </td>
                 </tr>

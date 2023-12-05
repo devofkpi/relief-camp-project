@@ -32,13 +32,28 @@ Update Nodal Officer Details
                         <input type="text" class="form-control" value="{{ $nodal_officer->officer_contact }}" name="officer_contact" required>
                       </div>
                     </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="col-8">
+                    <select multiple class="custom-select form-control-border mt-4" name="nodal_officer_id" id="nodal_officer">
+                      @foreach ($nodal_officer->reliefCamps() as $assigned_relief_camp)
+                      <option selected value="{{$assigned_relief_camp->id}}">{{$assigned_relief_camp->relief_camp_name}}</option>
+                      @endforeach
+                      @php $assigned_relief_camp=$nodal_officer->reliefCamps();@endphp
+                      @dd($assigned_relief_camp)
+                      @foreach ($relief_camps as $relief_camp)
+                        @if()
+                        <option value="{{$relief_camp->id}}">{{$relief_camp->relief_camp_name}}</option>                            
+                      @endforeach
+                    </select>
+                  </div>
                 </div>                
                 <div class="row justify-content-center">
                   <div class="col-8">
                     <button type="submit" class="btn btn-primary">Update</button>
                   </div>
                 </div>
-                <input type="hidden" value="" name="relief_camp_id">
+                <input type="hidden" value="{{ $nodal_officer->id}}" name="nodal_officer_id">
               </form>
             </div>
           </div>

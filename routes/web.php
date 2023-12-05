@@ -93,9 +93,10 @@ Route::group(['middleware'=>['authorization']],function(){
         Route::get('/','showAll')->name('show_all_nodal_officer');
         Route::get('/show/{id}','showById')->name('show_nodal_officer_by_id');
         Route::get('/create','showNodalOfficerForm')->name('create_nodal_officer');
-        Route::post('/create','createNodalOfficer')->name('create_nodal_officer.post');
+        Route::post('/create','createOrUpdateNodalOfficer')->name('create_nodal_officer.post');
         Route::post('upload','nodalOfficerImport')->name('upload_nodal_officer.post');
-        Route::get('/update/{nodal_officer_id}','updateNodalOfficer')->name('update_nodal_officer');
+        Route::get('/update/{nodal_officer_id}','showNodalOfficerForm')->name('update_nodal_officer');
+        Route::post('/update','createOrUpdateNodalOfficer')->name('update_nodal_officer.post');
     });
 
     Route::controller(PoliceStationController::class)->group(function () {
