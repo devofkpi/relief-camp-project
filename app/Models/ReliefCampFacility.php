@@ -51,6 +51,7 @@ class ReliefCampFacility extends Model
         'provisioning_of_supplement',
         'availability_of_soap_consumable_in_days',
         'number_of_school_going_students',
+        'number_of_students_linked_to_school',
         'per_of_students_linked_to_school',
         'number_of_child_identified_anganwadi',
         'number_of_child_linked_anganwadi',

@@ -50,7 +50,7 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
             </tr>
             <tr>
                 <td>Water Availability Ratio</td>
-                <td>{{$facilities_data[0]->water_avail_ratio}}</td>
+                <td>{{round($facilities_data[0]->water_avail_ratio,2)}}</td>
             </tr>
             <tr>
                 <td>Number of Toilets</td>
@@ -58,7 +58,7 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
             </tr>
             <tr>
                 <td>Toilet Ratio per Person</td>
-                <td>{{$facilities_data[0]->toilet_ratio_per_person}}</td>
+                <td>{{round($facilities_data[0]->toilet_ratio_per_person,2)}}</td>
             </tr>
             <tr>
                 <td>Number of Buckets</td>
@@ -66,7 +66,7 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
             </tr>
             <tr>
                 <td>Bucket Ratio per Person</td>
-                <td>{{$facilities_data[0]->bucket_ratio_per_person}}</td>
+                <td>{{round($facilities_data[0]->bucket_ratio_per_person,2)}}</td>
             </tr>
             <tr>
                 <td>Number of Mugs</td>
@@ -74,7 +74,7 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
             </tr>
             <tr>
                 <td>Mug Ratio per Person</td>
-                <td>{{$facilities_data[0]->mug_ratio_per_person}}</td>
+                <td>{{round($facilities_data[0]->mug_ratio_per_person,2)}}</td>
             </tr>
             <tr>
                 <td>Sufficient Cooking Utensils Available</td>
@@ -86,7 +86,7 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
             </tr>
             <tr>
               <td>Mattress Ratio per Person</td>
-              <td>{{$facilities_data[0]->mattress_ratio_per_person}}</td>
+              <td>{{round($facilities_data[0]->mattress_ratio_per_person,2)}}</td>
             </tr>
             <tr>
               <td>Number of Bedsheets</td>
@@ -94,7 +94,7 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
             </tr>
             <tr>
               <td>Bedsheet Ratio per Person</td>
-              <td>{{$facilities_data[0]->bedsheet_ratio_per_person}}</td>
+              <td>{{round($facilities_data[0]->bedsheet_ratio_per_person,2)}}</td>
             </tr>
             <tr>
               <td>Number of Pillows</td>
@@ -102,7 +102,7 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
             </tr>
             <tr>
               <td>Pillow Ration per Person</td>
-              <td>{{$facilities_data[0]->pillow_ratio_per_person}}</td>
+              <td>{{round($facilities_data[0]->pillow_ratio_per_person,2)}}</td>
             </tr>
             <tr>
               <td>Number of Blankets</td>
@@ -110,7 +110,7 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
             </tr>
             <tr>
               <td>Blanket Ratio per Person</td>
-              <td>{{$facilities_data[0]->blanket_ratio_per_person}}</td>
+              <td>{{round($facilities_data[0]->blanket_ratio_per_person,2)}}</td>
             </tr>
             <tr>
               <td>Number of Mosquito Nets</td>
@@ -118,7 +118,7 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
             </tr>
             <tr>
               <td>Mosquito Net Ratio per Person</td>
-              <td>{{$facilities_data[0]->mosquito_ratio_per_person}}</td>
+              <td>{{round($facilities_data[0]->mosquito_ratio_per_person,2)}}</td>
             </tr>
             <tr>
               <td>Sufficient Lighting Facility Available</td>
@@ -130,7 +130,7 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
             </tr>
             <tr>
               <td>Fans Ratio per Person</td>
-              <td>{{$facilities_data[0]->fans_ratio_per_person}}</td>
+              <td>{{round($facilities_data[0]->fans_ratio_per_person,2)}}</td>
             </tr>
             <tr>
               <td>Sufficient Plates and Glasses Available</td>
@@ -156,14 +156,14 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
               <td>Availability of Veg in Days</td>
               <td>{{$facilities_data[0]->availability_of_veg_in_days}}</td>
             </tr>
-            <tr>
+            {{-- <tr>
               <td>Number of Person Staying at Night</td>
               <td>{{$facilities_data[0]->number_of_persons_staying_at_night}}</td>
             </tr>
             <tr>
               <td>Availability of Food Grains in Days</td>
               <td>{{$facilities_data[0]->availability_of_food_grains_in_days}}</td>
-            </tr>
+            </tr> --}}
             <tr>
               <td>Availability of Safe Drinking Water</td>
               <td>{{$facilities_data[0]->safe_drinking_water?'Yes':'No'}}</td>
@@ -186,7 +186,7 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
             </tr>
             <tr>
               <td>Percantage of Students linked to School</td>
-              <td>{{$facilities_data[0]->per_of_students_linked_to_school}}</td>
+              <td>{{$facilities_data[0]->per_of_students_linked_to_school}} %</td>
             </tr>
             <tr>
               <td>Number of Children Identified for Anganwadi</td>
@@ -198,7 +198,7 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
             </tr>
             <tr>
               <td>Percantage of Children linked to Anganwadi</td>
-              <td>{{$facilities_data[0]->per_child_linked_anganwadi}}</td>
+              <td>{{$facilities_data[0]->per_child_linked_anganwadi}} %</td>
             </tr>
             <tr>
               <td>Number of Pregnant Women</td>
@@ -210,7 +210,7 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
             </tr>
             <tr>
               <td>Percantage of Pregnant Women linked to Health facility</td>
-              <td>{{$facilities_data[0]->per_of_pregnant_women_linked_health}}</td>
+              <td>{{$facilities_data[0]->per_of_pregnant_women_linked_health}} %</td>
             </tr>
             <tr>
               <td>Number of Specially Abled Person</td>
@@ -222,7 +222,7 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
             </tr>
             <tr>
               <td>Percantage of Specially Abled Person Linked to Some Facility</td>
-              <td>{{$facilities_data[0]->per_of_disabled_person_linked_facility}}</td>
+              <td>{{$facilities_data[0]->per_of_disabled_person_linked_facility}} %</td>
             </tr>
             <tr>
               <td>Number of Children separated from parents</td>
@@ -234,35 +234,35 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
             </tr>
             <tr>
               <td>Percantage of Children Separated from parents linked to Social welfare</td>
-              <td>{{$facilities_data[0]->per_of_child_separated_parents_linked_sw}}</td>
+              <td>{{$facilities_data[0]->per_of_child_separated_parents_linked_sw}} %</td>
             </tr>
             <tr>
               <td>Date of Visit of Health</td>
-              <td>{{$facilities_data[0]->date_visit_of_health}}</td>
+              <td>{{date('d-F-y',strtotime(str_replace('/','-',$facilities_data[0]->date_visit_of_health)))}}</td>
             </tr>
             <tr>
               <td>Date of Visit of PHED</td>
-              <td>{{$facilities_data[0]->date_visit_of_phed}}</td>
+              <td>{{date('d-F-y',strtotime(str_replace('/','-',$facilities_data[0]->date_visit_of_phed)))}}</td>
             </tr>
             <tr>
               <td>Date of Visit of Social Welfare</td>
-              <td>{{$facilities_data[0]->date_visit_of_social_welfare}}</td>
+              <td>{{date('d-F-y',strtotime(str_replace('/','-',$facilities_data[0]->date_visit_of_social_welfare)))}}</td>
             </tr>
             <tr>
               <td>Date of Visit of Caf&PD</td>
-              <td>{{$facilities_data[0]->date_visit_of_cafpd}}</td>
+              <td>{{date('d-F-y',strtotime(str_replace('/','-',$facilities_data[0]->date_visit_of_cafpd)))}}</td>
             </tr>
             <tr>
               <td>Date of Visit of Education</td>
-              <td>{{$facilities_data[0]->date_visit_of_edu}}</td>
+              <td>{{date('d-F-y',strtotime(str_replace('/','-',$facilities_data[0]->date_visit_of_edu)))}}</td>
             </tr>
             <tr>
               <td>Date of Visit of Power</td>
-              <td>{{$facilities_data[0]->date_visit_of_pow}}</td>
+              <td>{{date('d-F-y',strtotime(str_replace('/','-',$facilities_data[0]->date_visit_of_pow)))}}</td>
             </tr>
             <tr>
               <td>Date of Visit of MAHUD or CEO ADC</td>
-              <td>{{$facilities_data[0]->date_visit_of_mahud_ceo_adc}}</td>
+              <td>{{date('d-F-y',strtotime(str_replace('/','-',$facilities_data[0]->date_visit_of_mahud_ceo_adc)))}}</td>
             </tr>
           </tbody>
         </table>

@@ -26,7 +26,12 @@
         <tr>
             <th scope="row">{{$count++}}</th>
             <td>{{ucfirst($demography->person_name)}}</td>
-            <td>{{$demography->age}}</td>
+            @php $age=explode('.',$demography->age);@endphp
+            @if(is_float($demography->age))
+            <td>{{$age[0]!=0?$age[0].'Year'.$age[1].'Month':$age[1].'Month'}}</td>
+            @else
+            <td>{{$demography->age.'Year'}}
+            @endif
             <td>{{ucfirst($demography->gender)}}</td>
             @if ($demography->orphan)
                 <td></td>
