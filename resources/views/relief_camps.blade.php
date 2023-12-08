@@ -2,7 +2,6 @@
 @section('title')
     Details
 @endsection
-
 @section('content_title')
 Available Relief Camps
 @endsection
@@ -23,7 +22,7 @@ Available Relief Camps
                 <th>Relief Camp Address</th>
                 <th>Nodal Officer</th>
                 <th>Demography</th>
-                <th>CRUD</th>
+                <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -40,7 +39,7 @@ Available Relief Camps
                     <td>
                       <a href="{{ route('show_camp_by_id',$relief_camp->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
                       <a href="{{ route('update_relief_camp',$relief_camp->id  )}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
-                      <a href="{{ route('delete_relief_camp',$relief_camp->id )}}" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
+                      <a href="{{ route('delete_relief_camp',$relief_camp->id )}}" class="mr-3 text-danger" ><i class="nav-icon fas fa-trash"></i></a>
                   </td>
                 </tr>
                 @endforeach
@@ -55,7 +54,7 @@ Available Relief Camps
                   <td>
                     <a href="{{ route('show_camp_by_id',$relief_camp_data->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
                     <a href="{{ route('update_relief_camp',$relief_camp_data->id  )}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
-                    <a href="{{ route('delete_relief_camp',$relief_camp->id )}}" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
+                    <a href="{{ route('delete_relief_camp',$relief_camp->id )}}" class="mr-3 text-danger" data-toggle="modal" data-target="#modal-sm"><i class="nav-icon fas fa-trash"></i></a>
                 </td>
               </tr>
               @endif

@@ -17,7 +17,7 @@
             <th>Relation</th>
             <th>Any Special Condition</th>
             <th>Address</th>
-            <th>CRUD</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -26,12 +26,12 @@
         <tr>
             <th scope="row">{{$count++}}</th>
             <td>{{ucfirst($demography->person_name)}}</td>
-            @php $age=explode('.',$demography->age);@endphp
+            {{-- @php $age=explode('.',$demography->age);@endphp
             @if(is_float($demography->age))
             <td>{{$age[0]!=0?$age[0].'Year'.$age[1].'Month':$age[1].'Month'}}</td>
             @else
             <td>{{$demography->age.'Year'}}
-            @endif
+            @endif --}}
             <td>{{ucfirst($demography->gender)}}</td>
             @if ($demography->orphan)
                 <td></td>
@@ -61,7 +61,7 @@
             <td>
                 <a href="{{ route('inmate_by_id',$demography->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
                 <a href="{{route('update_inmates',$demography->id)}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
-                <a href="" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
+                <a href="{{ route('delete_inmate',$demography->id)}}" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
             </td>
         </tr> 
         @endforeach  

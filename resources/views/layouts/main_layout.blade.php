@@ -24,6 +24,9 @@
   <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css')}}">
+  <!-- SweetAlert2 -->
+  {{-- <link rel="stylesheet" href="{{ asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}"> --}}
+
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css')}}">
   <link rel="stylesheet" href="{{ asset('css/style.css')}}">
@@ -84,6 +87,8 @@
 
 <!-- jQuery Knob Chart -->
 <script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js')}}"></script>
+<!-- SweetAlert2 -->
+{{-- <script src="{{asset('plugins/sweetalert2/sweetalert2.min.js')}}"></script> --}}
 
 <!-- Summernote -->
 <script src="{{ asset('plugins/summernote/summernote-bs4.min.js')}}"></script>

@@ -15,14 +15,14 @@ class NodalOfficerController extends Controller
     public function showAll(){
         $user=auth()->user();
         if($user->role==0 || $user->role==1){
-            $this->nodal_officers=NodalOfficer::with('reliefCamps')->paginate(25);
+            $this->nodal_officers=NodalOfficer::with('reliefCamps')->where('active_status','=',true)->paginate(25);
             return view('nodal_officers',['nodal_officers_data'=>$this->nodal_officers]);    
         }else if($user->role==2){
             $sub_division_id=$user->sub_division_id;
             $this->nodal_officers=NodalOfficer::with('reliefCamps')->whereHas('reliefCamps',
             function($q) use($sub_division_id){
                 $q->where('sub_division_id','=',$sub_division_id);
-            })->paginate(25);
+            })->where('active_status','=',true)->paginate(25);
             return view('nodal_officers',['nodal_officers_data'=>$this->nodal_officers]);
         }
     }
@@ -32,14 +32,14 @@ class NodalOfficerController extends Controller
         return view('CRUD.view_nodal_officer',['nodal_officer'=>$this->nodal_officer]);
     }
     
-    public function showNodalOfficerForm($id=null){
-        if($id==null){
+    public function showNodalOfficerForm($nodal_officer_id=null){
+        if($nodal_officer_id==null){
             $relief_camps=ReliefCamp::select('id','relief_camp_name')->get();
             return view('CRUD.create_nodal_officers',['relief_camps'=>$relief_camps]);
         }else{
             $relief_camps=ReliefCamp::select('id','relief_camp_name')->get();
             $nodal_officer=NodalOfficer::findOrFail($nodal_officer_id);
-            return view('auth.update_nodal_officer',['nodal_officer'=>$nodal_officer,'relief_camps'=>$relief_camps]);
+            return view('CRUD.update_nodal_officer',['nodal_officer'=>$nodal_officer,'relief_camps'=>$relief_camps]);
         }
     }
 
@@ -62,6 +62,12 @@ class NodalOfficerController extends Controller
         
     }
 
+    public function deleteNodalOfficer($nodal_officer_id){
+        $nodal_officer=NodalOfficer::findOrFail($nodal_officer_id);
+        $nodal_officer->active_status=false;
+        $nodal_officer->save();
+        return redirect()->back()->with('success','Nodal Officer Deleted');
+    }
 
     public function nodalOfficerImport(Request $request){
         Excel::import(new NodalOfficerImport, $request->file('nodal_officer_excel'));

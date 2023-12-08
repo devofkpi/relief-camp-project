@@ -18,7 +18,7 @@ Show All User
                     <th>Email</th>
                     <th>Role</th>
                     <th>Status</th>
-                    <th>CRUD</th>
+                    <th>Action</th>
                 </tr>
               </thead>
               <tbody>

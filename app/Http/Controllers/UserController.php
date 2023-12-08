@@ -144,7 +144,7 @@ class UserController extends Controller
     public function showAllUser(){
         $user=auth()->user();
         $user_data=array();
-        if($user->role==1){
+        if($user->role==0 || $user->role==1){
             $users=User::get();
             return view('auth.show_all_user',['users'=>$users]);
         }else if($user->role==2){

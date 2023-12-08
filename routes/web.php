@@ -13,7 +13,8 @@ use App\Http\Controllers\{  ReliefCampFacilityController,
                             ReliefCampController,
                             DashboardController,
                             ReliefCampDemographyController,
-                            NodalOfficerController
+                            NodalOfficerController,
+                            TrashHandleController
                         };
 
 /*
@@ -87,6 +88,7 @@ Route::group(['middleware'=>['authorization']],function(){
         Route::get('/update/{id?}','showInmatesForm')->name('update_inmates');
         Route::post('/create','createInmates')->name('create_inmates.post');
         Route::post('/upload','inmatesImport')->name('upload_inmates.post');
+        Route::get('delete/{id}','deleteInmate')->name('delete_inmate');
     
     });
     
@@ -105,6 +107,12 @@ Route::group(['middleware'=>['authorization']],function(){
         Route::post('upload','nodalOfficerImport')->name('upload_nodal_officer.post');
         Route::get('/update/{nodal_officer_id}','showNodalOfficerForm')->name('update_nodal_officer');
         Route::post('/update','createOrUpdateNodalOfficer')->name('update_nodal_officer.post');
+        Route::get('/delete/{id}','deleteNodalOfficer')->name('delete_nodal_officer');
+    });
+
+    Route::controller(TrashHandleController::class)->group(function(){
+        Route::get('trash/items','deletedItems')->name('deleted_items');
+        Route::get('restore/items/{table_name}/{id}','restoreItem')->name('restore_item');
     });
 
     Route::controller(PoliceStationController::class)->group(function () {
@@ -124,6 +132,7 @@ Route::group(['middleware'=>['authorization']],function(){
         Route::get('announcements', 'show')->name('announcements');
         Route::post('/orders', 'store');
     });
+
 });
 
 

@@ -28,9 +28,9 @@ Upload Inmates Data
         <div class="card-body">
           <div class="tab-content" id="custom-tabs-one-tabContent">
             <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
-              <form action="{{route('create_relief_camp.post')}}" method="post">
-                @csrf
                 <div class="card-body">
+                  <form action="{{route('create_relief_camp.post')}}" method="post">
+                    @csrf
                   <div class="row mb-3">
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Person Name" name="person_name" required>
@@ -124,7 +124,7 @@ Upload Inmates Data
                       <button type="submit" class="btn btn-primary">Create</button>
                     </div>
                   </div>
-              </form>
+                </form>
               </div>
             </div>
             <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
