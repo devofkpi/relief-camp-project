@@ -26,12 +26,16 @@
         <tr>
             <th scope="row">{{$count++}}</th>
             <td>{{ucfirst($demography->person_name)}}</td>
-            {{-- @php $age=explode('.',$demography->age);@endphp
-            @if(is_float($demography->age))
-            <td>{{$age[0]!=0?$age[0].'Year'.$age[1].'Month':$age[1].'Month'}}</td>
-            @else
-            <td>{{$demography->age.'Year'}}
-            @endif --}}
+            @php $age_in_year=(int)$demography->age;
+                 $age_in_month=$demography->age-$age_in_year;
+            @endphp
+            @if($age_in_year!=0 && $age_in_month!=0)
+            <td>{{$age_in_year.' Year '.$age_in_month.' Months '}}</td>
+            @elseif($age_in_year!=0 && $age_in_month==0)
+            <td>{{$age_in_year.' Year '}}
+            @elseif($age_in_year==0 && $age_in_month!=0)
+            <td>{{$age_in_month.' Months '}}
+            @endif
             <td>{{ucfirst($demography->gender)}}</td>
             @if ($demography->orphan)
                 <td></td>
@@ -54,6 +58,8 @@
                 <td><span>Physically Disabled</span></td>
             @elseif($demography->orphan)
                 <td><span>Orphan</span></td>
+            @elseif($demography->any_special_condition)
+                <td><span>{{$demography->any_special_condition}}</span></td>
             @else
             <td></td>
             @endif

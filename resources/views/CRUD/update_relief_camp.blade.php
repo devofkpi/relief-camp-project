@@ -13,51 +13,38 @@ Create Relief Camp
 @section('content1')
 <div class="row justify-content-center">
     <div class="col-12">
-      <div class="card card-primary">
+      <div class="card">
         <div class="card-body">
-          <div class="tab-content" id="custom-tabs-one-tabContent">
-            <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
               <form action="{{route('update_relief_camp.post')}}" method="post">
                 @csrf
                 <div class="row justify-content-center">
                   <div class="col-8">
-                    <div class="input-group mb-3">
-                      <input type="text" class="form-control" value="{{ $relief_camp->relief_camp_name }}" name="relief_camp_name" required>
-                      <div class="input-group-append">
-                        <div class="input-group-text">
-                          <span class="fas fa-home"></span>
-                        </div>
-                      </div>
+                    <div class="form-group mb-3">
+                      <label for="relief_camp_name">Relief Camp Name</label>
+                      <input type="text" class="form-control" value="{{ $relief_camp->relief_camp_name }}" id="relief_camp_name" name="relief_camp_name" required>
                     </div>
                   </div>
                 </div>
                 <div class="row justify-content-center">
                   <div class="col-8">
-                      <div class="input-group mb-3">
-                        <input type="text" class="form-control" value="{{ $relief_camp->camp_code }}" name="camp_code" required>
-                        <div class="input-group-append">
-                          <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
-                          </div>
-                        </div>
+                      <div class="form-group mb-3">
+                        <label for="camp_code">Camp Code</label>
+                        <input type="text" class="form-control" value="{{ $relief_camp->camp_code }}" id="camp_code" name="camp_code" required>
                       </div>
                   </div>
                 </div>
                 <div class="row justify-content-center">
                   <div class="col-8">
-                      <div class="input-group mb-3">
-                        <input type="text" class="form-control"  value="{{ $relief_camp->address->address }}" name="location" required>
-                        <div class="input-group-append">
-                          <div class="input-group-text">
-                            <span class="fas fa-address-card"></span>
-                          </div>
-                        </div>
+                      <div class="form-group mb-3">
+                        <label for="camp_address">Relief Camp Address</label>
+                        <input type="text" class="form-control"  value="{{ $relief_camp->address->address }}" id="camp_address" name="location" required>
                       </div>
                   </div>
                 </div>
                 <div class="row justify-content-center">
                   <div class="col-8">
-                    <div class="input-group mb-3">
+                    <div class="form-group mb-3">
+                      <label for="sub_division">Select Subdivision</label>
                       <select  class="custom-select form-control-border mt-4" name="sub_division_id" id="sub_division">
                         <option  selected value="{{ $relief_camp->subDivision->id}}">{{ $relief_camp->subDivision->sub_division_name }}</option>
                         @foreach ($sub_divisions as $sub_division)
@@ -71,7 +58,8 @@ Create Relief Camp
                 </div>
                 <div class="row justify-content-center">
                   <div class="col-8">
-                    <div class="input-group mb-3">
+                    <div class="form-group mb-3">
+                      <label for="nodal_officer">Select Nodal Officer</Select></label>
                       <select  class="custom-select form-control-border mt-4" name="nodal_officer_id" id="nodal_officer">
                         <option selected value="{{ $relief_camp->nodalOfficer->id }}">{{ $relief_camp->nodalOfficer->officer_name }}</option>
                         @foreach ($nodal_officers as $nodal_officer)
@@ -90,8 +78,6 @@ Create Relief Camp
                 </div>
                 <input type="hidden" value="{{ $relief_camp->id}}" name="relief_camp_id">
               </form>
-            </div>
-          </div>
         </div>
         <!-- /.card -->
       </div>

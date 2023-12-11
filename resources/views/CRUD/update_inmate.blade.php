@@ -13,34 +13,36 @@ Update Inmate Details
 @section('content1')
 <div class="row justify-content-center">
     <div class="col-8">
-      <div class="card card-primary">
+      <div class="card">
         <div class="card-body">
-          <div class="tab-content" id="custom-tabs-one-tabContent">
-            <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
               <form action="" method="post">
                 @csrf
                 <div class="row mb-3">
-                  <div class="col-6">
-                    <input type="text" class="form-control" value="{{$inmate->person_name}}" name="person_name" required>
+                  <div class="col-6 form-group">
+                    <label for="person_name">Person Name</label>
+                    <input type="text" class="form-control" value="{{$inmate->person_name}}" id="person_name" name="person_name" required>
                   </div>
-                  <div class="col-6">
+                  <div class="col-6 form-group">
+                    <label for="family_head">Family Head Name</label>
                     @if($inmate->familyHead)
-                      <input type="text" class="form-control" value="{{ $inmate->familyHead->family_head_name }}" name="relief_camp_name">
+                      <input type="text" class="form-control" value="{{ $inmate->familyHead->family_head_name }}" id="family_head_name" name="family_head_name">
                     @else
-                      <input type="text" class="form-control" placeholder="Family Head Name" name="relief_camp_name">
+                      <input type="text" class="form-control" placeholder="Family Head Name" id="family_head_name" name="family_head_name">
                     @endif                  
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <div class="col-6">
+                  <div class="col-6 form-group">
+                    <label for="family_head_relation">Relation with family head</label>
                     @if ($inmate->familyHeadRelation)
-                      <input type="text" class="form-control" value="{{ $inmate->familyHeadRelation->family_head_relation }}" name="relief_camp_name" required>                            
+                      <input type="text" class="form-control" value="{{ $inmate->familyHeadRelation->family_head_relation }}" id="family_head_relation" name="family_head_relation" required>                            
                     @else
-                      <input type="text" class="form-control" placeholder="Family Head Relation" name="relief_camp_name" required>
+                      <input type="text" class="form-control" placeholder="Family Head Relation" id="family_head_realtion" name="family_head_relation" required>
                     @endif                  
                   </div>
-                  <div class="col-6">
-                      <select class="form-control">
+                  <div class="col-6 form-group">
+                    <label for="gender">Select Gender</label>
+                      <select id="gender" class="form-control">
                         @if ($inmate->gender=='male')
                           <option selected value="male">Male</option>
                           <option value="female">Female</option>
@@ -58,11 +60,13 @@ Update Inmate Details
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Age" name="age" required>
+                  <div class="col-6 form-group">
+                    <label for="age">Age</label>
+                    <input type="text" class="form-control" placeholder="Age" id="age" name="age" required>
                   </div>
-                  <div class="col-6">
-                      <input type="text" class="form-control" value="{{ $inmate->contact_number}}" name="contact_number">                    
+                  <div class="col-6 form-group">
+                      <label for="contact_number">Contact Number</label>
+                      <input type="text" class="form-control" value="{{ $inmate->contact_number}}" id="contact_number" name="contact_number">                    
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -119,11 +123,22 @@ Update Inmate Details
                     </div> 
                 </div>
                 <div class="row mb-3">
-                  <div class="col-6">
-                      <input type="text" class="form-control" value="{{$inmate->profession}}" name="profession">
+                  <div class="col-6 form-group">
+                    <label for="profession">Profession</label>
+                      <input type="text" class="form-control" value="{{$inmate->profession}}" id="profession" name="profession">
                     </div>
-                  <div class="col-6">
-                    <input type="text" class="form-control" value="{{$inmate->willing_to_goback?'Yes':'No'}}" name="willing_to_goback" required>
+                  <div class="col-6 form-group">
+                    <span>Willing to Go Back your Village</span>
+                      <div class="form-group">
+                          <div class="form-check">
+                              <input class="form-check-input"  id="willing_yes" type="radio" name="willing_to_goback" value="true" {{$inmate->willing_to_goback?'checked':''}}>
+                              <label class="form-check-label" for="willing_yes">Yes</label>
+                          </div>
+                          <div class="form-check">
+                              <input class="form-check-input" id="willing_no" type="radio" name="willing_to_goback" value="false" {{$inmate->willing_to_goback?'':'checked'}}>
+                              <label class="form-check-label" for="willing_no">No</label>
+                          </div>
+                      </div>
                   </div>
                 </div>               
                 <div class="row">
@@ -133,8 +148,6 @@ Update Inmate Details
                 </div>
                 <input type="hidden" value="" name="relief_camp_id">
               </form>
-            </div>
-          </div>
         </div>
         <!-- /.card -->
       </div>

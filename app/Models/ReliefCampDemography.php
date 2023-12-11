@@ -25,6 +25,7 @@ class ReliefCampDemography extends Model
         'physically_disabled',
         'orphan',
         'lactating',
+        'any_special_condition',
         'profession',
         'willing_to_goback',
         'remark',
