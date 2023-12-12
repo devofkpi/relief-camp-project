@@ -13,10 +13,10 @@ View Profile
             @csrf
             <div class="card-body">
             <div class="input-group mb-3">
-                <input type="password" placeholder="Password" class="form-control" name="full_name" id="full_name">
+                <input type="password" placeholder="Password" class="form-control" name="password" id="password">
             </div>
             <div class="input-group mb-3">
-                <input type="password" placeholder="Confirm Password" class="form-control" name="full_name" id="full_name">
+                <input type="password" placeholder="Confirm Password" class="form-control" name="cnf_password" id="cnf_password">
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>

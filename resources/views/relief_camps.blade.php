@@ -26,8 +26,8 @@ Available Relief Camps
             </tr>
           </thead>
           <tbody>
-            @php $count= ($relief_camp_data->perPage()*($relief_camp_data->currentPage()-1))+1; @endphp
             @if(auth()->user()->role!=3 )
+            @php $count= ($relief_camp_data->perPage()*($relief_camp_data->currentPage()-1))+1; @endphp
             @foreach ($relief_camp_data as $relief_camp )
                 <tr>
                     <th scope="row">{{$count++}}</th>
@@ -53,8 +53,6 @@ Available Relief Camps
                   <td><a href="{{route('demo_by_camp',$relief_camp_data->id)}}">View</a></td>
                   <td>
                     <a href="{{ route('show_camp_by_id',$relief_camp_data->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
-                    <a href="{{ route('update_relief_camp',$relief_camp_data->id  )}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
-                    <a href="{{ route('delete_relief_camp',$relief_camp->id )}}" class="mr-3 text-danger" data-toggle="modal" data-target="#modal-sm"><i class="nav-icon fas fa-trash"></i></a>
                 </td>
               </tr>
               @endif

@@ -44,7 +44,7 @@ Route::group(['middleware'=>['authorization']],function(){
     Route::get('/logout','logout')->name('logout');
 
     Route::get('/view/profile','viewProfile')->name('view_profile');
-    Route::get('/edit/profile','editProfileGet')->name('edit_profile');
+    Route::get('/edit/profile/{id?}','editProfileGet')->name('edit_profile');
     Route::post('/edit/profile','editProfilePost')->name('edit_profile.post');
     Route::get('/change/pwd','pwdChangeGet')->name('change_pwd');
     Route::post('/change/pwd','pwdChangePost')->name('change_pwd.post');
@@ -52,7 +52,7 @@ Route::group(['middleware'=>['authorization']],function(){
     Route::get('/register','showRegister')->name('register');
     Route::post('/register','createUser')->name('register.post');
 
-    Route::get('/delete/user','deleteUser')->name('delete_user');
+    Route::get('/delete/user/{id}','deleteUser')->name('delete_user');
 
     Route::get('/user/showall','showAllUser')->name('show_all_user');
 

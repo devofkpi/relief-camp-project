@@ -32,7 +32,10 @@ class UserController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            if(auth()->user()->default_pwd_change)
+                return redirect()->intended('dashboard');
+            else
+                return view('auth.change_default_pwd');
         }
 
          
@@ -50,8 +53,12 @@ class UserController extends Controller
             return view('auth.view_profile',['user'=>$user,'nodal_officer'=>$nodal_officer]);
         }
     }
-    public function editProfileGet(){
-        $user=auth()->user();
+    public function editProfileGet($user_id=null){
+        if($user_id==null){
+            $user=auth()->user();
+        }else{
+            $user=User::findOrFail($user_id);
+        }
         if($user->role==0 || $user->role==1 || $user->role==2){
             return view('auth.edit_profile',['user'=>$user]);
         }else if($user->role==3){
@@ -78,9 +85,18 @@ class UserController extends Controller
     public function pwdChangeGet(){
         return view('auth.change_pwd');
     }
-    public function pwdChangePost(){
-
+    public function pwdChangePost(Request $request){
+        $user=auth()->user();
+        if($request['password']==$request['cnf_password']){
+            $user->password=Hash::make($request['password']);
+            $user->default_pwd_change=true;
+            $user->save();
+            return redirect()->intended('dashboard');
+        }else{
+            return redirect()->back()->with('error','Password and Confirm password does not match');
+        }
     }
+
     public function logout(Request $request){
         $request->session()->flush();
         Auth::logout();
@@ -134,9 +150,9 @@ class UserController extends Controller
 
     }
 
-    public function deleteUser($userId=null){
+    public function deleteUser($userId){
         $user=User::findOrFail($userId);
-        $user->active_status=false;
+        $user->active=false;
         $user->save();
         return redirect()->back()->with('success','User account deactivated successfully');
     }
@@ -145,12 +161,12 @@ class UserController extends Controller
         $user=auth()->user();
         $user_data=array();
         if($user->role==0 || $user->role==1){
-            $users=User::get();
+            $users=User::where([['active','=',true],['id','!=',$user->id]])->get();
             return view('auth.show_all_user',['users'=>$users]);
         }else if($user->role==2){
             $nodal_officers=ReliefCamp::select('nodal_officer_id')->where('sub_division_id',$user->sub_division_id)->get();
             foreach($nodal_officers as $nodal_officer){
-               $user1= User::where('nodal_officer_id','=',$nodal_officer->nodal_officer_id)->first();
+               $user1= User::where([['active','=',true],['id','!=',$user->id],['nodal_officer_id','=',$nodal_officer->nodal_officer_id]])->first();
                 if($user1!=null)
                     $user_data[]=$user1;
             }

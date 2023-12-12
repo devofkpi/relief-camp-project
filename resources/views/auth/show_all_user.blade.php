@@ -32,9 +32,9 @@ Show All User
                     <td>{{ $user->email}}</td>
                     <td>{{ $role[$user->role]}}</td>
                     <td>{{ $user->active==1?'Active':'Inactive'}}</td>
-                    <td><a href="" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
-                        <a href="" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
-                        <a href="" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
+                    <td>
+                        <a href="{{ route('edit_profile',$user->id)}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
+                        <a href="{{ route('delete_user',$user->id)}}" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
                     </td>
                 </tr>
                 @endforeach

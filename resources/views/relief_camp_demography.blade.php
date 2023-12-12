@@ -64,11 +64,18 @@
             <td></td>
             @endif
             <td>{{ucfirst($demography->address->address)}}</br>{{ucfirst($demography->address->city)}}, {{ucfirst($demography->address->state)}}</td>
-            <td>
-                <a href="{{ route('inmate_by_id',$demography->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
-                <a href="{{route('update_inmates',$demography->id)}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
-                <a href="{{ route('delete_inmate',$demography->id)}}" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
-            </td>
+            @if(auth()->user()->role!=3)
+                <td>
+                    <a href="{{ route('inmate_by_id',$demography->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
+                    <a href="{{route('update_inmates',$demography->id)}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
+                    <a href="{{ route('delete_inmate',$demography->id)}}" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
+                </td>
+            @else
+                <td>
+                    <a href="{{ route('inmate_by_id',$demography->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
+                    <a href="{{route('update_inmates',$demography->id)}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
+                </td>
+            @endif
         </tr> 
         @endforeach  
         </tbody>
