@@ -37,12 +37,34 @@ Nodal Officers
                     <td>
                       <a href="{{ route('show_nodal_officer_by_id',$nodal_officer->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
                       <a href="{{ route('update_nodal_officer',$nodal_officer->id)}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
-                      <a href="{{ route('delete_nodal_officer',$nodal_officer->id)}}" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
+                      <a href="{{ route('delete_nodal_officer',$nodal_officer->id)}}" class="mr-3 text-danger" data-toggle="modal" data-target="#modal-danger" id="delete_nodal_officer"><i class="nav-icon fas fa-trash"></i></a>
                   </td>
                 </tr>
                 @endforeach
               </tbody>
             </table>
+            <div class="modal fade" id="modal-danger">
+              <div class="modal-dialog">
+                <div class="modal-content bg-danger">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Delete Nodal Officer</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Are you sure you want to delete it ?&hellip;</p>
+                  </div>
+                  <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                    <a href="" class="btn btn-outline-light" id="delete_modal">Confirm</a>
+                  </div>
+                </div>
+                <!-- /.modal-content -->
+              </div>
+              <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
@@ -52,4 +74,14 @@ Nodal Officers
         <!-- /.card -->
       </div>
     </div>
+@endsection
+
+@section('custom_script')
+<script>
+  $('#delete_nodal_officer').on('click',function(e){
+    var url=$(this).attr('href');
+    console.log(url);
+    $('#delete_modal').attr('href',url);
+  });
+</script>
 @endsection

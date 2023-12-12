@@ -40,7 +40,7 @@ class UserController extends Controller
 
          
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'wrong_credentials' => 'Either email id or password is incorrect.',
         ])->onlyInput('email');
 
     }
@@ -51,6 +51,8 @@ class UserController extends Controller
         }else if($user->role==3){
             $nodal_officer=NodalOfficer::findOrFail($user->nodal_officer_id);
             return view('auth.view_profile',['user'=>$user,'nodal_officer'=>$nodal_officer]);
+        }else{
+            return  abort(403, 'Unauthorized action.');
         }
     }
     public function editProfileGet($user_id=null){
@@ -64,10 +66,12 @@ class UserController extends Controller
         }else if($user->role==3){
             $nodal_officer=NodalOfficer::findOrFail($user->nodal_officer_id);
             return view('auth.edit_profile',['user'=>$user,'nodal_officer'=>$nodal_officer]);
+        }else{
+            return  abort(403, 'Unauthorized action.');
         }
     }
     public function editProfilePost(Request $request){
-        $user=auth()->user();
+        $user=User::findOrFail($request['user_id']);
         if($user->role==0 || $user->role==1 || $user->role==2){
             $user->name=$request->input('full_name');
             $user->save();
@@ -80,6 +84,8 @@ class UserController extends Controller
             $nodal_officer->officer_designation=$request->input('officer_designation');
             $nodal_officer->save();
             return redirect()->back()->with('success','Profile Updated Successfully');
+        }else{
+            return  abort(403, 'Unauthorized action.');
         }
     }
     public function pwdChangeGet(){
@@ -87,13 +93,17 @@ class UserController extends Controller
     }
     public function pwdChangePost(Request $request){
         $user=auth()->user();
+       $validated= $request->validate([
+            'password'=>'required',
+            'cnf_password'=>'required',
+        ]);
         if($request['password']==$request['cnf_password']){
             $user->password=Hash::make($request['password']);
             $user->default_pwd_change=true;
             $user->save();
             return redirect()->intended('dashboard');
         }else{
-            return redirect()->back()->with('error','Password and Confirm password does not match');
+            return view('auth.change_default_pwd')->withErrors(['pwd_not_match'=>'Password and Confirm password does not match']);
         }
     }
 

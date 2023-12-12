@@ -7,12 +7,13 @@ Create Relief Camp
  <!-- Select2 -->
  <link rel="stylesheet" href='{{ asset("/plugins/select2/css/select2.min.css")}}'>
  <link rel="stylesheet" href='{{ asset("/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css")}}'>
+ <link rel="stylesheet" href={{ asset('/plugins/toastr/toastr.min.css')}}>
 
 @endsection
 
 @section('content1')
 <div class="row justify-content-center">
-    <div class="col-12">
+    <div class="col-8">
       <div class="card">
         <div class="card-body">
               <form action="{{route('update_relief_camp.post')}}" method="post">
@@ -78,6 +79,9 @@ Create Relief Camp
                 </div>
                 <input type="hidden" value="{{ $relief_camp->id}}" name="relief_camp_id">
               </form>
+              @if(session()->has('success'))
+                <p style="display: none" id="edit_msg">{{session()->get('success')}}</p>
+              @endif
         </div>
         <!-- /.card -->
       </div>
@@ -88,6 +92,7 @@ Create Relief Camp
 <script src="{{ asset("/plugins/select2/js/select2.full.min.js")}}"></script>
 <!-- bs-custom-file-input -->
 <script src="{{ asset('/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+<script src="{{ asset('/plugins/toastr/toastr.min.js')}}"></script>
 <script>
   $(function () {
     //Initialize Select2 Elements
@@ -100,5 +105,15 @@ Create Relief Camp
 
     bsCustomFileInput.init();
   })
+</script>
+
+<!-- Toastr -->
+<script>
+$(window).on('load',function(e) {
+      var toastr_msg=$('#edit_msg').text();
+      if(toastr_msg){
+        toastr.success(toastr_msg);
+      }
+});
 </script>
 @endsection

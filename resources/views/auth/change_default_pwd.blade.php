@@ -23,6 +23,13 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">You are only one step a way, Please change your default password to continue.</p>
+      @if($errors->has('pwd_not_match'))
+        <p class="login-box-msg text-danger">{{$errors->first('pwd_not_match')}}
+      @elseif($errors->has('password'))
+        <p class="login-box-msg text-danger">{{$errors->first('password')}}
+      @elseif($errors->has('cnf_password'))
+        <p class="login-box-msg text-danger">{{$errors->first('cnf_password')}}
+      @endif
       <form action="{{route('change_pwd.post')}}" method="post">
         @csrf
         <div class="input-group mb-3">

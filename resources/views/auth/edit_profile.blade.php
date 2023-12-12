@@ -2,6 +2,10 @@
 @section('title')
 View Profile
 @endsection
+@section('page_related_css')
+  <!-- Toastr -->
+  <link rel="stylesheet" href={{ asset('/plugins/toastr/toastr.min.css')}}>
+@endsection
 @section('content1')
 <div class="row justify-content-center">
     <div class="col-md-6">
@@ -23,13 +27,29 @@ View Profile
             <div class="input-group mb-3">
               <input type="text" class="form-control" value="{{$nodal_officer->officer_designation}}" name="officer_designation">
             </div>
-
-          @endif
+            
+            @endif
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
             </div>
+            <input type="hidden" value="{{ $user->id}}" name="user_id">
           </form>
+          @if(session()->has('success'))
+            <p style="display: none" id="edit_msg">{{session()->get('success')}}</p>
+          @endif
         </div>
       </div>
 </div>
+@endsection
+@section('custom_script')
+<!-- Toastr -->
+<script src="{{ asset('/plugins/toastr/toastr.min.js')}}"></script>
+<script>
+$(window).on('load',function(e) {
+      var toastr_msg=$('#edit_msg').text();
+      if(toastr_msg){
+        toastr.success(toastr_msg);
+      }
+});
+</script>
 @endsection

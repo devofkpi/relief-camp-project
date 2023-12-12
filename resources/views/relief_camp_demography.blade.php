@@ -68,7 +68,7 @@
                 <td>
                     <a href="{{ route('inmate_by_id',$demography->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
                     <a href="{{route('update_inmates',$demography->id)}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
-                    <a href="{{ route('delete_inmate',$demography->id)}}" class="mr-3 text-danger"><i class="nav-icon fas fa-trash"></i></a>
+                    <a href="{{ route('delete_inmate',$demography->id)}}" class="mr-3 text-danger" data-toggle="modal" data-target="#modal-danger" id="delete_inmate"><i class="nav-icon fas fa-trash"></i></a>
                 </td>
             @else
                 <td>
@@ -80,6 +80,28 @@
         @endforeach  
         </tbody>
     </table>
+    <div class="modal fade" id="modal-danger">
+        <div class="modal-dialog">
+          <div class="modal-content bg-danger">
+            <div class="modal-header">
+              <h4 class="modal-title">Delete Inmate</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure you want to delete it ?&hellip;</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+              <a href="" class="btn btn-outline-light" id="delete_modal">Confirm</a>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
 </div>
 <!-- /.card-body -->
 <div class="card-footer">
@@ -89,4 +111,13 @@
 <!-- /.card -->
 </div>
 </div>
+@endsection
+@section('custom_script')
+<script>
+  $('#delete_inmate').on('click',function(e){
+    var url=$(this).attr('href');
+    console.log(url);
+    $('#delete_modal').attr('href',url);
+  });
+</script>
 @endsection

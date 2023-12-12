@@ -23,7 +23,13 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
-
+      @if($errors->has('email'))
+          <p class="login-box-msg text-danger">{{$errors->first('email')}}</p>
+      @elseif($errors->has('password'))
+        <p class="login-box-msg text-danger">{{$errors->first('password')}}</p>
+      @elseif($errors->has('wrong_credentials'))
+        <p class="login-box-msg text-danger">{{$errors->first('wrong_credentials')}}</p>
+      @endif
       <form action="{{route('login.post')}}" method="post">
         @csrf
         <div class="input-group mb-3">
@@ -43,14 +49,6 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember" name="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
-          </div>
           <!-- /.col -->
           <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block" name="login">Sign In</button>
