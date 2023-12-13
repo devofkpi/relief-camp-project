@@ -29,7 +29,7 @@ Upload Inmates Data
           <div class="tab-content" id="custom-tabs-one-tabContent">
             <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
                 <div class="card-body">
-                  <form action="{{route('create_relief_camp.post')}}" method="post">
+                  <form action="{{route('create_inmate.post')}}" method="post">
                     @csrf
                   <div class="row mb-3">
                     <div class="col-6">
@@ -114,6 +114,16 @@ Upload Inmates Data
                   <div class="row mb-3">
                     <div class="col-6">
                         <input type="text" class="form-control" placeholder="Profession" name="profession" required>
+                      </div>
+                      <div class="col-6 form-group">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" name="address">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <div class="col-6 form-group">
+                        <label for="any_special_condition">Any Special Condition</label>
+                        <input type="text"  class="form-control" id="any_special_condition" name="any_special_condition">
                       </div>
                     <div class="col-6">
                       <input type="text" class="form-control" placeholder="Willing to Go Back to Village" name="willing_to_goback" required>

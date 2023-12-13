@@ -85,7 +85,7 @@ Dashboard
     </div>
     <!-- /.card -->
     </div>
-    <div class="col-lg-6">
+    {{-- <div class="col-lg-6">
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Simple Full Width Table</h3>
@@ -154,7 +154,7 @@ Dashboard
                 </tr>
               </tbody>
             </table>
-          </div>
+          </div> --}}
           <!-- /.card-body -->
           @endif
         </div>

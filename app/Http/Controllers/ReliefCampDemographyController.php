@@ -146,47 +146,68 @@ class ReliefCampDemographyController extends Controller
 
     public function showInmatesForm($inamte_id=null){
         if($inamte_id==null){
-            $relief_camps=ReliefCamp::select('id','relief_camp_name')->get();
+            $relief_camps=ReliefCamp::select('id','relief_camp_name','camp_code')->get();
             return view('CRUD.create_inmates',['relief_camps'=>$relief_camps]);
         }else{
-            $inmate=ReliefCampDemography::with('familyHead')->with('familyHeadRelation')->with('address')->find($inamte_id);
-            return view('CRUD.update_inmate',['inmate'=>$inmate]);
+            $relief_camps=ReliefCamp::select('id','relief_camp_name','camp_code')->get();
+            $inmate=ReliefCampDemography::with('familyHead')->with('familyHeadRelation')->with('address')->with('reliefCamp')->find($inamte_id);
+            return view('CRUD.update_inmate',['inmate'=>$inmate,'relief_camps'=>$relief_camps]);
         }
     }
 
-    public function updateInamte(Request $request){
-        if($inamte_id!=null){
-            $inmate=ReliefCampDemography::findOrFail($inamte_id);
+    public function createOrUpdateInmate(Request $request){
+
+        $inmate=ReliefCampDemography::with(['address','family_head_name','family_head_relation'])->find($request->input('inmate_id'));
+
+        if($inmate==null){
+
+            $family_head=FamilyHead::create(['family_head_name'=>$request['family_head_name']]);
             
+            $family_head_relation=FamilyHeadRelation::where('family_head_relation','=',$request['relation'])->first();
+    
+            $address=Address::create(['address'=>$request['address']]);
+    
+            $inmates=ReliefCampDemography::create([
+                'person_name'=>$request['person_name'],
+                'family_head_id'=>$family_head->id,
+                'family_head_relation_id'=>$family_head_relation->id,
+                'gender'=>$request['gender'],
+                'age'=>$request['age'],
+                'contact_number'=>$request['contact_number'],
+                'physically_disabled'=>$request['physically_disabled'],
+                'orphan'=>$request['orphan'],
+                'lactating'=>$request['lactating'],
+                'profession'=>$request['profession'],
+                'any_special_condition'=>$request['any_special_condition'],
+                'willing_to_goback'=>$request['willing_to_goback'],
+                'remark'=>$request['remark'],
+                'address_id'=>$address->id,
+                'relief_camp_id'=>$request['relief_camp_id']
+            ]);
+    
+            return redirect()->back()->withSuccess('Inmates created successfully');
+        }else{
+
+            $inmate->familyHead()->family_head_name=$request['family_head_name'];
+            $inmate->familyHeadRelation()->family_head_realtion=$request['family_head_realation'];
+            $inmate->address()->address=$request['address'];
+            $inmate->person_name=$request['person_name'];
+            $inmate->gender=$request['gender'];
+            $inmate->age=$request['age'];
+            $inmate->contact_number=$request['contact_number'];
+            $inmate->physically_disabled=$request['physically_disabled'];
+            $inmate->orphan=$request['orphan'];
+            $inmate->lactating=$request['lactating'];
+            $inmate->profession=$request['profession'];
+            $inmate->willing_to_goback=$request['willing_to_goback'];
+            $inmate->remark=$request['remark'];
+            $inmate->relief_camp_id=$request['relief_camp_id'];
+            $inmate->save();
+            
+            return redirect()->back()->withSuccess('update_msg','Inmate details updated successfully'); 
+
         }
-    }
 
-    public function createInmates(Request $request){
-
-        $family_head=FamilyHead::create(['family_head_name'=>$request['family_head_name']]);
-        
-        $family_head_relation=FamilyHeadRelation::where('family_head_relation','=',$request['relation'])->first();
-
-        $address=Address::create(['address'=>$request['address']]);
-
-        $inmates=ReliefCampDemography::create([
-            'person_name'=>$request['person_name'],
-            'family_head_id'=>$family_head->id,
-            'family_head_relation_id'=>$family_head_relation->id,
-            'gender'=>$request['gender'],
-            'age'=>$request['age'],
-            'contact_number'=>$request['contact_number'],
-            'physically_disabled'=>$request['physically_disabled'],
-            'orphan'=>$request['orphan'],
-            'lactating'=>$request['lactating'],
-            'profession'=>$request['profession'],
-            'willing_to_goback'=>$request['willing_to_goback'],
-            'remark'=>$request['remark'],
-            'address_id'=>$address->id,
-            'relief_camp_id'=>$request['relief_camp_id']
-        ]);
-
-        return redirect()->back()->withSuccess('Inmates created successfully');
 
     }
 

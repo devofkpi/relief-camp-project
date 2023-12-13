@@ -86,7 +86,8 @@ Route::group(['middleware'=>['authorization']],function(){
         Route::get('/category/{category?}','showByCategory')->name('demo_by_cat');
         Route::get('/create','showInmatesForm')->name('create_inmates');
         Route::get('/update/{id?}','showInmatesForm')->name('update_inmates');
-        Route::post('/create','createInmates')->name('create_inmates.post');
+        Route::post('/create','createOrUpdateInmate')->name('create_inmate.post');
+        Route::post('/create','createOrUpdateInmate')->name('update_inmate.post');
         Route::post('/upload','inmatesImport')->name('upload_inmates.post');
         Route::get('delete/{id}','deleteInmate')->name('delete_inmate');
     

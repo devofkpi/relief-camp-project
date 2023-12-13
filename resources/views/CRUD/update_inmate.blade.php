@@ -15,7 +15,7 @@ Update Inmate Details
     <div class="col-8">
       <div class="card">
         <div class="card-body">
-              <form action="" method="post">
+              <form action="{{ route('update_inmate.post')}}" method="post">
                 @csrf
                 <div class="row mb-3">
                   <div class="col-6 form-group">
@@ -62,7 +62,7 @@ Update Inmate Details
                 <div class="row mb-3">
                   <div class="col-6 form-group">
                     <label for="age">Age</label>
-                    <input type="text" class="form-control" placeholder="Age" id="age" name="age" required>
+                    <input type="text" class="form-control" value="{{ $inmate->age}}" id="age" name="age" required>
                   </div>
                   <div class="col-6 form-group">
                       <label for="contact_number">Contact Number</label>
@@ -115,9 +115,12 @@ Update Inmate Details
                     <div class="form-group">
                       <label for="relief_camp">Select Relief Camp</label>
                     <select class="form-control select2" id="relief_camp" name="relief_camp_id">
-                      {{-- @foreach ($relief_camps as $relief_camp)
+                      <option value="{{ $inmate->relief_camp_id}}" selected>{{$inmate->reliefCamp->camp_code}}--{{$inmate->reliefCamp->relief_camp_name}}</option>
+                      @foreach ($relief_camps as $relief_camp)
+                        @if($inmate->relief_camp_id!=$relief_camp->id)
                           <option value="{{$relief_camp->id}}">{{$relief_camp->camp_code}}--{{$relief_camp->relief_camp_name}}</option>
-                      @endforeach --}}
+                        @endif
+                      @endforeach
                     </select>
                     </div>
                     </div> 
@@ -126,7 +129,18 @@ Update Inmate Details
                   <div class="col-6 form-group">
                     <label for="profession">Profession</label>
                       <input type="text" class="form-control" value="{{$inmate->profession}}" id="profession" name="profession">
-                    </div>
+                  </div>
+                  <div class="col-6 form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" value="{{ $inmate->address->address}}" id="address" name="address">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-6 form-group">
+                    <label for="any_special_condition">Any Special Condition</label>
+                    <input type="text" value="{{$inmate->any_special_condition}}" class="form-control" id="any_special_condition" name="any_special_condition">
+                  </div>
                   <div class="col-6 form-group">
                     <span>Willing to Go Back your Village</span>
                       <div class="form-group">
@@ -146,7 +160,7 @@ Update Inmate Details
                     <button type="submit" class="btn btn-primary">Update</button>
                   </div>
                 </div>
-                <input type="hidden" value="" name="relief_camp_id">
+                <input type="hidden" value="{{ $inmate->id }}" name="inmate_id">
               </form>
         </div>
         <!-- /.card -->
