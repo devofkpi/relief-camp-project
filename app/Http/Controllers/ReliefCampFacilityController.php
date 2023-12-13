@@ -20,14 +20,22 @@ class ReliefCampFacilityController extends Controller
         return view('relief_camp_facilities',['facilities_data'=>$facilities_data,'relief_camp_name'=>$relief_camp_name]);
     }
 
-    public function showFacilitiesForm(){
+    public function showFacilitiesForm($relief_camps_facility_id=null){
 
-        $relief_camps=ReliefCamp::select('id','relief_camp_name','camp_code')->get();
+        if($relief_camps_facility_id==null){
 
-        return view('CRUD.create_relief_camp_facilities',['relief_camps'=>$relief_camps]);
+            $relief_camps=ReliefCamp::select('id','relief_camp_name','camp_code')->get();
+    
+            return view('CRUD.create_relief_camp_facilities',['relief_camps'=>$relief_camps]);
+        }else if($relief_camps_facility_id){
+            $relief_camps=ReliefCamp::select('id','relief_camp_name','camp_code')->get();
+            $relief_camps_facilities=ReliefCampFacility::findOrFail($relief_camps_facility_id);
+            return view('CRUD.update_relief_camp_facilities',['relief_camps'=>$relief_camps,'relief_camp_facilities'=>$relief_camps_facilities]);
+        }
+
     }
 
-    public function createFacilities(Request $request){
+    public function createOrUpdateFacilities(Request $request){
 
         ReliefCampFacility::create([
             'building_type'=>$request['building_type'],

@@ -87,7 +87,7 @@ Route::group(['middleware'=>['authorization']],function(){
         Route::get('/create','showInmatesForm')->name('create_inmates');
         Route::get('/update/{id?}','showInmatesForm')->name('update_inmates');
         Route::post('/create','createOrUpdateInmate')->name('create_inmate.post');
-        Route::post('/create','createOrUpdateInmate')->name('update_inmate.post');
+        Route::post('/update','createOrUpdateInmate')->name('update_inmate.post');
         Route::post('/upload','inmatesImport')->name('upload_inmates.post');
         Route::get('delete/{id}','deleteInmate')->name('delete_inmate');
     
@@ -95,8 +95,10 @@ Route::group(['middleware'=>['authorization']],function(){
     
     Route::prefix('/facilities')->controller(ReliefCampFacilityController::class)->group(function(){
         Route::get('/show/{relief_camp_id?}','showById')->name('camp_facilities');
-        Route::get('/create','showFacilitiesForm')->name('create_facitlites');
-        Route::post('/create','createFacilities')->name('create_facitlites.post');
+        Route::get('/create','showFacilitiesForm')->name('create_facilities');
+        Route::post('/create','createOrUpdateFacilities')->name('create_facilities.post');
+        Route::get('/update/{id?}','showFacilitiesForm')->name('update_facilities');
+        Route::post('/update','createOrUpdateFacilities')->name('update_facilities.post');
         Route::post('/upload','campFacilitiesImport')->name('upload_facilities.post');
     });
     

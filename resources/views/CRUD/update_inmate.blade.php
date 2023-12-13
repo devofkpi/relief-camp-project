@@ -35,14 +35,14 @@ Update Inmate Details
                   <div class="col-6 form-group">
                     <label for="family_head_relation">Relation with family head</label>
                     @if ($inmate->familyHeadRelation)
-                      <input type="text" class="form-control" value="{{ $inmate->familyHeadRelation->family_head_relation }}" id="family_head_relation" name="family_head_relation" required>                            
+                      <input type="text" class="form-control" value="{{ $inmate->familyHeadRelation->family_head_relation }}" id="relation" name="relation" required>                            
                     @else
-                      <input type="text" class="form-control" placeholder="Family Head Relation" id="family_head_realtion" name="family_head_relation" required>
+                      <input type="text" class="form-control" placeholder="Family Head Relation" id="realtion" name="relation" required>
                     @endif                  
                   </div>
                   <div class="col-6 form-group">
                     <label for="gender">Select Gender</label>
-                      <select id="gender" class="form-control">
+                      <select id="gender" class="form-control" name="gender">
                         @if ($inmate->gender=='male')
                           <option selected value="male">Male</option>
                           <option value="female">Female</option>
@@ -74,11 +74,11 @@ Update Inmate Details
                       <span>Physically Disabled Person</span>
                       <div class="form-group">
                           <div class="form-check">
-                              <input class="form-check-input"  id="dis_yes" type="radio" name="physically_disabled" value="true">
+                              <input class="form-check-input"  id="dis_yes" type="radio" name="physically_disabled" value="1" {{$inmate->physically_disabled ?'checked':''}}>
                               <label class="form-check-label" for="dis_yes">Yes</label>
                           </div>
                           <div class="form-check">
-                              <input class="form-check-input" id="dis_no" type="radio" name="physically_disabled" value="false" checked>
+                              <input class="form-check-input" id="dis_no" type="radio" name="physically_disabled" value="0" {{$inmate->physically_disabled ?'':'checked'}}>
                               <label class="form-check-label" for="dis_no">No</label>
                           </div>
                       </div>
@@ -87,11 +87,11 @@ Update Inmate Details
                       <span>Orphan</span>
                       <div class="form-group">
                           <div class="form-check">
-                              <input class="form-check-input"  id="orph_yes" type="radio" name="orphan" value="true">
+                              <input class="form-check-input"  id="orph_yes" type="radio" name="orphan" value="1" {{$inmate->orphan?'checked':''}} >
                               <label class="form-check-label" for="orph_yes">Yes</label>
                           </div>
                           <div class="form-check">
-                              <input class="form-check-input" id="orph_no" type="radio" name="orphan" value="false" checked>
+                              <input class="form-check-input" id="orph_no" type="radio" name="orphan" value="0" {{$inmate->orphan?'':'checked'}}>
                               <label class="form-check-label" for="orph_no">No</label>
                           </div>
                       </div>
@@ -102,11 +102,11 @@ Update Inmate Details
                       <span>Lactating</span>
                       <div class="form-group">
                           <div class="form-check">
-                              <input class="form-check-input"  id="lact_yes" type="radio" name="lactating" value="true">
+                              <input class="form-check-input"  id="lact_yes" type="radio" name="lactating" value="1" {{$inmate->lactating?'checked':''}}>
                               <label class="form-check-label" for="lact_yes">Yes</label>
                           </div>
                           <div class="form-check">
-                              <input class="form-check-input" id="lact_no" type="radio" name="lactating" value="false" checked>
+                              <input class="form-check-input" id="lact_no" type="radio" name="lactating" value="0" {{$inmate->lactating?'':'checked'}}>
                               <label class="form-check-label" for="lact_no">No</label>
                           </div>
                       </div>
@@ -145,11 +145,11 @@ Update Inmate Details
                     <span>Willing to Go Back your Village</span>
                       <div class="form-group">
                           <div class="form-check">
-                              <input class="form-check-input"  id="willing_yes" type="radio" name="willing_to_goback" value="true" {{$inmate->willing_to_goback?'checked':''}}>
+                              <input class="form-check-input"  id="willing_yes" type="radio" name="willing_to_goback" value="1" {{$inmate->willing_to_goback?'checked':''}}>
                               <label class="form-check-label" for="willing_yes">Yes</label>
                           </div>
                           <div class="form-check">
-                              <input class="form-check-input" id="willing_no" type="radio" name="willing_to_goback" value="false" {{$inmate->willing_to_goback?'':'checked'}}>
+                              <input class="form-check-input" id="willing_no" type="radio" name="willing_to_goback" value="0" {{$inmate->willing_to_goback?'':'checked'}}>
                               <label class="form-check-label" for="willing_no">No</label>
                           </div>
                       </div>

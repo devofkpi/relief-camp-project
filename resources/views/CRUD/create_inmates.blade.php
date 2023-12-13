@@ -13,7 +13,7 @@ Upload Inmates Data
 
 @section('content1')
 <div class="row justify-content-center">
-    <div class="col-12">
+    <div class="col-8">
       <div class="card card-primary card-tabs">
         <div class="card-header p-0 pt-1">
           <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
@@ -44,7 +44,7 @@ Upload Inmates Data
                       <input type="text" class="form-control" placeholder="Family Head Relation" name="relation" required>
                     </div>
                     <div class="col-6">
-                        <select class="form-control">
+                        <select class="form-control" name="gender">
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             <option value="third_gender">Third Gender</option>
@@ -63,11 +63,11 @@ Upload Inmates Data
                         <span>Physically Disabled Person</span>
                         <div class="form-group">
                             <div class="form-check">
-                                <input class="form-check-input"  id="dis_yes" type="radio" name="physically_disabled" value="true">
+                                <input class="form-check-input"  id="dis_yes" type="radio" name="physically_disabled" value="1">
                                 <label class="form-check-label" for="dis_yes">Yes</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" id="dis_no" type="radio" name="physically_disabled" value="false" checked>
+                                <input class="form-check-input" id="dis_no" type="radio" name="physically_disabled" value="0" checked>
                                 <label class="form-check-label" for="dis_no">No</label>
                             </div>
                         </div>
@@ -76,11 +76,11 @@ Upload Inmates Data
                         <span>Orphan</span>
                         <div class="form-group">
                             <div class="form-check">
-                                <input class="form-check-input"  id="orph_yes" type="radio" name="orphan" value="true">
+                                <input class="form-check-input"  id="orph_yes" type="radio" name="orphan" value="1">
                                 <label class="form-check-label" for="orph_yes">Yes</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" id="orph_no" type="radio" name="orphan" value="false" checked>
+                                <input class="form-check-input" id="orph_no" type="radio" name="orphan" value="0" checked>
                                 <label class="form-check-label" for="orph_no">No</label>
                             </div>
                         </div>
@@ -91,11 +91,11 @@ Upload Inmates Data
                         <span>Lactating</span>
                         <div class="form-group">
                             <div class="form-check">
-                                <input class="form-check-input"  id="lact_yes" type="radio" name="lactating" value="true">
+                                <input class="form-check-input"  id="lact_yes" type="radio" name="lactating" value="1">
                                 <label class="form-check-label" for="lact_yes">Yes</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" id="lact_no" type="radio" name="lactating" value="false" checked>
+                                <input class="form-check-input" id="lact_no" type="radio" name="lactating" value="0" checked>
                                 <label class="form-check-label" for="lact_no">No</label>
                             </div>
                         </div>
@@ -116,18 +116,26 @@ Upload Inmates Data
                         <input type="text" class="form-control" placeholder="Profession" name="profession" required>
                       </div>
                       <div class="col-6 form-group">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" id="address" name="address">
+                        <input type="text" class="form-control" id="address" placeholder="Address" name="address">
                       </div>
                   </div>
                   <div class="row mb-3">
                       <div class="col-6 form-group">
-                        <label for="any_special_condition">Any Special Condition</label>
-                        <input type="text"  class="form-control" id="any_special_condition" name="any_special_condition">
+                        <input type="text"  class="form-control" id="any_special_condition" placeholder="Any Special Condition" name="any_special_condition">
                       </div>
-                    <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Willing to Go Back to Village" name="willing_to_goback" required>
-                    </div>
+                      <div class="col-6 form-group">
+                        <span>Willing to Go Back your Village</span>
+                          <div class="form-group">
+                              <div class="form-check">
+                                  <input class="form-check-input"  id="willing_yes" type="radio" name="willing_to_goback" value="1">
+                                  <label class="form-check-label" for="willing_yes">Yes</label>
+                              </div>
+                              <div class="form-check">
+                                  <input class="form-check-input" id="willing_no" type="radio" name="willing_to_goback" value="0" checked>
+                                  <label class="form-check-label" for="willing_no">No</label>
+                              </div>
+                          </div>
+                      </div>
                   </div>
                   <div class="row m1">
                     <div class="col-6">

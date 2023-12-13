@@ -57,7 +57,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{route('create_facitlites')}}" class="nav-link">
+                    <a href="{{route('create_facilities')}}" class="nav-link">
                       <i class="nav-icon fas fa-upload"></i>
                       <p>Upload Camp Facilities</p>
                     </a>

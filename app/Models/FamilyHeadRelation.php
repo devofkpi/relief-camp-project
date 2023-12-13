@@ -11,6 +11,8 @@ class FamilyHeadRelation extends Model
 {
     use HasFactory;
 
+    protected $fillable=['family_head_relation'];
+
     /**
      * Get the reliefCampDemography that owns the family_head_relation
      *

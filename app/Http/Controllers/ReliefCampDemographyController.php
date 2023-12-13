@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{ReliefCampDemography,ReliefCamp};
+use App\Models\{ReliefCampDemography,ReliefCamp,FamilyHead,FamilyHeadRelation,Address};
 use App\Imports\ReliefCampDemographyImport;
 use Illuminate\Pagination\Paginator;
 use Maatwebsite\Excel\Facades\Excel;
@@ -157,13 +157,12 @@ class ReliefCampDemographyController extends Controller
 
     public function createOrUpdateInmate(Request $request){
 
-        $inmate=ReliefCampDemography::with(['address','family_head_name','family_head_relation'])->find($request->input('inmate_id'));
-
+        $inmate=ReliefCampDemography::with(['address','familyHead','familyHeadRelation'])->find($request->input('inmate_id'));
         if($inmate==null){
 
             $family_head=FamilyHead::create(['family_head_name'=>$request['family_head_name']]);
             
-            $family_head_relation=FamilyHeadRelation::where('family_head_relation','=',$request['relation'])->first();
+            $family_head_relation=FamilyHeadRelation::firstOrCreate(['family_head_relation'=>$request['relation']]);
     
             $address=Address::create(['address'=>$request['address']]);
     
@@ -177,20 +176,34 @@ class ReliefCampDemographyController extends Controller
                 'physically_disabled'=>$request['physically_disabled'],
                 'orphan'=>$request['orphan'],
                 'lactating'=>$request['lactating'],
-                'profession'=>$request['profession'],
                 'any_special_condition'=>$request['any_special_condition'],
+                'profession'=>$request['profession'],
                 'willing_to_goback'=>$request['willing_to_goback'],
                 'remark'=>$request['remark'],
                 'address_id'=>$address->id,
-                'relief_camp_id'=>$request['relief_camp_id']
+                'relief_camp_id'=>$request['relief_camp_id'],
+                'active_status'=>true
             ]);
     
             return redirect()->back()->withSuccess('Inmates created successfully');
         }else{
+            if($inmate->familyHead==null){
+                $family_head=FamilyHead::create(['family_head_name'=>$request['family_head_name']]);
+                $family_head_relation=FamilyHeadRelation::firstOrCreate(['family_head_relation'=>$request['relation']]);
+                $inmate->family_head_id=$family_head->id;
+                $inmate->family_head_relation_id=$family_head_relation->id;
+            }else{
 
-            $inmate->familyHead()->family_head_name=$request['family_head_name'];
-            $inmate->familyHeadRelation()->family_head_realtion=$request['family_head_realation'];
-            $inmate->address()->address=$request['address'];
+                $inmate->familyHead->family_head_name=$request['family_head_name'];
+                $family_head_relation=FamilyHeadRelation::firstOrCreate(['family_head_relation'=>$request['relation']]);
+                $inmate->family_head_relation_id=$family_head_relation->id;
+            }
+            if($inmate->address==null){
+                $address=Address::create(['address'=>$request['address']]);
+                $inmate->address_id=$address->id;
+            }else{
+                $inmate->address->address=$request['address'];
+            }
             $inmate->person_name=$request['person_name'];
             $inmate->gender=$request['gender'];
             $inmate->age=$request['age'];
@@ -199,6 +212,7 @@ class ReliefCampDemographyController extends Controller
             $inmate->orphan=$request['orphan'];
             $inmate->lactating=$request['lactating'];
             $inmate->profession=$request['profession'];
+            $inmate->any_special_condition=$request['any_special_condition'];
             $inmate->willing_to_goback=$request['willing_to_goback'];
             $inmate->remark=$request['remark'];
             $inmate->relief_camp_id=$request['relief_camp_id'];

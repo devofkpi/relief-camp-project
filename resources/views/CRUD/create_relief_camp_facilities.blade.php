@@ -13,7 +13,7 @@ Upload Facilities Data
 
 @section('content1')
 <div class="row justify-content-center">
-    <div class="col-12">
+    <div class="col-8">
       <div class="card card-primary card-tabs">
         <div class="card-header p-0 pt-1">
           <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
@@ -28,7 +28,7 @@ Upload Facilities Data
         <div class="card-body">
           <div class="tab-content" id="custom-tabs-one-tabContent">
             <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
-              <form action="{{route('create_facitlites.post')}}" method="post">
+              <form action="{{route('create_facilities.post')}}" method="post">
                 @csrf
                 <div class="card-body">
                   <div class="row mb-3">

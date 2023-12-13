@@ -44,8 +44,7 @@ class ReliefCampDemographyImport implements ToCollection,WithHeadingRow, WithCal
                     'family_head_name'=>$inmate['family_head_name']
                 ]);
     
-                $this->relation=FamilyHeadRelation::where('family_head_relation','=',$inmate['relation'])->first();
-    
+                $family_head_relation=FamilyHeadRelation::firstOrCreate(['family_head_relation'=>$request['relation']]);    
             }
 
             
