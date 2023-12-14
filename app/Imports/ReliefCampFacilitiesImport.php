@@ -139,13 +139,13 @@ class ReliefCampFacilitiesImport implements ToCollection, WithHeadingRow, WithCa
                 'number_of_child_separated_parents'=>$relief_camp_facility['number_of_children_separated_from_parents'],
                 'number_of_child_separated_parents_linked_sw'=>$relief_camp_facility['number_of_children_separated_from_parents_linked_to_social_welfare'],
                 'per_of_child_separated_parents_linked_sw'=>$relief_camp_facility['per_of_separated_children_linked']=='#DIV/0!'?0.0:$relief_camp_facility['per_of_separated_children_linked'],
-                'date_visit_of_health'=>$relief_camp_facility['date_of_visit_of_health'],
-                'date_visit_of_phed'=>$relief_camp_facility['date_of_visit_of_phed'],
-                'date_visit_of_social_welfare'=>$relief_camp_facility['date_of_visit_of_social_welfare'],
-                'date_visit_of_cafpd'=>$relief_camp_facility['date_of_visit_of_caf_and_pd'],
-                'date_visit_of_edu'=>$relief_camp_facility['date_of_visit_of_education'],
-                'date_visit_of_pow'=>$relief_camp_facility['date_of_visit_of_power'],
-                'date_visit_of_mahud_ceo_adc'=>$relief_camp_facility['date_of_visit_of_mahud_or_ceo_adc'],
+                'date_visit_of_health'=>str_replace('/','-',$relief_camp_facility['date_of_visit_of_health']),
+                'date_visit_of_phed'=>str_replace('/','-',$relief_camp_facility['date_of_visit_of_phed']),
+                'date_visit_of_social_welfare'=>str_replace('/','-',$relief_camp_facility['date_of_visit_of_social_welfare']),
+                'date_visit_of_cafpd'=>str_replace('/','-',$relief_camp_facility['date_of_visit_of_caf_and_pd']),
+                'date_visit_of_edu'=>str_replace('/','-',$relief_camp_facility['date_of_visit_of_education']),
+                'date_visit_of_pow'=>str_replace('/','-',$relief_camp_facility['date_of_visit_of_power']),
+                'date_visit_of_mahud_ceo_adc'=>str_replace('/','-',$relief_camp_facility['date_of_visit_of_mahud_or_ceo_adc']),
                 'relief_camp_id'=>$relief_camp->id
             ]);
         }

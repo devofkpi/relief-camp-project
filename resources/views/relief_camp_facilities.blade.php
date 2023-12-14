@@ -175,7 +175,7 @@ Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Cam
             </tr>
             <tr>
               <td>Availability of Soap and Other Consumable items in Days</td>
-              <td>{{$facilities_data[0]->availability_of_soap_consumable_in_days?'Yes':'No'}}</td>
+              <td>{{$facilities_data[0]->availability_of_soap_consumable_in_days}}</td>
             </tr>
             <tr>
               <td>Number of School going Students Identified</td>
