@@ -175,6 +175,12 @@
                       <p>Child</p>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a href="{{route('demo_by_cat')}}/disabled" class="nav-link">
+                      <i class="nav-icon fas fa-wheelchair"></i>
+                      <p>Specially Abled Persons</p>
+                    </a>
+                  </li>
                 </ul>
               </li>
               {{-- <li class="nav-item">

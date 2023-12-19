@@ -74,6 +74,12 @@ class ReliefCampDemographyController extends Controller
                     ['lactating','=',true],
                     ['active_status','=',1]
                     ])->paginate(25); 
+            }elseif($category=='disabled'){
+                $this->demography_data=ReliefCampDemography::with(['familyHead','familyHeadRelation','address'])
+                ->where([
+                    ['physically_disabled','=',true],
+                    ['active_status','=',1]
+                    ])->paginate(25);  
             }
         }else if($this->user->role==2){
             $sub_division_id=$this->user->sub_division_id;
@@ -102,6 +108,11 @@ class ReliefCampDemographyController extends Controller
                 function($q) use($sub_division_id){
                     $q->where('sub_division_id','=',$sub_division_id);
                 })->where([['active_status','=',1],['lactating','=',true]])->paginate(25); 
+            }elseif($category=='disabled'){
+                $this->demography_data=ReliefCampDemography::with(['familyHead','familyHeadRelation','address','reliefCamp'])->whereHas('reliefCamp',
+                function($q) use($sub_division_id){
+                    $q->where('sub_division_id','=',$sub_division_id);
+                })->where([['active_status','=',1],['physically_disabled','=',true]])->paginate(25); 
             }
         }else if($this->user->role==3){
             $relief_camp_id=ReliefCamp::select('id')->where('nodal_officer_id','=',$this->user->nodal_officer_id)->first();
@@ -137,6 +148,13 @@ class ReliefCampDemographyController extends Controller
                     ['relief_camp_id','=',$relief_camp_id->id],
                     ['active_status','=',1],
                     ['lactating','=',true]
+                    ])->paginate(25); 
+            }elseif($category=='disabled'){
+                $this->demography_data=ReliefCampDemography::with(['familyHead','familyHeadRelation','address'])
+                ->where([
+                    ['relief_camp_id','=',$relief_camp_id->id],
+                    ['active_status','=',1],
+                    ['physically_disabled','=',true]
                     ])->paginate(25); 
             }
         }
