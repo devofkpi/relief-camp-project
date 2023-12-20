@@ -53,12 +53,17 @@ Create Relief Camp
                     </div>
                   </div>
                 </div>
+                @php $first_slug=null;@endphp
                 <div class="row justify-content-center">
                   <div class="col-8">
                     <div class="form-group mb-3">
                       <label for="sub_division">Select Subdivision</label>
                       <select  class="form-control" name="sub_division_code" id="sub_division">
                         @foreach ($sub_divisions as $sub_division)
+                          @php 
+                          if ($first_slug==null) 
+                            $first_slug=$sub_division->sub_division_code;
+                          @endphp
                         <option value="{{$sub_division->sub_division_code}}">{{$sub_division->sub_division_name}}</option>
                         @endforeach
                       </select>
@@ -70,7 +75,7 @@ Create Relief Camp
                       <div class="input-group mb-3">
                         <div class="input-group-append">
                           <div class="input-group-text">
-                            <span id="camp_code_slug"></span>
+                            <span id="camp_code_slug">{{$first_slug}}</span>
                           </div>
                         </div>
                         <input type="text" class="form-control" placeholder="Camp Code" name="camp_code" required>
@@ -133,36 +138,4 @@ Create Relief Camp
         <!-- /.card -->
       </div>
     </div>
-@endsection
-@section('custom_script')
-<!-- Select2 -->
-<script src="{{ asset("/plugins/select2/js/select2.full.min.js")}}"></script>
-<script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2();
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    })
-
-
-    bsCustomFileInput.init();
-    
-  })
-</script>
-<script>
-  $(window).on('load',function(e) {
-        var toastr_msg=$('#edit_msg').text();
-        if(toastr_msg){
-          toastr.success(toastr_msg);
-        }
-  });
-  </script>
-  <script>
-    $('#sub_division').on('change',function(e){
-    console.log($(this).val());
-    $('#camp_code_slug').text($(this).val()+'-');
-  });
-  </script>
 @endsection

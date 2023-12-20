@@ -1,4 +1,8 @@
 @extends('layouts.main_layout')
+
+@section('title')
+Create Nodal Officer
+@endsection
 @section('content1')
 <div class="row justify-content-center">
     <div class="col-8">
@@ -107,4 +111,4 @@
         <!-- /.card -->
       </div>
     </div>
-      @endsection
+@endsection

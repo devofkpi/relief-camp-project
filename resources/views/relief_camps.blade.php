@@ -96,20 +96,3 @@ Available Relief Camps
   </div>
 </div>
 @endsection
-@section('custom_script')
-<script>
-  $('a[id^=delete_relief_camp]').on('click',function(e){
-    var url=$(this).attr('href');
-    console.log(url);
-    $('#delete_modal').attr('href',url);
-  });
-</script>
-<script>
-  $(window).on('load',function(e) {
-        var toastr_msg=$('#edit_msg').text();
-        if(toastr_msg){
-          toastr.success(toastr_msg);
-        }
-  });
-  </script>
-@endsection

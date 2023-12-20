@@ -36,10 +36,10 @@ class ReliefCampDemographyController extends Controller
         return view('relief_camp_demography',['demography_data'=>$this->demography_data]);
     }
 
-    // public function showInmateById($inamte_id=null){
-    //     $inmate=ReliefCampDemography::with(['address','familyHead','familyHeadRelation'])->find($inamte_id);
-    //     return view('CRUD.view_inmate',['inmate'=>$inmate]);
-    // }
+    public function showInmateById($inamte_id=null){
+        $inmate=ReliefCampDemography::with(['address','familyHead','familyHeadRelation'])->find($inamte_id);
+        return view('CRUD.view_inmate',['inmate'=>$inmate]);
+    }
 
     public function showByCamp(String $relief_camp_id=null){
         $relief_camp=ReliefCamp::where('active_status','=',true)->findOrFail($relief_camp_id);
@@ -250,7 +250,7 @@ class ReliefCampDemographyController extends Controller
             $inmate->relief_camp_id=$request['relief_camp_id'];
             $inmate->save();
             
-            return redirect()->back()->withSuccess('update_msg','Inmate details updated successfully'); 
+            return redirect()->back()->withSuccess('Inmate details updated successfully'); 
 
         }
 

@@ -1,6 +1,6 @@
 @extends('layouts.main_layout')
 @section('title')
-Show All User
+Trash
 @endsection
 @section('content_title')
 Items in Trash

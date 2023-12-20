@@ -152,7 +152,7 @@ Upload Inmates Data
                   <div class="row justify-content-center">
                     <div class="col-8">
                       <h5 class="text-danger">Please upload the data in the format given here, also sanitize the data before uploading it.</h5>
-                      <h6 class="text-info"><a href="#">( Click here )</a> to Download the format.</h6>
+                      <h6 class="text-info"><a href="{{ route('download_excel_sample','Relief Camp Demography Sample.xlsx')}}">( Click here )</a> to Download the format.</h6>
                     </div>
                   </div>
                   <div class="row justify-content-center">
@@ -187,23 +187,4 @@ Upload Inmates Data
         <!-- /.card -->
       </div>
     </div>
-@endsection
-@section('custom_script')
-<!-- Select2 -->
-<script src="{{ asset("/plugins/select2/js/select2.full.min.js")}}"></script>
-<!-- bs-custom-file-input -->
-<script src="{{ asset('/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
-<script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2();
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    })
-
-
-    bsCustomFileInput.init();
-  })
-</script>
 @endsection

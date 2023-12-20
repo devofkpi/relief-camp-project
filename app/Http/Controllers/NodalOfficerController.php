@@ -63,7 +63,7 @@ class NodalOfficerController extends Controller
             $nodal_officer->officer_designation=$request['officer_designation'];
             $nodal_officer->officer_contact=$request['officer_contact'];
             $nodal_officer->save();
-            return redirect()->back()->with('success','Nodal Officer Updated Successfully');
+            return redirect()->back()->withSuccess('Nodal Officer Updated Successfully');
         }
         
     }

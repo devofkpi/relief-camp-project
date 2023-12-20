@@ -1,6 +1,6 @@
 @extends('layouts.main_layout')
 @section('title')
-View Profile
+Change Password
 @endsection
 @section('content1')
 <div class="row justify-content-center">

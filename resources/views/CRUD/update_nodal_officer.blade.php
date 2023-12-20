@@ -57,6 +57,9 @@ Update Nodal Officer Details
                 </div>
                 <input type="hidden" value="{{ $nodal_officer->id}}" name="nodal_officer_id">
               </form>
+              @if(session()->has('success'))
+                <p style="display: none" id="edit_msg">{{session()->get('success')}}</p>
+              @endif
         </div>
         <!-- /.card -->
       </div>

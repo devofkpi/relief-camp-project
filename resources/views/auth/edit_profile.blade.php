@@ -1,10 +1,6 @@
 @extends('layouts.main_layout')
 @section('title')
-View Profile
-@endsection
-@section('page_related_css')
-  <!-- Toastr -->
-  <link rel="stylesheet" href={{ asset('/plugins/toastr/toastr.min.css')}}>
+Edit Profile
 @endsection
 @section('content1')
 <div class="row justify-content-center">
@@ -40,16 +36,4 @@ View Profile
         </div>
       </div>
 </div>
-@endsection
-@section('custom_script')
-<!-- Toastr -->
-<script src="{{ asset('/plugins/toastr/toastr.min.js')}}"></script>
-<script>
-$(window).on('load',function(e) {
-      var toastr_msg=$('#edit_msg').text();
-      if(toastr_msg){
-        toastr.success(toastr_msg);
-      }
-});
-</script>
 @endsection

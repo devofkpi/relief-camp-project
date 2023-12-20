@@ -87,31 +87,3 @@ Create Relief Camp
       </div>
     </div>
 @endsection
-@section('custom_script')
-<!-- Select2 -->
-<script src="{{ asset("/plugins/select2/js/select2.full.min.js")}}"></script>
-
-<script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2();
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    })
-
-
-    bsCustomFileInput.init();
-  })
-</script>
-
-<!-- Toastr -->
-<script>
-$(window).on('load',function(e) {
-      var toastr_msg=$('#edit_msg').text();
-      if(toastr_msg){
-        toastr.success(toastr_msg);
-      }
-});
-</script>
-@endsection

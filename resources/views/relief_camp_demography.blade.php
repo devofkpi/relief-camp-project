@@ -1,5 +1,9 @@
 @extends('layouts.main_layout')
 
+@section('title')
+Show Inmates Data
+@endsection
+
 @section('content1')
 <div class="row">
 <div class="col-12">
@@ -81,6 +85,9 @@
         @endforeach  
         </tbody>
     </table>
+    @if(session()->has('success'))
+        <p style="display: none" id="edit_msg">{{session()->get('success')}}</p>
+    @endif
     <div class="modal fade" id="modal-danger">
         <div class="modal-dialog">
           <div class="modal-content bg-danger">
@@ -112,13 +119,4 @@
 <!-- /.card -->
 </div>
 </div>
-@endsection
-@section('custom_script')
-<script>
-  $('a[id^=delete_inmate]').on('click',function(e){
-    var url=$(this).attr('href');
-    console.log(url);
-    $('#delete_modal').attr('href',url);
-  });
-</script>
 @endsection
