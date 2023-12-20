@@ -14,7 +14,8 @@ use App\Http\Controllers\{  ReliefCampFacilityController,
                             DashboardController,
                             ReliefCampDemographyController,
                             NodalOfficerController,
-                            TrashHandleController
+                            TrashHandleController,
+                            DownloadController
                         };
 
 /*
@@ -84,6 +85,7 @@ Route::group(['middleware'=>['authorization']],function(){
         Route::get('/showById/{inmate_id?}','showInmateById')->name('inmate_by_id');
         Route::get('/show/{relief_camp_id?}', 'showByCamp')->name('demo_by_camp');
         Route::get('/category/{category?}','showByCategory')->name('demo_by_cat');
+        Route::get('/nodalOfficer/{id}','showByNodalOfficer')->name('demo_by_nodal');
         Route::get('/create','showInmatesForm')->name('create_inmates');
         Route::get('/update/{id?}','showInmatesForm')->name('update_inmates');
         Route::post('/create','createOrUpdateInmate')->name('create_inmate.post');
@@ -117,6 +119,10 @@ Route::group(['middleware'=>['authorization']],function(){
         Route::get('trash/items','deletedItems')->name('deleted_items');
         Route::get('restore/items/{table_name}/{id}','restoreItem')->name('restore_item');
     });
+
+    Route::controller(DownloadController::class)->group(function(){
+        Route::get('download/{filename}','downloadExcelSample')->name('download_excel_sample');
+    });    
 
     Route::controller(PoliceStationController::class)->group(function () {
         Route::get('/police_stations', 'show')->name('police_stations');

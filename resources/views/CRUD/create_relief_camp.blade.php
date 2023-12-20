@@ -7,7 +7,6 @@ Create Relief Camp
  <!-- Select2 -->
  <link rel="stylesheet" href='{{ asset("/plugins/select2/css/select2.min.css")}}'>
  <link rel="stylesheet" href='{{ asset("/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css")}}'>
- <link rel="stylesheet" href={{ asset('/plugins/toastr/toastr.min.css')}}>
 
 @endsection
 
@@ -104,7 +103,7 @@ Create Relief Camp
                   <div class="row justify-content-center">
                     <div class="col-8">
                       <h5 class="text-danger">Please upload the data in the format given here, also sanitize the data before uploading it.</h5>
-                      <h6 class="text-info"><a href="#">( Click here )</a> to Download the format.</h6>
+                      <h6 class="text-info"><a href="{{ route('download_excel_sample','Relief Camp Sample.xlsx')}}" target="_blank">( Click here )</a> to Download the format.</h6>
                     </div>
                   </div>
                   <div class="row justify-content-center">
@@ -138,10 +137,6 @@ Create Relief Camp
 @section('custom_script')
 <!-- Select2 -->
 <script src="{{ asset("/plugins/select2/js/select2.full.min.js")}}"></script>
-<!-- bs-custom-file-input -->
-<script src="{{ asset('/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
-<script src="{{ asset('/plugins/toastr/toastr.min.js')}}"></script>
-
 <script>
   $(function () {
     //Initialize Select2 Elements

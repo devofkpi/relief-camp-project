@@ -25,8 +25,8 @@ Nodal Officers
                 @php $count= ($nodal_officers_data->perPage()*($nodal_officers_data->currentPage()-1))+1; @endphp
                 @foreach ($nodal_officers_data as $nodal_officer )
                 <tr>
-                    <th scope="row">{{$count++}}</th>
-                    <td> {{$nodal_officer->officer_name}}</td>
+                    <th scope="row">{{$count}}</th>
+                    <td> <a href="{{route('demo_by_nodal',$nodal_officer->id)}}" class="text-info"> {{$nodal_officer->officer_name}}</a></td>
                     <td>{{ $nodal_officer->officer_designation}}</td>
                     <td>{{ $nodal_officer->officer_contact}}</td>
                     <td>
@@ -37,12 +37,16 @@ Nodal Officers
                     <td>
                       <a href="{{ route('show_nodal_officer_by_id',$nodal_officer->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
                       <a href="{{ route('update_nodal_officer',$nodal_officer->id)}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
-                      <a href="{{ route('delete_nodal_officer',$nodal_officer->id)}}" class="mr-3 text-danger" data-toggle="modal" data-target="#modal-danger" id="delete_nodal_officer"><i class="nav-icon fas fa-trash"></i></a>
+                      <a href="{{ route('delete_nodal_officer',$nodal_officer->id)}}" class="mr-3 text-danger" data-toggle="modal" data-target="#modal-danger" id="delete_nodal_officer{{$count}}"><i class="nav-icon fas fa-trash"></i></a>
                   </td>
                 </tr>
+                @php ++$count;@endphp
                 @endforeach
               </tbody>
             </table>
+            @if(session()->has('success'))
+                <p style="display: none" id="edit_msg">{{session()->get('success')}}</p>
+            @endif
             <div class="modal fade" id="modal-danger">
               <div class="modal-dialog">
                 <div class="modal-content bg-danger">
@@ -78,10 +82,18 @@ Nodal Officers
 
 @section('custom_script')
 <script>
-  $('#delete_nodal_officer').on('click',function(e){
+  $('a[id^=delete_nodal_officer]').on('click',function(e){
     var url=$(this).attr('href');
     console.log(url);
     $('#delete_modal').attr('href',url);
   });
 </script>
+<script>
+  $(window).on('load',function(e) {
+        var toastr_msg=$('#edit_msg').text();
+        if(toastr_msg){
+          toastr.success(toastr_msg);
+        }
+  });
+  </script>
 @endsection

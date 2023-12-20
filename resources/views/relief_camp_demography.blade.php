@@ -24,7 +24,7 @@
         @php $count= ($demography_data->perPage()*($demography_data->currentPage()-1))+1; @endphp
         @foreach ($demography_data as $demography )
         <tr>
-            <th scope="row">{{$count++}}</th>
+            <th scope="row">{{$count}}</th>
             <td>{{ucfirst($demography->person_name)}}</td>
             @php $age_in_year=(int)$demography->age;
                  $age_in_month=$demography->age-$age_in_year;
@@ -68,7 +68,7 @@
                 <td>
                     <a href="{{ route('inmate_by_id',$demography->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
                     <a href="{{route('update_inmates',$demography->id)}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
-                    <a href="{{ route('delete_inmate',$demography->id)}}" class="mr-3 text-danger" data-toggle="modal" data-target="#modal-danger" id="delete_inmate"><i class="nav-icon fas fa-trash"></i></a>
+                    <a href="{{ route('delete_inmate',$demography->id)}}" class="mr-3 text-danger" data-toggle="modal" data-target="#modal-danger" id="delete_inmate{{$count}}"><i class="nav-icon fas fa-trash"></i></a>
                 </td>
             @else
                 <td>
@@ -77,6 +77,7 @@
                 </td>
             @endif
         </tr> 
+        @php ++$count;@endphp
         @endforeach  
         </tbody>
     </table>
@@ -114,7 +115,7 @@
 @endsection
 @section('custom_script')
 <script>
-  $('#delete_inmate').on('click',function(e){
+  $('a[id^=delete_inmate]').on('click',function(e){
     var url=$(this).attr('href');
     console.log(url);
     $('#delete_modal').attr('href',url);

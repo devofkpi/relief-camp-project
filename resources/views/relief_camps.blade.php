@@ -30,7 +30,7 @@ Available Relief Camps
             @php $count= ($relief_camp_data->perPage()*($relief_camp_data->currentPage()-1))+1; @endphp
             @foreach ($relief_camp_data as $relief_camp )
                 <tr>
-                    <th scope="row">{{$count++}}</th>
+                    <th scope="row">{{$count}}</th>
                     <td><a href="{{ route('camp_facilities')}}/{{$relief_camp->id}}"> {{$relief_camp->relief_camp_name}}</a></td>
                     <td>{{ $relief_camp->camp_code}}</td>
                     <td>{{ ucfirst($relief_camp->address->address)}}<br>{{ ucfirst($relief_camp->address->city) }}, {{ ucfirst($relief_camp->address->state)}}</td>
@@ -39,9 +39,10 @@ Available Relief Camps
                     <td>
                       <a href="{{ route('show_camp_by_id',$relief_camp->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
                       <a href="{{ route('update_relief_camp',$relief_camp->id  )}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
-                      <a href="{{ route('delete_relief_camp',$relief_camp->id )}}" class="mr-3 text-danger" data-toggle="modal" data-target="#modal-danger" id="delete_relief_camp"><i class="nav-icon fas fa-trash"></i></a>
+                      <a href="{{ route('delete_relief_camp',$relief_camp->id )}}" class="mr-3 text-danger" data-toggle="modal" data-target="#modal-danger" id="delete_relief_camp{{$count}}"><i class="nav-icon fas fa-trash"></i></a>
                   </td>
                 </tr>
+                @php ++$count;@endphp
                 @endforeach
               @else
                 <tr>
@@ -58,6 +59,9 @@ Available Relief Camps
               @endif
           </tbody>
         </table>
+        @if(session()->has('success'))
+                <p style="display: none" id="edit_msg">{{session()->get('success')}}</p>
+        @endif
         <div class="modal fade" id="modal-danger">
           <div class="modal-dialog">
             <div class="modal-content bg-danger">
@@ -94,10 +98,18 @@ Available Relief Camps
 @endsection
 @section('custom_script')
 <script>
-  $('#delete_relief_camp').on('click',function(e){
+  $('a[id^=delete_relief_camp]').on('click',function(e){
     var url=$(this).attr('href');
     console.log(url);
     $('#delete_modal').attr('href',url);
   });
 </script>
+<script>
+  $(window).on('load',function(e) {
+        var toastr_msg=$('#edit_msg').text();
+        if(toastr_msg){
+          toastr.success(toastr_msg);
+        }
+  });
+  </script>
 @endsection
