@@ -15,29 +15,35 @@ class NodalOfficerController extends Controller
     public function showAll(){
         $user=auth()->user();
         if($user->role==0 || $user->role==1){
-            $this->nodal_officers=NodalOfficer::with('reliefCamps')->where('active_status','=',true)->paginate(25);
+            $this->nodal_officers=NodalOfficer::with('reliefCamps')->whereHas('reliefCamps',
+            function($q){
+                $q->where('active_status','=',true);
+            })->where('active_status','=',true)->paginate(25);
             return view('nodal_officers',['nodal_officers_data'=>$this->nodal_officers]);    
         }else if($user->role==2){
             $sub_division_id=$user->sub_division_id;
             $this->nodal_officers=NodalOfficer::with('reliefCamps')->whereHas('reliefCamps',
             function($q) use($sub_division_id){
-                $q->where('sub_division_id','=',$sub_division_id);
+                $q->where('sub_division_id','=',$sub_division_id)->where('active_status','=',true);
             })->where('active_status','=',true)->paginate(25);
             return view('nodal_officers',['nodal_officers_data'=>$this->nodal_officers]);
         }
     }
 
     public function showById($id=null){
-        $this->nodal_officer=NodalOfficer::with('reliefCamps')->find($id);
+        $this->nodal_officer=NodalOfficer::with('reliefCamps')->whereHas('reliefCamps',
+        function($q){
+            $q->where('active_status','=',true);
+        })->findOrFail($id);
         return view('CRUD.view_nodal_officer',['nodal_officer'=>$this->nodal_officer]);
     }
     
     public function showNodalOfficerForm($nodal_officer_id=null){
         if($nodal_officer_id==null){
-            $relief_camps=ReliefCamp::select('id','relief_camp_name')->get();
+            $relief_camps=ReliefCamp::select('id','relief_camp_name')->where('active_status','=',true)->get();
             return view('CRUD.create_nodal_officers',['relief_camps'=>$relief_camps]);
         }else{
-            $relief_camps=ReliefCamp::select('id','relief_camp_name')->get();
+            $relief_camps=ReliefCamp::select('id','relief_camp_name')->where('active_status','=',true)->get();
             $nodal_officer=NodalOfficer::findOrFail($nodal_officer_id);
             return view('CRUD.update_nodal_officer',['nodal_officer'=>$nodal_officer,'relief_camps'=>$relief_camps]);
         }

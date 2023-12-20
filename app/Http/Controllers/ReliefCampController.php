@@ -43,6 +43,8 @@ class ReliefCampController extends Controller
         }else if($this->user->role==3){
             $this->relief_camp=ReliefCamp::where('active_status','=',true)->where('nodal_officer_id','=',$this->user->nodal_officer_id)->first();
             return view('relief_camps',['relief_camp_data'=>$this->relief_camp]);
+        }else{
+            return  abort(403, 'Unauthorized action.');
         }
     }
 
@@ -84,10 +86,12 @@ class ReliefCampController extends Controller
         
         if($relief_camp_id==null){
             return view('CRUD.create_relief_camp',['sub_divisions'=>$this->sub_division,'nodal_officers'=>$this->nodal_officer]);
-        }else{
+        }else if($relief_camp_id!=null){
             $this->relief_camp=ReliefCamp::with('address','subDivision','nodalOfficer')->find($relief_camp_id);
 
             return view('CRUD.update_relief_camp',['sub_divisions'=>$this->sub_division,'nodal_officers'=>$this->nodal_officer,'relief_camp'=>$this->relief_camp]);
+        }else{
+            return  abort(403, 'Unauthorized action.');
         }
     }
 
@@ -116,7 +120,7 @@ class ReliefCampController extends Controller
                 'nodal_officer_id'=>$request['nodal_officer_id']
             ]);
             return redirect()->back()->withSuccess('Relief Camp created successfully');
-        }else{
+        }elseif($this->relief_camp!=null){
             $this->relief_camp->relief_camp_name=$request['relief_camp_name'];
             $this->relief_camp->camp_code=$request['camp_code'];
             $this->relief_camp->address->address=$request['address'];
@@ -124,6 +128,8 @@ class ReliefCampController extends Controller
             $this->relief_camp->nodal_officer_id=$request['nodal_officer_id'];
             $this->relief_camp->save();
             return redirect()->back()->withSuccess('Relief Camp updated successfully');
+        }else{
+            return  abort(403, 'Unauthorized action.');
         }
 
     }
@@ -139,7 +145,9 @@ class ReliefCampController extends Controller
             $this->relief_camp=ReliefCamp::findOrFail($relief_camp_id);
             $this->relief_camp->active_status=false;
             $this->relief_camp->save();
-            return redirect()->back()->with('success','Relief Camp Deleted Successfully');
+            return redirect()->back()->withSuccess('Relief Camp Deleted Successfully');
+        }else{
+            return  abort(403, 'Unauthorized action.');
         }
     }
 
@@ -150,7 +158,7 @@ class ReliefCampController extends Controller
      */
 
     public function showCampById($relief_camp_id=null){
-        $this->relief_camp=ReliefCamp::with('address','subDivision','nodalOfficer')->find($relief_camp_id);
+        $this->relief_camp=ReliefCamp::with('address','subDivision','nodalOfficer')->findOrFail($relief_camp_id);
         return view('CRUD.view_relief_camp',['relief_camp'=>$this->relief_camp]);
     }
 

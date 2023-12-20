@@ -24,9 +24,8 @@
   <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css')}}">
-  <!-- SweetAlert2 -->
-  {{-- <link rel="stylesheet" href="{{ asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}"> --}}
-
+  <!-- Toastr -->
+  <link rel="stylesheet" href={{ asset('/plugins/toastr/toastr.min.css')}}>
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css')}}">
   <link rel="stylesheet" href="{{ asset('css/style.css')}}">
@@ -97,6 +96,10 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/adminlte.js')}}"></script>
 <script src="{{ asset('dist/js/pages/dashboard.js')}}"></script>
+<!-- bs-custom-file-input -->
+<script src="{{ asset('/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+<!-- Toastr Script -->
+<script src="{{ asset('/plugins/toastr/toastr.min.js')}}"></script>
 @yield('custom_script')
 </body>
 </html>

@@ -7,7 +7,7 @@ Create Relief Camp
  <!-- Select2 -->
  <link rel="stylesheet" href='{{ asset("/plugins/select2/css/select2.min.css")}}'>
  <link rel="stylesheet" href='{{ asset("/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css")}}'>
- <link rel="stylesheet" href={{ asset('/plugins/toastr/toastr.min.css')}}>
+ 
 
 @endsection
 
@@ -90,9 +90,7 @@ Create Relief Camp
 @section('custom_script')
 <!-- Select2 -->
 <script src="{{ asset("/plugins/select2/js/select2.full.min.js")}}"></script>
-<!-- bs-custom-file-input -->
-<script src="{{ asset('/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
-<script src="{{ asset('/plugins/toastr/toastr.min.js')}}"></script>
+
 <script>
   $(function () {
     //Initialize Select2 Elements
