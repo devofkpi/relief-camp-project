@@ -14,6 +14,9 @@ Upload Facilities Data
 @section('content1')
 <div class="row justify-content-center">
     <div class="col-8">
+      @if($errors->has('msg'))
+      <p class="text-danger">{{$errors->first('msg')}}</p>
+      @endif
       <div class="card card-primary card-tabs">
         <div class="card-header p-0 pt-1">
           <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
@@ -47,11 +50,11 @@ Upload Facilities Data
                   </div>
                   <div class="row mb-3">
                     <div class="col-4 form-group pl-4">
-                      <input type="checkbox" class="form-check-input" value="yes" name="separate_kitchen" id="separate_kitchen" checked>
+                      <input type="checkbox" class="form-check-input" value="1" name="separate_kitchen" id="separate_kitchen" checked>
                       <label class="form-check-label" for="separate_kitchen">Separate Kitchen Available</label>
                     </div>
                     <div class="col-4 form-group pl-4">
-                      <input type="checkbox" class="form-check-input" value="yes" name="open_space" id="open_space" checked>
+                      <input type="checkbox" class="form-check-input" value="1" name="open_space" id="open_space" checked>
                       <label class="form-check-label" for="open_space">Open Space Available</label>
                     </div>
                   </div>
@@ -94,7 +97,7 @@ Upload Facilities Data
                       <input type="text" class="form-control" placeholder="Mug Ratio pe Person" name="mug_ratio_per_person" required>
                     </div>
                     <div class="col-4 form-group pl-4">
-                      <input type="checkbox" class="form-check-input" value="yes" name="sufficient_cooking_utensils" id="sufficient_cooking_utensils" checked>
+                      <input type="checkbox" class="form-check-input" value="1" name="sufficient_cooking_utensils" id="sufficient_cooking_utensils" checked>
                       <label class="form-check-label" for="sufficient_cooking_utensils">Sufficient Cooking Utensils Available</label>
                     </div>
                   </div>
@@ -136,7 +139,7 @@ Upload Facilities Data
                       <input type="text" class="form-control" placeholder="Mosquito Nets Ratio per Person" name="mosquito_net_ratio" required>
                     </div>
                     <div class="col-4 pl-4">
-                      <input type="checkbox" class="form-check-input" value="yes" name="sufficient_lighting_facility" id="sufficient_lighting_facility" checked>
+                      <input type="checkbox" class="form-check-input" value="1" name="sufficient_lighting_facility" id="sufficient_lighting_facility" checked>
                       <label class="form-check-label" for="sufficient_lighting_facility">Sufficient Lighting Facility</label>
                     </div>
                     <div class="col-4">
@@ -148,7 +151,7 @@ Upload Facilities Data
                       <input type="text" class="form-control" placeholder="Fan Ratio per Person" name="fan_ratio_per_person" required>
                     </div>
                     <div class="col-4 form-group pl-4">
-                      <input type="checkbox" class="form-check-input" value="yes" name="sufficient_plates_glasses" id="sufficient_plates_glasses" checked>
+                      <input type="checkbox" class="form-check-input" value="1" name="sufficient_plates_glasses" id="sufficient_plates_glasses" checked>
                       <label class="form-check-label" for="sufficient_plates_glasses">Sufficient Plates and Glasses Available</label>
                     </div>
                   </div>
@@ -173,11 +176,11 @@ Upload Facilities Data
                   </div>
                   <div class="row mb-3">
                     <div class="col-4 form-group pl-4">
-                      <input type="checkbox" class="form-check-input" value="yes" name="safe_drinking_water" id="safe_drinking_water" checked>
+                      <input type="checkbox" class="form-check-input" value="1" name="safe_drinking_water" id="safe_drinking_water" checked>
                       <label class="form-check-label" for="safe_drinking_water">Safe Drinking Water Available</label>
                     </div>
                     <div class="col-4 form-group">
-                      <input type="checkbox" class="form-check-input" value="yes" name="provisioning_of_suppl" id="provisioning_of_suppl" checked>
+                      <input type="checkbox" class="form-check-input" value="1" name="provisioning_of_suppl" id="provisioning_of_suppl" checked>
                       <label class="form-check-label" for="provisioning_of_suppl">Provisioning of Supplement Available</label>
                     </div>
                   </div>
@@ -282,7 +285,7 @@ Upload Facilities Data
                     </div>
                     <div class="col-6">
                       
-                      <select class="custom-select form-control-border mt-4" name="relief_camp" required>
+                      <select class="custom-select form-control-border mt-4" name="relief_camp_id" required>
                         <option selected>Select Relief Camp</option>
                         @foreach ($relief_camps as $relief_camp)
                             <option value="{{$relief_camp->id}}">{{$relief_camp->relief_camp_name}}</option>

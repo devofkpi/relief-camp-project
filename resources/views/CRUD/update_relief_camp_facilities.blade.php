@@ -91,11 +91,11 @@ Update Camp Facilities
               </div>
               <div class="col-4 form-group">
                 <label for="">Number of bedsheets</label>
-                <input type="text" class="form-control" value="{{ $relief_camp_facilities->number_of_badsheets }}" name="number_of_bedsheets" required>
+                <input type="text" class="form-control" value="{{ $relief_camp_facilities->number_of_bedsheets }}" name="number_of_bedsheets" required>
               </div>
               <div class="col-4 form-group">
                 <label for="">Bedsheet ratio per person</label>
-                <input type="text" class="form-control" value="{{ round($relief_camp_facilities->badsheet_ratio_per_person,2) }}" name="bedsheet_ratio_per_person" required>
+                <input type="text" class="form-control" value="{{ round($relief_camp_facilities->bedsheet_ratio_per_person,2) }}" name="bedsheet_ratio_per_person" required>
               </div>
             </div>
             <div class="row mb-3">
@@ -240,13 +240,13 @@ Update Camp Facilities
               </div>
               <div class="col-6 form-group">
                 <label for="">Number of specially abled person linked to some facility</label>
-                <input type="text" class="form-control" value="{{ $relief_camp_facilities->number_of_disabled_person_liked_facility }}" name="number_of_disabled_linked_to_facility" required>
+                <input type="text" class="form-control" value="{{ $relief_camp_facilities->number_of_disabled_person_linked_facility }}" name="number_of_disabled_linked_to_facility" required>
               </div>
             </div>
             <div class="row mb-3">
               <div class="col-6 form-group">
                 <label for="">Percantage of specially abled person linked to some facility</label>
-                <input type="text" class="form-control" value="{{ round($relief_camp_facilities->per_of_disabled_person_liked_facility,2) }}" name="per_of_disabled_linked_to_facility" required>
+                <input type="text" class="form-control" value="{{ round($relief_camp_facilities->per_of_disabled_person_linked_facility,2) }}" name="per_of_disabled_linked_to_facility" required>
               </div>
               <div class="col-6 form-group">
                 <label for="">Number of children separated from parents</label>
