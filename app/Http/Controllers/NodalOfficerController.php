@@ -76,8 +76,13 @@ class NodalOfficerController extends Controller
     }
 
     public function nodalOfficerImport(Request $request){
-        Excel::import(new NodalOfficerImport, $request->file('nodal_officer_excel'));
-        $this->nodal_officers=NodalOfficer::get();
-        return redirect()->route('show_all_nodal_officer',['nodal_officers_data'=>$this->nodal_officers]);
+        try{
+
+            Excel::import(new NodalOfficerImport, $request->file('nodal_officer_excel'));
+            $this->nodal_officers=NodalOfficer::get();
+            return redirect()->route('show_all_nodal_officer',['nodal_officers_data'=>$this->nodal_officers]);
+        }catch(\Maatwebsite\Excel\Validators\ValidationException $e){
+            $failures = $e->failures();
+        }
     }
 }

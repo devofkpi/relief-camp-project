@@ -265,8 +265,11 @@ class ReliefCampDemographyController extends Controller
     }
 
     public function inmatesImport(Request $request){
-
+        try{
         Excel::import(new ReliefCampDemographyImport($request->get('relief_camp_id')), $request->file('inmates_excel'));
         return redirect()->back();
+        }catch(\Maatwebsite\Excel\Validators\ValidationException $e){
+            $failures = $e->failures();
+        }
     }
 }

@@ -170,8 +170,15 @@ class ReliefCampController extends Controller
      */
 
     public function reliefCampImport(Request $request){
+
+        try{
+
         Excel::import(new ReliefCampImport, $request->file('relief_camp_excel'));
         $this->relief_camp=ReliefCamp::get();
         return redirect()->route('relief_camps',['relief_camp_data'=>$this->relief_camp]);
+
+        }catch(\Maatwebsite\Excel\Validators\ValidationException $e){
+            $failures = $e->failures();
+        }
     }
 }

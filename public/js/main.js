@@ -81,6 +81,13 @@ $('#user_role').on('change',function(e){
 
 	$(function(){
 
+    bsCustomFileInput.init();
+		//Initialize Select2 Elements
+		$('.select2').select2();
+		//Initialize Select2 Elements
+		$('.select2bs4').select2({
+		  theme: 'bootstrap4'
+		})
 		
 		var donutData        = {
 			labels: $('#piechart_labels').val().split(','),
@@ -105,12 +112,5 @@ $('#user_role').on('change',function(e){
 		data: pieData,
 		options: pieOptions
 	})
-	
-		bsCustomFileInput.init();
-		//Initialize Select2 Elements
-		$('.select2').select2();
-		//Initialize Select2 Elements
-		$('.select2bs4').select2({
-		  theme: 'bootstrap4'
-		})
+
 	});

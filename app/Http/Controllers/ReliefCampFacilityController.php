@@ -181,12 +181,16 @@ class ReliefCampFacilityController extends Controller
     public function campFacilitiesImport(Request $request){
 
         // $headings = (new HeadingRowImport)->toArray($request->file('relief_camp_facilities_excel'));
+        try{
 
-        Excel::import(new ReliefCampFacilitiesImport, $request->file('relief_camp_facilities_excel'));
-
-        $relief_camps_facilities= ReliefCamp::with('reliefCampFacility')->get();
-
-        return redirect()->back();
+            Excel::import(new ReliefCampFacilitiesImport, $request->file('relief_camp_facilities_excel'));
+    
+            $relief_camps_facilities= ReliefCamp::with('reliefCampFacility')->get();
+    
+            return redirect()->back();
+        }catch(\Maatwebsite\Excel\Validators\ValidationException $e){
+            $failures = $e->failures();
+        }
 
     }
 }
