@@ -57,7 +57,7 @@ Create User
                   </div>
                 </div>
                 <div class="input-group mb-3">
-                  <input type="password" class="form-control" placeholder="Password" name="password" required>
+                  <input type="password" class="form-control" placeholder="Password" name="password" autocomplete="off" required>
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <span class="fas fa-lock"></span>
@@ -65,7 +65,7 @@ Create User
                   </div>
                 </div>
                 <div class="input-group mb-3">
-                  <input type="password" class="form-control" placeholder="Retype password" name="confirm_password" required>
+                  <input type="password" class="form-control" placeholder="Retype password" name="confirm_password" autocomplete="off" required>
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <span class="fas fa-lock"></span>

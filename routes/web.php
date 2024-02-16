@@ -34,8 +34,8 @@ use App\Http\Controllers\{  ReliefCampFacilityController,
 // });
 
 Route::controller(UserController::class)->group(function(){
-    Route::get('/login','showLogin')->name('login');
-    Route::post('/login','authUser')->name('login.post');
+    Route::get('/','showLogin')->name('login');
+    Route::post('/','authUser')->name('login.post');
  });
  
 Route::group(['middleware'=>['authorization']],function(){

@@ -13,10 +13,10 @@ Change Password
             @csrf
             <div class="card-body">
             <div class="input-group mb-3">
-                <input type="password" placeholder="Password" class="form-control" name="password" id="password">
+                <input type="password" placeholder="Password" class="form-control" name="password" id="password" autocomplete="off">
             </div>
             <div class="input-group mb-3">
-                <input type="password" placeholder="Confirm Password" class="form-control" name="cnf_password" id="cnf_password">
+                <input type="password" placeholder="Confirm Password" class="form-control" name="cnf_password" id="cnf_password" autocomplete="off">
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>

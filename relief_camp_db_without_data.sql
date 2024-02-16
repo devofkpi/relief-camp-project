@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1deb5ubuntu1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 11, 2023 at 04:51 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: localhost:3306
+-- Generation Time: Dec 21, 2023 at 12:38 PM
+-- Server version: 10.6.12-MariaDB-0ubuntu0.22.04.1
+-- PHP Version: 8.1.2-1ubuntu2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,16 +36,6 @@ CREATE TABLE `addresses` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `addresses`
---
-
-INSERT INTO `addresses` (`id`, `address`, `city`, `state`, `pincode`, `created_at`, `updated_at`) VALUES
-(3, 'daili village, saparmaina', 'kangpokpi', 'manipur', 795129, '2023-10-04 05:44:47', '2023-10-04 05:44:47'),
-(4, 'Lungtin Village, saikul', 'kangpokpi', 'manipur', 795129, '2023-10-04 05:44:47', '2023-10-04 05:44:47'),
-(5, 'kalaphar village, motbung', 'kangpokpi', 'manipur', 795129, '2023-10-04 05:46:44', '2023-10-04 05:46:44'),
-(6, 'kanglatongbi village', 'kangpokpi', 'manipur', 795129, '2023-10-04 05:46:44', '2023-10-04 05:46:44');
 
 -- --------------------------------------------------------
 
@@ -134,14 +124,6 @@ CREATE TABLE `family_heads` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `family_heads`
---
-
-INSERT INTO `family_heads` (`id`, `family_head_name`, `created_at`, `updated_at`) VALUES
-(1, 'Solomon', '2023-10-04 05:53:04', '2023-10-04 05:53:04'),
-(2, 'Camellus', '2023-10-04 05:53:04', '2023-10-04 05:53:04');
-
 -- --------------------------------------------------------
 
 --
@@ -154,16 +136,6 @@ CREATE TABLE `family_head_relations` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `family_head_relations`
---
-
-INSERT INTO `family_head_relations` (`id`, `family_head_relation`, `created_at`, `updated_at`) VALUES
-(1, 'Father', '2023-10-04 05:53:57', '2023-10-04 05:53:57'),
-(2, 'Sister', '2023-10-04 05:53:57', '2023-10-04 05:53:57'),
-(3, 'Mother', '2023-10-04 05:54:23', '2023-10-04 05:54:23'),
-(4, 'Brother', '2023-10-04 05:54:23', '2023-10-04 05:54:23');
 
 -- --------------------------------------------------------
 
@@ -203,12 +175,18 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (19, '2023_10_02_094405_update_police_stations_table', 1),
 (20, '2023_10_02_094716_update_public_healths_table', 1),
 (21, '2023_10_02_094824_update_anganwadi_centres_table', 1),
-(22, '2023_10_02_095024_update_nodal_officers_table', 1),
-(23, '2023_10_02_095451_update_relief_camp_demographies_table', 1),
-(24, '2023_10_02_095926_update_announcements_table', 1),
-(25, '2023_10_02_184626_create_family_heads_table', 1),
-(26, '2023_10_02_184657_create_family_head_relations_table', 1),
-(27, '2023_10_02_190156_update_relief_camp_demography_table', 1);
+(22, '2023_10_02_095451_update_relief_camp_demographies_table', 1),
+(23, '2023_10_02_095926_update_announcements_table', 1),
+(24, '2023_10_02_184626_create_family_heads_table', 1),
+(25, '2023_10_02_184657_create_family_head_relations_table', 1),
+(26, '2023_10_02_190156_update_relief_camp_demography_table', 1),
+(27, '2023_10_16_101340_create_relief_camp_daily_report_table', 1),
+(28, '2023_11_29_074139_add_user_jurisdiction_to_users', 2),
+(29, '2023_11_29_075556_update_users_table', 2),
+(30, '2023_12_02_193241_add_column_nodal_officer_id_to_users_table', 3),
+(31, '2023_12_02_193454_update_users_table', 3),
+(32, '2023_12_11_085402_update_relief_camp_demographies_table', 4),
+(33, '2023_12_11_165121_update_users_table', 5);
 
 -- --------------------------------------------------------
 
@@ -221,19 +199,10 @@ CREATE TABLE `nodal_officers` (
   `officer_name` varchar(50) NOT NULL,
   `officer_designation` varchar(100) NOT NULL,
   `officer_contact` bigint(20) UNSIGNED NOT NULL,
-  `sub_division_id` bigint(20) UNSIGNED NOT NULL,
   `active_status` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `nodal_officers`
---
-
-INSERT INTO `nodal_officers` (`id`, `officer_name`, `officer_designation`, `officer_contact`, `sub_division_id`, `active_status`, `created_at`, `updated_at`) VALUES
-(1, 'Affaizuddin', 'Sub Divisional Officer', 7000213123, 2, 1, '2023-10-04 12:11:20', '2023-10-04 12:11:20'),
-(2, 'Maisi', 'District Manager', 7000213120, 3, 1, '2023-10-04 12:11:20', '2023-10-04 12:11:20');
 
 -- --------------------------------------------------------
 
@@ -318,15 +287,23 @@ CREATE TABLE `relief_camps` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `relief_camps`
+-- Table structure for table `relief_camp_daily_report`
 --
 
-INSERT INTO `relief_camps` (`id`, `relief_camp_name`, `camp_code`, `address_id`, `sub_division_id`, `nodal_officer_id`, `active_status`, `created_at`, `updated_at`) VALUES
-(1, 'JNV relief Camp', 'KPI-01', 5, 1, 1, 1, '2023-10-04 05:49:35', '2023-10-04 05:49:35'),
-(2, 'Motbung Relief Camp', 'KPI-02', 3, 3, 1, 1, '2023-10-04 05:49:35', '2023-10-04 05:49:35'),
-(3, 'Kalaphar Relief Camp', 'KPI-03', 4, 4, 2, 1, '2023-10-04 05:51:27', '2023-10-04 05:51:27'),
-(4, 'Daili Relief Camp', 'KPI-04', 6, 4, 1, 1, '2023-10-04 05:51:27', '2023-10-04 05:51:27');
+CREATE TABLE `relief_camp_daily_report` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `relief_camp_id` bigint(20) UNSIGNED NOT NULL,
+  `inmates_on_previous_day` int(11) NOT NULL,
+  `inmates_leaving_today` int(11) NOT NULL,
+  `inmates_joined_today` int(11) NOT NULL,
+  `total_inmates_today` int(11) NOT NULL,
+  `today_date` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -337,29 +314,24 @@ INSERT INTO `relief_camps` (`id`, `relief_camp_name`, `camp_code`, `address_id`,
 CREATE TABLE `relief_camp_demographies` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `person_name` varchar(100) NOT NULL,
-  `family_head_id` bigint(20) UNSIGNED NOT NULL,
-  `family_head_relation_id` bigint(20) UNSIGNED NOT NULL,
+  `family_head_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `family_head_relation_id` bigint(20) UNSIGNED DEFAULT NULL,
   `gender` enum('male','female','third_gender') NOT NULL,
-  `age` tinyint(4) NOT NULL,
+  `age` double(8,2) NOT NULL,
+  `contact_number` bigint(20) UNSIGNED DEFAULT NULL,
   `physically_disabled` tinyint(1) NOT NULL DEFAULT 0,
   `orphan` tinyint(1) NOT NULL DEFAULT 0,
   `lactating` tinyint(1) NOT NULL DEFAULT 0,
-  `address_id` bigint(20) UNSIGNED NOT NULL,
+  `any_special_condition` varchar(255) DEFAULT NULL,
+  `profession` varchar(100) DEFAULT NULL,
+  `willing_to_goback` tinyint(1) NOT NULL DEFAULT 1,
+  `remark` text DEFAULT NULL,
+  `address_id` bigint(20) UNSIGNED DEFAULT NULL,
   `relief_camp_id` bigint(20) UNSIGNED NOT NULL,
   `active_status` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `relief_camp_demographies`
---
-
-INSERT INTO `relief_camp_demographies` (`id`, `person_name`, `family_head_id`, `family_head_relation_id`, `gender`, `age`, `physically_disabled`, `orphan`, `lactating`, `address_id`, `relief_camp_id`, `active_status`, `created_at`, `updated_at`) VALUES
-(1, 'Nongthombam Rambo', 1, 1, 'male', 32, 0, 1, 0, 3, 1, 1, '2023-10-04 05:55:04', '2023-10-04 05:55:04'),
-(2, 'Ningthojam Bedajit', 1, 1, 'male', 75, 0, 0, 0, 5, 1, 1, '2023-10-04 05:55:04', '2023-10-04 05:55:04'),
-(3, 'Pangambam Jayananda', 1, 1, 'male', 6, 0, 0, 0, 4, 1, 1, '2023-10-04 05:56:56', '2023-10-04 05:56:56'),
-(4, 'Vaivinai', 2, 4, 'female', 25, 0, 0, 1, 4, 3, 1, '2023-10-04 05:56:56', '2023-10-04 05:56:56');
 
 -- --------------------------------------------------------
 
@@ -369,36 +341,71 @@ INSERT INTO `relief_camp_demographies` (`id`, `person_name`, `family_head_id`, `
 
 CREATE TABLE `relief_camp_facilities` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `building_type` varchar(100) NOT NULL,
+  `building_type` varchar(100) NOT NULL DEFAULT 'NA',
   `number_of_persons` int(11) NOT NULL,
   `number_of_rooms` int(11) NOT NULL,
   `number_of_halls` int(11) NOT NULL,
-  `number_of_toilets` int(11) NOT NULL,
-  `number_of_persons_utilising_toilets` int(11) NOT NULL,
-  `number_of_persons_staying_at_night` int(11) NOT NULL,
-  `number_of_mattresses` int(11) NOT NULL,
-  `number_of_badsheets` int(11) NOT NULL,
-  `number_of_blankets` int(11) NOT NULL,
-  `number_of_mosquito` int(11) NOT NULL,
-  `number_of_fans` int(11) NOT NULL,
-  `availability_of_food_grains_in_days` int(11) NOT NULL,
-  `availability_of_veg_in_days` int(11) NOT NULL,
+  `separate_kitchen` tinyint(1) NOT NULL DEFAULT 1,
+  `open_space` tinyint(1) NOT NULL DEFAULT 1,
+  `water_tanks_capacity` int(11) DEFAULT NULL,
+  `water_avail_ratio` double DEFAULT NULL,
+  `number_of_toilets` int(11) DEFAULT NULL,
+  `toilet_ratio_per_person` double DEFAULT NULL,
+  `number_of_buckets` int(11) DEFAULT NULL,
+  `bucket_ratio_per_person` double DEFAULT NULL,
+  `number_of_mugs` int(11) DEFAULT NULL,
+  `mug_ratio_per_person` double DEFAULT NULL,
+  `sufficient_cooking_utensils` tinyint(1) NOT NULL DEFAULT 1,
+  `number_of_mattresses` int(11) DEFAULT NULL,
+  `mattress_ratio_per_person` double DEFAULT NULL,
+  `number_of_bedsheets` int(11) DEFAULT NULL,
+  `bedsheet_ratio_per_person` double DEFAULT NULL,
+  `number_of_pillows` int(11) DEFAULT NULL,
+  `pillow_ratio_per_person` double DEFAULT NULL,
+  `number_of_blankets` int(11) DEFAULT NULL,
+  `blanket_ratio_per_person` double DEFAULT NULL,
+  `number_of_mosquitos` int(11) DEFAULT NULL,
+  `mosquito_ratio_per_person` double DEFAULT NULL,
+  `sufficient_lighting_facility` tinyint(1) NOT NULL DEFAULT 1,
+  `number_of_fans` int(11) DEFAULT NULL,
+  `fans_ratio_per_person` double DEFAULT NULL,
+  `sufficient_plates_glasses` tinyint(1) NOT NULL DEFAULT 1,
+  `fuel_sources` text NOT NULL DEFAULT 'firewood',
+  `availability_of_fuel_in_days` int(11) DEFAULT NULL,
+  `availability_of_rice_in_days` int(11) DEFAULT NULL,
+  `availability_of_dal_in_days` int(11) DEFAULT NULL,
+  `availability_of_veg_in_days` int(11) DEFAULT NULL,
+  `number_of_persons_staying_at_night` int(11) DEFAULT NULL,
+  `availability_of_food_grains_in_days` int(11) DEFAULT NULL,
   `safe_drinking_water` tinyint(1) NOT NULL DEFAULT 1,
   `provisioning_of_supplement` tinyint(1) NOT NULL DEFAULT 1,
+  `availability_of_soap_consumable_in_days` int(11) DEFAULT NULL,
+  `number_of_school_going_students` int(11) DEFAULT NULL,
+  `number_of_students_linked_to_school` int(11) DEFAULT NULL,
+  `per_of_students_linked_to_school` double DEFAULT NULL,
+  `number_of_child_identified_anganwadi` int(11) DEFAULT NULL,
+  `number_of_child_linked_anganwadi` int(11) DEFAULT NULL,
+  `per_child_linked_anganwadi` double DEFAULT NULL,
+  `number_of_pregnant_women` int(11) DEFAULT NULL,
+  `number_of_pregnant_women_linked_health` int(11) DEFAULT NULL,
+  `per_of_pregnant_women_linked_health` double DEFAULT NULL,
+  `number_of_disabled_person` int(11) DEFAULT NULL,
+  `number_of_disabled_person_linked_facility` int(11) DEFAULT NULL,
+  `per_of_disabled_person_linked_facility` double DEFAULT NULL,
+  `number_of_child_separated_parents` int(11) DEFAULT NULL,
+  `number_of_child_separated_parents_linked_sw` int(11) DEFAULT NULL,
+  `per_of_child_separated_parents_linked_sw` double DEFAULT NULL,
+  `date_visit_of_health` varchar(255) DEFAULT NULL,
+  `date_visit_of_phed` varchar(255) DEFAULT NULL,
+  `date_visit_of_social_welfare` varchar(255) DEFAULT NULL,
+  `date_visit_of_cafpd` varchar(255) DEFAULT NULL,
+  `date_visit_of_edu` varchar(255) DEFAULT NULL,
+  `date_visit_of_pow` varchar(255) DEFAULT NULL,
+  `date_visit_of_mahud_ceo_adc` varchar(255) DEFAULT NULL,
   `relief_camp_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `relief_camp_facilities`
---
-
-INSERT INTO `relief_camp_facilities` (`id`, `building_type`, `number_of_persons`, `number_of_rooms`, `number_of_halls`, `number_of_toilets`, `number_of_persons_utilising_toilets`, `number_of_persons_staying_at_night`, `number_of_mattresses`, `number_of_badsheets`, `number_of_blankets`, `number_of_mosquito`, `number_of_fans`, `availability_of_food_grains_in_days`, `availability_of_veg_in_days`, `safe_drinking_water`, `provisioning_of_supplement`, `relief_camp_id`, `created_at`, `updated_at`) VALUES
-(1, 'Semi Permanent', 60, 10, 1, 4, 50, 40, 50, 50, 50, 50, 10, 10, 10, 1, 1, 3, '2023-10-04 05:58:32', '2023-10-04 05:58:32'),
-(2, 'Permanent Structure', 20, 5, 1, 4, 20, 20, 20, 20, 20, 10, 5, 10, 11, 1, 1, 1, '2023-10-04 05:58:32', '2023-10-04 05:58:32'),
-(3, 'Double Story Building', 50, 10, 1, 4, 50, 40, 50, 50, 50, 50, 10, 10, 10, 1, 1, 2, '2023-10-04 06:00:27', '2023-10-04 06:00:27'),
-(4, 'Single Story Building', 20, 5, 1, 4, 20, 20, 20, 20, 20, 10, 5, 10, 11, 1, 1, 4, '2023-10-04 06:00:27', '2023-10-04 06:00:27');
 
 -- --------------------------------------------------------
 
@@ -409,6 +416,7 @@ INSERT INTO `relief_camp_facilities` (`id`, `building_type`, `number_of_persons`
 CREATE TABLE `sub_divisions` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `sub_division_name` varchar(100) NOT NULL,
+  `sub_division_code` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -417,11 +425,15 @@ CREATE TABLE `sub_divisions` (
 -- Dumping data for table `sub_divisions`
 --
 
-INSERT INTO `sub_divisions` (`id`, `sub_division_name`, `created_at`, `updated_at`) VALUES
-(1, 'Saikul', '2023-10-04 05:48:24', '2023-10-04 05:48:24'),
-(2, 'Saitu', '2023-10-04 05:48:24', '2023-10-04 05:48:24'),
-(3, 'Island', '2023-10-04 05:48:54', '2023-10-04 05:48:54'),
-(4, 'T waichong', '2023-10-04 05:48:54', '2023-10-04 05:48:54');
+INSERT INTO `sub_divisions` (`id`, `sub_division_name`, `sub_division_code`, `created_at`, `updated_at`) VALUES
+(1, 'kangpokpi', 'KPI-1', NULL, NULL),
+(2, 'champai', 'KPI-2', NULL, NULL),
+(3, 'waichong', 'KPI-3', NULL, NULL),
+(4, 'saitu', 'KPI-4', NULL, NULL),
+(5, 'kangchup', 'KPI-5', NULL, NULL),
+(6, 'bungte', 'KPI-6', NULL, NULL),
+(7, 'saikul', 'KPI-7', NULL, NULL),
+(8, 'lahungtin', 'KPI-8', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -436,9 +448,22 @@ CREATE TABLE `users` (
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
+  `role` tinyint(3) UNSIGNED NOT NULL,
+  `active` tinyint(1) NOT NULL,
+  `default_pwd_change` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `sub_division_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `relief_camp_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `nodal_officer_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `role`, `active`, `default_pwd_change`, `created_at`, `updated_at`, `sub_division_id`, `relief_camp_id`, `nodal_officer_id`) VALUES
+(1, 'Ashish Dhawal', 'dhawalashish@gmail.com', '2023-11-27 09:38:12', '$2y$10$WgbtFj9gUYL82ulKh0mjLeTs6TIQ0G.Ouo/YHXjikqJ.ACdo/.ebm', NULL, 0, 1, 1, '2023-11-27 09:38:12', '2023-12-04 02:01:59', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -508,9 +533,7 @@ ALTER TABLE `migrations`
 -- Indexes for table `nodal_officers`
 --
 ALTER TABLE `nodal_officers`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nodal_officers_officer_contact_unique` (`officer_contact`),
-  ADD KEY `nodal_officers_sub_division_id_foreign` (`sub_division_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `password_reset_tokens`
@@ -549,10 +572,15 @@ ALTER TABLE `public_healths`
 --
 ALTER TABLE `relief_camps`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `relief_camps_camp_code_unique` (`camp_code`),
   ADD KEY `relief_camps_address_id_foreign` (`address_id`),
   ADD KEY `relief_camps_sub_division_id_foreign` (`sub_division_id`),
   ADD KEY `relief_camps_nodal_officer_id_foreign` (`nodal_officer_id`);
+
+--
+-- Indexes for table `relief_camp_daily_report`
+--
+ALTER TABLE `relief_camp_daily_report`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `relief_camp_demographies`
@@ -576,14 +604,18 @@ ALTER TABLE `relief_camp_facilities`
 --
 ALTER TABLE `sub_divisions`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `sub_divisions_sub_division_name_unique` (`sub_division_name`);
+  ADD UNIQUE KEY `sub_divisions_sub_division_name_unique` (`sub_division_name`),
+  ADD UNIQUE KEY `sub_divisions_sub_division_code_unique` (`sub_division_code`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD KEY `users_sub_division_id_foreign` (`sub_division_id`),
+  ADD KEY `users_relief_camp_id_foreign` (`relief_camp_id`),
+  ADD KEY `users_nodal_officer_id_foreign` (`nodal_officer_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -593,7 +625,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=744;
 
 --
 -- AUTO_INCREMENT for table `anganwadi_centres`
@@ -629,25 +661,25 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `family_heads`
 --
 ALTER TABLE `family_heads`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `family_head_relations`
 --
 ALTER TABLE `family_head_relations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `nodal_officers`
 --
 ALTER TABLE `nodal_officers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -671,31 +703,37 @@ ALTER TABLE `public_healths`
 -- AUTO_INCREMENT for table `relief_camps`
 --
 ALTER TABLE `relief_camps`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+
+--
+-- AUTO_INCREMENT for table `relief_camp_daily_report`
+--
+ALTER TABLE `relief_camp_daily_report`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `relief_camp_demographies`
 --
 ALTER TABLE `relief_camp_demographies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=685;
 
 --
 -- AUTO_INCREMENT for table `relief_camp_facilities`
 --
 ALTER TABLE `relief_camp_facilities`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
 
 --
 -- AUTO_INCREMENT for table `sub_divisions`
 --
 ALTER TABLE `sub_divisions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -713,12 +751,6 @@ ALTER TABLE `anganwadi_centres`
 --
 ALTER TABLE `announcements`
   ADD CONSTRAINT `announcements_announcement_category_id_foreign` FOREIGN KEY (`announcement_category_id`) REFERENCES `announcement_categories` (`id`);
-
---
--- Constraints for table `nodal_officers`
---
-ALTER TABLE `nodal_officers`
-  ADD CONSTRAINT `nodal_officers_sub_division_id_foreign` FOREIGN KEY (`sub_division_id`) REFERENCES `sub_divisions` (`id`);
 
 --
 -- Constraints for table `police_stations`
@@ -756,6 +788,14 @@ ALTER TABLE `relief_camp_demographies`
 --
 ALTER TABLE `relief_camp_facilities`
   ADD CONSTRAINT `relief_camp_facilities_relief_camp_id_foreign` FOREIGN KEY (`relief_camp_id`) REFERENCES `relief_camps` (`id`);
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_nodal_officer_id_foreign` FOREIGN KEY (`nodal_officer_id`) REFERENCES `nodal_officers` (`id`),
+  ADD CONSTRAINT `users_relief_camp_id_foreign` FOREIGN KEY (`relief_camp_id`) REFERENCES `relief_camps` (`id`),
+  ADD CONSTRAINT `users_sub_division_id_foreign` FOREIGN KEY (`sub_division_id`) REFERENCES `sub_divisions` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

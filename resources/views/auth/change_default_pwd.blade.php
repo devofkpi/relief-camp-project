@@ -33,7 +33,7 @@
       <form action="{{route('change_pwd.post')}}" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="password">
+          <input type="password" class="form-control" placeholder="Password" name="password" autocomplete="off">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Confirm Password" name="cnf_password">
+            <input type="password" class="form-control" placeholder="Confirm Password" name="cnf_password" autocomplete="off">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
