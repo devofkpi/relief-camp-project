@@ -6,11 +6,19 @@ use Illuminate\Http\{Request,RedirectResponse};
 use App\Imports\NodalOfficerImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\{NodalOfficer,ReliefCamp};
+use App\Library\Senitizer;
 
 class NodalOfficerController extends Controller
 {
     //
     private $nodal_officers;
+
+    public function __construct(Request $request)
+    {
+       if( isset($_REQUEST) ){
+            $_REQUEST = Senitizer::senitize($_REQUEST, $request);
+       }
+    }
 
     public function showAll(){
         $user=auth()->user();

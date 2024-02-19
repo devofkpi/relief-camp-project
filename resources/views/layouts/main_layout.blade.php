@@ -6,9 +6,8 @@
   <title>Relief Camp | @yield('title')</title>
   @yield('custom_head_data')
 
-  <link rel="stylesheet" href="{{ asset('fonts/fonts.css')}}">
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css')}}">
-  <link rel="stylesheet" href="{{ asset('fonts/ionicons.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('plugins/ionicons-2.0.1/css/ionicons.min.css')}}">
   <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
   <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css')}}">
@@ -63,7 +62,7 @@
 <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <script>
   $.widget.bridge('uibutton', $.ui.button)
-</script>
+</script> <link rel="stylesheet" href="{{ asset('fonts/fonts.css')}}">
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{ asset('plugins/chart.js/Chart.min.js')}}"></script>
 
@@ -80,3 +79,4 @@
 @yield('custom_script')
 </body>
 </html>
+<link rel="stylesheet" href="{{ asset('fonts/fonts.css')}}">

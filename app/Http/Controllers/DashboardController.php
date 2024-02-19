@@ -5,10 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\{ReliefCampDemography, ReliefCamp,SubDivision};
+use App\Library\Senitizer;
 
 class DashboardController extends Controller
 {
     //
+    public function __construct(Request $request)
+    {
+       if( isset($_REQUEST) ){
+            $_REQUEST = Senitizer::senitize($_REQUEST, $request);
+       }
+    }
     
     public function show(){
         $user=auth()->user();

@@ -38,7 +38,7 @@ Route::controller(UserController::class)->group(function(){
     Route::post('/','authUser')->name('login.post');
  });
  
-Route::group(['middleware'=>['authorization']],function(){
+Route::group(['middleware'=>['authorization','noBack','noStore']],function(){
 
     Route::controller(UserController::class)->group(function(){
     

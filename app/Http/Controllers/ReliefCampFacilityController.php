@@ -8,11 +8,19 @@ use App\Imports\ReliefCampFacilitiesImport;
 use Maatwebsite\Excel\HeadingRowImport;
 
 use Maatwebsite\Excel\Facades\Excel;
+use App\Library\Senitizer;
+
 
 class ReliefCampFacilityController extends Controller
 {
     //
     public $import_failures;
+    public function __construct(Request $request)
+    {
+       if( isset($_REQUEST) ){
+            $_REQUEST = Senitizer::senitize($_REQUEST, $request);
+       }
+    }
     public function showById(String $relief_camp_id=null){
         $relief_camp=ReliefCamp::findOrFail($relief_camp_id);
         $relief_camp_name=$relief_camp->relief_camp_name;

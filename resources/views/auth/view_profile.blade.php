@@ -25,7 +25,7 @@ View Profile
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td>{{ $user->email}}</td>
+                    <td>{{ str_replace(".","[dot]",str_replace("@","[at]",$user->email))}}</td>
                 </tr>
                     @if($user->role==0)
                     <tr>

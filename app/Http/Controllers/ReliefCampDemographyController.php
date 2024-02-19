@@ -7,6 +7,7 @@ use App\Models\{ReliefCampDemography,ReliefCamp,FamilyHead,FamilyHeadRelation,Ad
 use App\Imports\ReliefCampDemographyImport;
 use Illuminate\Pagination\Paginator;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Library\Senitizer;
 
 class ReliefCampDemographyController extends Controller
 {
@@ -16,6 +17,13 @@ class ReliefCampDemographyController extends Controller
     protected $user;
     
     //
+    public function __construct(Request $request)
+    {
+       if( isset($_REQUEST) ){
+            $_REQUEST = Senitizer::senitize($_REQUEST, $request);
+       }
+    }
+    
     public function showAllInmates(){
         $user=auth()->user();
         if($user->role==0 || $user->role==1){

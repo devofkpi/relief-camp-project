@@ -9,6 +9,8 @@ use App\Models\{SubDivision,NodalOfficer,ReliefCamp};
 
 use App\Models\User;
 
+use App\Library\Senitizer;
+
 class UserController extends Controller
 {
 
@@ -19,6 +21,14 @@ class UserController extends Controller
         'normal_user'=>3
     ];
     //
+
+    public function __construct(Request $request)
+    {
+       if( isset($_REQUEST) ){
+            $_REQUEST = Senitizer::senitize($_REQUEST, $request);
+       }
+    }
+
     public function showLogin(){
         return view('auth.login');
     }
@@ -108,8 +118,9 @@ class UserController extends Controller
     }
 
     public function logout(Request $request){
-        $request->session()->flush();
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect('/');
     }
 

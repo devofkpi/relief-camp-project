@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{ReliefCamp,NodalOfficer,ReliefCampDemography,User};
+use App\Library\Senitizer;
 
 class TrashHandleController extends Controller
 {
@@ -12,6 +13,14 @@ class TrashHandleController extends Controller
     protected $inmates=null;
     protected $users=null;
     //
+
+    public function __construct(Request $request)
+    {
+       if( isset($_REQUEST) ){
+            $_REQUEST = Senitizer::senitize($_REQUEST, $request);
+       }
+    }
+
     public function deletedItems(){
         $this->relief_camps=ReliefCamp::where('active_status','=',false)->paginate(25);
         $this->nodal_officers=NodalOfficer::where('active_status','=',false)->paginate(25);

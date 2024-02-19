@@ -70,5 +70,7 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\SuperAdmin::class,
         'moderate_user' => \App\Http\Middleware\SuperAdmin::class,
         'normal_user' => \App\Http\Middleware\SuperAdmin::class,
+        'noBack' => \App\Http\Middleware\PreventBackHistory::class,
+		'noStore'=> \App\Http\Middleware\CacheControlMiddleware::class
     ];
 }

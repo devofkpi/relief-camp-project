@@ -4,10 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use App\Library\Senitizer;
 
 class DownloadController extends Controller
 {
     //
+
+    public function __construct(Request $request)
+    {
+       if( isset($_REQUEST) ){
+            $_REQUEST = Senitizer::senitize($_REQUEST, $request);
+       }
+    }
 
     public function downloadExcelSample($filename=''){
         $file_path= storage_path()."/app/public/downloads/".$filename;

@@ -29,7 +29,7 @@ Show All User
                 <tr>
                     <th scope="row">{{++$count}}</th>
                     <td><a href=""> {{$user->name}}</a></td>
-                    <td>{{ $user->email}}</td>
+                    <td>{{ str_replace(".","[dot]",str_replace("@","[at]",$user->email))}}</td>
                     <td>{{ $role[$user->role]}}</td>
                     <td>{{ $user->active==1?'Active':'Inactive'}}</td>
                     <td>

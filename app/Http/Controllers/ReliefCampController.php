@@ -7,6 +7,7 @@ use App\Models\{SubDivision,ReliefCamp,NodalOfficer,Address};
 
 use App\Imports\ReliefCampImport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Library\Senitizer;
 
 class ReliefCampController extends Controller
 {
@@ -20,6 +21,12 @@ class ReliefCampController extends Controller
     protected $nodal_officer=null;
     protected $nodal_officer_id=null;
 
+    public function __construct(Request $request)
+    {
+       if( isset($_REQUEST) ){
+            $_REQUEST = Senitizer::senitize($_REQUEST, $request);
+       }
+    }
     
     /**
      * 
