@@ -114,3 +114,14 @@ $('#user_role').on('change',function(e){
 	})
 
 	});
+
+  $('#logout_anchor').on('click',function(e){
+    e.preventDefault();
+    $('#logout-form').submit();
+  });
+
+  $('#login_btn').on('click',function(event){
+    var hashedPwd = forge_sha256($('#login_pwd').val());
+    $('#login_pwd').val(hashedPwd); 
+    $('#login_form').submit();
+  });

@@ -26,9 +26,12 @@
           Change Password<i class="float-right fas fa-key"></i>        
         </a>
         <div class="dropdown-divider"></div>
-        <a href="{{route('logout')}}" class="dropdown-item">
+        <a id="logout_anchor" href="{{route('logout')}}" class="dropdown-item">
           Logout<i class="float-right fas fa-sign-out-alt"></i>        
-        </a>        
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: one;">
+          @csrf
+      </form>        
     </li>
     
   </ul>

@@ -42,7 +42,7 @@ Route::group(['middleware'=>['authorization','noBack','noStore']],function(){
 
     Route::controller(UserController::class)->group(function(){
     
-    Route::get('/logout','logout')->name('logout');
+    Route::post('/logout','logout')->name('logout');
 
     Route::get('/view/profile','viewProfile')->name('view_profile');
     Route::get('/edit/profile/{id?}','editProfileGet')->name('edit_profile');
