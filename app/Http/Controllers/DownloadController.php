@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\{Response,Crypt};
 use App\Library\Senitizer;
 
 class DownloadController extends Controller
@@ -18,6 +18,7 @@ class DownloadController extends Controller
     }
 
     public function downloadExcelSample($filename=''){
+        $filename=Crypt::decrypt($filename);
         $file_path= storage_path()."/app/public/downloads/".$filename;
         $headers=array(
             'Content-Type: application/excel',

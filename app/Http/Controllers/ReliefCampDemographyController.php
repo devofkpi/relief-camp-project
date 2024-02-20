@@ -8,6 +8,7 @@ use App\Imports\ReliefCampDemographyImport;
 use Illuminate\Pagination\Paginator;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Library\Senitizer;
+use Illuminate\Support\Facades\Crypt;
 
 class ReliefCampDemographyController extends Controller
 {
@@ -44,16 +45,27 @@ class ReliefCampDemographyController extends Controller
         return view('relief_camp_demography',['demography_data'=>$this->demography_data]);
     }
 
-    public function showInmateById($inamte_id=null){
-        $inmate=ReliefCampDemography::with(['address','familyHead','familyHeadRelation'])->find($inamte_id);
-        return view('CRUD.view_inmate',['inmate'=>$inmate]);
+    public function showInmateById($inmate_id=null){
+        if($inmate_id!=null){
+            $inmate_id=Crypt::decrypt($inmate_id);
+            $inmate=ReliefCampDemography::with(['address','familyHead','familyHeadRelation'])->find($inmate_id);
+            return view('CRUD.view_inmate',['inmate'=>$inmate]);
+
+        }else{
+            return  abort(403, 'Unauthorized action.');
+        }
     }
 
     public function showByCamp(String $relief_camp_id=null){
-        $relief_camp=ReliefCamp::where('active_status','=',true)->findOrFail($relief_camp_id);
-        $this->category_name=$relief_camp->relief_camp_name;
-        $this->demography_data=ReliefCampDemography::with('familyHead')->with('familyHeadRelation')->with('address')->where('relief_camp_id','=',$relief_camp_id)->where('active_status','=',true)->paginate(25);
-        return view('relief_camp_demography',['demography_data'=>$this->demography_data,'category_name'=>$this->category_name]);
+        if($relief_camp_id!=null){
+            $relief_camp_id=Crypt::decrypt($relief_camp_id);
+            $relief_camp=ReliefCamp::where('active_status','=',true)->findOrFail($relief_camp_id);
+            $this->category_name=$relief_camp->relief_camp_name;
+            $this->demography_data=ReliefCampDemography::with('familyHead')->with('familyHeadRelation')->with('address')->where('relief_camp_id','=',$relief_camp_id)->where('active_status','=',true)->paginate(25);
+            return view('relief_camp_demography',['demography_data'=>$this->demography_data,'category_name'=>$this->category_name]);
+        }else{
+            return  abort(403, 'Unauthorized action.');
+        }
     }
 
     public function showByCategory(String $category=null){
@@ -174,7 +186,7 @@ class ReliefCampDemographyController extends Controller
     }
 
     public function showByNodalOfficer($nodal_officer_id){
-        
+        $nodal_officer_id=Crypt::decrypt($nodal_officer_id);
         $this->demography_data=ReliefCampDemography::with(['familyHead','familyHeadRelation','address','reliefCamp'])->whereHas('reliefCamp',
         
         function($q) use($nodal_officer_id){
@@ -189,6 +201,7 @@ class ReliefCampDemographyController extends Controller
             $relief_camps=ReliefCamp::select('id','relief_camp_name','camp_code')->get();
             return view('CRUD.create_inmates',['relief_camps'=>$relief_camps]);
         }else{
+            $inamte_id=Crypt::decrypt($inamte_id);
             $relief_camps=ReliefCamp::select('id','relief_camp_name','camp_code')->get();
             $inmate=ReliefCampDemography::with('familyHead')->with('familyHeadRelation')->with('address')->with('reliefCamp')->find($inamte_id);
             return view('CRUD.update_inmate',['inmate'=>$inmate,'relief_camps'=>$relief_camps]);
@@ -266,6 +279,7 @@ class ReliefCampDemographyController extends Controller
     }
 
     public function deleteInmate($inmate_id){
+        $inmate_id=Crypt::decrypt($inmate_id);
         $inmate=ReliefCampDemography::findOrFail($inmate_id);
         $inmate->active_status=false;
         $inmate->save();

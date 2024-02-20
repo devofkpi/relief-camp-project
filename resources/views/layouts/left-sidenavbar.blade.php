@@ -78,13 +78,13 @@
                     @foreach ($nav_sub_data as $data )
                     @if(auth()->user()->role==0 || auth()->user()->role==1)
                     <li class="nav-item">
-                      <a href="{{route('relief_camp_by_sub',['sub_division_id'=>$data->id])}}" class="nav-link">
+                      <a href="{{route('relief_camp_by_sub',['sub_division_id'=>Crypt::encrypt($data->id)])}}" class="nav-link">
                         <p>{{$data->sub_division_name}}</p>
                       </a>
                     </li>
                     @elseif(auth()->user()->role==2 && (auth()->user()->sub_division_id==$data->id))
                     <li class="nav-item">
-                      <a href="{{route('relief_camp_by_sub',['sub_division_id'=>$data->id])}}" class="nav-link">
+                      <a href="{{route('relief_camp_by_sub',['sub_division_id'=>Crypt::encrypt($data->id)])}}" class="nav-link">
                         <p>{{$data->sub_division_name}}</p>
                       </a>
                     </li>

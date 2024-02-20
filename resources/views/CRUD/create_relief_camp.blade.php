@@ -108,7 +108,7 @@ Create Relief Camp
                   <div class="row justify-content-center">
                     <div class="col-8">
                       <h5 class="text-danger">Please upload the data in the format given here, also sanitize the data before uploading it.</h5>
-                      <h6 class="text-info"><a href="{{ route('download_excel_sample','Relief Camp Sample.xlsx')}}" target="_blank">( Click here )</a> to Download the format.</h6>
+                      <h6 class="text-info"><a href="{{ route('download_excel_sample',Crypt::encrypt('Relief Camp Sample.xlsx'))}}" target="_blank">( Click here )</a> to Download the format.</h6>
                     </div>
                   </div>
                   <div class="row justify-content-center">

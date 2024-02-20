@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\{Auth,Hash};
+use Illuminate\Support\Facades\{Auth,Hash,Crypt};
 use Session;
 use App\Models\{SubDivision,NodalOfficer,ReliefCamp};
 
@@ -68,6 +68,7 @@ class UserController extends Controller
         if($user_id==null){
             $user=auth()->user();
         }else{
+            $user_id=Crypt::decrypt($user_id);
             $user=User::findOrFail($user_id);
         }
         if($user->role==0 || $user->role==1 || $user->role==2){
@@ -170,8 +171,9 @@ class UserController extends Controller
 
     }
 
-    public function deleteUser($userId){
-        $user=User::findOrFail($userId);
+    public function deleteUser($user_id){
+        $user_id=Crypt::decrypt($user_id);
+        $user=User::findOrFail($user_id);
         $user->active=false;
         $user->save();
         return redirect()->back()->with('success','User account deactivated successfully');

@@ -50,7 +50,7 @@ Items in Trash
                               <td>{{ ucfirst($relief_camp->address->address)}}<br>{{ ucfirst($relief_camp->address->city) }}, {{ ucfirst($relief_camp->address->state)}}</td>
                               <td>{{ $relief_camp->nodalOfficer->officer_name}}</td>
                               <td>
-                                <a href="{{ route('restore_item',['table_name'=>'relief_camp','id'=>$relief_camp->id])}}" class="mr-3 text-info"><i class="fas fa-trash-restore-alt"></i></a>
+                                <a href="{{ route('restore_item',['table_name'=>Crypt::encrypt('relief_camp'),'id'=>Crypt::encrypt($relief_camp->id)])}}" class="mr-3 text-info"><i class="fas fa-trash-restore-alt"></i></a>
                             </td>
                           </tr>
                         @endforeach
@@ -77,7 +77,7 @@ Items in Trash
                       <td>{{ $nodal_officer->officer_contact}}</td>
                       <td>{{ $nodal_officer->officer_designation}}</td>
                       <td>
-                        <a href="{{ route('restore_item',['table_name'=>'nodal_officer','id'=>$nodal_officer->id])}}" class="mr-3 text-info"><i class="fas fa-trash-restore-alt"></i></a>
+                        <a href="{{ route('restore_item',['table_name'=>Crypt::encrypt('nodal_officer'),'id'=>Crypt::encrypt($nodal_officer->id)])}}" class="mr-3 text-info"><i class="fas fa-trash-restore-alt"></i></a>
                       </td>
                     </tr>
                     @endforeach
@@ -106,7 +106,7 @@ Items in Trash
                     <td>{{ $inmate->gender}}</td>
                     <td></td>
                     <td>
-                      <a href="{{ route('restore_item',['table_name'=>'relief_camp_demography','id'=>$inmate->id])}}" class="mr-3 text-info"><i class="fas fa-trash-restore-alt"></i></a>
+                      <a href="{{ route('restore_item',['table_name'=>Crypt::encrypt('relief_camp_demography'),'id'=>Crypt::encrypt($inmate->id)])}}" class="mr-3 text-info"><i class="fas fa-trash-restore-alt"></i></a>
                     </td>
                   </tr>
                   @endforeach
@@ -130,7 +130,7 @@ Items in Trash
                     <td>{{ $user->name}}</td>
                     <td>{{ $user->email}}</td>
                     <td>
-                      <a href="{{ route('restore_item',['table_name'=>'user','id'=>$user->id])}}" class="mr-3 text-info"><i class="fas fa-trash-restore-alt"></i></a> 
+                      <a href="{{ route('restore_item',['table_name'=>Crypt::encrypt('user'),'id'=>Crypt::encrypt($user->id)])}}" class="mr-3 text-info"><i class="fas fa-trash-restore-alt"></i></a> 
                     </td>
                   @endforeach
                 </tbody>

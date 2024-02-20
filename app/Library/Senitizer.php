@@ -96,15 +96,11 @@ class Senitizer{
      */
     public static function strip_base64( $input ) {
         $decoded = base64_decode( $input );
-        $decoded = $this->strip_tags( $decoded );
-        $decoded = $this->strip_encoded_entities( $decoded );
+        $decoded = self::strip_tags( $decoded );
+       $decoded = self::strip_encoded_entities( $decoded );
         $output = base64_encode( $decoded );
         return $output;
     }
 
-
-
-
-
-    
+   
 }

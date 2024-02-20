@@ -31,7 +31,7 @@ Show Inmates Data
             <th scope="row">{{$count}}</th>
             <td>{{ucfirst($demography->person_name)}}</td>
             @php $age_in_year=(int)$demography->age;
-                 $age_in_month=$demography->age-$age_in_year;
+                 $age_in_month=($demography->age-$age_in_year)*10;
             @endphp
             @if($age_in_year!=0 && $age_in_month!=0)
             <td>{{$age_in_year.' Year '.$age_in_month.' Months '}}</td>
@@ -70,14 +70,14 @@ Show Inmates Data
             <td>{{ucfirst($demography->address->address)}}</br>{{ucfirst($demography->address->city)}}, {{ucfirst($demography->address->state)}}</td>
             @if(auth()->user()->role!=3)
                 <td>
-                    <a href="{{ route('inmate_by_id',$demography->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
-                    <a href="{{route('update_inmates',$demography->id)}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
-                    <a href="{{ route('delete_inmate',$demography->id)}}" class="mr-3 text-danger" data-toggle="modal" data-target="#modal-danger" id="delete_inmate{{$count}}"><i class="nav-icon fas fa-trash"></i></a>
+                    <a href="{{ route('inmate_by_id',Crypt::encrypt($demography->id))}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
+                    <a href="{{route('update_inmates',Crypt::encrypt($demography->id))}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
+                    <a href="{{ route('delete_inmate',Crypt::encrypt($demography->id))}}" class="mr-3 text-danger" data-toggle="modal" data-target="#modal-danger" id="delete_inmate{{$count}}"><i class="nav-icon fas fa-trash"></i></a>
                 </td>
             @else
                 <td>
-                    <a href="{{ route('inmate_by_id',$demography->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
-                    <a href="{{route('update_inmates',$demography->id)}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
+                    <a href="{{ route('inmate_by_id',Crypt::encrypt($demography->id))}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
+                    <a href="{{route('update_inmates',Crypt::encrypt($demography->id))}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
                 </td>
             @endif
         </tr> 

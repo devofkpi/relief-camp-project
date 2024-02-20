@@ -6,7 +6,7 @@ Basis Necessities
 @if ($facilities_data!=null)  
 @section('content_title')
 Facilities Available at <span class="text-info">{{$relief_camp_name}} Relief Camp</span>
-<a href="{{ route('update_facilities',$facilities_data->id)}}" class=" btn btn-app bg-info float-right"><i class="fas fa-edit"></i>Edit</a>
+<a href="{{ route('update_facilities',Crypt::encrypt($facilities_data->id))}}" class=" btn btn-app bg-info float-right"><i class="fas fa-edit"></i>Edit</a>
 @endsection
 @section('content1')
 <div class="row">

@@ -6,6 +6,7 @@ use Illuminate\Http\{Request,RedirectResponse};
 use App\Imports\NodalOfficerImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\{NodalOfficer,ReliefCamp};
+use Illuminate\Support\Facades\Crypt;
 use App\Library\Senitizer;
 
 class NodalOfficerController extends Controller
@@ -38,12 +39,17 @@ class NodalOfficerController extends Controller
         }
     }
 
-    public function showById($id=null){
-        $this->nodal_officer=NodalOfficer::with('reliefCamps')->whereHas('reliefCamps',
-        function($q){
-            $q->where('active_status','=',true);
-        })->findOrFail($id);
-        return view('CRUD.view_nodal_officer',['nodal_officer'=>$this->nodal_officer]);
+    public function showById($nodal_officer_id=null){
+        if($nodal_officer_id!=null){
+            $nodal_officer_id=Crypt::decrypt($nodal_officer_id);
+            $this->nodal_officer=NodalOfficer::with('reliefCamps')->whereHas('reliefCamps',
+            function($q){
+                $q->where('active_status','=',true);
+            })->findOrFail($nodal_officer_id);
+            return view('CRUD.view_nodal_officer',['nodal_officer'=>$this->nodal_officer]);
+        }else{
+            return  abort(403, 'Unauthorized action.');
+        }
     }
     
     public function showNodalOfficerForm($nodal_officer_id=null){
@@ -51,6 +57,7 @@ class NodalOfficerController extends Controller
             $relief_camps=ReliefCamp::select('id','relief_camp_name')->where('active_status','=',true)->get();
             return view('CRUD.create_nodal_officers',['relief_camps'=>$relief_camps]);
         }else{
+            $nodal_officer_id=Crypt::decrypt($nodal_officer_id);
             $relief_camps=ReliefCamp::select('id','relief_camp_name')->where('active_status','=',true)->get();
             $nodal_officer=NodalOfficer::findOrFail($nodal_officer_id);
             return view('CRUD.update_nodal_officer',['nodal_officer'=>$nodal_officer,'relief_camps'=>$relief_camps]);
@@ -77,6 +84,7 @@ class NodalOfficerController extends Controller
     }
 
     public function deleteNodalOfficer($nodal_officer_id){
+        $nodal_officer_id=Crypt::decrypt($nodal_officer_id);
         $nodal_officer=NodalOfficer::findOrFail($nodal_officer_id);
         $nodal_officer->active_status=false;
         $nodal_officer->save();

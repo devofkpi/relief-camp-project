@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{ReliefCamp,NodalOfficer,ReliefCampDemography,User};
+use Illuminate\Support\Facades\Crypt;
 use App\Library\Senitizer;
 
 class TrashHandleController extends Controller
@@ -36,6 +37,8 @@ class TrashHandleController extends Controller
     }
 
     public function restoreItem($table_name,$id){
+        $id=Crypt::decrypt($id);
+        $table_name=Crypt::decrypt($table_name);
         if($table_name=='relief_camp'){
             $relief_camp=ReliefCamp::where([['id','=',$id],['active_status','=',false]])->first();
             $relief_camp->active_status=true;

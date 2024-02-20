@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{SubDivision,ReliefCamp,NodalOfficer,Address};
-
+use Illuminate\Support\Facades\Crypt;
 use App\Imports\ReliefCampImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Library\Senitizer;
@@ -62,6 +62,7 @@ class ReliefCampController extends Controller
 
     public function showBySubDivision($sub_division_id=null)
     {
+        $sub_division_id=Crypt::decrypt($sub_division_id);
         $this->sub_division=SubDivision::findOrFail($sub_division_id);
         $this->relief_camp=$this->sub_division->reliefCamps()->where('active_status','=',true)->with('address')->with('nodalOfficer')->paginate(25);
         return view('relief_camps',['relief_camp_data'=>$this->relief_camp]);
@@ -75,6 +76,7 @@ class ReliefCampController extends Controller
 
     public function showByNodalOfficer($nodal_officer_id=null)
     {
+        $nodal_officer_id=Crypt::decrypt($nodal_officer_id);
         $this->nodal_officer=NodalOfficer::findOrFail($nodal_officer_id);
         $this->relief_camp=$this->nodal_officer->reliefCamps()->where('active_status','=',true)->get();
         return view('relief_camps',['relief_camp_data'=>$this->relief_camp]);
@@ -87,13 +89,14 @@ class ReliefCampController extends Controller
      * 
      */
     public function showReliefCampForm($relief_camp_id=null){
-        
+
         $this->sub_division=SubDivision::get();
         $this->nodal_officer=NodalOfficer::select('id','officer_name')->get();        
         
         if($relief_camp_id==null){
             return view('CRUD.create_relief_camp',['sub_divisions'=>$this->sub_division,'nodal_officers'=>$this->nodal_officer]);
         }else if($relief_camp_id!=null){
+            $relief_camp_id=Crypt::decrypt($relief_camp_id);      
             $this->relief_camp=ReliefCamp::with('address','subDivision','nodalOfficer')->find($relief_camp_id);
 
             return view('CRUD.update_relief_camp',['sub_divisions'=>$this->sub_division,'nodal_officers'=>$this->nodal_officer,'relief_camp'=>$this->relief_camp]);
@@ -149,6 +152,7 @@ class ReliefCampController extends Controller
 
     public function deleteReliefCamp($relief_camp_id=null){
         if($relief_camp_id!=null){
+            $relief_camp_id=Crypt::decrypt($relief_camp_id);
             $this->relief_camp=ReliefCamp::findOrFail($relief_camp_id);
             $this->relief_camp->active_status=false;
             $this->relief_camp->save();
@@ -165,8 +169,13 @@ class ReliefCampController extends Controller
      */
 
     public function showCampById($relief_camp_id=null){
-        $this->relief_camp=ReliefCamp::with('address','subDivision','nodalOfficer')->findOrFail($relief_camp_id);
-        return view('CRUD.view_relief_camp',['relief_camp'=>$this->relief_camp]);
+        if($relief_camp_id!=null){
+            $relief_camp_id=Crypt::decrypt($relief_camp_id);
+            $this->relief_camp=ReliefCamp::with('address','subDivision','nodalOfficer')->findOrFail($relief_camp_id);
+            return view('CRUD.view_relief_camp',['relief_camp'=>$this->relief_camp]);
+        }else{
+            return  abort(403, 'Unauthorized action.');
+        }
     }
 
     /**

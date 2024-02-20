@@ -26,7 +26,7 @@ Nodal Officers
                 @foreach ($nodal_officers_data as $nodal_officer )
                 <tr>
                     <th scope="row">{{$count}}</th>
-                    <td> <a href="{{route('demo_by_nodal',$nodal_officer->id)}}" class="text-info"> {{$nodal_officer->officer_name}}</a></td>
+                    <td> <a href="{{route('demo_by_nodal',Crypt::encrypt($nodal_officer->id))}}" class="text-info"> {{$nodal_officer->officer_name}}</a></td>
                     <td>{{ $nodal_officer->officer_designation}}</td>
                     <td>{{ $nodal_officer->officer_contact}}</td>
                     <td>
@@ -35,9 +35,9 @@ Nodal Officers
                     @endforeach
                     </td>
                     <td>
-                      <a href="{{ route('show_nodal_officer_by_id',$nodal_officer->id)}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
-                      <a href="{{ route('update_nodal_officer',$nodal_officer->id)}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
-                      <a href="{{ route('delete_nodal_officer',$nodal_officer->id)}}" class="mr-3 text-danger" data-toggle="modal" data-target="#modal-danger" id="delete_nodal_officer{{$count}}"><i class="nav-icon fas fa-trash"></i></a>
+                      <a href="{{ route('show_nodal_officer_by_id',Crypt::encrypt($nodal_officer->id))}}" class="mr-3 text-info"><i class="nav-icon fas fa-eye"></i></a>
+                      <a href="{{ route('update_nodal_officer',Crypt::encrypt($nodal_officer->id))}}" class="mr-3 text-primary"><i class="nav-icon fas fa-edit"></i></a>
+                      <a href="{{ route('delete_nodal_officer',Crypt::encrypt($nodal_officer->id))}}" class="mr-3 text-danger" data-toggle="modal" data-target="#modal-danger" id="delete_nodal_officer{{$count}}"><i class="nav-icon fas fa-trash"></i></a>
                   </td>
                 </tr>
                 @php ++$count;@endphp
