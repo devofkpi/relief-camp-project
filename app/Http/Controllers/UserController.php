@@ -144,14 +144,15 @@ class UserController extends Controller
     public function createUser(Request $request){
        $request->validate(
                     ['full_name'=>'required',
-                    'email'=>'required | email',
-                    'password'=>'required | min:6 | max:12',
+                    'email'=>'required|unique:users|email',
+                    'password'=>'required',
+                    'confirm_password'=>'required',
                     'user_role'=>'required',
                     'user_jurisdiction'=>'required' 
         ]);
 
             $user_data=$request->all();
-            dd($user_data);
+            
             $user=User::create(
                 ['name'=>$user_data['full_name'],
                 'email'=>$user_data['email'],
