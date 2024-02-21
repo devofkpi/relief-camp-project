@@ -16,7 +16,7 @@ Create User
                 <h3 class="card-title">User Creation Form</h3>
               </div>
             <!-- /.card-header -->
-              <form action="{{route('register.post')}}" method="post">
+              <form action="{{route('register.post')}}" method="post" id="register_form">
                 @csrf
                 <div class="card-body">
                   @if(auth()->user()->role==0 || auth()->user()->role==1)
@@ -57,7 +57,7 @@ Create User
                   </div>
                 </div>
                 <div class="input-group mb-3">
-                  <input type="password" class="form-control" placeholder="Password" name="password" autocomplete="off" required>
+                  <input type="password" class="form-control" id="register_pwd" placeholder="Password" name="password" autocomplete="off" required>
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <span class="fas fa-lock"></span>
@@ -65,7 +65,7 @@ Create User
                   </div>
                 </div>
                 <div class="input-group mb-3">
-                  <input type="password" class="form-control" placeholder="Retype password" name="confirm_password" autocomplete="off" required>
+                  <input type="password" class="form-control" id="register_cnf_pwd" placeholder="Retype password" name="confirm_password" autocomplete="off" required>
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <span class="fas fa-lock"></span>
@@ -75,9 +75,14 @@ Create User
                 
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary" name="create_user">Register</button>
+                    <button type="submit" class="btn btn-primary" name="create_user" id="register_btn">Register</button>
                 </div>
               </form>
+              @if(session()->has('success'))
+                <p style="display: none" id="edit_msg">{{session()->get('success')}}</p>
+              @elseif(session()->has('error'))
+              <p style="display: none" id="edit_msg">{{session()->get('error')}}</p>
+              @endif
             </div>
           </div>
     </div>

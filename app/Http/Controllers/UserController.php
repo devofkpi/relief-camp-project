@@ -39,6 +39,7 @@ class UserController extends Controller
             'email'=>'required | email',
             'password'=>'required',
         ]);
+        $credentials['active']=1;
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
             if(auth()->user()->default_pwd_change)
@@ -149,25 +150,25 @@ class UserController extends Controller
                     'user_jurisdiction'=>'required' 
         ]);
 
-        $user_data=$request->all();
-        
-        $user=User::create(
-            ['name'=>$user_data['full_name'],
-            'email'=>$user_data['email'],
-            'password'=>Hash::make($user_data['password']),
-            'role'=>$this->user_role[$user_data['user_role']],
-            'active'=>true
-        ]);
-
-        if($user_data['user_role']=='moderate_user'){
-            $user->sub_division_id=$user_data['user_jurisdiction'];
-            $user->save();
-        }else if($user_data['user_role']=='normal_user'){
-            $user->nodal_officer_id=$user_data['user_jurisdiction'];
-            $user->save();
-        }
-
-        return redirect()->back()->withSuccess('User Created Successfully');
+            $user_data=$request->all();
+            dd($user_data);
+            $user=User::create(
+                ['name'=>$user_data['full_name'],
+                'email'=>$user_data['email'],
+                'password'=>Hash::make($user_data['password']),
+                'role'=>$this->user_role[$user_data['user_role']],
+                'active'=>true
+            ]);
+    
+            if($user_data['user_role']=='moderate_user'){
+                $user->sub_division_id=$user_data['user_jurisdiction'];
+                $user->save();
+            }else if($user_data['user_role']=='normal_user'){
+                $user->nodal_officer_id=$user_data['user_jurisdiction'];
+                $user->save();
+            }
+    
+            return redirect()->back()->withSuccess('User Created Successfully');
 
     }
 

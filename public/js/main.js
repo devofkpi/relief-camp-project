@@ -45,7 +45,12 @@ $('#user_role').on('change',function(e){
     e.preventDefault();
     var user_role=$(this).val();
     var ajax_url=$('#ajax_url').val();
-    var selectOption='<option value="" selected>--Please Select Nodal Officer--</option>';
+    if(user_role=='moderate_user')
+    {
+      var selectOption='<option value="" selected>--Please Select Sub Division--</option>';
+    }else{
+      var selectOption='<option value="" selected>--Please Select Nodal Officer--</option>';
+    }
     $.ajax({
       type:"POST",
       url:ajax_url,
@@ -79,7 +84,47 @@ $('#user_role').on('change',function(e){
     
   });
 
-	$(function(){
+
+  $('#logout_anchor').on('click',function(e){
+    e.preventDefault();
+    $('#logout-form').submit();
+  });
+
+  $('#login_btn').on('click',function(event){
+    event.preventDefault();
+    var hashedPwd = forge_sha256($('#login_pwd').val());
+    $('#login_pwd').val(hashedPwd); 
+    $('#login_form').submit();
+  });
+  $('#register_btn').on('click',function(event){
+    event.preventDefault();
+    var hashedPwd = forge_sha256($('#register_pwd').val());
+    var hashedCnfPwd= forge_sha256($('#register_cnf_pwd').val());
+    $('#register_pwd').val(hashedPwd); 
+    $('#register_cnf_pwd').val(hashedCnfPwd); 
+    $('#register_form').submit();
+  });
+
+  $('#change_pwd_btn').on('click',function(event){
+    event.preventDefault();
+    var hashedPwd = forge_sha256($('#change_pwd').val());
+    var hashedCnfPwd= forge_sha256($('#change_cnf_pwd').val());
+    $('#change_pwd').val(hashedPwd); 
+    $('#change_cnf_pwd').val(hashedCnfPwd); 
+    $('#change_pwd_form').submit();
+  });
+
+  $('#change_defalut_pwd_btn').on('click',function(event){
+    event.preventDefault();
+    var hashedPwd = forge_sha256($('#change_default_pwd').val());
+    var hashedCnfPwd= forge_sha256($('#change_default_cnf_pwd').val());
+    $('#change_default_pwd').val(hashedPwd); 
+    $('#change_default_cnf_pwd').val(hashedCnfPwd); 
+    $('#change_default_pwd_form').submit();
+  });
+
+
+  $(function(){
 
     bsCustomFileInput.init();
 		//Initialize Select2 Elements
@@ -114,14 +159,3 @@ $('#user_role').on('change',function(e){
 	})
 
 	});
-
-  $('#logout_anchor').on('click',function(e){
-    e.preventDefault();
-    $('#logout-form').submit();
-  });
-
-  $('#login_btn').on('click',function(event){
-    var hashedPwd = forge_sha256($('#login_pwd').val());
-    $('#login_pwd').val(hashedPwd); 
-    $('#login_form').submit();
-  });

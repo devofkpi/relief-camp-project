@@ -120,9 +120,7 @@ Route::group(['middleware'=>['authorization','noBack','noStore']],function(){
         Route::get('restore/items/{table_name}/{id}','restoreItem')->name('restore_item');
     });
 
-    Route::controller(DownloadController::class)->group(function(){
-        Route::get('download/{filename}','downloadExcelSample')->name('download_excel_sample');
-    });    
+       
 
     Route::controller(PoliceStationController::class)->group(function () {
         Route::get('/police_stations', 'show')->name('police_stations');
@@ -142,6 +140,12 @@ Route::group(['middleware'=>['authorization','noBack','noStore']],function(){
         Route::post('/orders', 'store');
     });
 
+});
+
+Route::group(['middleware'=>['authorization','noStore']],function(){
+    Route::controller(DownloadController::class)->group(function(){
+        Route::get('download/{filename}','downloadExcelSample')->name('download_excel_sample');
+    }); 
 });
 
 

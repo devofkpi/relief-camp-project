@@ -30,10 +30,10 @@
       @elseif($errors->has('cnf_password'))
         <p class="login-box-msg text-danger">{{$errors->first('cnf_password')}}
       @endif
-      <form action="{{route('change_pwd.post')}}" method="post">
+      <form action="{{route('change_pwd.post')}}" method="post" id="change_default_pwd_form">
         @csrf
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="password" autocomplete="off">
+          <input type="password" class="form-control" id="change_default_pwd" placeholder="Password" name="password" autocomplete="off">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Confirm Password" name="cnf_password" autocomplete="off">
+            <input type="password" class="form-control" id="change_default_cnf_pwd" placeholder="Confirm Password" name="cnf_password" autocomplete="off">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -51,7 +51,7 @@
         <div class="row">
           <!-- /.col -->
           <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block" name="login">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block" id="change_defalut_pwd_btn" name="login">Sign In</button>
           </div>
           <!-- /.col -->
         </div>
@@ -68,5 +68,7 @@
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/adminlte.min.js')}} "></script>
+<script src="{{ asset('/js/forge-sha256.js')}}"></script>
+<script src="{{ asset('/js/main.js')}}"></script>
 </body>
 </html>
