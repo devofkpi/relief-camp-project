@@ -77,6 +77,11 @@ Create User
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary" name="create_user" id="register_btn">Register</button>
+                    @if($errors->any()){
+                      @foreach($errors->all as $error){
+                        <p class="login-box-msg text-danger">{{ $error }}</p>
+                      }
+                    }
                 </div>
               </form>
               @if(session()->has('success'))

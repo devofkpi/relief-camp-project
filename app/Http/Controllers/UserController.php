@@ -51,7 +51,7 @@ class UserController extends Controller
          
         return back()->withErrors([
             'wrong_credentials' => 'Either email id or password is incorrect.',
-        ])->onlyInput('email');
+        ]);
 
     }
     public function viewProfile(){
