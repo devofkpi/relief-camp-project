@@ -93,7 +93,7 @@ Create Nodal Officer
                         <label for="exampleInputFile">File input</label>
                         <div class="input-group">
                           <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="nodalOfficerImportFile" name="nodal_officer_excel">
+                            <input type="file" class="custom-file-input" id="nodalOfficerImportFile" name="nodal_officer_excel" required>
                             <label class="custom-file-label" for="nodalOfficerImportFile">Choose file</label>
                           </div>
                           <div class="input-group-append">
@@ -105,6 +105,12 @@ Create Nodal Officer
                   </div>
                 </div>
               </form>
+
+              @if(session()->has('success'))
+                <p style="display: none" id="edit_msg">{{session()->get('success')}}</p>
+              @elseif(session()->has('error'))
+                <p style="display: none" id="edit_msg1">{{session()->get('error')}}</p>
+              @endif
             </div>
           </div>
         </div>

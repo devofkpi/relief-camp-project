@@ -75,6 +75,7 @@
 <script src="{{ asset("/plugins/select2/js/select2.full.min.js")}}"></script>
 <script src="{{ asset('/js/forge-sha256.js')}}"></script>
 <script src="{{ asset('/js/main.js')}}"></script>
+<script src="{{ asset('/js/form_validation.js')}}"></script>
 @yield('custom_script')
 </body>
 </html>

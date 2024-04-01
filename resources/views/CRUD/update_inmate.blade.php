@@ -164,6 +164,8 @@ Update Inmate Details
               </form>
               @if(session()->has('success'))
                 <p style="display: none" id="edit_msg">{{session()->get('success')}}</p>
+              @elseif(session()->has('error'))
+                <p style="display: none" id="edit_msg1">{{session()->get('error')}}</p>
               @endif
         </div>
         <!-- /.card -->

@@ -46,6 +46,7 @@ Create User
                     <div class="input-group-text">
                       <span class="fas fa-user"></span>
                     </div>
+                    <span class="text-danger" id="input_error_full_name"></span>
                   </div>
                 </div>
                 <div class="input-group mb-3">

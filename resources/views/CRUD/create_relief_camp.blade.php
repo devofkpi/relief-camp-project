@@ -24,6 +24,7 @@ Create Relief Camp
             </li>
           </ul>
         </div>
+        <p style="display: none" id="edit_msg">{{session()->get('Error')}}</p>
         <div class="card-body">
           <div class="tab-content" id="custom-tabs-one-tabContent">
             <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
@@ -38,6 +39,7 @@ Create Relief Camp
                         </div>
                       </div>
                       <input type="text" class="form-control" placeholder="Name of Camp" name="relief_camp_name" required>
+                    <span class="text-danger" id="input_error_relief_camp_name"></span>
                     </div>
                   </div>
                 </div>
@@ -131,6 +133,8 @@ Create Relief Camp
               </form>
               @if(session()->has('success'))
                 <p style="display: none" id="edit_msg">{{session()->get('success')}}</p>
+              @elseif(session()->has('error'))
+                <p style="display: none" id="edit_msg1">{{session()->get('error')}}</p>
               @endif
             </div>
           </div>
