@@ -196,6 +196,9 @@ class ReliefCampFacilityController extends Controller
     public function campFacilitiesImport(Request $request){
 
         // $headings = (new HeadingRowImport)->toArray($request->file('relief_camp_facilities_excel'));
+        $file_extnsn=$request->file('relief_camp_facilities_excel')->extension();
+        if($file_extnsn=='xlsx')
+        {
         try{
 
             Excel::import(new ReliefCampFacilitiesImport, $request->file('relief_camp_facilities_excel'));
@@ -205,6 +208,9 @@ class ReliefCampFacilityController extends Controller
             return redirect()->back();
         }catch(\Maatwebsite\Excel\Validators\ValidationException $e){
             $failures = $e->failures();
+        }
+        }else{
+            return redirect()->back()->withError('Invalid File Format'); 
         }
 
     }

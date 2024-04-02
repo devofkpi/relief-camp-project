@@ -15,13 +15,16 @@ Edit Profile
             <div class="card-body">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" value="{{$user->name}}" name="full_name" id="full_name">
+                <span class="text-danger" id="input_error_full_name"></span>
             </div>
             @if($user->role==3)
             <div class="input-group mb-3">
               <input type="text" class="form-control" value="{{$nodal_officer->officer_contact}}" name="officer_cotact">
+              <span class="text-danger" id="input_error_officer_contact"></span>
             </div>
             <div class="input-group mb-3">
               <input type="text" class="form-control" value="{{$nodal_officer->officer_designation}}" name="officer_designation">
+              <span class="text-danger" id="input_error_officer_designation"></span>
             </div>
             
             @endif

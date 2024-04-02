@@ -6,6 +6,13 @@ $(window).on('load',function(e) {
 	}
 });
 
+$(window).on('load',function(e) {
+	var toastr_msg=$('#edit_msg1').text();
+	if(toastr_msg){
+	  toastr.error(toastr_msg);
+	}
+});
+
 $('a[id^=delete_nodal_officer]').on('click',function(e){
 	var url=$(this).attr('href');
 	console.log(url);

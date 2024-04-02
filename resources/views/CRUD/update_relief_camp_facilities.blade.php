@@ -315,6 +315,11 @@ Update Camp Facilities
             </div>
             <input type="hidden" value="{{$relief_camp_facilities->id}}" name="relief_camp_facility_id">
         </form>
+        @if(session()->has('success'))
+                <p style="display: none" id="edit_msg">{{session()->get('success')}}</p>
+        @elseif(session()->has('error'))
+                <p style="display: none" id="edit_msg1">{{session()->get('error')}}</p>
+        @endif
       </div>
     </div>
     </div>

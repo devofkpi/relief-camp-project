@@ -287,11 +287,17 @@ class ReliefCampDemographyController extends Controller
     }
 
     public function inmatesImport(Request $request){
+        $file_extnsn=$request->file('inmates_excel')->extension();
+        if($file_extnsn=='xlsx')
+        {
         try{
         Excel::import(new ReliefCampDemographyImport($request->get('relief_camp_id')), $request->file('inmates_excel'));
         return redirect()->back();
         }catch(\Maatwebsite\Excel\Validators\ValidationException $e){
             $failures = $e->failures();
         }
+    }else{
+        return redirect()->back()->withError('Invalid File Format'); 
+    }
     }
 }

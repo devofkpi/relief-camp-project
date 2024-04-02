@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 21, 2023 at 12:38 PM
--- Server version: 10.6.12-MariaDB-0ubuntu0.22.04.1
+-- Generation Time: Feb 27, 2024 at 01:11 PM
+-- Server version: 10.6.16-MariaDB-0ubuntu0.22.04.1
 -- PHP Version: 8.1.2-1ubuntu2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -36,6 +36,14 @@ CREATE TABLE `addresses` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `addresses`
+--
+
+INSERT INTO `addresses` (`id`, `address`, `city`, `state`, `pincode`, `created_at`, `updated_at`) VALUES
+(1, 'JNV School', 'kangpokpi', 'manipur', 795129, '2024-02-21 02:25:40', '2024-02-21 02:25:40'),
+(2, 'abal', 'kangpokpi', 'manipur', 795129, '2024-02-21 02:26:30', '2024-02-21 02:26:30');
 
 -- --------------------------------------------------------
 
@@ -181,12 +189,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (25, '2023_10_02_184657_create_family_head_relations_table', 1),
 (26, '2023_10_02_190156_update_relief_camp_demography_table', 1),
 (27, '2023_10_16_101340_create_relief_camp_daily_report_table', 1),
-(28, '2023_11_29_074139_add_user_jurisdiction_to_users', 2),
-(29, '2023_11_29_075556_update_users_table', 2),
-(30, '2023_12_02_193241_add_column_nodal_officer_id_to_users_table', 3),
-(31, '2023_12_02_193454_update_users_table', 3),
-(32, '2023_12_11_085402_update_relief_camp_demographies_table', 4),
-(33, '2023_12_11_165121_update_users_table', 5);
+(28, '2023_11_29_074139_add_user_jurisdiction_to_users', 1),
+(29, '2023_11_29_075556_update_users_table', 1),
+(30, '2023_12_02_193241_add_column_nodal_officer_id_to_users_table', 1),
+(31, '2023_12_02_193454_update_users_table', 1),
+(32, '2023_12_11_085402_update_relief_camp_demographies_table', 1),
+(33, '2023_12_11_165121_update_users_table', 1);
 
 -- --------------------------------------------------------
 
@@ -203,6 +211,14 @@ CREATE TABLE `nodal_officers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `nodal_officers`
+--
+
+INSERT INTO `nodal_officers` (`id`, `officer_name`, `officer_designation`, `officer_contact`, `active_status`, `created_at`, `updated_at`) VALUES
+(1, 'Pankaj Gaur', 'IT Officer', 9045220981, 1, '2024-02-21 02:26:08', '2024-02-21 02:26:08'),
+(2, 'Shivam Dhawal', 'Computer Operator', 9876543210, 1, '2024-02-27 01:52:15', '2024-02-27 01:52:15');
 
 -- --------------------------------------------------------
 
@@ -287,6 +303,13 @@ CREATE TABLE `relief_camps` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `relief_camps`
+--
+
+INSERT INTO `relief_camps` (`id`, `relief_camp_name`, `camp_code`, `address_id`, `sub_division_id`, `nodal_officer_id`, `active_status`, `created_at`, `updated_at`) VALUES
+(1, 'bla', 'KPI-1-01', 2, 1, 1, 1, '2024-02-21 02:26:30', '2024-02-21 02:26:30');
+
 -- --------------------------------------------------------
 
 --
@@ -370,7 +393,7 @@ CREATE TABLE `relief_camp_facilities` (
   `number_of_fans` int(11) DEFAULT NULL,
   `fans_ratio_per_person` double DEFAULT NULL,
   `sufficient_plates_glasses` tinyint(1) NOT NULL DEFAULT 1,
-  `fuel_sources` text NOT NULL DEFAULT 'firewood',
+  `fuel_sources` text DEFAULT NULL,
   `availability_of_fuel_in_days` int(11) DEFAULT NULL,
   `availability_of_rice_in_days` int(11) DEFAULT NULL,
   `availability_of_dal_in_days` int(11) DEFAULT NULL,
@@ -416,7 +439,7 @@ CREATE TABLE `relief_camp_facilities` (
 CREATE TABLE `sub_divisions` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `sub_division_name` varchar(100) NOT NULL,
-  `sub_division_code` varchar(100) DEFAULT NULL,
+  `sub_division_code` varchar(100) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -449,21 +472,23 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `role` tinyint(3) UNSIGNED NOT NULL,
+  `sub_division_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `relief_camp_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `nodal_officer_id` bigint(20) UNSIGNED DEFAULT NULL,
   `active` tinyint(1) NOT NULL,
   `default_pwd_change` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `sub_division_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `relief_camp_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `nodal_officer_id` bigint(20) UNSIGNED DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `role`, `active`, `default_pwd_change`, `created_at`, `updated_at`, `sub_division_id`, `relief_camp_id`, `nodal_officer_id`) VALUES
-(1, 'Ashish Dhawal', 'dhawalashish@gmail.com', '2023-11-27 09:38:12', '$2y$10$WgbtFj9gUYL82ulKh0mjLeTs6TIQ0G.Ouo/YHXjikqJ.ACdo/.ebm', NULL, 0, 1, 1, '2023-11-27 09:38:12', '2023-12-04 02:01:59', NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `role`, `sub_division_id`, `relief_camp_id`, `nodal_officer_id`, `active`, `default_pwd_change`, `created_at`, `updated_at`) VALUES
+(1, 'Ashish Dhawal', 'dhawalashish@gmail.com', '2024-02-21 07:49:14', '$2y$10$EkitBe9W1wO8eQ5EZHwvKO369TgGNhuIsobTkvVCiLX2jYDuhXvv.', NULL, 0, NULL, NULL, NULL, 1, 1, '2024-02-21 07:49:14', '2024-02-21 07:49:14'),
+(2, 'Rahul', 'rahul@gmail.com', NULL, '$2y$10$EA9aO.VNajdVRv4p1Bijf.zMG89XnAkzDghP5SiWMuiaFRcCYPTdu', NULL, 2, 6, NULL, NULL, 1, 1, '2024-02-21 04:03:26', '2024-02-21 04:17:14'),
+(3, 'Pankaj Gaur', 'pankaj@gmail.com', NULL, '$2y$10$rgJxv3q6uTx5WhKFI.m1luZEZ73/rbl7fbwsIkOlo2A4xLey0GpeO', NULL, 2, 7, NULL, NULL, 1, 0, '2024-02-21 06:24:57', '2024-02-21 06:24:57');
 
 --
 -- Indexes for dumped tables
@@ -625,7 +650,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=744;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `anganwadi_centres`
@@ -679,7 +704,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `nodal_officers`
 --
 ALTER TABLE `nodal_officers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -703,7 +728,7 @@ ALTER TABLE `public_healths`
 -- AUTO_INCREMENT for table `relief_camps`
 --
 ALTER TABLE `relief_camps`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `relief_camp_daily_report`
@@ -715,13 +740,13 @@ ALTER TABLE `relief_camp_daily_report`
 -- AUTO_INCREMENT for table `relief_camp_demographies`
 --
 ALTER TABLE `relief_camp_demographies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=685;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `relief_camp_facilities`
 --
 ALTER TABLE `relief_camp_facilities`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sub_divisions`
@@ -733,7 +758,7 @@ ALTER TABLE `sub_divisions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

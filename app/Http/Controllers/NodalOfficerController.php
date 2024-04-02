@@ -92,6 +92,9 @@ class NodalOfficerController extends Controller
     }
 
     public function nodalOfficerImport(Request $request){
+        $file_extnsn=$request->file('nodal_officer_excel')->extension();
+        if($file_extnsn=='xlsx')
+        {
         try{
 
             Excel::import(new NodalOfficerImport, $request->file('nodal_officer_excel'));
@@ -100,5 +103,8 @@ class NodalOfficerController extends Controller
         }catch(\Maatwebsite\Excel\Validators\ValidationException $e){
             $failures = $e->failures();
         }
+    }else{
+        return redirect()->back()->withError('Invalid File Format'); 
+    }
     }
 }
