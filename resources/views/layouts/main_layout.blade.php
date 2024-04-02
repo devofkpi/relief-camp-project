@@ -23,9 +23,9 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-    <div class="preloader flex-column justify-content-center align-items-center">
+    {{-- <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src='{{ asset("images/logo.jpg")}}' alt="Manipur Govt Logo" height="60" width="60">
-    </div>
+    </div> --}}
   @includeIf('layouts.topnavbar')
   @includeIf('layouts.left-sidenavbar')
 
