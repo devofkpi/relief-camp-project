@@ -33,15 +33,18 @@ Upload Inmates Data
                     @csrf
                   <div class="row mb-3">
                     <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Person Name" name="person_name" required>
+                      <input type="text" class="form-control" placeholder="Person Name" id="input_text_person_name" name="person_name" required>
+                    <span class="text-danger" id="input_text_error_person_name"></span>
                     </div>
                     <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Family Head Name" name="family_head_name" required>
+                      <input type="text" class="form-control" placeholder="Family Head Name" id="input_text_family_head" name="family_head_name" required>
+                    <span class="text-danger" id="input_text_error_family_head"></span>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Family Head Relation" name="relation" required>
+                      <input type="text" class="form-control" placeholder="Family Head Relation" id="input_text_family_head_relation" name="relation" required>
+                    <span class="text-danger" id="input_text_error_family_head_realtion"></span>
                     </div>
                     <div class="col-6">
                         <select class="form-control" name="gender">
@@ -53,11 +56,13 @@ Upload Inmates Data
                   </div>
                   <div class="row mb-3">
                     <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Age" name="age" required>
+                      <input type="text" class="form-control" placeholder="Age" id="input_number_age" name="age" required>
+                    <span class="text-danger" id="input_number_error_age"></span>
                     </div>
                     <div class="col-6">
-                        <input type="text" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text" placeholder="(___) ___-____ Contact Number" name="contact_number">                    </div>
-                  </div>
+                        <input type="text" class="form-control" id="input_number_contact" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text" placeholder="(___) ___-____ Contact Number" name="contact_number">                    </div>
+                  <span class="text-danger" id="input_number_error_contact"></span>
+                      </div>
                   <div class="row mb-3">
                     <div class="col-6">
                         <span>Physically Disabled Person</span>
@@ -113,15 +118,18 @@ Upload Inmates Data
                   </div>
                   <div class="row mb-3">
                     <div class="col-6">
-                        <input type="text" class="form-control" placeholder="Profession" name="profession" required>
+                        <input type="text" class="form-control" placeholder="Profession" id="input_text_profession" name="profession" required>
+                      <span class="text-danger" id="input_text_error_profession"></span>
                       </div>
                       <div class="col-6 form-group">
-                        <input type="text" class="form-control" id="address" placeholder="Address" name="address">
+                        <input type="text" class="form-control" id="address" placeholder="Address" id="input_alpha_number_addrs" name="address">
+                      <span class="text-danger" id="input_alpha_number_error_addrs"></span>
                       </div>
                   </div>
                   <div class="row mb-3">
                       <div class="col-6 form-group">
-                        <input type="text"  class="form-control" id="any_special_condition" placeholder="Any Special Condition" name="any_special_condition">
+                        <input type="text"  class="form-control" id="any_special_condition" id="input_text_spcl_condtion" placeholder="Any Special Condition" name="any_special_condition">
+                      <span class="text-danger" id="input_text_error_spcl_condtion"></span>
                       </div>
                       <div class="col-6 form-group">
                         <span>Willing to Go Back your Village</span>

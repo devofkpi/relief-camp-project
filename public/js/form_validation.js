@@ -101,7 +101,7 @@ $(function(){
     $('input[id^=input_text_]').keypress(function (e) {
         var keyCode = e.keyCode || e.which;
 
-        $("span[id^=input_text_error]").html("");
+        $(this).parent().find('span').first().html("");
 
         //Regex for Valid Characters i.e. Alphabets and Numbers.
         var regex = /^[A-Za-z., ]+$/;
@@ -109,7 +109,7 @@ $(function(){
         //Validate TextBox value against the Regex.
         var isValid = regex.test(String.fromCharCode(keyCode));
         if (!isValid) {
-            $("span[id^=input_text_error]").html("Only Alphabets are allowed.");
+            $(this).parent().find('span').first().html("Only Alphabets are accepted.");
         }
 
         return isValid;
@@ -118,7 +118,7 @@ $(function(){
     $('input[id^=input_alpha_number_]').keypress(function (e) {
         var keyCode = e.keyCode || e.which;
 
-        $("span[id^=input_alpha_number_error]").html("");
+        $(this).parent().find('span').first().html("");
 
         //Regex for Valid Characters i.e. Alphabets and Numbers.
         var regex = /^[A-Za-z0-9., ]+$/;
@@ -126,7 +126,7 @@ $(function(){
         //Validate TextBox value against the Regex.
         var isValid = regex.test(String.fromCharCode(keyCode));
         if (!isValid) {
-            $("span[id^=input_alpha_number_error]").html("Special Characters are not allowed.");
+            $(this).parent().find('span').first().html("Special Characters are not allowed.");
         }
 
         return isValid;
@@ -135,7 +135,7 @@ $(function(){
     $('input[id^=input_number_]').keypress(function (e) {
         var keyCode = e.keyCode || e.which;
 
-        $(this).parent().find('span').html("");
+        $(this).parent().find('span').first().html("");
 
         //Regex for Valid Characters i.e. Alphabets and Numbers.
         var regex = /^[0-9.]+$/;
@@ -143,7 +143,7 @@ $(function(){
         //Validate TextBox value against the Regex.
         var isValid = regex.test(String.fromCharCode(keyCode));
         if (!isValid) {
-            $(this).parent().find('span').html("Only numbers are accepted.");
+            $(this).parent().find('span').first().html("Only numbers are accepted.");
         }
 
         return isValid;

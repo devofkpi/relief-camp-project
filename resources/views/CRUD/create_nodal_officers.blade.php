@@ -26,7 +26,8 @@ Create Nodal Officer
                   <div class="row justify-content-center">
                     <div class="col-8">
                     <div class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="Officer Name" name="officer_name">
+                      <span class="text-danger" id="input_text_error_officer_name"></span>
+                      <input type="text" class="form-control" placeholder="Officer Name" id="input_text_officer_name" name="officer_name">
                       <div class="input-group-append">
                         <div class="input-group-text">
                           <span class="fas fa-user"></span>
@@ -38,7 +39,8 @@ Create Nodal Officer
                   <div class="row justify-content-center">
                     <div class="col-8">
                       <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Officer Designation" name="officer_designation">
+                        <span class="text-danger" id="input_text_error_designation"></span>
+                        <input type="text" class="form-control" placeholder="Officer Designation" id="input_text_designation" name="officer_designation">
                         <div class="input-group-append">
                           <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -50,7 +52,8 @@ Create Nodal Officer
                   <div class="row justify-content-center">
                     <div class="col-8">
                       <div class="input-group mb-3">
-                        <input type="text" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text" placeholder="(___) ___-____" name="officer_contact">
+                        <span class="text-danger" id="input_number_error_contact"></span>
+                        <input type="text" class="form-control" id="input_number_contact" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text" placeholder="(___) ___-____" name="officer_contact">
                         <div class="input-group-append">
                           <div class="input-group-text">
                             <span class="fas fa-phone"></span>
