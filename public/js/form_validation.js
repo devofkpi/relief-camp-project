@@ -98,7 +98,7 @@ $(function(){
         return isValid;
     });
     
-    $('input[id^=input_text]').keypress(function (e) {
+    $('input[id^=input_text_]').keypress(function (e) {
         var keyCode = e.keyCode || e.which;
 
         $("span[id^=input_text_error]").html("");
@@ -115,7 +115,7 @@ $(function(){
         return isValid;
     });
 
-    $('input[id^=input_alpha_number]').keypress(function (e) {
+    $('input[id^=input_alpha_number_]').keypress(function (e) {
         var keyCode = e.keyCode || e.which;
 
         $("span[id^=input_alpha_number_error]").html("");
@@ -132,7 +132,7 @@ $(function(){
         return isValid;
     });
 
-    $('input[id^=input_number]').keypress(function (e) {
+    $('input[id^=input_number_]').keypress(function (e) {
         var keyCode = e.keyCode || e.which;
 
         $(this).parent().find('span').html("");

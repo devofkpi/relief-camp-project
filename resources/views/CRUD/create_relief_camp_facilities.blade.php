@@ -40,15 +40,16 @@ Upload Facilities Data
                     <span class="text-danger" id="input_text_error_build_type"></span>
                     </div>
                     <div class="col-3">
-                      <input type="text" class="form-control" placeholder="Number of Persons" id="input_number1" name="number_of_persons" required>
-                      <span class="text-danger" id="input_number_error1"></span>
+                      <input type="text" class="form-control" placeholder="Number of Persons" id="input_number_persons" name="number_of_persons" required>
+                      <span class="text-danger" id="input_number_error_persons"></span>
                     </div>
                     <div class="col-3">
-                      <input type="text" class="form-control" placeholder="Number of Rooms" id="input_number2" name="number_of_rooms" required>
-                      <span class="text-danger" id="input_number_error2"></span>
+                      <input type="text" class="form-control" placeholder="Number of Rooms" id="input_number_rooms" name="number_of_rooms" required>
+                      <span class="text-danger" id="input_number_error_rooms"></span>
                     </div>
                     <div class="col-3">
-                      <input type="text" class="form-control" placeholder="Number of Halls" name="number_of_halls" required>
+                      <input type="text" class="form-control" placeholder="Number of Halls" id="input_number_halls" name="number_of_halls" required>
+                      <span class="text-danger" id="input_number_error_halls"></span>
                     </div>
                   </div>
                   <div class="row mb-3">
@@ -63,41 +64,51 @@ Upload Facilities Data
                   </div>
                   <div class="row mb-3">
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Number of Toilets" name="number_of_toilets" required>
+                      <input type="text" class="form-control" placeholder="Number of Toilets" id="input_number_toilets" name="number_of_toilets" required>
+                      <span class="text-danger" id="input_number_error_toilets"></span>
                     </div>
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Number of Persons Utilising Toilets" name="number_of_person_utilising_toilets" required>
+                      <input type="text" class="form-control" placeholder="Number of Persons Utilising Toilets" id="input_number_toilets" name="number_of_person_utilising_toilets" required>
+                      <span class="text-danger" id="input_number_error_utilising_toilets"></span>
                     </div>
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Water Tanks Capacity(in Litres)" name="water_tanks_capacity" required>
+                      <input type="text" class="form-control" placeholder="Water Tanks Capacity(in Litres)" id="input_number_water_capacity" name="water_tanks_capacity" required>
+                      <span class="text-danger" id="input_number_error_water_cpcity"></span>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Water Availability Ratio Per Person" name="water_availability_ratio" required>
+                      <input type="text" class="form-control" placeholder="Water Availability Ratio Per Person" id="input_number_avl_water" name="water_availability_ratio" required>
+                      <span class="text-danger" id="input_number_error_avl_water"></span>
                     </div>
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Number of Toilets" name="number_of_toilets" required>
+                      <input type="text" class="form-control" placeholder="Number of Toilets" id="input_number_tlts" name="number_of_toilets" required>
+                      <span class="text-danger" id="input_number_error_tlts"></span>
                     </div>
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Toilet Ratio per Person" name="toilet_ratio_per_person" required>
+                      <input type="text" class="form-control" placeholder="Toilet Ratio per Person" id="input_number_ratio_tlts" name="toilet_ratio_per_person" required>
+                      <span class="text-danger" id="input_number_error_ratio_tlts"></span>
                     </div>
                   </div>
         
                   <div class="row mb-3">
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Number of Buckets" name="number_of_buckets" required>
+                      <input type="text" class="form-control" placeholder="Number of Buckets" id="input_number_buckets" name="number_of_buckets" required>
+                      <span class="text-danger" id="input_number_error_buckets"></span>
                     </div>
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Bucket Ratio per Person" name="bucket_ratio_per_person" required>
+                      <input type="text" class="form-control" placeholder="Bucket Ratio per Person" id="input_number_ratio_buckets" name="bucket_ratio_per_person" required>
+                      <span class="text-danger" id="input_number_error_ratio_buckets"></span>
                     </div>
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Number of Mugs" name="number_of_mugs" required>
+                      <input type="text" class="form-control" placeholder="Number of Mugs" id="input_number_mugs" name="number_of_mugs" required>
+                      <span class="text-danger" id="input_number_error_mugs"></span>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Mug Ratio pe Person" name="mug_ratio_per_person" required>
+                      <input type="text" class="form-control" placeholder="Mug Ratio pe Person" id="input_number_ratio_mug" name="mug_ratio_per_person" required>
+                      <span class="text-danger" id="input_number_error_ratio_mugs"></span>
                     </div>
                     <div class="col-4 form-group pl-4">
                       <input type="checkbox" class="form-check-input" value="1" name="sufficient_cooking_utensils" id="sufficient_cooking_utensils" checked>
@@ -106,52 +117,64 @@ Upload Facilities Data
                   </div>
                   <div class="row mb-3">
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Number of Mattresses" name="number_of_mattresses" required>
+                      <input type="text" class="form-control" placeholder="Number of Mattresses" id="input_number_matres" name="number_of_mattresses" required>
+                      <span class="text-danger" id="input_number_error_matres"></span>
                     </div>
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Mattress Ratio per Person" name="mattress_ratio_per_person" required>
+                      <input type="text" class="form-control" placeholder="Mattress Ratio per Person" id="input_number_ratio_matres" name="mattress_ratio_per_person" required>
+                      <span class="text-danger" id="input_number_error_ratio_matres"></span>
                     </div>
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Number of Bedsheets" name="number_of_bedsheets" required>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Bedsheet Ratio per Person" name="bedsheet_ratio_per_person" required>
-                    </div>
-                    <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Number of Pillows" name="number_of_pillows" required>
-                    </div>
-                    <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Pillow Ratio per Person" name="pillow_ratio_per_person" required>
+                      <input type="text" class="form-control" placeholder="Number of Bedsheets" id="input_number_bedsheet" name="number_of_bedsheets" required>
+                      <span class="text-danger" id="input_number_error_bedsheet"></span>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Number of Blankets" name="number_of_blankets" required>
+                      <input type="text" class="form-control" placeholder="Bedsheet Ratio per Person" id="input_number_ratio_bedsheet" name="bedsheet_ratio_per_person" required>
+                      <span class="text-danger" id="input_number_error_ratio_bedsheet"></span>
                     </div>
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Blanket Ratio per Person" name="blanket_ratio_per_person" required>
+                      <input type="text" class="form-control" placeholder="Number of Pillows" id="input_number_pillows" name="number_of_pillows" required>
+                      <span class="text-danger" id="input_number_error_pillows"></span>
                     </div>
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Number of Mosquito Nets" name="number_of_mosquito_nets" required>
+                      <input type="text" class="form-control" placeholder="Pillow Ratio per Person" id="input_number_ratio_pillows" name="pillow_ratio_per_person" required>
+                      <span class="text-danger" id="input_number_error_ratio_pillow"></span>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Mosquito Nets Ratio per Person" name="mosquito_net_ratio" required>
+                      <input type="text" class="form-control" placeholder="Number of Blankets" id="input_number_blankets" name="number_of_blankets" required>
+                      <span class="text-danger" id="input_number_error_blankets"></span>
+                    </div>
+                    <div class="col-4">
+                      <input type="text" class="form-control" placeholder="Blanket Ratio per Person" id="input_number_ratio_blanket" name="blanket_ratio_per_person" required>
+                      <span class="text-danger" id="input_number_error_ratio_blanket"></span>
+                    </div>
+                    <div class="col-4">
+                      <input type="text" class="form-control" placeholder="Number of Mosquito Nets" id="input_number_mosqito_net" name="number_of_mosquito_nets" required>
+                      <span class="text-danger" id="input_number_error_mosqito_net"></span>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-4">
+                      <input type="text" class="form-control" placeholder="Mosquito Nets Ratio per Person" id="input_number_ratio_mosqito_net" name="mosquito_net_ratio" required>
+                      <span class="text-danger" id="input_number_error_ratio_mosqito_net"></span>
                     </div>
                     <div class="col-4 pl-4">
                       <input type="checkbox" class="form-check-input" value="1" name="sufficient_lighting_facility" id="sufficient_lighting_facility" checked>
                       <label class="form-check-label" for="sufficient_lighting_facility">Sufficient Lighting Facility</label>
                     </div>
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Number of Fans" name="number_of_fans" required>
+                      <input type="text" class="form-control" placeholder="Number of Fans" id="input_number_fans" name="number_of_fans" required>
+                      <span class="text-danger" id="input_number_error_fans"></span>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Fan Ratio per Person" name="fan_ratio_per_person" required>
+                      <input type="text" class="form-control" placeholder="Fan Ratio per Person" id="input_number_ratio_fans" name="fan_ratio_per_person" required>
+                      <span class="text-danger" id="input_number_error_ratio_fans"></span>
                     </div>
                     <div class="col-4 form-group pl-4">
                       <input type="checkbox" class="form-check-input" value="1" name="sufficient_plates_glasses" id="sufficient_plates_glasses" checked>
@@ -160,21 +183,26 @@ Upload Facilities Data
                   </div>
                   <div class="row mb-3">
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Fuel Source" name="fuel_source" required>
+                      <input type="text" class="form-control" placeholder="Fuel Source" id="input_text_fuel" name="fuel_source" required>
+                      <span class="text-danger" id="input_text_error_fuel"></span>
                     </div>
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Availability of Fuel in Days" name="avl_of_fuel_in_days" required>
+                      <input type="text" class="form-control" placeholder="Availability of Fuel in Days" id="input_number_avl_fuel" name="avl_of_fuel_in_days" required>
+                      <span class="text-danger" id="input_number_error_avl_fuel"></span>
                     </div>
                     <div class="col-4">
-                      <input type="text" class="form-control" placeholder="Availability of Rice in Days" name="avl_of_rice_in_days" required>
+                      <input type="text" class="form-control" placeholder="Availability of Rice in Days" id="input_number_avl_rice" name="avl_of_rice_in_days" required>
+                      <span class="text-danger" id="input_number_error_avl_rice"></span>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Availability of Dal in Days" name="avl_of_dal_in_days" required>
+                      <input type="text" class="form-control" placeholder="Availability of Dal in Days" id="input_number_avl_dal" name="avl_of_dal_in_days" required>
+                      <span class="text-danger" id="input_number_error_avl_daal"></span>
                     </div>
                     <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Availability of Veg in Days" name="avl_of_veg_in_days" required>
+                      <input type="text" class="form-control" placeholder="Availability of Veg in Days" id="input_number_avl_veg" name="avl_of_veg_in_days" required>
+                      <span class="text-danger" id="input_number_error_avl_veg"></span>
                     </div>
                   </div>
                   <div class="row mb-3">
@@ -189,66 +217,82 @@ Upload Facilities Data
                   </div>
                   <div class="row mb-3">
                     <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Soap and Other Consumable Items in Days" name="soap_and_other_consumable" required>
+                      <input type="text" class="form-control" placeholder="Soap and Other Consumable Items in Days"  id="input_number_soap" name="soap_and_other_consumable" required>
+                      <span class="text-danger" id="input_number_error_soap"></span>
                     </div>
                     <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Number of School Going Students Identified" name="number_of_school_going_student_identified" required>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Number of Students Linked to School" name="number_of_student_linked_to_school" required>
-                    </div>
-                    <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Per of Students Linked to School" name="per_of_student_linked_to_school" required>
+                      <input type="text" class="form-control" placeholder="Number of School Going Students Identified" id="input_number_school_stdnt" name="number_of_school_going_student_identified" required>
+                      <span class="text-danger" id="input_number_error_school_stdnts"></span>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Number of Children Identified for Anganwadi" name="number_of_children_for_anganwadi" required>
+                      <input type="text" class="form-control" placeholder="Number of Students Linked to School" id="input_number_school_stdnts_lnkd" name="number_of_student_linked_to_school" required>
+                      <span class="text-danger" id="input_number_error_school_stdnts_lnkd"></span>
                     </div>
                     <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Number of Children Linked to Anganwadi" name="number_of_children_linked_to_anganwadi" required>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Percantage of Children Linked to Anganwadi" name="per_of_children_linked_to_anganwadi" required>
-                    </div>
-                    <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Number of Pregnant Women" name="number_of_pregnant_women" required>
+                      <input type="text" class="form-control" placeholder="Per of Students Linked to School" id="input_number_school_stdnts_lnkd_per"  name="per_of_student_linked_to_school" required>
+                      <span class="text-danger" id="input_number_error_school_stdnts_lnkd_per"></span>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Number of Pregnant Women Linked to Health Facility" name="number_of_pregnant_women_linked_to_health" required>
+                      <input type="text" class="form-control" placeholder="Number of Children Identified for Anganwadi" id="input_number_child_angwadi" name="number_of_children_for_anganwadi" required>
+                      <span class="text-danger" id="input_number_error_children_angwadi"></span>
                     </div>
                     <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Percantage of Pregnant Women Linked to Health Facility" name="per_of_pregnant_women_linked_to_health" required>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Number of Specially Abled Person" name="number_of_disabled" required>
-                    </div>
-                    <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Number of Specially Abled Person Linked to Some Facility" name="number_of_disabled_linked_to_facility" required>
+                      <input type="text" class="form-control" placeholder="Number of Children Linked to Anganwadi" id="input_number_child_angwadi_lnkd" name="number_of_children_linked_to_anganwadi" required>
+                      <span class="text-danger" id="input_number_error_children_angwadi_lnkd"></span>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Percantage of Specially Abled Person Linked to Some Facility" name="per_of_disabled_linked_to_facility" required>
+                      <input type="text" class="form-control" placeholder="Percantage of Children Linked to Anganwadi" id="input_number_child_angwadi_per" name="per_of_children_linked_to_anganwadi" required>
+                      <span class="text-danger" id="input_number_error_children_angwadi_per"></span>
                     </div>
                     <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Number of Children Seprated from Perants" name="number_of_child_sep_from_perants" required>
+                      <input type="text" class="form-control" placeholder="Number of Pregnant Women" id="input_number_prgnt_women" name="number_of_pregnant_women" required>
+                      <span class="text-danger" id="input_number_error_prgnt_women"></span>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Number of Children Seprated from Perants Linked to Some Facility" name="number_of_child_sep_from_perants_linked_to_facility" required>
+                      <input type="text" class="form-control" placeholder="Number of Pregnant Women Linked to Health Facility" id="input_number_prgnt_women_lnkd" name="number_of_pregnant_women_linked_to_health" required>
+                      <span class="text-danger" id="input_number_error_prgnt_women_lnkd"></span>
                     </div>
                     <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Percantage of Children Seprated from Perants Linked to Some Facility" name="per_of_child_sep_from_perants_linked_to_facility" required>
+                      <input type="text" class="form-control" placeholder="Percantage of Pregnant Women Linked to Health Facility" id="input_number_prgnt_women_lnkd_per" name="per_of_pregnant_women_linked_to_health" required>
+                      <span class="text-danger" id="input_number_error_prgnt_women_lnkd_per"></span>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-6">
+                      <input type="text" class="form-control" placeholder="Number of Specially Abled Person" id="input_number_pwd" name="number_of_disabled" required>
+                      <span class="text-danger" id="input_number_error_pwd"></span>
+                    </div>
+                    <div class="col-6">
+                      <input type="text" class="form-control" placeholder="Number of Specially Abled Person Linked to Some Facility" id="input_number_pwd_lnkd" name="number_of_disabled_linked_to_facility" required>
+                      <span class="text-danger" id="input_number_error_pwd_lnkd"></span>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-6">
+                      <input type="text" class="form-control" placeholder="Percantage of Specially Abled Person Linked to Some Facility" id="input_number_pwd_lnkd_per" name="per_of_disabled_linked_to_facility" required>
+                      <span class="text-danger" id="input_number_error_pwd_lnkd_per"></span>
+                    </div>
+                    <div class="col-6">
+                      <input type="text" class="form-control" placeholder="Number of Children Seprated from Perants" id="input_number_child_prnts" name="number_of_child_sep_from_perants" required>
+                      <span class="text-danger" id="input_number_error_child_prnts"></span>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-6">
+                      <input type="text" class="form-control" placeholder="Number of Children Seprated from Perants Linked to Some Facility" id="input_number_child_prnts_lnkd" name="number_of_child_sep_from_perants_linked_to_facility" required>
+                      <span class="text-danger" id="input_number_error_child_prnts_lnkd"></span>
+                    </div>
+                    <div class="col-6">
+                      <input type="text" class="form-control" placeholder="Percantage of Children Seprated from Perants Linked to Some Facility" id="input_number_child_prnts_lnkd_per" name="per_of_child_sep_from_perants_linked_to_facility" required>
+                      <span class="text-danger" id="input_number_error_child_prnts_lnkd_per"></span>
                     </div>
                   </div>
                   <div class="row mb-3">
