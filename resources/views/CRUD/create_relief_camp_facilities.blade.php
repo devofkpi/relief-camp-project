@@ -36,13 +36,16 @@ Upload Facilities Data
                 <div class="card-body">
                   <div class="row mb-3">
                     <div class="col-3">
-                      <input type="text" class="form-control" placeholder="Building Type" name="building_type" required>
+                      <input type="text" class="form-control" placeholder="Building Type" name="building_type" id="input_text_build_type" required>
+                    <span class="text-danger" id="input_text_error_build_type"></span>
                     </div>
                     <div class="col-3">
-                      <input type="text" class="form-control" placeholder="Number of Persons" name="number_of_persons" required>
+                      <input type="text" class="form-control" placeholder="Number of Persons" id="input_number1" name="number_of_persons" required>
+                      <span class="text-danger" id="input_number_error1"></span>
                     </div>
                     <div class="col-3">
-                      <input type="text" class="form-control" placeholder="Number of Rooms" name="number_of_rooms" required>
+                      <input type="text" class="form-control" placeholder="Number of Rooms" id="input_number2" name="number_of_rooms" required>
+                      <span class="text-danger" id="input_number_error2"></span>
                     </div>
                     <div class="col-3">
                       <input type="text" class="form-control" placeholder="Number of Halls" name="number_of_halls" required>

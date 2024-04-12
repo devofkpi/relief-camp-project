@@ -80,8 +80,9 @@ Create User
                     @if($errors->any()){
                       @foreach($errors->all as $error){
                         <p class="login-box-msg text-danger">{{ $error }}</p>
-                      }
+                      }@endforeach
                     }
+                    @endif
                 </div>
               </form>
               @if(session()->has('success'))

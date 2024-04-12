@@ -10,7 +10,7 @@ $(function(){
         //Validate TextBox value against the Regex.
         var isValid = regex.test(String.fromCharCode(keyCode));
         if (!isValid) {
-            $("#input_error").html("Only Alphabets are allowed.");
+            $("#input_error_full_name").html("Only Alphabets are allowed.");
         }
 
         return isValid;
@@ -98,5 +98,54 @@ $(function(){
         return isValid;
     });
     
-    camp_code
+    $('input[id^=input_text]').keypress(function (e) {
+        var keyCode = e.keyCode || e.which;
+
+        $("span[id^=input_text_error]").html("");
+
+        //Regex for Valid Characters i.e. Alphabets and Numbers.
+        var regex = /^[A-Za-z., ]+$/;
+
+        //Validate TextBox value against the Regex.
+        var isValid = regex.test(String.fromCharCode(keyCode));
+        if (!isValid) {
+            $("span[id^=input_text_error]").html("Only Alphabets are allowed.");
+        }
+
+        return isValid;
+    });
+
+    $('input[id^=input_alpha_number]').keypress(function (e) {
+        var keyCode = e.keyCode || e.which;
+
+        $("span[id^=input_alpha_number_error]").html("");
+
+        //Regex for Valid Characters i.e. Alphabets and Numbers.
+        var regex = /^[A-Za-z0-9., ]+$/;
+
+        //Validate TextBox value against the Regex.
+        var isValid = regex.test(String.fromCharCode(keyCode));
+        if (!isValid) {
+            $("span[id^=input_alpha_number_error]").html("Special Characters are not allowed.");
+        }
+
+        return isValid;
+    });
+
+    $('input[id^=input_number]').keypress(function (e) {
+        var keyCode = e.keyCode || e.which;
+
+        $(this).parent().find('span').html("");
+
+        //Regex for Valid Characters i.e. Alphabets and Numbers.
+        var regex = /^[0-9.]+$/;
+
+        //Validate TextBox value against the Regex.
+        var isValid = regex.test(String.fromCharCode(keyCode));
+        if (!isValid) {
+            $(this).parent().find('span').html("Only numbers are accepted.");
+        }
+
+        return isValid;
+    });
 });
