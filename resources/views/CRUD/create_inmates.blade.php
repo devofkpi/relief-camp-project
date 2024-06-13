@@ -122,13 +122,13 @@ Upload Inmates Data
                       <span class="text-danger" id="input_text_error_profession"></span>
                       </div>
                       <div class="col-6 form-group">
-                        <input type="text" class="form-control" id="address" placeholder="Address" id="input_alpha_number_addrs" name="address">
-                      <span class="text-danger" id="input_alpha_number_error_addrs"></span>
+                        <input type="text" class="form-control" placeholder="Address" id="input_alphanum_address" name="address">
+                      <span class="text-danger"></span>
                       </div>
                   </div>
                   <div class="row mb-3">
                       <div class="col-6 form-group">
-                        <input type="text"  class="form-control" id="any_special_condition" id="input_text_spcl_condtion" placeholder="Any Special Condition" name="any_special_condition">
+                        <input type="text"  class="form-control" id="input_text_spcl_condtion" placeholder="Any Special Condition" name="any_special_condition">
                       <span class="text-danger" id="input_text_error_spcl_condtion"></span>
                       </div>
                       <div class="col-6 form-group">

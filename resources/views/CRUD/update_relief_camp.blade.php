@@ -23,6 +23,7 @@ Create Relief Camp
                     <div class="form-group mb-3">
                       <label for="relief_camp_name">Relief Camp Name</label>
                       <input type="text" class="form-control" value="{{ $relief_camp->relief_camp_name }}" id="relief_camp_name" name="relief_camp_name" required>
+                      <span class="text-danger" id="input_error_relief_camp_name"></span>
                     </div>
                   </div>
                 </div>

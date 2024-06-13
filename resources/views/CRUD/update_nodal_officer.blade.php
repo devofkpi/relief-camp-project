@@ -14,23 +14,27 @@ Update Nodal Officer Details
                   <div class="col-8">
                     <div class="form-group mb-3">
                       <label for="officer_name">Nodal Officer Name</label>
-                      <input type="text" class="form-control" value="{{ $nodal_officer->officer_name }}" id="officer_name" name="officer_name">
+                      <input type="text" class="form-control" value="{{ $nodal_officer->officer_name }}" id="input_text_officer_name" name="officer_name">
+                    <span class="text-danger" id="input_text_error_officer_name"></span>
                     </div>
                   </div>
                 </div>
                 <div class="row justify-content-center">
+                  <span class="text-danger" id="input_text_error_designation"></span>
                     <div class="col-8">
                       <div class="form-group mb-3">
                         <label for="officer_designation">Officer Designation</label>
-                        <input type="text" class="form-control" value="{{ $nodal_officer->officer_designation }}" id="officer_designation" name="officer_designation">
-                        </div>
+                        <input type="text" class="form-control" value="{{ $nodal_officer->officer_designation }}" id="input_text_officer_designation" name="officer_designation">
+                        
+                      </div>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-8">
                       <div class="form-group mb-3">
+                        <span class="text-danger" id="input_number_error_contact"></span>
                         <label for="officer_contact">Contact Number</label>
-                        <input type="text" class="form-control" value="{{ $nodal_officer->officer_contact }}" id="officer_contact" name="officer_contact" required>
+                        <input type="text" class="form-control" value="{{ $nodal_officer->officer_contact }}" id="input_number_contact" name="officer_contact" required>
                       </div>
                     </div>
                 </div>

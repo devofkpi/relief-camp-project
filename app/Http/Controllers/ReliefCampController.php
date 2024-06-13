@@ -24,10 +24,11 @@ class ReliefCampController extends Controller
     public function __construct(Request $request)
     {
        if( isset($_REQUEST) ){
-            $_REQUEST = Senitizer::senitize($_REQUEST, $request);
+           $_REQUEST = Senitizer::senitize($_REQUEST, $request);
        }
     }
     
+
     /**
      * 
      * showAllCamps() function return all the relief camps based on user role
@@ -120,16 +121,20 @@ class ReliefCampController extends Controller
             ]);
             
             $this->sub_division_id=SubDivision::select('id')->where('sub_division_code','=',$request['sub_division_code'])->first();
-
-            $this->relief_camp=ReliefCamp::create([
+            if($this->sub_division_id!=null){
+                $this->relief_camp=ReliefCamp::create([
     
-                'relief_camp_name'=>$request['relief_camp_name'],
-                'camp_code'=>$request['sub_division_code'].'-'.$request['camp_code'],
-                'address_id'=>$address->id,
-                'sub_division_id'=> $this->sub_division_id->id,
-                'nodal_officer_id'=>$request['nodal_officer_id']
-            ]);
-            return redirect()->back()->withSuccess('Relief Camp created successfully');
+                    'relief_camp_name'=>$request['relief_camp_name'],
+                    'camp_code'=>$request['sub_division_code'].'-'.$request['camp_code'],
+                    'address_id'=>$address->id,
+                    'sub_division_id'=> $this->sub_division_id->id,
+                    'nodal_officer_id'=>$request['nodal_officer_id']
+                ]);
+                return redirect()->back()->withSuccess('Relief Camp created successfully');
+            }else{
+                return redirect()->back()->withError('Invalid Subdivision Selected');
+            }
+            
         }elseif($this->relief_camp!=null){
             $this->relief_camp->relief_camp_name=$request['relief_camp_name'];
             $this->relief_camp->camp_code=$request['camp_code'];

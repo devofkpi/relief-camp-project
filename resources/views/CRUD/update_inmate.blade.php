@@ -20,24 +20,27 @@ Update Inmate Details
                 <div class="row mb-3">
                   <div class="col-6 form-group">
                     <label for="person_name">Person Name</label>
-                    <input type="text" class="form-control" value="{{$inmate->person_name}}" id="person_name" name="person_name" required>
+                    <input type="text" class="form-control" value="{{$inmate->person_name}}" id="input_text_person_name" name="person_name" required>
+                    <span class="text-danger" id="input_text_error_person_name"></span>
                   </div>
                   <div class="col-6 form-group">
                     <label for="family_head">Family Head Name</label>
                     @if($inmate->familyHead)
-                      <input type="text" class="form-control" value="{{ $inmate->familyHead->family_head_name }}" id="family_head_name" name="family_head_name">
-                    @else
-                      <input type="text" class="form-control" placeholder="Family Head Name" id="family_head_name" name="family_head_name">
-                    @endif                  
+                      <input type="text" class="form-control" value="{{ $inmate->familyHead->family_head_name }}" id="input_text_family_head_name" name="family_head_name">
+                      <span class="text-danger" id="input_text_error_family_head"></span>
+                      @else
+                      <input type="text" class="form-control" placeholder="Family Head Name" id="input_text_family_head_name" name="family_head_name">
+                      <span class="text-danger" id="input_text_error_family_head"></span>
+                      @endif                  
                   </div>
                 </div>
                 <div class="row mb-3">
                   <div class="col-6 form-group">
                     <label for="family_head_relation">Relation with family head</label>
                     @if ($inmate->familyHeadRelation)
-                      <input type="text" class="form-control" value="{{ $inmate->familyHeadRelation->family_head_relation }}" id="relation" name="relation" required>                            
+                      <input type="text" class="form-control" value="{{ $inmate->familyHeadRelation->family_head_relation }}" id="input_text_relation" name="relation" required>                            
                     @else
-                      <input type="text" class="form-control" placeholder="Family Head Relation" id="realtion" name="relation" required>
+                      <input type="text" class="form-control" placeholder="Family Head Relation" id="input_text_relation" name="relation" required>
                     @endif                  
                   </div>
                   <div class="col-6 form-group">
@@ -62,12 +65,14 @@ Update Inmate Details
                 <div class="row mb-3">
                   <div class="col-6 form-group">
                     <label for="age">Age</label>
-                    <input type="text" class="form-control" value="{{ $inmate->age}}" id="age" name="age" required>
+                    <input type="text" class="form-control" value="{{ $inmate->age}}" id="input_number_age" name="age" required>
+                    <span class="text-danger" id="input_number_error_age"></span>
                   </div>
                   <div class="col-6 form-group">
                       <label for="contact_number">Contact Number</label>
-                      <input type="text" class="form-control" value="{{ $inmate->contact_number}}" id="contact_number" name="contact_number">                    
-                  </div>
+                      <input type="text" class="form-control" value="{{ $inmate->contact_number}}" id="input_number_contact_number" name="contact_number">                    
+                      <span class="text-danger" id="input_number_error_contact"></span>
+                    </div>
                 </div>
                 <div class="row mb-3">
                   <div class="col-6">
@@ -128,18 +133,20 @@ Update Inmate Details
                 <div class="row mb-3">
                   <div class="col-6 form-group">
                     <label for="profession">Profession</label>
-                      <input type="text" class="form-control" value="{{$inmate->profession}}" id="profession" name="profession">
-                  </div>
+                      <input type="text" class="form-control" value="{{$inmate->profession}}" id="input_text_profession" name="profession">
+                      <span class="text-danger" id="input_text_error_profession"></span>
+                    </div>
                   <div class="col-6 form-group">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" value="{{ $inmate->address->address}}" id="address" name="address">
+                    <input type="text" class="form-control" value="{{ $inmate->address->address}}" id="input_aphanum_address" name="address">
+                    <span class="text-danger" id="input_aphanum_error_address"></span>
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <div class="col-6 form-group">
                     <label for="any_special_condition">Any Special Condition</label>
-                    <input type="text" value="{{$inmate->any_special_condition}}" class="form-control" id="any_special_condition" name="any_special_condition">
+                    <input type="text" value="{{$inmate->any_special_condition}}" class="form-control" id="input_text_any_special_condition" name="any_special_condition">
                   </div>
                   <div class="col-6 form-group">
                     <span>Willing to Go Back your Village</span>

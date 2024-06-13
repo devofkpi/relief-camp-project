@@ -115,7 +115,7 @@ $(function(){
         return isValid;
     });
 
-    $('input[id^=input_alpha_number_]').keypress(function (e) {
+    $('input[id^=input_alphanum]').keypress(function (e) {
         var keyCode = e.keyCode || e.which;
 
         $(this).parent().find('span').first().html("");
