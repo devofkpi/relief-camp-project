@@ -291,7 +291,10 @@ class ReliefCampDemographyController extends Controller
         if($file_extnsn=='xlsx')
         {
         try{
-        Excel::import(new ReliefCampDemographyImport($request->get('relief_camp_id')), $request->file('inmates_excel'));
+        Excel::import(new ReliefCampDemographyImport($request->get('relief_camp_id')), $request->file('inmates_excel'), null, null, null, [
+            'noEntities' => true,
+            'upload_max_size' => 5,
+        ]);
         return redirect()->back();
         }catch(\Maatwebsite\Excel\Validators\ValidationException $e){
             $failures = $e->failures();

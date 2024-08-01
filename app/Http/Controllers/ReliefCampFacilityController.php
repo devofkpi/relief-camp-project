@@ -201,7 +201,10 @@ class ReliefCampFacilityController extends Controller
         {
         try{
 
-            Excel::import(new ReliefCampFacilitiesImport, $request->file('relief_camp_facilities_excel'));
+            Excel::import(new ReliefCampFacilitiesImport, $request->file('relief_camp_facilities_excel'), null, null, null, [
+                'noEntities' => true,
+                'upload_max_size' => 5,
+            ]);
     
             $relief_camps_facilities= ReliefCamp::with('reliefCampFacility')->get();
     

@@ -97,7 +97,10 @@ class NodalOfficerController extends Controller
         {
         try{
 
-            Excel::import(new NodalOfficerImport, $request->file('nodal_officer_excel'));
+            Excel::import(new NodalOfficerImport, $request->file('nodal_officer_excel'), null, null, null, [
+                'noEntities' => true,
+                'upload_max_size' => 5,
+            ]);
             $this->nodal_officers=NodalOfficer::get();
             return redirect()->route('show_all_nodal_officer',['nodal_officers_data'=>$this->nodal_officers]);
         }catch(\Maatwebsite\Excel\Validators\ValidationException $e){
